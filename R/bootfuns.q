@@ -78,8 +78,8 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
 # bootstrap replicates and then this function loops over those replicates.
 #
     call <- match.call()
-    if(!exists(".Random.seed")) runif(1)
-    seed <- .Random.seed
+    if(!exists(".Random.seed", envir=.GlobalEnv, inherits = FALSE)) runif(1)
+    seed <- get(".Random.seed", envir=.GlobalEnv, inherits = FALSE)
     if (isMatrix(data)) n <- nrow(data)
     else n <- length(data)
     temp.str <- strata
@@ -216,9 +216,10 @@ boot.array <- function(boot.out, indices=FALSE) {
 #  used in boot.out
 #  This function recreates such arrays from the information in boot.out
 #
-    if(exists(".Random.seed")) temp <- .Random.seed
+    if(exists(".Random.seed", envir=.GlobalEnv, inherits = FALSE))
+        temp <- get(".Random.seed", envir=.GlobalEnv, inherits = FALSE)
     else temp<- NULL
-    assign(".Random.seed",  boot.out$seed, pos=1)
+    assign(".Random.seed",  boot.out$seed, envir=.GlobalEnv)
     if (isMatrix(boot.out$data))
         n <- nrow(boot.out$data)
     else	n <- length(boot.out$data)
@@ -271,7 +272,7 @@ boot.array <- function(boot.out, indices=FALSE) {
         out <- index.array(n, R, sim, strata, 0, boot.out$L, weights)
     }
     if (!indices) out <- freq.array(out)
-    if(!is.null(temp)) assign(".Random.seed", temp, pos=1)
+    if(!is.null(temp)) assign(".Random.seed", temp, envir=.GlobalEnv)
     else rm(.Random.seed, pos=1)
     out
 }
@@ -343,8 +344,9 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
     invisible(boot.out)
 }
 
-print.boot <- function(x,digits=options()$digits,
-		index=1:ncol(boot.out$t), ...) {
+print.boot <- function(x, digits = getOption("digits"),
+                          index = 1:ncol(boot.out$t), ...)
+{
 #
 # Print the output of a bootstrap
 #
@@ -774,8 +776,8 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
 # cost is a function of two arguments: the observed values and the
 # the predicted values.
     call <- match.call()
-    if(!exists(".Random.seed")) runif(1)
-    seed <- .Random.seed
+    if(!exists(".Random.seed", envir=.GlobalEnv, inherits = FALSE)) runif(1)
+    seed <- get(".Random.seed", envir=.GlobalEnv, inherits = FALSE)
     n <- nrow(data)
     out <- NULL
     if((K > n) || (K <= 1))
@@ -790,7 +792,7 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
     f <- ceiling(n/K)
     s <- sample(rep(1:K, f),n)
     n.s <- table(s)
-    glm.f <- formula(glmfit)
+#    glm.f <- formula(glmfit)
     glm.y <- glmfit$y
     cost.0 <- cost(glm.y, fitted(glmfit))
     ms <- max(s)
@@ -833,7 +835,8 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
         (!is.null(t) && is.null(t0)))
         stop("t and t0 must be supplied together")
     t.o <- t; t0.o <- t0
-    vt.o <- var.t; vt0.o <- var.t0
+#    vt.o <- var.t
+    vt0.o <- var.t0
     if (is.null(t)) {
         if (length(index) == 1) {
             t0 <- boot.out$t0[index]
@@ -1032,7 +1035,7 @@ norm.ci <- function(boot.out=NULL,conf=0.95,index=1,var.t0=NULL, t0=NULL,
 {
     if (is.null(t0))  {
         if (!is.null(boot.out)) t0 <-boot.out$t0[index]
-        else error("Bootstrap output object or t0 required")
+        else stop("Bootstrap output object or t0 required")
     }
     if (!is.null(boot.out) && is.null(t))
         t <- boot.out$t[,index]
@@ -1237,8 +1240,8 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
         stop("unknown value of sim")
     if ((sim=="model") && (is.null(cox)))
         sim <- "ordinary"
-    if(!exists(".Random.seed")) runif(1)
-    seed <- .Random.seed
+    if(!exists(".Random.seed", envir=.GlobalEnv, inherits = FALSE)) runif(1)
+    seed <- get(".Random.seed", envir=.GlobalEnv, inherits = FALSE)
     call <- match.call()
     if (isMatrix(data)) n <- nrow(data)
     else stop("data must be a matrix with at least 2 columns")
@@ -1646,7 +1649,7 @@ empinf.reg <- function(boot.out, t=boot.out$t[,1])
         strata <- rep(1,n)
     else 	strata <- tapply(strata,as.numeric(strata))
     ns <- table(strata)
-    S <- length(ns)
+#    S <- length(ns)
     f <- boot.array(boot.out)[fins,]
     X <- f/matrix(ns[strata],R,n,byrow=TRUE)
     out <- tapply(1:n, strata, min)
@@ -2042,7 +2045,7 @@ imp.weights <- function( boot.out, def=TRUE, q=NULL )
     f <- boot.array(boot.out)
     n <- ncol(f)
     strata <- tapply(boot.out$strata,as.numeric(boot.out$strata))
-    ns <- table(strata)
+#    ns <- table(strata)
     if (is.null(q))  q <- rep(1,ncol(f))
     if (any(q==0)) stop("0 elements not allowed in q")
     p <- boot.out$weights
@@ -2172,6 +2175,8 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
 {
 # Calculates raw, ratio, and regression estimates of tail probability
 #  pr( t <= t0 ) using importance sampling weights in w.
+    is.missing <- function(x) length(x) == 0 || is.na(x)
+
     if (missing(t) && is.null(boot.out$t))
         stop("Bootstrap replicates must be supplied")
     if (is.null(w))
@@ -2293,7 +2298,8 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
         boot0 <- boot.return(sim=sim,t0=statistic(data,orig,...),
                              t=NULL, strata=strata, R=0, data=data,
                              stat=statistic, stype=stype,call=NULL,
-                             seed=.Random.seed,m=0,weights=NULL)
+                             seed=get(".Random.seed", envir=.GlobalEnv, inherits = FALSE),
+                             m=0,weights=NULL)
     }
 # Calculate the weights for the subsequent bootstraps
     if(is.null(L) & tilt)
@@ -3201,7 +3207,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     spa <- spa[pts.in,]
 #  Fit a spline to the approximations and predict at the required quantile
 #  values.
-    distn <- smooth.spline(qnorm(spa[,2]),pts)
+    distn <- modreg::smooth.spline(qnorm(spa[,2]),pts)
     quantiles <- predict(distn,qnorm(alpha))$y
     quans <- cbind(alpha,quantiles)
     colnames(quans) <- c("alpha", "quantile")
@@ -3257,11 +3263,11 @@ lines.saddle.distn <- function(x, dens=TRUE, h=function(u) u,
     tt1 <- seq(from=rg[1],to=rg[2],length=npts)
     if (dens) {
         gs <- sad.d$points[,2]
-        spl <- smooth.spline(h(tt,...),log(gs*J(tt,...)))
+        spl <- modreg::smooth.spline(h(tt,...),log(gs*J(tt,...)))
         lines(tt1,exp(predict(spl,tt1)$y),lty=lty)
     }
     else {	Gs <- sad.d$points[,3]
-		spl <- smooth.spline(h(tt,...),qnorm(Gs))
+		spl <- modreg::smooth.spline(h(tt,...),qnorm(Gs))
 		lines(tt1,pnorm(predict(spl,tt1)$y))
             }
     invisible(sad.d)
@@ -3294,7 +3300,7 @@ ts.array <- function(n, n.sim, R, l, sim, endcorr)
         len.tot <- rep(0,R)
         lens <- NULL
         while (cont) {
-            inds <- (1:R)[len.tot < n.sim]
+#            inds <- (1:R)[len.tot < n.sim]
             temp <- 1+rgeom(R,1/l)
             temp <- pmin(temp,n.sim-len.tot)
             lens <- cbind(lens,temp)
@@ -3340,13 +3346,13 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
     if (R<=0) stop("R must be positive")
     R <- floor(R)
     call <- match.call()
-    if(!exists(".Random.seed")) runif(1)
-    seed <- .Random.seed
+    if(!exists(".Random.seed", envir=.GlobalEnv, inherits = FALSE)) runif(1)
+    seed <- get(".Random.seed", envir=.GlobalEnv, inherits = FALSE)
     t0 <- NULL
     if(orig.t)
         t0 <- statistic(tseries, ...)
     t <- numeric(0)
-    ts.out <- numeric(0)
+#    ts.out <- numeric(0)
     if (!isMatrix(tseries))
         ts.orig <- as.matrix(tseries)
     else 	ts.orig <- tseries
@@ -3357,11 +3363,11 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
         l <- NULL
     else if ((is.null(l) || (l <= 0) || (l > n)))
         stop("Invalid value of l")
-    st <- start(tseries)
-    freq <- frequency(tseries)
+#    st <- start(tseries)
+#    freq <- frequency(tseries)
 #	un <- units(tseries)
 #	k.un <- attr(tseries, "tspar")$k.units
-    tsnames <- names(tseries)
+#    tsnames <- names(tseries)
     if (sim == "geom") endcorr <- TRUE
     if (sim == "scramble") {
 # Phase scrambling
@@ -3435,7 +3441,6 @@ scramble <- function(ts, norm=TRUE)
     st <- start(ts)
     dt <- deltat(ts)
     frq <- frequency(ts)
-    un <- units(ts)
     y <- as.vector(ts)
     e <- y - mean(y)
     n <- length(e)
@@ -3444,12 +3449,7 @@ scramble <- function(ts, norm=TRUE)
     C.f <- Conj(c(0, f[seq(from = n, to = 2, by = -1)]))
     e <- Re(mean(y) + fft((f + C.f)/sqrt(2), inverse = TRUE)/n)
     if (!norm) e <- sort(y)[rank(e)]
-    if (is.null(cl))
-        e <- ts(e,start=st,freq=frq,deltat=dt)
-    else if(any(cl=="rts"))
-        e <- rts(e,start=st,freq=frq,deltat=dt,units=un)
-    else	e <- cts(e,start=st,freq=frq,deltat=dt,units=un)
-    e
+    ts(e,start=st,freq=frq,deltat=dt)
 }
 
 ts.return <- function(t0,t,R,tseries,seed,stat,sim,endcorr,n.sim,l,

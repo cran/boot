@@ -1,7 +1,7 @@
 \name{cd4.nested}
 \alias{cd4.nested}
 \title{
-Nested Bootstrap of `cd4' data
+Nested Bootstrap of cd4 data
 }
 \description{
 This is an example of a nested bootstrap for the correlation 

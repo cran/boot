@@ -12,7 +12,7 @@ cv.glm(data, glmfit, cost, K)
 }
 \arguments{
 \item{data}{
-A matrix or dataframe containing the data.  The rows should be cases and
+A matrix or data frame containing the data.  The rows should be cases and
 the columns correspond to variables, one of which is the response.
 }
 \item{glmfit}{

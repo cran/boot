@@ -8,7 +8,7 @@ This is a method for the function \code{print()} to print objects of the
 class \code{"bootci"}.
 }
 \usage{
-\method{print}{bootci}(x, hinv=NULL, ...)
+\method{print}{bootci}(x, hinv = NULL, ...)
 }
 \arguments{
   \item{x}{

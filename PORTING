@@ -1,3 +1,8 @@
+version 1.2-14 2003-07-20
+
+    remove unused vars
+    add local definition for is.missing
+
 version 1.2-13 2003-03-09
 
     update NAMESPACE file

@@ -14,8 +14,8 @@ jack.after.boot(boot.out, index=1, t=NULL, L=NULL, useJ=TRUE,
 \arguments{
 \item{boot.out}{
 An object of class \code{"boot"} which would normally be created by a call
-to 'boot'. It should represent a nonparametric bootstrap. For reliable results 
-\code{boot.out$R} should be reasonably large.
+to \code{\link{boot}}. It should represent a nonparametric bootstrap.
+For reliable results \code{boot.out$R} should be reasonably large.
 }
 \item{index}{
 The index of the statistic of interest in the output of \code{boot.out$statistic}.

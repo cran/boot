@@ -20,7 +20,7 @@ boot(data, statistic, R, sim="ordinary", stype="i",
 }
 \arguments{
 \item{data}{
-The data as a vector, matrix or dataframe.  If it is a matrix or dataframe
+The data as a vector, matrix or data frame.  If it is a matrix or data frame
 then each row is considered as one multivariate observation.
 }
 \item{statistic}{
@@ -117,8 +117,6 @@ arguments which \code{statistic} is required to have for the simulation.
 The returned value is an object of class \code{"boot"}, containing the following 
 components :
 
-
-
 \item{t0}{
 The observed value of \code{statistic} applied to \code{data}. 
 }
@@ -203,48 +201,40 @@ observed data set and a set of parameter estimates specified in \code{mle}.
 There are many references explaining the bootstrap and its variations.
 Among them are :
 
-
 Booth, J.G., Hall, P. and Wood, A.T.A. (1993) Balanced importance resampling 
 for the bootstrap. \emph{Annals of Statistics}, \bold{21}, 286--298.
-
 
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
-
 Davison, A.C., Hinkley, D.V. and Schechtman, E. (1986) Efficient bootstrap 
 simulation. \emph{Biometrika}, \bold{73}, 555--566.
-
 
 Efron, B. and Tibshirani, R. (1993) \emph{An Introduction to the Bootstrap}.
 Chapman & Hall.
 
-
 Gleason, J.R. (1988) Algorithms for balanced bootstrap simulations.
 \emph{ American Statistician}, \bold{42}, 263--266.
-
 
 Hall, P. (1989) Antithetic resampling for the bootstrap. \emph{Biometrika},
 \bold{73}, 713--724.
 
-
 Hinkley, D.V. (1988) Bootstrap methods (with Discussion). 
 \emph{Journal of the  Royal Statistical Society, B}, \bold{50}, 312--337, 355--370.
-
 
 Hinkley, D.V. and Shi, S. (1989) Importance sampling and the nested bootstrap.
 \emph{Biometrika}, \bold{76}, 435--446.
 
-
 Johns M.V. (1988) Importance sampling for bootstrap confidence intervals.
 \emph{Journal of the American Statistical Association}, \bold{83}, 709--714.
-
 
 Noreen, E.W. (1989) \emph{Computer Intensive Methods for Testing Hypotheses}. 
 John Wiley & Sons.
 }
 \seealso{
-\code{\link{boot.array}}, \code{\link{boot.ci}}, \code{\link{boot.object}}, \code{\link{censboot}}, \code{\link{empinf}}, \code{\link{jack.after.boot}}, \code{\link{tilt.boot}}, \code{\link{tsboot}}
+  \code{\link{boot.array}}, \code{\link{boot.ci}},
+  \code{\link{censboot}}, \code{\link{empinf}},
+  \code{\link{jack.after.boot}}, \code{\link{tilt.boot}}, \code{\link{tsboot}}
 }
 \examples{
 # usual bootstrap of the ratio of means using the city data
@@ -285,7 +275,7 @@ nuke.res <- nuke.diag$res*nuke.diag$sd
 nuke.res <- nuke.res-mean(nuke.res)
 
 
-#  We set up a new dataframe with the data, the standardized 
+#  We set up a new data frame with the data, the standardized 
 #  residuals and the fitted values for use in the bootstrap.
 nuke.data <- data.frame(nuke,resid=nuke.res,fit=fitted(nuke.lm))
 

@@ -7,8 +7,8 @@ Print a Summary of a Bootstrap Object
 This is a method for the function print for objects of the class \code{"boot"}.
 }
 \usage{
-\method{print}{boot}(x, digits=options()$digits, 
-      index=1:ncol(boot.out$t), \dots)
+\method{print}{boot}(x, digits = getOption("digits"), 
+      index = 1:ncol(boot.out$t), \dots)
 }
 \arguments{
   \item{x}{
@@ -25,23 +25,24 @@ This is a method for the function print for objects of the class \code{"boot"}.
   \item{\dots}{further arguments passed to or from other methods.}
 }
 \value{
-The bootstrap object is returned invisibly.
+  The bootstrap object is returned invisibly.
 }
 \details{
-For each statistic calculated in the bootstrap the original value and the
-bootstrap estimates of its bias and standard error are printed.  If 
-\code{boot.out$t0} is missing (such as when it was created by a call to \code{tsboot} 
-with \code{orig.t=FALSE}) the bootstrap mean and standard error are printed.
-If resampling
-was done using importance resampling weights, then the bootstrap estimates are
-reweighted as if uniform resampling had been done.  The ratio importance
-sampling estimates are used and if there were a number of distributions then
-defensive mixture distributions are used.  In this case an extra column with
-the mean of the observed bootstrap statistics is also printed. 
+  For each statistic calculated in the bootstrap the original value and
+  the bootstrap estimates of its bias and standard error are printed.
+  If \code{boot.out$t0} is missing (such as when it was created by a
+  call to \code{tsboot} with \code{orig.t=FALSE}) the bootstrap mean and
+  standard error are printed. If resampling was done using importance
+  resampling weights, then the bootstrap estimates are reweighted as if
+  uniform resampling had been done.  The ratio importance sampling
+  estimates are used and if there were a number of distributions then
+  defensive mixture distributions are used.  In this case an extra
+  column with the mean of the observed bootstrap statistics is also
+  printed.
 }
 \seealso{
-\code{\link{boot}}, \code{\link{censboot}}, \code{\link{imp.moments}}, \code{\link{plot.boot}}, \code{\link{tilt.boot}}, \code{\link{tsboot}}
+  \code{\link{boot}}, \code{\link{censboot}}, \code{\link{imp.moments}},
+  \code{\link{plot.boot}}, \code{\link{tilt.boot}}, \code{\link{tsboot}}
 }
 \keyword{nonparametric}
 \keyword{htest}
-% Converted by Sd2Rd version 1.15.

@@ -8,7 +8,7 @@ This is a method for the function \code{print()} to print objects of class
 \code{"saddle.distn"}.
 }
 \usage{
-\method{print}{saddle.distn}(x, ...)
+\method{print}{saddle.distn}(x, \dots)
 }
 \arguments{
   \item{x}{

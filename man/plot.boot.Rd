@@ -8,7 +8,7 @@ This takes a bootstrap object and produces plots for the bootstrap
 replicates of the variable of interest.  
 }
 \usage{
-plot.boot(x, index=1, t0=NULL, t=NULL, jack=FALSE, qdist="norm", 
+\method{plot}{boot}(x, index=1, t0=NULL, t=NULL, jack=FALSE, qdist="norm", 
      nclass=NULL, df, \dots)
 }
 \arguments{
@@ -85,7 +85,7 @@ when nonparametric simulation has been used.  See \code{jack.after.boot} for fur
 details of this plot.
 }
 \seealso{
-\code{\link{boot}}, \code{\link{boot.object}}, \code{\link{jack.after.boot}}, \code{\link{print.boot}}
+\code{\link{boot}}, \code{\link{jack.after.boot}}, \code{\link{print.boot}}
 }
 \examples{
 # We fit an exponential model to the air-conditioning data and use

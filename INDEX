@@ -50,11 +50,6 @@ tilt.boot	Tilted bootstrap
 tsboot		Bootstrap for time series
 var.linear	Linear variance approximation
 
-In addition there are help files for the four classes of objects that are
-used in this library.  Those objects are
-
-boot.object	bootci.object	saddle.distn.object	simplex.object
-
 The library also contains some items used in the practicals of
 "Bootstrap Methods and Their Applications" by A.C. Davison and D.V. Hinkley
 (1997, Cambridge University Press).  The objects are not intended to be used

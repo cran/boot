@@ -185,7 +185,7 @@ Hjort, N.L. (1985) Bootstrapping Cox's regression model. Technical report
 NSF-241, Dept. of Statistics, Stanford University.
 }
 \seealso{
-\code{\link{boot}}, \code{\link{boot.object}}, 
+\code{\link{boot}}, 
 \code{\link[survival]{coxph}}, \code{\link[survival]{survfit}}
 }
 \examples{
@@ -209,12 +209,10 @@ aml.fun <- function(data) {
 }
 aml.case <- censboot(aml,aml.fun,R=499,strata=aml$group)
 
-
 # Now we will look at the same statistic using the conditional 
 # bootstrap and the weird bootstrap.  For the conditional bootstrap 
 # the survival distribution is stratified but the censoring 
 # distribution is not. 
-
 
 aml.s1 <- survfit(Surv(time,cens)~group, data=aml)
 aml.s2 <- survfit(Surv(time-0.001*cens,1-cens)~1, data=aml)
@@ -237,7 +235,6 @@ aml.fun1 <- function(data,str) {
 }
 aml.wei <- censboot(cbind(aml$time,aml$cens),aml.fun1,R=499,
      strata=aml$group, F.surv=aml.s1,sim="weird")
-
 
 # Now for an example where a cox regression model has been fitted
 # the data we will look at the melanoma data of Example 7.6 from 

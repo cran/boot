@@ -8,7 +8,7 @@ This is a method for the function \code{print()} to print objects of class
 \code{"simplex"}.
 }
 \usage{
-\method{print}{simplex}(x, ...)
+\method{print}{simplex}(x, \dots)
 }
 \arguments{
   \item{x}{

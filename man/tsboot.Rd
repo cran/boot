@@ -81,7 +81,7 @@ A logical variable indicating whether end corrections are to be applied when
   the generation of the replicate time series will be done in
   \code{ran.gen} (for example through use of \code{\link{arima.sim}}).
   For the other simulation types \code{ran.gen} is used for
-  ``post-blackening''.  The default is that the function simply returns
+  \dQuote{post-blackening}.  The default is that the function simply returns
   the time series passed to it.
 }
 \item{ran.args}{
