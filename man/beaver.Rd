@@ -5,8 +5,7 @@ Beaver Body Temperature Data
 }
 \description{
 The \code{beaver} data frame has 100 rows and 4 columns.  It is a multivariate
-time series of class \code{"rts"} and also inherits from class \code{"data.frame"}.
-
+time series of class \code{"ts"} and also inherits from class \code{"data.frame"}.
 
 This data set is part of a long study into body temperature regulation in
 beavers.  Four adult female beavers were live-trapped and had a 
@@ -16,7 +15,6 @@ her activity level was dichotomized by whether she was in the retreat or
 outside of it since high-intensity activities only occur outside of the 
 retreat.
 
-
 The data in this data frame are those readings for one of the beavers on a day
 in autumn.  
 }
@@ -24,10 +22,8 @@ in autumn.
 data(beaver)
 }
 \format{
-This data frame contains the following columns:
-
-
-\describe{
+  This data frame contains the following columns:
+  \describe{
 \item{\code{day}}{
 The day number.  The data includes only data from day 307 and early 308.
 }
@@ -43,7 +39,6 @@ of the retreat and therefore engaged in high-intensity activity.
 }}}
 \source{
 The data were obtained from
-
 
 Reynolds, P.S. (1994) Time-series analyses of beaver body temperatures.
 In \emph{Case Studies in Biometry}. N. Lange, L. Ryan, L. Billard, 

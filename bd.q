@@ -1005,6 +1005,7 @@ junk <- scan(file="",list(0,0),nmax=999*2)
   1.163 0.792
   1.361 0.824
  -0.579 0.256
+
 junk1 <- scan(file="",list(i=0,base=0,one=0),nmax=60)
  1     2.12    2.47
  2     4.35    4.61
@@ -1027,12 +1028,12 @@ junk1 <- scan(file="",list(i=0,base=0,one=0),nmax=60)
 19     2.66    4.37
 20     3.00    2.40
 
-cd4.nested <- boot.return(sim="ordinary", t0=c(0,0.532), 
+cd4.nested <- boot:::boot.return(sim="ordinary", t0=c(0,0.532),
 	t=cbind(junk[[1]],junk[[2]]), strata=rep(1,20), R=999,
 	data=data.frame(baseline=junk1$base,oneyear=junk1$one),
-	stat=temp$statistic, stype="w", call=tempcl, seed=NULL, 
+	stat=temp$statistic, stype="w", call=tempcl, seed=NULL,
 	m=0, weights=rep(0.05,20))
 
 
 rm(junk,junk1,temp,tempcl)
-save(cd4.nested, file="cd4.nested.rda", ascii=T)
+save(cd4.nested, file="cd4.nested.rda", compress=TRUE)

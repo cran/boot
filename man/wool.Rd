@@ -4,15 +4,14 @@
 Australian Relative Wool Prices
 }
 \description{
-\code{wool} is a time series of class \code{"rts"} and contains 309 observations.
-
+\code{wool} is a time series of class \code{"ts"} and contains 309 observations.
 
 Each week that the market is open the Australian Wool Corporation set a floor
 price which determines their policy on intervention and is therefore a 
 reflection of the overall price of wool for the week in question.  Actual prices
 paid can vary considerably about the floor price.  The series here is the log
 of the ratio between the price for fine grade wool and the floor price, each
-market week between July 1976 and Junk 1984.
+market week between July 1976 and Jun 1984.
 }
 \source{
 The data were obtained from
