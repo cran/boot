@@ -151,7 +151,7 @@ frets.fun <- function( data, i )
 }
 data(frets)
 frets.boot <- boot(log(as.matrix(frets)), frets.fun, R=999)
-plot(frets.boot,index=7,jack=T,stinf=F,useJ=F)
+plot(frets.boot, index=7, jack=TRUE, stinf=FALSE, useJ=FALSE)
 }
 \keyword{hplot}
 \keyword{nonparametric}

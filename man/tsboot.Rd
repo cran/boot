@@ -197,7 +197,7 @@ lynx.2 <- tsboot(log(lynx), lynx.fun, R=99, l=20, sim="fixed")
 
 # Now for model based resampling we need the original model
 # Note that for all of the bootstraps which use the residuals as their
-# data, we set orig.t to F since the function applied to the residual
+# data, we set orig.t to FALSE since the function applied to the residual
 # time series will be meaningless.
 lynx.ar <- ar(log(lynx))
 lynx.model <- list(order=c(lynx.ar$order,0,0),ar=lynx.ar$ar)
@@ -208,7 +208,7 @@ lynx.res <- lynx.res - mean(lynx.res)
 lynx.sim <- function(res,n.sim, ran.args) {
 # random generation of replicate series using arima.sim 
      rg1 <- function(n, res)
-          sample(res, n, replace=T)
+          sample(res, n, replace=TRUE)
      ts.orig <- ran.args$ts
      ts.mod <- ran.args$model
      mean(ts.orig)+ts(arima.sim(model=ts.mod, n=n.sim,
@@ -217,7 +217,7 @@ lynx.sim <- function(res,n.sim, ran.args) {
 
 
 lynx.3 <- tsboot(lynx.res, lynx.fun, R=99, sim="model", n.sim=114,
-                 orig.t=F, ran.gen=lynx.sim, 
+                 orig.t=FALSE, ran.gen=lynx.sim, 
                  ran.args=list(ts=log(lynx), model=lynx.model))
 
 
@@ -232,12 +232,12 @@ lynx.black <- function(res, n.sim, ran.args)
 # Now we can run apply the two types of block resampling again but this
 # time applying post-blackening.
 lynx.1b <- tsboot(lynx.res, lynx.fun, R=99, l=20, sim="fixed",
-                  n.sim=114, orig.t=F, ran.gen=lynx.black, 
+                  n.sim=114, orig.t=FALSE, ran.gen=lynx.black, 
                   ran.args=list(ts=log(lynx), model=lynx.model))
 
 
 lynx.2b <- tsboot(lynx.res, lynx.fun, R=99, l=20, sim="geom",
-                  n.sim=114, orig.t=F, ran.gen=lynx.black, 
+                  n.sim=114, orig.t=FALSE, ran.gen=lynx.black, 
                   ran.args=list(ts=log(lynx), model=lynx.model))
 
 

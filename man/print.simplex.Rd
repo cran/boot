@@ -11,9 +11,9 @@ This is a method for the function \code{print()} to print objects of class
 print.simplex(x)
 }
 \arguments{
-\item{simp.out}{
-An object of class \code{"simplex"} created by calling the function \code{simplex} to
-solve a linear programming problem.
+\item{x}{
+  An object of class \code{"simplex"} created by calling the
+  function \code{simplex} to solve a linear programming problem.
 }}
 \value{
 \code{x} is returned silently.

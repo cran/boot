@@ -321,8 +321,8 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
     if (jack) {
         layout(mat = matrix(c(1,2,3,3), 2, 2, byrow=TRUE))
         if (is.null(t0))
-            hist(t,nclass=nclass,probability=T,xlab="t*")
-        else	hist(t,breaks=bks,probability=T,xlab="t*")
+            hist(t,nclass=nclass,probability=TRUE,xlab="t*")
+        else	hist(t,breaks=bks,probability=TRUE,xlab="t*")
         if (!is.null(t0)) abline(v=t0,lty=2)
         qqplot(qq,t,xlab=qlab,ylab="t*")
         if(qdist=="norm") abline(mean(t),sqrt(var(t)),lty=2)
@@ -332,8 +332,8 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
     else {
         par(mfrow=c(1,2))
         if (is.null(t0))
-            hist(t,nclass=nclass,probability=T,xlab="t*")
-        else	hist(t,breaks=bks,probability=T,xlab="t*")
+            hist(t,nclass=nclass,probability=TRUE,xlab="t*")
+        else	hist(t,breaks=bks,probability=TRUE,xlab="t*")
         if (!is.null(t0)) abline(v=t0,lty=2)
         qqplot(qq,t,xlab=qlab,ylab="t*")
         if(qdist=="norm") abline(mean(t),sqrt(var(t)),lty=2)
@@ -3361,7 +3361,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
 #	un <- units(tseries)
 #	k.un <- attr(tseries, "tspar")$k.units
     tsnames <- names(tseries)
-    if (sim == "geom") endcorr <- T
+    if (sim == "geom") endcorr <- TRUE
     if (sim == "scramble") {
 # Phase scrambling
         for (r in 1:R) {

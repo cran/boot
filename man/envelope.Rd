@@ -92,7 +92,7 @@ grav.z <- (grav1-mean(grav1))/sqrt(var(grav1))
 grav.gen <- function(dat,mle)
      rnorm(length(dat))
 grav.qqboot <- boot(grav.z,sort,R=999,sim="parametric",ran.gen=grav.gen)
-grav.qq <- qqnorm(grav.z,plot=F)
+grav.qq <- qqnorm(grav.z,plot=FALSE)
 grav.qq <- lapply(grav.qq,sort)
 plot(grav.qq,ylim=c(-3.5,3.5),ylab="Studentized Order Statistics",
      xlab="Normal Quantiles")

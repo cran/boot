@@ -135,7 +135,7 @@ frets.boot <- boot(log(as.matrix(frets)), frets.fun, R=999)
 #  we will concentrate on the partial correlation between head breadth
 #  for the first son and head length for the second.  This is the 7th
 #  element in the output of frets.fun so we set index=7
-jack.after.boot(frets.boot,useJ=F,stinf=F,index=7)
+jack.after.boot(frets.boot,useJ=FALSE,stinf=FALSE,index=7)
 }
 \keyword{hplot}
 \keyword{nonparametric}

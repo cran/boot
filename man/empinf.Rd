@@ -14,24 +14,29 @@ one or more samples.
 }
 \usage{
 empinf(boot.out=NULL, data=NULL, statistic=NULL, 
-       type=<<see below>>, stype="w", index=1, t=NULL,
+       type=NULL, stype="w", index=1, t=NULL,
        strata=rep(1, n), eps=0.001, \dots)
 }
+\synopsis{
+empinf(boot.out=NULL, data=NULL, statistic=NULL,
+       type=NULL, stype=NULL ,index=1, t=NULL,
+       strata=rep(1, n), eps=0.001, ...)
+}
 \arguments{
-\item{boot.out=}{
+\item{boot.out}{
 A bootstrap object created by the function \code{boot}.  If \code{type} is \code{"reg"} then 
 this argument is required.  For any of the other types it is 
 an optional argument.  If it is included when optional then the values of 
 \code{data}, \code{statistic}, \code{stype}, and \code{strata} are taken from the components of 
 \code{boot.out} and any values passed to \code{empinf} directly are ignored.
 }
-\item{data=}{
+\item{data}{
 A vector, matrix or data frame containing
 the data for which empirical influence values are required.  It is a required
 argument if \code{boot.out} is not supplied.  If \code{boot.out} is supplied then \code{data}
 is set to \code{boot.out$data} and any value supplied is ignored.  
 }
-\item{statistic=}{
+\item{statistic}{
 The statistic for which empirical influence values are required.  It must be
 a function of at least two arguments, the data set and 
 a vector of weights, frequencies or indices.  The nature of the second
@@ -40,7 +45,7 @@ takes must be supplied to \code{empinf} and will be passed to \code{statistic} u
 This is a required argument if \code{boot.out} is not supplied, otherwise its value
 is taken from \code{boot.out} and any value supplied here will be ignored.
 }
-\item{type=}{
+\item{type}{
 The calculation type to be used for the empirical influence values.  
 Possible values of \code{type} are \code{"inf"} (infinitesimal jackknife), \code{"jack"}
 (usual jackknife), \code{"pos"} (positive jackknife), and \code{"reg"} (regression
@@ -51,7 +56,7 @@ none of these conditions apply then the default is \code{"jack"}.
 Note that it is an error for \code{type} to be
 \code{"reg"} if \code{boot.out} is missing or to be  \code{"inf"} if \code{stype} is not \code{"w"}.
 }
-\item{stype=}{
+\item{stype}{
 A character variable giving the nature of the second argument to \code{statistic}.
 It can take on three values: \code{"w"} (weights), \code{"f"} (frequencies), or \code{"i"}
 (indices).  If \code{boot.out} is supplied the value of \code{stype} is set to 
@@ -59,22 +64,22 @@ It can take on three values: \code{"w"} (weights), \code{"f"} (frequencies), or 
 optional argument which defaults to \code{"w"}.  If \code{type} is \code{"inf"} then \code{stype} 
 MUST be \code{"w"}.
 }
-\item{index=}{
+\item{index}{
 An integer giving the position of the variable of interest in the output of
 \code{statistic}.
 }
-\item{t=}{
+\item{t}{
 A vector of length \code{boot.out$R} which gives the bootstrap replicates of the
 statistic of interest.  \code{t} is used only when \code{type} is \code{reg} and it defaults
 to \code{boot.out$t[,index]}.  
 }
-\item{strata=}{
+\item{strata}{
 An integer vector or a factor specifying the strata for multi-sample problems.
 If \code{boot.out} is supplied  the value of \code{strata} is set to \code{boot.out$strata}.  
 Otherwise it is an optional argument which has default corresponding to the 
 single sample situation.
 }
-\item{eps=}{
+\item{eps}{
 This argument is used only if \code{type} is \code{"inf"}.  In that case the value of
 epsilon to be used for numerical differentiation will be \code{eps} divided by
 the number of observations in \code{data}.

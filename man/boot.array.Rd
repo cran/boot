@@ -66,7 +66,7 @@ boot.array(city.boot)
 perm.cor <- function(d,i) 
      cor(d$x,d$u[i])
 city.perm <- boot(city, perm.cor, R=40, sim="permutation")
-boot.array(city.perm, indices=T)
+boot.array(city.perm, indices=TRUE)
 }
 \keyword{nonparametric}
 % Converted by Sd2Rd version 1.15.

@@ -171,7 +171,7 @@ grav.fun <- function(dat, w, orig)
 }
 grav.z0 <- grav.fun(grav1,rep(1,26),0)
 tilt.boot(grav1, grav.fun, R=c(249,375,375), stype="w", 
-          strata=grav1[,2], tilt=T, index=3, orig=grav.z0[1]) 
+          strata=grav1[,2], tilt=TRUE, index=3, orig=grav.z0[1]) 
 
 
 #  Example 9.10 of Davison and Hinkley (1997) requires a balanced 
@@ -192,7 +192,7 @@ data(acme)
 acme.b <- acme.fun(acme,1:nrow(acme),0)
 acme.boot1 <- tilt.boot(acme, acme.fun, R=c(499, 250, 250), 
                         stype="i", sim="balanced", alpha=c(0.05, 0.95), 
-                        tilt=T, index=3, bhat=acme.b[1])
+                        tilt=TRUE, index=3, bhat=acme.b[1])
 }
 \keyword{nonparametric}
 % Converted by Sd2Rd version 1.15.

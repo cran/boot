@@ -98,7 +98,7 @@ vitx <- c(50, 3, 150, 100)
 vity <- c(10, 10, 75, 100)
 vitz <- c(150, 35, 75, 5)
 simplex(a=enj, A1=fat, b1=13800, A2=rbind(vitx, vity, vitz), 
-        b2=c(600, 300, 550), maxi=T)
+        b2=c(600, 300, 550), maxi=TRUE)
 }
 \keyword{optimize}
 % Converted by Sd2Rd version 1.15.
