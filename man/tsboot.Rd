@@ -52,34 +52,37 @@ A logical variable indicating whether end corrections are to be applied when
 \code{TRUE}; \code{endcorr} is not used when \code{sim} is \code{"model"} or \code{"scramble"}.
 }
 \item{n.sim}{
-The length of the simulated time series.  Typically this will be equal to the
-length of the original time series but there are situations when it will be
-larger.  One obvious situation is if prediction is required.  Another situation
-in which \code{n.sim} is larger than the original length is if \code{tseries} is a 
-residual time series from fitting some model to the original time series.  
-In this case, \code{n.sim} would usually be the length of the original time series. 
+  The length of the simulated time series.  Typically this will be equal
+  to the length of the original time series but there are situations when
+  it will be larger.  One obvious situation is if prediction is required.
+  Another situation in which \code{n.sim} is larger than the original
+  length is if \code{tseries} is a residual time series from fitting some
+  model to the original time series. In this case, \code{n.sim} would
+  usually be the length of the original time series.
 }
 \item{orig.t}{
-A logical variable which indicates whether \code{statistic} should be applied to
-\code{tseries} itself as well as the bootstrap replicate series.  If \code{statistic} is
-expecting a longer time series than \code{tseries} or if applying \code{statistic} to 
-\code{tseries} will not yield any useful information then \code{orig.t} should be set to 
-\code{FALSE}.
+  A logical variable which indicates whether \code{statistic} should be
+  applied to \code{tseries} itself as well as the bootstrap replicate
+  series.  If \code{statistic} is expecting a longer time series than
+  \code{tseries} or if applying \code{statistic} to \code{tseries} will
+  not yield any useful information then \code{orig.t} should be set to
+  \code{FALSE}.
 }
 \item{ran.gen}{
-This is a function of three arguments.  The first argument is a time series.
-If \code{sim} is "model" then it will always be \code{tseries} that is passed.  For 
-other simulation types it is the result of selecting 
-\code{n.sim} observations from \code{tseries} by some scheme and converting the result 
-back into a time series of the same form as \code{tseries} (although of length 
-\code{n.sim}).  The second argument to \code{ran.gen} is always the value \code{n.sim}, and 
-the third 
-argument is \code{ran.args}, which is used to supply any
-other objects needed by \code{ran.gen}.  If \code{sim} is \code{"model"} then the generation of
-the replicate time series will be done in \code{ran.gen} (for example
-through use of \code{arima.sim}).  For the other simulation types \code{ran.gen} is used
-for "post-blackening".  The default is that the function simply returns the
-time series passed to it.  
+  This is a function of three arguments.  The first argument is a time
+  series.  If \code{sim} is code{"model"} then it will always be
+  \code{tseries} that is passed.  For other simulation types it is the
+  result of selecting \code{n.sim} observations from \code{tseries} by
+  some scheme and converting the result back into a time series of the
+  same form as \code{tseries} (although of length \code{n.sim}).  The
+  second argument to \code{ran.gen} is always the value \code{n.sim}, and
+  the third argument is \code{ran.args}, which is used to supply any other
+  objects needed by \code{ran.gen}.  If \code{sim} is \code{"model"} then
+  the generation of the replicate time series will be done in
+  \code{ran.gen} (for example through use of \code{\link{arima.sim}}).
+  For the other simulation types \code{ran.gen} is used for
+  ``post-blackening''.  The default is that the function simply returns
+  the time series passed to it.
 }
 \item{ran.args}{
 This will be supplied to \code{ran.gen} each time it is called.  If \code{ran.gen} needs 
@@ -167,17 +170,14 @@ can be accomplished using the function \code{boot} with the argument
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
-
 Kunsch, H.R. (1989) The jackknife and the bootstrap for general stationary
 observations. \emph{Annals of Statistics}, \bold{17}, 1217--1241.
-
 
 Politis, D.N. and Romano, J.P. (1994) The stationary bootstrap. 
 \emph{Journal of the American Statistical Association}, \bold{89}, 1303--1313.
 }
 \seealso{
-  \code{\link{boot}}
-%  , \code{\link{arima.sim}}
+  \code{\link{boot}}, \code{\link{arima.sim}}
 }
 \examples{
 library(ts)
@@ -187,14 +187,11 @@ lynx.fun <- function(tsb)
      c(ar.fit$order, mean(tsb), tsb)
 }
 
-
 # the stationary bootstrap with mean block length 20
 lynx.1 <- tsboot(log(lynx), lynx.fun, R=99, l=20, sim="geom")
 
-
 # the fixed block bootstrap with length 20
 lynx.2 <- tsboot(log(lynx), lynx.fun, R=99, l=20, sim="fixed")
-
 
 # Now for model based resampling we need the original model
 # Note that for all of the bootstraps which use the residuals as their
@@ -204,7 +201,6 @@ lynx.ar <- ar(log(lynx))
 lynx.model <- list(order=c(lynx.ar$order,0,0),ar=lynx.ar$ar)
 lynx.res <- lynx.ar$resid[!is.na(lynx.ar$resid)]
 lynx.res <- lynx.res - mean(lynx.res)
-
 
 lynx.sim <- function(res,n.sim, ran.args) {
 # random generation of replicate series using arima.sim 
@@ -216,11 +212,9 @@ lynx.sim <- function(res,n.sim, ran.args) {
                       rand.gen=rg1, res=as.vector(res)))
 }
 
-
 lynx.3 <- tsboot(lynx.res, lynx.fun, R=99, sim="model", n.sim=114,
                  orig.t=FALSE, ran.gen=lynx.sim, 
                  ran.args=list(ts=log(lynx), model=lynx.model))
-
 
 #  For "post-blackening" we need to define another function
 lynx.black <- function(res, n.sim, ran.args) 
@@ -229,18 +223,15 @@ lynx.black <- function(res, n.sim, ran.args)
      mean(ts.orig) + ts(arima.sim(model=ts.mod,n=n.sim,innov=res))
 }
 
-
 # Now we can run apply the two types of block resampling again but this
 # time applying post-blackening.
 lynx.1b <- tsboot(lynx.res, lynx.fun, R=99, l=20, sim="fixed",
                   n.sim=114, orig.t=FALSE, ran.gen=lynx.black, 
                   ran.args=list(ts=log(lynx), model=lynx.model))
 
-
 lynx.2b <- tsboot(lynx.res, lynx.fun, R=99, l=20, sim="geom",
                   n.sim=114, orig.t=FALSE, ran.gen=lynx.black, 
                   ran.args=list(ts=log(lynx), model=lynx.model))
-
 
 # To compare the observed order of the bootstrap replicates we
 # proceed as follows.

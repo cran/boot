@@ -78,7 +78,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
 # bootstrap replicates and then this function loops over those replicates.
 #
     call <- match.call()
-    runif(1)
+    if(!exists(".Random.seed")) runif(1)
     seed <- .Random.seed
     if (isMatrix(data)) n <- nrow(data)
     else n <- length(data)
@@ -216,7 +216,6 @@ boot.array <- function(boot.out, indices=FALSE) {
 #  used in boot.out
 #  This function recreates such arrays from the information in boot.out
 #
-    runif(1)
     if(exists(".Random.seed")) temp <- .Random.seed
     else temp<- NULL
     .Random.seed <<- boot.out$seed
@@ -273,6 +272,7 @@ boot.array <- function(boot.out, indices=FALSE) {
     }
     if (!indices) out <- freq.array(out)
     if(!is.null(temp)) .Random.seed <<- temp
+    else rm(.Random.seed, pos=1)
     out
 }
 
@@ -774,7 +774,7 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
 # cost is a function of two arguments: the observed values and the
 # the predicted values.
     call <- match.call()
-    runif(1)
+    if(!exists(".Random.seed")) runif(1)
     seed <- .Random.seed
     n <- nrow(data)
     out <- NULL
@@ -1237,7 +1237,7 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
         stop("unknown value of sim")
     if ((sim=="model") && (is.null(cox)))
         sim <- "ordinary"
-    runif(1)
+    if(!exists(".Random.seed")) runif(1)
     seed <- .Random.seed
     call <- match.call()
     if (isMatrix(data)) n <- nrow(data)
@@ -3339,7 +3339,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
     if (R<=0) stop("R must be positive")
     R <- floor(R)
     call <- match.call()
-    runif(1)
+    if(!exists(".Random.seed")) runif(1)
     seed <- .Random.seed
     t0 <- NULL
     if(orig.t)

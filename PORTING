@@ -1,7 +1,12 @@
+version 1.2-8 2002-04-11
+    Remove arima.sim.
+    Converted data sets to version 2 .rda, compressed larger ones.
+    More care over .Random.seed.
+
 version 1.2-7 2002-01-29
 
     Added some help pages from Angelo Canty.
-    Bug fix to simplex from Duncan Murdoch.
+    Bug fix to simplex() from Duncan Murdoch.
 
 version 1.2-6 2001-11-27
 
