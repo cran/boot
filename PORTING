@@ -1,3 +1,8 @@
+version 1.2-2 2001/03/31
+
+    Add priority: recommended.
+    Remove test directory, as R CMD check works (but takes a long time).
+
 version 1.2-1 2001/03/03
 
     Mods from Angelo Canty for version 1.2 of the library section.
@@ -6,7 +11,7 @@ version 1.2-1 2001/03/03
 
 version 1.1-7 2000/12/28
 
-    Changes for R 1.2.0.
+    Changes for R 1.2.0, this is really boot version 1.1 now,
 
 version 1.0-6 2000/11/27
 
