@@ -1,5 +1,10 @@
 \name{censboot}
 \alias{censboot}
+\alias{cens.case}
+\alias{cens.resamp}
+\alias{cens.return}
+\alias{cens.weird}
+\alias{censboot}
 \title{
 Bootstrap for Censored Data
 }

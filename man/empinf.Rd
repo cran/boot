@@ -1,5 +1,9 @@
 \name{empinf}
 \alias{empinf}
+\alias{empinf.reg}
+\alias{inf.jack}
+\alias{positive.jack}
+\alias{usual.jack}
 \title{
 Empirical Influence Values
 }

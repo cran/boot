@@ -1,14 +1,13 @@
 \name{cats}
 \alias{cats}
+\alias{catsM}
 \title{
 Weight Data for Domestic Cats
 }
 \description{
 The \code{cats} data frame has 144 rows and 3 columns.
 
-
 The \code{catsM} data frame has 97 rows and 3 columns.
-
 
 144 adult (over 2kg in weight) cats used for experiments with the drug
 digitalis had their heart and body weight recorded.  47 of the cats were
@@ -20,7 +19,6 @@ data(cats)
 }
 \format{
 This data frames contain the following columns:
-
 
 \describe{
 \item{\code{Sex}}{
@@ -34,7 +32,6 @@ Heart weight in kg.
 }}}
 \source{
 The data were obtained from
-
 
 Fisher, R.A. (1947) The analysis of covariance method for the relation
 between a part and the whole. \emph{Biometrics}, \bold{3}, 65--68.

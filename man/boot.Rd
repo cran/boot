@@ -1,5 +1,6 @@
 \name{boot}
 \alias{boot}
+\alias{boot.return}
 \title{
 Bootstrap Resampling 
 }

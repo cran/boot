@@ -1,5 +1,7 @@
 \name{tsboot}
 \alias{tsboot}
+\alias{ts.array}
+\alias{ts.return}
 \title{
 Bootstrapping of Time Series
 }

@@ -1,5 +1,9 @@
 \name{boot.ci}
 \alias{boot.ci}
+\alias{basic.ci}
+\alias{bca.ci}
+\alias{perc.ci}
+\alias{stud.ci}
 \title{
 Nonparametric Bootstrap Confidence Intervals
 }
@@ -16,10 +20,21 @@ boot.ci(boot.out, conf=0.95, type="all",
         index=1:min(2,length(boot.out$t0), var.t0=NULL, 
         var.t=NULL, t0=NULL, t=NULL, L=NULL, h=function(t) t,
         hdot=function(t) rep(1,length(t)), hinv=function(t) t, \dots)
+
+basic.ci(t0, t, conf = 0.95, hinv = function(t) t) 
+
+bca.ci(boot.out, conf = 0.95, index = 1, t0 = NULL, t = NULL, 
+    L = NULL, h = function(t) t, hdot = function(t) 1,
+    hinv = function(t) t, \dots)
+
+perc.ci(t, conf = 0.95, hinv = function(t) t) 
+
+stud.ci(tv0, tv, conf = 0.95, hinv = function(t) t) 
 }
 \arguments{
 \item{boot.out}{
-An object of class \code{"boot"} containing the output of a bootstrap calculation.  
+An object of class \code{"boot"} containing the output of a bootstrap
+calculation.  
 }
 \item{conf}{
 A scalar or vector containing the confidence level(s) of the required
@@ -109,7 +124,12 @@ Any extra arguments that \code{boot.out$statistic} is expecting.  These argument
 needed only if BCa intervals are required and \code{L} is not supplied since in
 that case \code{L} is calculated through a call to \code{empinf} which 
 calls \code{boot.out$statistic}.
-}}
+}
+\item{tv0, tv}{
+observed values and bootstrap values of statistic and variances, as a
+two-element vector and two-column matrix respectively.
+}
+}
 \value{
 An object of type \code{"bootci"} which contains the intervals.  See \code{bootci.object}
 for further details.

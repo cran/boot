@@ -3,6 +3,7 @@
 \alias{imp.moments}
 \alias{imp.prob}
 \alias{imp.quantile}
+\alias{imp.reg}
 \title{
 Importance Sampling Estimates
 }
