@@ -10,7 +10,7 @@ resampling using a Cox regression model.
 }
 \usage{
 censboot(data, statistic, R, F.surv, G.surv, strata=matrix(1,n,2),
-     sim="ordinary", cox=NULL, index=c(1, 2), \dots)
+         sim="ordinary", cox=NULL, index=c(1, 2), \dots)
 }
 \arguments{
 \item{data}{
@@ -191,7 +191,7 @@ NSF-241, Dept. of Statistics, Stanford University.
 }
 \examples{
 data(aml, package="boot")
-library(survival5)
+library(survival)
 # Example 3.9 of Davison and Hinkley (1997) does a bootstrap on some
 # remission times for patients with a type of leukaemia.  The patients
 # were divided into those who received maintenance chemotherapy and 
@@ -250,7 +250,7 @@ aml.wei <- censboot(cbind(aml$time,aml$cens),aml.fun1,R=499,
 # is the linear predictor.  This is returned as the values at a
 # number of equally spaced points in the range of interest.
 data(melanoma, package="boot")
-library(splines)
+library(splines)# for ns
 library(modreg) # for smooth.spline
 mel.cox <- coxph(Surv(time,status==1)~ns(thickness,df=4)+strata(ulcer),
      data=melanoma)
