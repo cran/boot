@@ -21,7 +21,7 @@ to approximate the distribution of the linear approximation to a statistic.
 \usage{
 saddle.distn(A, u=NULL, alpha=NULL, wdist="m", 
              type="simp", npts=20, t=NULL, t0=NULL, 
-             init=rep(0.1, d), mu=rep(0.5, n), LR=F, 
+             init=rep(0.1, d), mu=rep(0.5, n), LR=FALSE, 
              strata=NULL, \dots)
 }
 \arguments{

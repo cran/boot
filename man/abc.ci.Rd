@@ -10,7 +10,7 @@ parameter, using numerical differentiation.
 }
 \usage{
 abc.ci(data, statistic, index=1, strata=rep(1, n), conf=0.95, 
-       eps=1e-06, \dots)
+       eps=0.001/n, \dots)
 }
 \arguments{
 \item{data}{

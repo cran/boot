@@ -16,7 +16,7 @@ EL.profile <- function(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t=25,
 	for(it in 0:(n.t-1)) {
         	t <- tmin + ((tmax - tmin) * it)/(n.t-1)
         	EL.stuff <- list(u = u(y, t))
-		assign("EL.stuff",EL.stuff,frame=1)
+#		assign("EL.stuff",EL.stuff, frame=1)
         	EL.out <- nlm(EL.loglik, lam)
 		i <- 1
 		while (EL.out$code > 2 && (i < 20)) {
@@ -34,7 +34,7 @@ EL.profile <- function(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t=25,
 
 
 
-EEF.profile <- function( y, tmin=min(y)+0.1, tmax=max(y)-0.1, n.t=25, 
+EEF.profile <- function( y, tmin=min(y)+0.1, tmax=max(y)-0.1, n.t=25,
 		u=function(y,t) { y-t } ) {
 	EEF.paras <- matrix( NA, n.t+1, 4)
 	for (it in 0:n.t) {
@@ -57,7 +57,7 @@ lik.CI <- function(like, lim ) {
 #  The likelihood is input as a matrix of theta values and the
 #  likelihood at those points.  Also a limit is input.  Values of
 #  theta for which the likelihood is over the limit are then used
-#  to estimate the end-points.  
+#  to estimate the end-points.
 #
 #  Not that the estimate only works for unimodal likelihoods.
 #
@@ -65,7 +65,7 @@ lik.CI <- function(like, lim ) {
 	theta <- like[,1]
 	n <- length(L)
 	i <- min(c(1:n)[L>lim])
-	if (is.na(i)) 
+	if (is.na(i))
 		stop(paste("Likelihood never exceeds",lim))
 	j <- max(c(1:n)[L>lim])
 	if (i==j)
@@ -88,7 +88,7 @@ lik.CI <- function(like, lim ) {
 	names(out) <- NULL
 	out
 }
- 
+
 nested.corr <- function(data,w,t0,M) {
 # Statistic for the example nested bootstrap on the cd4 data.
 	corr.fun <- function(d, w=rep(1,nrow(d))/nrow(d)) {

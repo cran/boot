@@ -10,7 +10,7 @@ are required assuming that simulation was from an alternative distribution
 with probabilities \code{q}.
 }
 \usage{
-imp.weights(boot.out, def=T, q=NULL)
+imp.weights(boot.out, def=TRUE, q=NULL)
 }
 \arguments{
 \item{boot.out}{

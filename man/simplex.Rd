@@ -11,7 +11,7 @@ is minimization.
 }
 \usage{
 simplex(a, A1=NULL, b1=NULL, A2=NULL, b2=NULL, A3=NULL, 
-        b3=NULL, maxi=F, n.iter=NULL, eps=1e-06)
+        b3=NULL, maxi=FALSE, n.iter=NULL, eps=1e-10)
 }
 \arguments{
 \item{a}{

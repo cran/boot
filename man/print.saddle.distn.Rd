@@ -8,10 +8,10 @@ This is a method for the function \code{print()} to print objects of class
 \code{"saddle.distn"}.
 }
 \usage{
-print.saddle.distn(sad.d)
+print.saddle.distn(x)
 }
 \arguments{
-\item{sad.d}{
+\item{x}{
 An object of class \code{"saddle.distn"} created by a call to \code{saddle.distn}.
 }}
 \value{

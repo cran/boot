@@ -8,10 +8,10 @@ This is a method for the function \code{print()} to print objects of the
 class \code{"bootci"}.
 }
 \usage{
-print.bootci(ci.out, hinv=NULL)
+print.bootci(x, hinv=NULL)
 }
 \arguments{
-\item{ci.out}{
+\item{x}{
 The output from a call to \code{boot.ci}.
 }
 \item{hinv}{

@@ -11,7 +11,7 @@ using the linear approximation as a control variate.
 }
 \usage{
 control(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL, 
-        bias.adj=F, alpha=NULL, \dots)
+        bias.adj=FALSE, alpha=NULL, \dots)
 }
 \arguments{
 \item{boot.out}{

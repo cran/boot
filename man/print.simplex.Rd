@@ -8,7 +8,7 @@ This is a method for the function \code{print()} to print objects of class
 \code{"simplex"}.
 }
 \usage{
-print.simplex(simp.out)
+print.simplex(x)
 }
 \arguments{
 \item{simp.out}{
@@ -16,7 +16,7 @@ An object of class \code{"simplex"} created by calling the function \code{simple
 solve a linear programming problem.
 }}
 \value{
-\code{simp.out} is returned silently.
+\code{x} is returned silently.
 }
 \details{
 The coefficients of the objective function are printed.

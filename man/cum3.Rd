@@ -9,7 +9,7 @@ Also, if more than one vector is specified, a product-moment of order 3 is
 estimated. 
 }
 \usage{
-cum3(a, b=a, c=a, unbiased=T)
+cum3(a, b=a, c=a, unbiased=TRUE)
 }
 \arguments{
 \item{a}{

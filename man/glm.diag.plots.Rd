@@ -9,7 +9,7 @@ normal scores plots of standardized deviance residuals, plot of approximate Cook
 }
 \usage{
 glm.diag.plots(glmfit, glmdiag=glm.diag(glmfit), 
-     subset=NULL, iden=F, labels=NULL, ret=F)
+     subset=NULL, iden=FALSE, labels=NULL, ret=FALSE)
 }
 \arguments{
 \item{glmfit}{

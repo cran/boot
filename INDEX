@@ -1,4 +1,4 @@
-Bootstrap S-Plus Functions  (Version 1.1; May 1998)
+Bootstrap S-Plus Functions  (Version 1.2; March 2001)
 ===========================================================
 
 This version corrects some minor errors in Version 1.0 of the code
@@ -82,7 +82,8 @@ phones		poisons		polar		remission	rock
 salinity	survival	tau		tuna		urine
 wool
 
-It also contains two regular time series of class "ts"
+Two regular time series of class "ts" in boot under S are under package `ts'
+in the base R distribution:
 lynx		sunspot
 (The beaver dataframe is also of class "ts")
 
@@ -106,12 +107,14 @@ EL.profile, EEF.profile, and lik.CI
 
 
 
-Angelo Canty
-Dept of Mathematics
-Swiss Federal Institute of Technology
-1015 Lausanne
-Switzerland
+Angelo J. Canty
+Department of Mathematics and Statistics
+Concordia University
+1455 Blvd de Maisonneuve, Ouest
+Montreal, 
+Quebec H3G 1M8
+Canada
 
-Tel : +41 21 693 5503
-Fax : +41 21 693 4250
-email : canty@dma.epfl.ch
+Tel : 1-514-848-3244
+Fax : 1-514-848-4511
+email : canty@cicma.concordia.ca

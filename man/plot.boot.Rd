@@ -8,11 +8,11 @@ This takes a bootstrap object and produces plots for the bootstrap
 replicates of the variable of interest.  
 }
 \usage{
-plot.boot(boot.out, index=1, t0=NULL, t=NULL, jack=F, qdist="norm", 
+plot.boot(x, index=1, t0=NULL, t=NULL, jack=FALSE, qdist="norm", 
      nclass=NULL, df, \dots)
 }
 \arguments{
-\item{boot.out}{
+\item{x}{
 An object of class \code{"boot"} returned from one of the bootstrap generation
 functions.
 }

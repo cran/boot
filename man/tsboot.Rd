@@ -9,9 +9,9 @@ replicate time series can be generated using fixed or random block lengths or
 can be model based replicates.   
 }
 \usage{
-tsboot(tseries, statistic, R, sim="model", l=NULL, endcorr=T, 
-       n.sim=length(tseries), orig.t=T, ran.gen=NULL, 
-       ran.args=NULL, norm=T, \dots)
+tsboot(tseries, statistic, R, l=NULL, sim="model", endcorr=TRUE, 
+       n.sim=length(tseries), orig.t=TRUE, ran.gen=NULL, 
+       ran.args=NULL, norm=TRUE, \dots)
 }
 \arguments{
 \item{tseries}{

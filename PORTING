@@ -1,3 +1,13 @@
+version 1.2-1 2001/03/03
+
+    Mods from Angelo Canty for version 1.2 of the library section.
+    Dataset beaver was corrupted and it has been repaired.
+    Change T,F to TRUE, FALSE
+
+version 1.1-7 2000/12/28
+
+    Changes for R 1.2.0.
+
 version 1.0-6 2000/11/27
 
     Re-port all the help files with Sd2Rd 1.15.

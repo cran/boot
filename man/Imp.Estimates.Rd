@@ -12,11 +12,11 @@ under importance resampling.
 }
 \usage{
 imp.moments(boot.out=NULL, index=1, t=boot.out$t[, index], 
-         w=NULL, def=T, q=NULL)
+         w=NULL, def=TRUE, q=NULL)
 imp.prob(boot.out=NULL, index=1, t0=boot.out$t0[index], 
-         t=boot.out$t[, index], w=NULL, def=T, q=NULL)
+         t=boot.out$t[, index], w=NULL, def=TRUE, q=NULL)
 imp.quantile(boot.out=NULL, alpha=NULL, index=1, 
-         t=boot.out$t[, index], w=NULL, def=T, q=NULL)
+         t=boot.out$t[, index], w=NULL, def=TRUE, q=NULL)
 }
 \arguments{
 \item{boot.out}{

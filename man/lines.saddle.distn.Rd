@@ -8,11 +8,11 @@ This function adds a line corresponding to a saddlepoint density or
 distribution function approximation to the current plot.
 }
 \usage{
-lines.saddle.distn(sad.d, dens=T, h=function(u) u, J=function(u) 1, 
+lines.saddle.distn(x, dens=TRUE, h=function(u) u, J=function(u) 1, 
      npts=50, lty=1, \dots)
 }
 \arguments{
-\item{sad.d}{
+\item{x}{
 An object of class \code{"saddle.distn"} representing a saddlepoint approximation
 to a distribution.
 }

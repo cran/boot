@@ -17,7 +17,7 @@ binary or Poisson distributions.
 }
 \usage{
 saddle(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1, 
-       init=rep(0.1, d), mu=rep(0.5, n), LR=F, strata=NULL, 
+       init=rep(0.1, d), mu=rep(0.5, n), LR=FALSE, strata=NULL, 
        K.adj=NULL, K2=NULL)
 }
 \arguments{
