@@ -1788,7 +1788,7 @@ linear.approx <- function(boot.out, L=NULL, index=1, type=NULL,
     }
     as.vector(tL)
 }
-envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1:n)
+envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1:ncol(mat))
 #
 #  Function to estimate pointwise and overall confidence envelopes for
 #  a function.
@@ -1880,7 +1880,7 @@ glm.diag <- function(glmfit)
 }
 
 
-glm.diag.plots <- function(glmfit, glmdiag = NULL, subset = NULL,
+glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
 			iden=FALSE, labels=NULL, ret=FALSE)
 {
 #  Diagnostic plots for objects of class "glm"
@@ -2809,7 +2809,7 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
             }
         }
         else {
-            sm <- tapply(mu,strata,sum)[strata]
+            sm <- as.vector(tapply(mu,strata,sum)[strata])
             p <- mu/sm
             ns <- table(strata)
             para <- list(p,A,u,strata,ns)
@@ -3331,7 +3331,7 @@ make.ends <- function(a, n){
 
 
 tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
-                    endcorr = TRUE, n.sim = NULL, orig.t = TRUE,
+                    endcorr = TRUE, n.sim = NROW(tseries), orig.t = TRUE,
 		    ran.gen = function(tser, n.sim, args) tser,
 		    ran.args = NULL, norm=TRUE, ...) {
 #

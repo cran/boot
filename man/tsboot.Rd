@@ -11,45 +11,47 @@ can be model based replicates.
 }
 \usage{
 tsboot(tseries, statistic, R, l=NULL, sim="model", endcorr=TRUE, 
-       n.sim=length(tseries), orig.t=TRUE, ran.gen=NULL, 
+       n.sim=NROW(tseries), orig.t=TRUE, ran.gen, 
        ran.args=NULL, norm=TRUE, \dots)
 }
 \arguments{
 \item{tseries}{
-A univariate or multivariate time series.  The time series can be formed by
-the functions \code{rts} or \code{cts} (S-Plus version 3.2 and later) or the earlier 
-\code{ts} function. Irregular time series, with class \code{"its"}, may not be used.
+  A univariate or multivariate time series.
 }
 \item{statistic}{
-A function which when applied to \code{tseries} returns a vector containing the
-statistic(s) of interest.  Each time \code{statistic} is called it is passed
-a time series of length \code{n.sim} which is of the same class as the original
-\code{tseries}.  Any other arguments which \code{statistic} takes must remain constant 
-for each bootstrap replicate and should be supplied through the \dots{} argument
-to \code{tsboot}.
+  A function which when applied to \code{tseries} returns a vector
+  containing the statistic(s) of interest.  Each time \code{statistic} is
+  called it is passed a time series of length \code{n.sim} which is of the
+  same class as the original \code{tseries}.  Any other arguments which
+  \code{statistic} takes must remain constant for each bootstrap replicate
+  and should be supplied through the \dots{} argument to \code{tsboot}.
 }
 \item{R}{
-A positive integer giving the number of bootstrap replicates required.  
+  A positive integer giving the number of bootstrap replicates required.  
 }
 \item{sim}{
-The type of simulation required to generate the replicate time series.  The
-possible input values are \code{"model"} (model based resampling), \code{"fixed"} (block 
-resampling with fixed block lengths of \code{l}), \code{"geom"} (block resampling 
-with block lengths having a geometric distribution with mean \code{l}) or 
-\code{"scramble"} (phase scrambling).  
+  The type of simulation required to generate the replicate time series.  The
+  possible input values are \code{"model"} (model based resampling),
+  \code{"fixed"} (block resampling with fixed block lengths of
+  \code{l}), \code{"geom"} (block resampling with block lengths
+  having a geometric distribution with mean \code{l}) or
+  \code{"scramble"} (phase scrambling).  
 }
 \item{l}{
-If \code{sim} is \code{"fixed"} then \code{l} is the fixed block length used in generating the
-replicate time series.  If \code{sim} is \code{"geom"} then \code{l} is the mean of 
-the geometric distribution used to generate the block lengths. \code{l} should 
-be a positive integer less than the length of \code{tseries}.  
-This argument is not required when \code{sim} is \code{"model"} but it is required for 
-all other simulation types.
+  If \code{sim} is \code{"fixed"} then \code{l} is the fixed block
+  length used in generating the replicate time series.  If \code{sim} is
+  \code{"geom"} then \code{l} is the mean of the geometric distribution
+  used to generate the block lengths. \code{l} should be a positive
+  integer less than the length of \code{tseries}.  This argument is not
+  required when \code{sim} is \code{"model"} but it is required for all
+  other simulation types.
 }
 \item{endcorr}{
-A logical variable indicating whether end corrections are to be applied when 
-\code{sim} is \code{"fixed"}.  When \code{sim} is \code{"geom"}, \code{endcorr} is automatically set to
-\code{TRUE}; \code{endcorr} is not used when \code{sim} is \code{"model"} or \code{"scramble"}.
+  A logical variable indicating whether end corrections are to be
+  applied when \code{sim} is \code{"fixed"}.  When \code{sim} is
+  \code{"geom"}, \code{endcorr} is automatically set to \code{TRUE};
+  \code{endcorr} is not used when \code{sim} is \code{"model"} or
+  \code{"scramble"}.
 }
 \item{n.sim}{
   The length of the simulated time series.  Typically this will be equal

@@ -1,7 +1,15 @@
-version 1.2-14 2003-07-20
+version 1.2-15 2003-10-22
+
+    consistency in documentation of default args.
+    tapply(foo)[bar] is now still an array in R.
+
+version 1.2-14 2003-08-10
 
     remove unused vars
     add local definition for is.missing
+    use \dQuote markup in help files.
+    ensure .Random.seed is saved/retrieved in the workspace.
+    remove/comment redundant assignments.
 
 version 1.2-13 2003-03-09
 
