@@ -130,7 +130,6 @@ frets.fun <- function( data, i )
      v <- pcorr( d )
      c(v[1,],v[2,],v[3,],v[4,])
 }
-data(frets)
 frets.boot <- boot(log(as.matrix(frets)), frets.fun, R=999)
 #  we will concentrate on the partial correlation between head breadth
 #  for the first son and head length for the second.  This is the 7th

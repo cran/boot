@@ -15,7 +15,7 @@ and causes of death were assigned on the basis of these certificates.  The
 coronary artery disease accumulated during the first ten years of the study.
 }
 \usage{
-data(breslow)
+breslow
 }
 \format{
 This data frame contains the following columns:

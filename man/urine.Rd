@@ -12,7 +12,7 @@ characteristics of the urine might be related to the formation of calcium
 oxalate crystals.  
 }
 \usage{
-data(urine)
+urine
 }
 \format{
 This data frame contains the following columns:

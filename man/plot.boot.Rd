@@ -94,15 +94,12 @@ details of this plot.
 air.rg <- function(data, mle)
      rexp(length(data), 1/mle)
 
-data(aircondit)
 air.boot <- boot(aircondit$hours, mean, R=999, sim="parametric",
                  ran.gen=air.rg, mle=mean(aircondit$hours))
 plot(air.boot)
 
-
 # In the difference of means example for the last two series of the 
 # gravity data
-data(gravity)
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 grav.fun <- function(dat, w)
 {    strata <- tapply(dat[, 2], as.numeric(dat[, 2]))
@@ -149,7 +146,6 @@ frets.fun <- function( data, i )
      v <- pcorr( d );
      c(v[1,],v[2,],v[3,],v[4,])
 }
-data(frets)
 frets.boot <- boot(log(as.matrix(frets)), frets.fun, R=999)
 plot(frets.boot, index=7, jack=TRUE, stinf=FALSE, useJ=FALSE)
 }

@@ -15,7 +15,7 @@ possible that, for these plants, some manufacturers' subsidies may be hidden
 in the quoted capital costs.
 }
 \usage{
-data(nuclear)
+nuclear
 }
 \format{
 This data frame contains the following columns:

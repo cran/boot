@@ -58,10 +58,8 @@ regression method.
 }
 \examples{
 #  A frequency array for a nonparametric bootstrap
-data(city)
 city.boot <- boot(city, corr, R=40, stype="w")
 boot.array(city.boot)
-
 
 perm.cor <- function(d,i) 
      cor(d$x,d$u[i])

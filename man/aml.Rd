@@ -17,7 +17,7 @@ chemotherapy increased the length of the remission.  The data here formed a
 preliminary analysis which was conducted in October 1974.
 }
 \usage{
-data(aml)
+aml
 }
 \format{
 This data frame contains the following columns:
@@ -51,6 +51,11 @@ Davison, A.C. and Hinkley, D.V. (1997)
 Embury, S.H, Elias, L., Heller, P.H., Hood, C.E., Greenberg, P.L. and
 Schrier, S.L. (1977) Remission maintenance therapy in  acute myelogenous
 leukaemia. \emph{Western Journal of Medicine}, \bold{126}, 267-272.
+}
+\note{
+  Package \pkg{survival} also has a dataset \code{aml}. It is the same
+  data with different names and with \code{group} replaced by a factor
+  \code{x}.
 }
 \keyword{datasets}
 % Converted by Sd2Rd version 1.15.

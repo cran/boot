@@ -15,7 +15,7 @@ transect measured.  The survey was conducted in summer when tuna tend to stay
 on the surface.
 }
 \usage{
-data(tuna)
+tuna
 }
 \format{
 This data frame contains the following column:

@@ -81,12 +81,8 @@ Discussion).
 # 90\% and 95\% confidence intervals for the correlation 
 # coefficient between the columns of the bigcity data
 
-
-data(bigcity)
 abc.ci(bigcity, corr, conf=c(0.90,0.95))
 
-
-data(gravity)
 # A 95\% confidence interval for the difference between the means of
 # the last two samples in gravity
 mean.diff <- function(y, w)
@@ -95,8 +91,6 @@ mean.diff <- function(y, w)
 }
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 abc.ci(grav1, mean.diff, strata=grav1$series)
-
-
 }
 \keyword{nonparametric}
 \keyword{htest}

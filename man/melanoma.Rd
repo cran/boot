@@ -18,11 +18,10 @@ tumour have an increased chance of death from melanoma.
 Patients were followed until the end of 1977.  
 }
 \usage{
-data(melanoma)
+melanoma
 }
 \format{
 This data frame contains the following columns:
-
 
 \describe{
 \item{\code{time}}{
@@ -49,19 +48,17 @@ Tumour thickness in mm.
 Indicator of ulceration; 1=present, 0=absent.
 }}}
 \note{
-This dataset is not related to the dataset in the \code{trellis} library
+This dataset is not related to the dataset in the \pkg{lattice} package
 with the same name.
 }
 \source{
 The data were obtained from
-
 
 Andersen, P.K., Borgan, O., Gill, R.D. and Keiding, N. (1993)
 \emph{Statistical Models Based on Counting Processes}. Springer-Verlag.
 }
 \references{
 Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
-
 
 Venables, W.N. and Ripley, B.D. (1994) 
 \emph{Modern Applied Statistics with S-Plus}. Springer-Verlag.

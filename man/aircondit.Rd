@@ -15,7 +15,7 @@ Both data frames have just one column.  Note that the data have been sorted
 into increasing order.
 }
 \usage{
-data(aircondit)
+aircondit
 }
 \format{
 The data frames contain the following column:

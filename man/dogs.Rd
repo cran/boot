@@ -2,7 +2,7 @@
 \alias{dogs}
 \non_function{}
 \title{ Cardiac Data for Domestic Dogs }
-\usage{data(dogs)}
+\usage{dogs}
 \description{
 The \code{dogs} data frame has 7 rows and 2 columns.
 

@@ -19,7 +19,7 @@ The data in this data frame are those readings for one of the beavers on a day
 in autumn.  
 }
 \usage{
-data(beaver)
+beaver
 }
 \format{
   This data frame contains the following columns:

@@ -182,8 +182,6 @@ Politis, D.N. and Romano, J.P. (1994) The stationary bootstrap.
   \code{\link{boot}}, \code{\link[ts]{arima.sim}}
 }
 \examples{
-library(ts)
-data(lynx)
 lynx.fun <- function(tsb) 
 {    ar.fit <- ar(tsb, order.max=25)
      c(ar.fit$order, mean(tsb), tsb)

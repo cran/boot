@@ -17,7 +17,7 @@ The data are cross-classified by the date of diagnosis and the time delay in
 the reporting of the cases.  
 }
 \usage{
-data(aids)
+aids
 }
 \format{
 This data frame contains the following columns:

@@ -142,7 +142,6 @@ mean.fun <- function(d, i)
      v <- (n-1)*var(d$hours[i])/n^2
      c(m, v)
 }
-data(aircondit)
 air.boot <- boot(aircondit, mean.fun, R = 999)
 control(air.boot, index = 2, bias.adj = TRUE)
 air.cont <- control(air.boot, index = 2)

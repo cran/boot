@@ -16,7 +16,7 @@ measured.  The experiment was repeated independently with 9 different
 times of suspension each replicated 3 times.  
 }
 \usage{
-data(calcium)
+calcium
 }
 \format{
 This data frame contains the following columns:

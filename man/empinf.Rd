@@ -135,7 +135,6 @@ Lecture Notes in Statistics, \bold{19}, Springer-Verlag.
 \examples{
 # The empirical influence values for the ratio of means in 
 # the city data.
-data(city)
 ratio <- function(d, w) sum(d$x *w)/sum(d$u*w)
 empinf(data=city,statistic=ratio)
 city.boot <- boot(city,ratio,499,stype="w")
@@ -147,7 +146,6 @@ empinf(boot.out=city.boot,type="reg")
 # the bootstrap we get replicates of the difference of means and 
 # the variance of that statistic and then want to use this output
 # to get the empirical influence values of the t-statistic.
-data(gravity)
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 grav.fun <- function(dat, w)
 {    strata <- tapply(dat[, 2], as.numeric(dat[, 2]))

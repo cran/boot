@@ -12,7 +12,7 @@ pairs of adult brothers in 25 randomly sampled families.  All measurements
 are expressed in millimetres.
 }
 \usage{
-data(frets)
+frets
 }
 \format{
 This data frame contains the following columns:

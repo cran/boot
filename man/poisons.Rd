@@ -6,18 +6,15 @@ Animal Survival Times
 \description{
 The \code{poisons} data frame has 48 rows and 3 columns.
 
-
 The data form a 3x4 factorial experiment, the factors being three poisons
 and four treatments.  Each combination of the two factors was used for
 four animals, the allocation to animals having been completely randomized.
 }
 \usage{
-data(poisons)
+poisons
 }
 \format{
 This data frame contains the following columns:
-
-
 \describe{
 \item{\code{time}}{
 The survival time of the animal in units of 10 hours.
@@ -30,7 +27,6 @@ A factor with levels \code{A}, \code{B}, \code{C} and \code{D} giving the treatm
 }}}
 \source{
 The data were obtained from
-
 
 Box, G.E.P. and Cox, D.R. (1964) An analysis of transformations (with
 Discussion). 

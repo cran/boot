@@ -192,7 +192,6 @@ boot.ci(boot.out, conf = 0.95, type = "all",
 }
 \examples{
 # confidence intervals for the city data
-data(city)
 ratio <- function(d, w) sum(d$x * w)/sum(d$u * w)
 city.boot <- boot(city, ratio, R = 999, stype = "w",sim = "ordinary")
 boot.ci(city.boot, conf = c(0.90,0.95),
@@ -201,7 +200,6 @@ boot.ci(city.boot, conf = c(0.90,0.95),
 # studentized confidence interval for the two sample 
 # difference of means problem using the final two series
 # of the gravity data. 
-data(gravity)
 diff.means <- function(d, f)
 {    n <- nrow(d)
      gp1 <- 1:table(as.numeric(d$series))[1]
@@ -218,7 +216,6 @@ boot.ci(grav1.boot, type=c("stud","norm"))
 # Nonparametric confidence intervals for mean failure time 
 # of the air-conditioning data as in Example 5.4 of Davison
 # and Hinkley (1997)
-data(aircondit)
 mean.fun <- function(d, i) 
 {    m <- mean(d$hours[i])
      n <- length(i)

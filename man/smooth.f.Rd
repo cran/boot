@@ -71,7 +71,6 @@ construction of bootstrap likelihoods. \emph{Statistics and Computing},
 # distribution of the studentized statistic to be centred at the observed
 # value of the test statistic 1.84.  In the book exponential tilting was used
 # but it is also possible to use smooth.f.
-data(gravity)
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 grav.fun <- function(dat, w, orig)
 {    strata <- tapply(dat[, 2], as.numeric(dat[, 2]))

@@ -157,7 +157,6 @@ Hinkley, D.V. and Shi, S. (1989) Importance sampling and the nested bootstrap.
 
 
 # Example 9.9 of Davison and Hinkley (1997).
-data(gravity)
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 grav.fun <- function(dat, w, orig)
 {    strata <- tapply(dat[, 2], as.numeric(dat[, 2]))
@@ -188,7 +187,6 @@ acme.fun <- function(data, i, bhat)
      sr <- sqrt(sum(tmp^2))/SSx
      c(beta.b, sr, (beta.b-bhat)/sr)
 }
-data(acme)
 acme.b <- acme.fun(acme,1:nrow(acme),0)
 acme.boot1 <- tilt.boot(acme, acme.fun, R=c(499, 250, 250), 
                         stype="i", sim="balanced", alpha=c(0.05, 0.95), 

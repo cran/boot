@@ -11,7 +11,7 @@ The data are the pole positions from a paleomagnetic study of New Caledonian
 laterites.
 }
 \usage{
-data(polar)
+polar
 }
 \format{
 This data frame contains the following columns:

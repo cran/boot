@@ -12,7 +12,7 @@ the failure times for 44 samples in gas insulated transformers.  4 different
 voltage levels were used.
 }
 \usage{
-data(hirose)
+hirose
 }
 \format{
 This data frame contains the following columns:

@@ -167,7 +167,6 @@ saddle.distn(A, u=NULL, alpha=NULL, wdist="m",
 \examples{
 #  The bootstrap distribution of the mean of the air-conditioning 
 #  failure data: fails to find value on R (and probably on S too)
-data(aircondit)
 air.t0 <- c(mean(aircondit$hours), sqrt(var(aircondit$hours)/12))
 \dontrun{saddle.distn(A = aircondit$hours/12, t0 = air.t0)}
 
@@ -177,7 +176,6 @@ saddle.distn(A = cbind(aircondit$hours/12, 1), u = 12, wdist = "p",
 
 # Distribution of the ratio of a sample of size 10 from the bigcity 
 # data, taken from Example 9.16 of Davison and Hinkley (1997).
-data(city); data(bigcity)
 ratio <- function(d, w) sum(d$x *w)/sum(d$u * w)
 city.v <- var.linear(empinf(data = city, statistic = ratio))
 bigcity.t0 <- c(mean(bigcity$x)/mean(bigcity$u), sqrt(city.v))

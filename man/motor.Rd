@@ -10,7 +10,7 @@ obtained by removing replicate values of \code{time} from the dataset
 a different residual variance in each stratum.
 }
 \usage{
-data(motor)
+motor
 }
 \format{
 This data frame contains the following columns:

@@ -11,7 +11,7 @@ The data are simulated successive observations from a process in equilibrium.
 The process is assumed to have specification limits (5.49, 5.79).
 }
 \usage{
-data(capability)
+capability
 }
 \format{
 This data frame contains the following column:

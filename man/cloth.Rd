@@ -7,7 +7,7 @@ Number of Flaws in Cloth
 The \code{cloth} data frame has 32 rows and 2 columns.
 }
 \usage{
-data(cloth)
+cloth
 }
 \format{
 This data frame contains the following columns:

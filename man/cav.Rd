@@ -15,7 +15,7 @@ dataset \code{caveolae.dat} in the \code{spatial} library by B.D. Ripley (1994) 
 is available from Statlib
 }
 \usage{
-data(cav)
+cav
 }
 \format{
 This data frame contains the following columns:

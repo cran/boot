@@ -1,3 +1,7 @@
+version 1.2-18 2004-08-04
+
+    version for R 2.0.0.
+
 version 1.2-17 2004-04-20
 
     remake datasets: looks like wool, coal and manaus were corrupt.

@@ -13,7 +13,7 @@ the male cats.  The full data are in dataset \code{\link[MASS]{cats}}
 in package \code{MASS}.
 }
 \usage{
-data(cats)
+cats
 }
 \format{
 This data frames contain the following columns:

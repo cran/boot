@@ -28,7 +28,7 @@ events other than the four main modes of decay.  These are uncertain events and
 so cannot themselves be observed directly.
 }
 \usage{
-data(tau)
+tau
 }
 \format{
 This data frame contains the following columns:

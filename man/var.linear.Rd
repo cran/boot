@@ -29,7 +29,6 @@ Davison, A. C. and Hinkley, D. V. (1997) \emph{Bootstrap Methods and Their Appli
 }
 \examples{
 #  To estimate the variance of the ratio of means for the city data.
-data(city)
 ratio <- function(d,w)
      sum(d$x * w)/sum(d$u * w)
 var.linear(empinf(data=city,statistic=ratio))

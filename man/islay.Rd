@@ -11,7 +11,7 @@ Measurements were taken of paleocurrent azimuths from the Jura Quartzite on
 the Scottish island of Islay.
 }
 \usage{
-data(islay)
+islay
 }
 \format{
 This data frame contains the following column:

@@ -103,7 +103,6 @@ Efron, B. (1981) Nonparametric standard errors and confidence intervals
 # Example 9.8 of Davison and Hinkley (1997) requires tilting the resampling
 # distribution of the studentized statistic to be centred at the observed
 # value of the test statistic 1.84.  This can be achieved as follows.
-data(gravity)
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 grav.fun <- function(dat, w, orig)
 {    strata <- tapply(dat[, 2], as.numeric(dat[, 2]))

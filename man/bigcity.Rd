@@ -17,7 +17,7 @@ a random sample taken from the 196 largest cities in 1920.  The \code{city} data
 frame consists of the first 10 observations in \code{bigcity}. 
 }
 \usage{
-data(bigcity)
+bigcity
 }
 \format{
 This data frame contains the following columns:

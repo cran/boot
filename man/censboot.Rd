@@ -206,6 +206,7 @@ aml.fun <- function(data) {
           st <- st+surv$strata[s]
           out <- c(out,md)
      }
+     out
 }
 aml.case <- censboot(aml,aml.fun,R=499,strata=aml$group)
 

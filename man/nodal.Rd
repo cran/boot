@@ -21,7 +21,7 @@ be accurately predicted from the predictor variables and which ones were
 most important.
 }
 \usage{
-data(nodal)
+nodal
 }
 \format{
 This data frame contains the following columns:

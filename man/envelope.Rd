@@ -86,7 +86,6 @@ Davison, A.C. and Hinkley, D.V. (1997)
 # Testing whether the final series of measurements of the gravity data
 # may come from a normal distribution.  This is done in Examples 4.7 
 # and 4.8 of Davison and Hinkley (1997).
-data(gravity)
 grav1 <- gravity$g[gravity$series==8]
 grav.z <- (grav1-mean(grav1))/sqrt(var(grav1))
 grav.gen <- function(dat,mle)

@@ -23,7 +23,7 @@ experiments 7 and 8.  The data are expressed as deviations from 980.000
 in centimetres per second squared.
 }
 \usage{
-data(gravity)
+gravity
 }
 \format{
 This data frame contains the following columns:

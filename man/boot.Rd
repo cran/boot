@@ -238,7 +238,6 @@ John Wiley & Sons.
 }
 \examples{
 # usual bootstrap of the ratio of means using the city data
-data(city)
 ratio <- function(d, w)
      sum(d$x * w)/sum(d$u * w)
 boot(city, ratio, R=999, stype="w")
@@ -247,7 +246,6 @@ boot(city, ratio, R=999, stype="w")
 # Stratified resampling for the difference of means.  In this
 # example we will look at the difference of means between the final
 # two series in the gravity data.
-data(gravity)
 diff.means <- function(d, f)
 {    n <- nrow(d)
      gp1 <- 1:table(as.numeric(d$series))[1]
@@ -267,7 +265,6 @@ boot(grav1, diff.means, R=999, stype="f", strata=grav1[,2])
 #  regression based on the nuclear data.  This example is taken 
 #  from Example 6.8 of Davison and Hinkley (1997).  Notice also 
 #  that two extra arguments to statistic are passed through boot.
-data(nuclear)
 nuke <- nuclear[,c(1,2,5,7,8,10,11)]
 nuke.lm <- glm(log(cost)~date+log(cap)+ne+ ct+log(cum.n)+pt, data=nuke)
 nuke.diag <- glm.diag(nuke.lm)
@@ -334,7 +331,6 @@ air.rg <- function(data, mle)
      out
 }
 
-data(aircondit)
 air.boot <- boot(aircondit, air.fun, R=999, sim="parametric",
      ran.gen=air.rg, mle=mean(aircondit$hours))
 

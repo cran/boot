@@ -13,7 +13,7 @@ The data in this set consists only of those measurements in March, April
 and May.
 }
 \usage{
-data(salinity)
+salinity
 }
 \format{
 This data frame contains the following columns:

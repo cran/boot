@@ -19,7 +19,7 @@ erection of the sign, shortly after the erection of the sign, and again after
 the sign had been in place for some time.  
 }
 \usage{
-data(amis)
+amis
 }
 \format{
 This data frame contains the following columns:

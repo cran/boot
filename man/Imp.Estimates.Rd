@@ -117,7 +117,6 @@ Johns, M.V.  (1988) Importance sampling for bootstrap confidence intervals.
 # at the observed value of the test statistic, 1.84.  In this example
 # we show how certain estimates can be found using resamples taken from
 # the tilted distribution.
-data(gravity)
 grav1 <- gravity[as.numeric(gravity[,2])>=7,]
 grav.fun <- function(dat, w, orig)
 {    strata <- tapply(dat[, 2], as.numeric(dat[, 2]))

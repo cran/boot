@@ -16,7 +16,7 @@ the difference in heights between the cross- and self-fertilized plants are
 recorded in eighths of an inch.
 }
 \usage{
-data(darwin)
+darwin
 }
 \format{
 This data frame contains the following column:

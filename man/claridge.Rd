@@ -24,7 +24,7 @@ these two extremes are people who favour one hand for some tasks and the other
 for other tasks.
 }
 \usage{
-data(claridge)
+claridge
 }
 \format{
 This data frame contains the following columns:

@@ -7,7 +7,7 @@ Cancer Remission and Cell Activity
 The \code{remission} data frame has 27 rows and 3 columns.
 }
 \usage{
-data(remission)
+remission
 }
 \format{
 This data frame contains the following columns:

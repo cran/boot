@@ -12,7 +12,7 @@ varying doses of radiation.  At each of 6 doses there were two or three
 replications of the experiment.
 }
 \usage{
-data(survival)
+survival
 }
 \format{
 This data frame contains the following columns:

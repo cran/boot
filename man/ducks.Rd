@@ -19,7 +19,7 @@ a scale from 0 to 15 with lower numbers indicating closer to
 mallard-like in behaviour.
 }
 \usage{
-data(ducks)
+ducks
 }
 \format{
 This data frame contains the following columns:

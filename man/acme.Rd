@@ -13,7 +13,7 @@ recorded over a five year period.  These excess returns are relative to the
 return on a risk-less investment such a U.S. Treasury bills.  
 }
 \usage{
-data(acme)
+acme
 }
 \format{
 This data frame contains the following columns:

@@ -17,7 +17,7 @@ The aim of the experiment was to show that patients taking the drug had
 increased CD4 counts which is not generally seen in HIV-positive patients.
 }
 \usage{
-data(cd4)
+cd4
 }
 \format{
 This data frame contains the following columns:

@@ -12,7 +12,7 @@ resulted in 10 or more fatalities.  The time span of the data is from March 15,
 1851 until March 22 1962.  
 }
 \usage{
-data(coal)
+coal
 }
 \format{
 This data frame contains the following column:

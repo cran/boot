@@ -10,7 +10,7 @@ to hospital and then again after 1 week.  The main question being whether
 one week of hospitalization  has changed the carbon monoxide transfer factor.
 }
 \usage{
-data(co.transfer)
+co.transfer
 }
 \format{
 This data frame contains the following columns:

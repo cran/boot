@@ -19,7 +19,7 @@ Sugar-cane Disease Data
   of diseased shoots were recorded.
 }
 \usage{
-data(cane)
+cane
 }
 \format{
 This data frame contains the following columns:

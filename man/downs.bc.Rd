@@ -22,7 +22,7 @@ last is those with ages 46-49.  No data for
 mothers over 50 or below 15 were collected. 
 }
 \usage{
-data(downs.bc)
+downs.bc
 }
 \format{
 This data frame contains the following columns:

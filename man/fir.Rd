@@ -12,7 +12,7 @@ square quadrants were counted.  The grid consisted of 5 rows of 10 quadrants in
 each row.
 }
 \usage{
-data(fir)
+fir
 }
 \format{
 This data frame contains the following columns:

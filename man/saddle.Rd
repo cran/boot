@@ -133,7 +133,6 @@ Jensen, J.L. (1995) \emph{Saddlepoint Approximations}. Oxford University Press.
 \examples{
 # To evaluate the bootstrap distribution of the mean failure time of 
 # air-conditioning equipment at 80 hours
-data(aircondit)
 saddle(A=aircondit$hours/12, u=80)
 
 # Alternatively this can be done using a conditional poisson
@@ -156,7 +155,6 @@ jacobian <- function(dat,t,zeta)
      p <- exp(zeta*(dat$x-t*dat$u))
      abs(sum(dat$u*p)/sum(p))
 }
-data(city)
 city.sp1 <- saddle(A=city$x-1.25*city$u, u=0)
 city.sp1$spa[1] <- jacobian(city, 1.25, city.sp1$zeta.hat) * city.sp1$spa[1]
 city.sp1

@@ -18,7 +18,7 @@ observations were censored mainly due to the resident being alive on July 1,
 taking age into account, was one of the primary concerns of this study.
 }
 \usage{
-data(channing)
+channing
 }
 \format{
 This data frame contains the following columns:

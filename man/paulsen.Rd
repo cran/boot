@@ -18,7 +18,7 @@ multimodal with modes at regular intervals.  The modes would be expected to
 decrease in magnitude for higher current amplitudes.
 }
 \usage{
-data(paulsen)
+paulsen
 }
 \format{
 This data frame contains the following column:
