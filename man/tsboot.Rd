@@ -1,6 +1,5 @@
 \name{tsboot}
 \alias{tsboot}
-\alias{ts.array}
 \alias{ts.return}
 \title{
 Bootstrapping of Time Series
@@ -255,4 +254,3 @@ table(lynx.3$t[,1])
 }
 \keyword{nonparametric}
 \keyword{ts}
-% Converted by Sd2Rd version 1.15.

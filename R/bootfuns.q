@@ -2604,14 +2604,14 @@ simplex1 <- function(a,A,b,init,basic,val=0,stage=2, n1=N, eps=1e-10,
     N <- ncol(A)
     M <- nrow(A)
     nonbasic <- (1:N)[-basic]
-    tableau <- cbind(b,-A[,nonbasic])
+    tableau <- cbind(b,-A[,nonbasic,drop=FALSE])
 #  If in the first stage then find the artifical objective function,
 #  otherwise use the original objective function.
     if (stage == 2) {
         tableau <- rbind(tableau,c(val,a[nonbasic]))
         obfun <- a[nonbasic]
     }
-    else {	obfun <- apply(tableau[(M+n1-N+1):M,],2,sum)
+    else {	obfun <- apply(tableau[(M+n1-N+1):M,,drop=FALSE],2,sum)
 		tableau <- rbind(c(val,a[nonbasic]),tableau,obfun)
 		obfun <- obfun[-1]
             }

@@ -1,9 +1,10 @@
 Package: boot
 Priority: recommended
-Version: 1.2-6
-Date: 2001-Nov-27
+Version: 1.2-7
+Date: 2002-Jan-29
 Author: S original <http://statwww.epfl.ch/davison/BMA/library.html>
-  by Angelo Canty.  R port by  Brian Ripley <ripley@stats.ox.ac.uk>.
+  by Angelo Canty <cantya@mcmaster.ca>.  
+  R port by  Brian Ripley <ripley@stats.ox.ac.uk>.
 Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 Description: functions and datasets for bootstrapping from the
   book "Bootstrap Methods and Their Applications" by A.C. Davison and 

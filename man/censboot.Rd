@@ -1,14 +1,10 @@
 \name{censboot}
 \alias{censboot}
-\alias{cens.case}
-\alias{cens.resamp}
 \alias{cens.return}
-\alias{cens.weird}
-\alias{censboot}
 \title{
 Bootstrap for Censored Data
 }
-\description{
+\description{  
 This function applies types of bootstrap resampling which have
 been suggested to deal with right-censored data.  It can also do model-based
 resampling using a Cox regression model.
@@ -18,60 +14,66 @@ censboot(data, statistic, R, F.surv, G.surv, strata=matrix(1,n,2),
          sim="ordinary", cox=NULL, index=c(1, 2), \dots)
 }
 \arguments{
-\item{data}{
+  \item{data}{
 The data frame or matrix containing the data.  It must have at least two
-columns, one of which contains the times and the other the censoring indicators.
-It is allowed to have as many other columns as desired (although efficiency
-is reduced for large numbers of columns) except for \code{sim="weird"} when it should
-only have two columns - the times and censoring indicators.  The columns of 
-\code{data} referenced by the components of \code{index} are taken to be the times and 
-censoring indicators.
+columns, one of which contains the times and the other the censoring
+indicators.  It is allowed to have as many other columns as desired
+(although efficiency is reduced for large numbers of columns) except for
+\code{sim="weird"} when it should only have two columns - the times and
+censoring indicators.  The columns of \code{data} referenced by the
+components of \code{index} are taken to be the times and censoring
+indicators.
 }
 \item{statistic}{
-A function which operates on the data frame and returns the required statistic.
-Its first argument must be the data. Any other arguments that it requires can 
-be passed using the \code{\dots{}} argument.  In the
-case of \code{sim="weird"}, the data passed to \code{statistic} only contains the 
-times and censoring indicator regardless of the actual number of columns in 
-\code{data}. In all other cases the data passed to statistic will be of the same
-form as the original data.  When \code{sim="weird"},
-the actual number of observations in the resampled data sets may not be the same
-as the number in \code{data}.  For this reason, if \code{sim="weird"} and \code{strata} is
-supplied, \code{statistic} should also take a numeric vector indicating the strata.
-This allows the statistic to depend on the strata if required.
+A function which operates on the data frame and returns the required
+statistic.  Its first argument must be the data. Any other arguments
+that it requires can be passed using the \code{\dots{}} argument.  In
+the case of \code{sim="weird"}, the data passed to \code{statistic} only
+contains the times and censoring indicator regardless of the actual
+number of columns in \code{data}. In all other cases the data passed to
+statistic will be of the same form as the original data.  When
+\code{sim="weird"}, the actual number of observations in the resampled
+data sets may not be the same as the number in \code{data}.  For this
+reason, if \code{sim="weird"} and \code{strata} is supplied,
+\code{statistic} should also take a numeric vector indicating the
+strata.  This allows the statistic to depend on the strata if required.
 }
 \item{R}{
 The number of bootstrap replicates.
 }
 \item{F.surv}{
-An object returned from a call to \code{survfit} giving the survivor function for
-the data. This is a required argument unless \code{sim="ordinary"} or 
-\code{sim="model"} and \code{cox} is missing. 
+An object returned from a call to \code{survfit} giving the survivor
+function for the data. This is a required argument unless
+\code{sim="ordinary"} or \code{sim="model"} and \code{cox} is missing.
 }
 \item{G.surv}{
-Another object returned from a call to \code{survfit} but with the censoring 
-indicators reversed to give the product-limit estimate of the censoring 
-distribution.  Note that for consistency the uncensored times should be reduced 
-by a small amount in the call to \code{survfit}.  This is a required argument
-whenever \code{sim="cond"} or when \code{sim="model"} and \code{cox} is supplied.
+Another object returned from a call to \code{survfit} but with the
+censoring indicators reversed to give the product-limit estimate of the
+censoring distribution.  Note that for consistency the uncensored times
+should be reduced by a small amount in the call to \code{survfit}.  This
+is a required argument whenever \code{sim="cond"} or when
+\code{sim="model"} and \code{cox} is supplied.
 }
 \item{strata}{
-The strata used in the calls to \code{survfit}.  It can be a vector or a matrix with
-2 columns.  If it is a vector then it is assumed to be the strata for the
-survival distribution, and the censoring distribution is assumed to be the
-same for all observations.  If it is a matrix then the first column is the 
-strata for the survival distribution and the second is the strata for the 
-censoring distribution.  When \code{sim="weird"} only the strata for the survival 
-distribution are used since the censoring times are considered fixed.  When
-\code{sim="ordinary"}, only one set of strata is used to stratify the observations,
-this is taken to be the first column of \code{strata} when it is a matrix.
+The strata used in the calls to \code{survfit}.  It can be a vector or a
+matrix with 2 columns.  If it is a vector then it is assumed to be the
+strata for the survival distribution, and the censoring distribution is
+assumed to be the same for all observations.  If it is a matrix then the
+first column is the strata for the survival distribution and the second
+is the strata for the censoring distribution.  When \code{sim="weird"}
+only the strata for the survival distribution are used since the
+censoring times are considered fixed.  When \code{sim="ordinary"}, only
+one set of strata is used to stratify the observations, this is taken to
+be the first column of \code{strata} when it is a matrix.
 }
 \item{sim}{
-The simulation type.  Possible types are \code{"ordinary"} (case resampling),
-\code{"model"} (equivalent to \code{"ordinary"} if \code{cox} is missing, otherwise it is
-model based resampling), \code{"weird"} (the weird bootstrap - this cannot be used
-if \code{cox} is supplied), and \code{"cond"} (the conditional bootstrap, in which 
-censoring times are resampled from the conditional censoring distribution).
+  The simulation type.  Possible types are \code{"ordinary"} (case
+resampling), \code{"model"} (equivalent to \code{"ordinary"} if
+\code{cox} is missing, otherwise it is model based resampling),
+\code{"weird"} (the weird bootstrap - this cannot be used if \code{cox}
+is supplied), and \code{"cond"} (the conditional bootstrap, in which
+censoring times are resampled from the conditional censoring
+distribution).
 }
 \item{cox}{
 An object returned from \code{coxph}.  If it is supplied, then \code{F.surv} should have
@@ -86,9 +88,6 @@ Any other arguments which are passed to \code{statistic}.
 }}
 \value{
 An object of class \code{"boot"} containing the following components:
-
-
-
 \item{t0}{
 The value of \code{statistic} when applied to the original data.
 }
@@ -128,65 +127,59 @@ The various types of resampling are described in Davison and Hinkley (1997)
 in sections 3.5 and 7.3.  The simplest is case resampling which simply 
 resamples with replacement from the observations.  
 
+The conditional bootstrap simulates failure times from the estimate of
+the survival distribution.  Then, for each observation its simulated
+censoring time is equal to the observed censoring time if the
+observation was censored and generated from the estimated censoring
+distribution conditional on being greater than the observed failure time
+if the observation was uncensored.  If the largest value is censored
+then it is given a nominal failure time of \code{Inf} and conversely if
+it is uncensored it is given a nominal censoring time of \code{Inf}.
+This is necessary to allow the largest observation to be in the
+resamples.
 
-The conditional bootstrap simulates
-failure times from the estimate of the survival distribution.  Then, for
-each observation its simulated censoring time is equal to the observed
-censoring time if the observation was censored and generated from the 
-estimated censoring distribution conditional on being greater than the observed
-failure time if the observation was uncensored.  If the largest value is
-censored then it is given a nominal failure time of \code{Inf} and conversely if
-it is uncensored it is given a nominal censoring time of \code{Inf}.  This is 
-necessary to allow the largest observation to be in the resamples.
+If a Cox regression model is fitted to the data and supplied, then the
+failure times are generated from the survival distribution using that
+model.  In this case the censoring times can either be simulated from
+the estimated censoring distribution (\code{sim="model"}) or from the
+conditional censoring distribution as in the previous paragraph
+(\code{sim="cond"}).
 
-
-If a Cox regression model is fitted to the data and supplied, then the failure 
-times are generated from the survival distribution using that model.  
-In this case the
-censoring times can either be simulated from the estimated censoring 
-distribution (\code{sim="model"}) or from the conditional censoring distribution as
-in the previous paragraph (\code{sim="cond"}).
-
-
-The weird bootstrap holds the censored observations as fixed and also the
-observed failure times.  It then generates the number of events at each
-failure time using a binomial distribution with mean 1 and denominator the
-number of failures that could have occurred at that time in the original 
-data set.  In our implementation we insist that
-there is a least one simulated event in each stratum for every
-bootstrap dataset. 
+The weird bootstrap holds the censored observations as fixed and also
+the observed failure times.  It then generates the number of events at
+each failure time using a binomial distribution with mean 1 and
+denominator the number of failures that could have occurred at that time
+in the original data set.  In our implementation we insist that there is
+a least one simulated event in each stratum for every bootstrap dataset.
 
 
-When there are strata involved and \code{sim} is either \code{"model"} or \code{"cond"} 
-the situation becomes more difficult.  Since the strata for the survival
-and censoring distributions are not the same it is possible that for some
-observations both the simulated failure time and the simulated censoring time 
-are infinite.  To see this consider an observation in stratum 1F for the 
-survival distribution and stratum 1G for the censoring distribution.  Now if
-the largest value in stratum 1F is censored it is given a nominal failure time
-of \code{Inf}, also if the largest value in stratum 1G is uncensored it is given
-a nominal censoring time of \code{Inf} and so both the simulated failure and 
-censoring times could be infinite.  When this happens the simulated value is
-considered to be a failure at the time of the largest observed failure time in
-the stratum for the survival distribution.
+When there are strata involved and \code{sim} is either \code{"model"}
+or \code{"cond"} the situation becomes more difficult.  Since the strata
+for the survival and censoring distributions are not the same it is
+possible that for some observations both the simulated failure time and
+the simulated censoring time are infinite.  To see this consider an
+observation in stratum 1F for the survival distribution and stratum 1G
+for the censoring distribution.  Now if the largest value in stratum 1F
+is censored it is given a nominal failure time of \code{Inf}, also if
+the largest value in stratum 1G is uncensored it is given a nominal
+censoring time of \code{Inf} and so both the simulated failure and
+censoring times could be infinite.  When this happens the simulated
+value is considered to be a failure at the time of the largest observed
+failure time in the stratum for the survival distribution.
 }
-\references{
-Andersen, P.K., Borgan, O., Gill, R.D. and Keiding, N. (1993)
-\emph{Statistical Models Based on Counting Processes}. Springer-Verlag.
+\references{ Andersen, P.K., Borgan, O., Gill, R.D. and Keiding,
+N. (1993) \emph{Statistical Models Based on Counting
+Processes}. Springer-Verlag.
 
-
-Burr, D. (1994) A comparison of certain bootstrap confidence intervals in the
-Cox model. \emph{Journal of the American Statistical Association}, 
-\bold{89}, 1290--1302.
-
+Burr, D. (1994) A comparison of certain bootstrap confidence intervals
+in the Cox model. \emph{Journal of the American Statistical
+Association}, \bold{89}, 1290--1302.
 
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
-
 Efron, B. (1981) Censored data and the bootstrap. 
 \emph{Journal of the  American Statistical Association}, \bold{76}, 312--319.
-
 
 Hjort, N.L. (1985) Bootstrapping Cox's regression model. Technical report 
 NSF-241, Dept. of Statistics, Stanford University.
@@ -285,5 +278,5 @@ lines(seq(0.25,10,by=0.25),mel.env[1,],lty=2)
 lines(seq(0.25,10,by=0.25),mel.env[2,],lty=2)
 lines(seq(0.25,10,by=0.25),mel.mod$t0,lty=1)
 }
+\author{Angelo J. Canty}
 \keyword{survival}
-% Converted by Sd2Rd version 1.15.

@@ -1,9 +1,5 @@
 \name{empinf}
 \alias{empinf}
-\alias{empinf.reg}
-\alias{inf.jack}
-\alias{positive.jack}
-\alias{usual.jack}
 \title{
 Empirical Influence Values
 }
@@ -176,4 +172,3 @@ empinf(boot.out=grav.boot,t=grav.z)
 }
 \keyword{nonparametric}
 \keyword{math}
-% Converted by Sd2Rd version 1.15.

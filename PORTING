@@ -1,3 +1,21 @@
+version 1.2-7 2002-01-29
+
+    Added some help pages from Angelo Canty.
+    Bug fix to simplex from Duncan Murdoch.
+
+version 1.2-6 2001-11-27
+
+    Start documenting rest of the objects and arguments.
+
+version 1.2-5 2001-08-16
+version 1.2-4 2001-08-08
+
+    Use TRUE and FALSE on help pages, add ... to arg lists.
+
+version 1.2-3 2001-06-16
+
+    Change to survival from survival5.
+
 version 1.2-2 2001/03/31
 
     Add priority: recommended.
@@ -7,7 +25,7 @@ version 1.2-1 2001/03/03
 
     Mods from Angelo Canty for version 1.2 of the library section.
     Dataset beaver was corrupted and it has been repaired.
-    Change T,F to TRUE, FALSE
+    Change T, F to TRUE, FALSE in R code.
 
 version 1.1-7 2000/12/28
 
