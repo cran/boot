@@ -1,7 +1,7 @@
 \name{paulsen}
 \alias{paulsen}
 \title{
-Neurotransmission in Guinea Pig Brains.
+Neurotransmission in Guinea Pig Brains
 }
 \description{
 The \code{paulsen} data frame has 346 rows and 1 columns.  

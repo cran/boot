@@ -1,7 +1,7 @@
 \name{amis}
 \alias{amis}
 \title{
-Car Speeding and Warning Signs.
+Car Speeding and Warning Signs
 }
 \description{
 The \code{amis} data frame has 8437 rows and 4 columns.

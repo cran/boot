@@ -218,7 +218,7 @@ boot.array <- function(boot.out, indices=FALSE) {
 #
     if(exists(".Random.seed")) temp <- .Random.seed
     else temp<- NULL
-    .Random.seed <<- boot.out$seed
+    assign(".Random.seed",  boot.out$seed, pos=1)
     if (isMatrix(boot.out$data))
         n <- nrow(boot.out$data)
     else	n <- length(boot.out$data)
@@ -271,7 +271,7 @@ boot.array <- function(boot.out, indices=FALSE) {
         out <- index.array(n, R, sim, strata, 0, boot.out$L, weights)
     }
     if (!indices) out <- freq.array(out)
-    if(!is.null(temp)) .Random.seed <<- temp
+    if(!is.null(temp)) assign(".Random.seed", temp, pos=1)
     else rm(.Random.seed, pos=1)
     out
 }
@@ -2461,12 +2461,13 @@ inv.logit <- function(x)
 #
 #  Calculate the inverse logit of a number
 #
-{
-    out <- exp(x)/(1+exp(x))
-    out[x==-Inf] <- 0
-    out[x==Inf] <- 1
-    out
-}
+# {
+#     out <- exp(x)/(1+exp(x))
+#     out[x==-Inf] <- 0
+#     out[x==Inf] <- 1
+#     out
+# }
+plogis(x)
 
 iden <- function(n) {
 #

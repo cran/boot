@@ -1,7 +1,7 @@
 \name{salinity}
 \alias{salinity}
 \title{
-Water Salinity and River Discharge.
+Water Salinity and River Discharge
 }
 \description{
 The \code{salinity} data frame has 28 rows and 4 columns.

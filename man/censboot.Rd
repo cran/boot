@@ -264,7 +264,7 @@ mel.fun <- function(d) {
      u <- unique(d$thickness)
      sp <- smooth.spline(u,eta,df=20)
      th <- seq(from=0.25,to=10,by=0.25)
-     predict.smooth.spline(sp,th)$y
+     predict(sp,th)$y
 }
 mel.str<-cbind(melanoma$ulcer,agec)
 # this is slow!

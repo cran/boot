@@ -1,7 +1,7 @@
 \name{imp.weights}
 \alias{imp.weights}
 \title{
-Importance Sampling Weights.
+Importance Sampling Weights
 }
 \description{
 This function calculates the importance sampling weight required to correct

@@ -23,7 +23,7 @@ The inverse logit is defined by \code{exp(x)/(1+exp(x))}.  Values in \code{x} of
 will also be \code{NA}s in the output.
 }
 \seealso{
-\code{\link{logit}}
+\code{\link{logit}}, \code{\link{plogis}} which is the underlying function.
 }
 \keyword{math}
 % Converted by Sd2Rd version 1.15.

@@ -1,3 +1,18 @@
+version 1.2-13 2003-03-09
+
+    update NAMESPACE file
+    censboot.Rd: call generic, not predict.smooth.spline
+
+version 1.2-12 2003-03-01
+
+    Use namespace, remove help for internal functions.
+    glm.diag.plots had one set of axis labels reversed.
+
+version 1.2-11 2003-01-29
+
+    Replace inv.logit with overflow-proof plogis.
+    Remove birthwt (from MASS) and help page for lynx.
+
 version 1.2-10 2002-11-30
 
     Use optim(method="BFGS") for 1D optimization
@@ -57,7 +72,7 @@ version 1.0-5 2000/02/06
 
     Revise censboot examples to avoid conflicts with survival5 datasets.
 
-    Help files for datsets now use keyword `datasets' not `sysdata'
+    Help files for datasets now use keyword `datasets' not `sysdata'
 
     Replace nlm by optim, as works much better. One example still
     fails, but it diverges on S and the authors did not notice.

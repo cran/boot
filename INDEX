@@ -50,46 +50,6 @@ tilt.boot	Tilted bootstrap
 tsboot		Bootstrap for time series
 var.linear	Linear variance approximation
 
-As well as these functions the following functions are included.
-These functions are not intended to be used alone but are used by the
-above functions.
-
-antithetic.array	anti.arr		balanced.array
-basic.ci		bca.ci			boot.return
-cens.case		cens.resamp		cens.return		
-cens.weird		const			empinf.reg
-extra.array		iden			importance.array	
-importance.array.bal	imp.reg			index.array
-inf.jack		make.ends		norm.inter
-normalize		ordinary.array		perc.ci
-permutation.array	positive.jack		scramble
-simplex1		stud.ci			ts.array		
-ts.return		usual.jack		zero			
-
-
-The library contains the following dataframes
-
-acme		aids		aircondit	aircondit7	amis
-aml		beaver		bigcity		birthwt		brambles
-breslow		calcium		cane		capability	cats
-catsM		cav		cd4		cement		channing
-city		claridge	cloth		coal		co.transfer
-darwin		downs.bc	ducks		fir		frets
-gravity		grav		hirose		islay		leuk
-mammals		manaus		mcycle		melanoma	motor
-neuro		nitrofen	nodal		nuclear		paulsen
-phones		poisons		polar		remission	rock
-salinity	survival	tau		tuna		urine
-wool
-
-Two regular time series of class "ts" in boot under S are under package `ts'
-in the base R distribution:
-lynx		sunspot
-(The beaver dataframe is also of class "ts")
-
-Each of these data sets has an associated help file giving brief details
-of the data and its source.
-
 In addition there are help files for the four classes of objects that are
 used in this library.  Those objects are
 
