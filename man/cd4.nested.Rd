@@ -15,5 +15,5 @@ Davison, A.C. and Hinkley, D.V. (1997)
 \seealso{
 \code{\link{cd4}}
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

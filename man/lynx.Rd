@@ -26,5 +26,5 @@ Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Applica
 Elton, C. and Nicholson, M. (1942) The ten-year cycle in numbers of lynx in 
 Canada. \emph{J. of Animal Ecology}, \bold{11}, 215-244. 
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

@@ -82,9 +82,9 @@ phones		poisons		polar		remission	rock
 salinity	survival	tau		tuna		urine
 wool
 
-It also contains two regular time series of class "rts"
+It also contains two regular time series of class "ts"
 lynx		sunspot
-(The beaver dataframe is also of class "rts")
+(The beaver dataframe is also of class "ts")
 
 Each of these data sets has an associated help file giving brief details
 of the data and its source.

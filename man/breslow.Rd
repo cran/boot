@@ -53,5 +53,5 @@ Doll, R. and Hill, A.B. (1966) Mortality of British doctors in relation to
 smoking: Observations on coronary thrombosis. 
 \emph{National Cancer Institute Monograph}, \bold{19}, 205-268.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

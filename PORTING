@@ -1,4 +1,22 @@
-version 1.0-2 99/02/24
+version 1.0-5 2000/02/06
+
+    Change tsboot for R, make tsboot examples work.
+
+    Revise censboot examples to avoid conflicts with survival5 datasets.
+
+    Help files for datsets now use keyword `datasets' not `sysdata'
+
+    Replace nlm by optim, as works much better. One example still
+    fails, but it diverges on S and the authors did not notice.
+
+
+version 1.0-4 1999/11/21
+version 1.0-3
+
+    Adjustments for later versions of R (removing functions added here).
+
+
+version 1.0-2 1999/02/24
 
     Removed sample, model.response from zzz.R
 
@@ -10,7 +28,7 @@ version 1.0-2 99/02/24
     may fail due to lack of robustness of nlm.
 
 
-version 1.0-1 98/07/24
+version 1.0-1 1998/07/24
 
 boot/R:
 

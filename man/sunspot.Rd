@@ -45,5 +45,5 @@ Zurich sunspot relative numbers.
 Waldmeir, M. (1961) \emph{The Sunspot Activity in the Years 1610-1960}.
 Schulthess and Co.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

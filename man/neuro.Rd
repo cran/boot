@@ -28,5 +28,5 @@ Ventura, V., Davison, A.C. and Boniface, S.J. (1997) A stochastic model for
 the effect of magnetic brain stimulation on a motoneurone. To appear in
 \emph{Applied Statistics}. 
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

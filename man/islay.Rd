@@ -33,5 +33,5 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 Till, R. (1974) \emph{Statistical Methods for the Earth Scientist}. Macmillan.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

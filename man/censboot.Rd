@@ -190,7 +190,8 @@ NSF-241, Dept. of Statistics, Stanford University.
 \code{\link{boot}}, \code{\link{boot.object}}, \code{\link{coxph}}, \code{\link{survfit}}
 }
 \examples{
-library(survival4)
+data(aml, package="boot")
+library(survival5)
 # Example 3.9 of Davison and Hinkley (1997) does a bootstrap on some
 # remission times for patients with a type of leukaemia.  The patients
 # were divided into those who received maintenance chemotherapy and 
@@ -207,7 +208,6 @@ aml.fun <- function(data) {
           out <- c(out,md)
      }
 }
-data(aml)
 aml.case <- censboot(aml,aml.fun,R=499,strata=aml$group)
 
 
@@ -249,7 +249,7 @@ aml.wei <- censboot(cbind(aml$time,aml$cens),aml.fun1,R=499,
 # is different in different age groups.  The statistic of interest
 # is the linear predictor.  This is returned as the values at a
 # number of equally spaced points in the range of interest.
-data(melanoma)
+data(melanoma, package="boot")
 library(splines)
 library(modreg) # for smooth.spline
 mel.cox <- coxph(Surv(time,status==1)~ns(thickness,df=4)+strata(ulcer),

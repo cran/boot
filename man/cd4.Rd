@@ -39,5 +39,5 @@ Discussion). \emph{Statistical Science}, \bold{11}, 189-228.
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

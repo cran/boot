@@ -36,5 +36,5 @@ Davison, A.C. and Hinkley, D.V. (1997)
 Jarrett, R.G. (1979) A note on the intervals between coal-mining disasters.
 \emph{Biometrika}, \bold{66}, 191-193.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

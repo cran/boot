@@ -50,5 +50,5 @@ Embury, S.H, Elias, L., Heller, P.H., Hood, C.E., Greenberg, P.L. and
 Schrier, S.L. (1977) Remission maintenance therapy in  acute myelogenous
 leukaemia. \emph{Western Journal of Medicine}, \bold{126}, 267-272.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

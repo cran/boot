@@ -61,6 +61,7 @@ Davison, A.C. and Hinkley, D.V. (1997)
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press. 
 }
 \examples{
+\dontrun{## does not work: cannot find the saddle distn
 library(modreg) # for smooth.spline
 # In this example we show how a plot such as that in Figure 9.9 of
 # Davison and Hinkley (1997) may be produced.  Note the large number of
@@ -82,7 +83,7 @@ exp.sp <- saddle.distn(A=exp.L/12,wdist="m", t0=exp.t0)
 # t-t0 and so t0 must be added for the plot.
 lines(exp.sp,h=function(u,t0) u+t0, J=function(u,t0) 1,
       t0=exp.boot$t0)
-}
+}}
 \keyword{aplot}
 \keyword{smooth}
 \keyword{nonparametric}

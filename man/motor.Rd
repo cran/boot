@@ -48,5 +48,5 @@ Venables, W.N. and Ripley, B.D. (1994)
 \seealso{
 \code{\link{mcycle}}
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

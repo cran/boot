@@ -37,5 +37,5 @@ Ellis, M.E., Neal, K.R. and Webb, A.K. (1987) Is smoking a risk factor for
 pneumonia in patients with chickenpox? \emph{British Medical Journal},
 \bold{294}, 1002.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

@@ -34,5 +34,5 @@ Efron, B. (1988) Computer-intensive methods in statistical regression.
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

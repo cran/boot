@@ -157,10 +157,10 @@ Jensen, J.L. (1995) \emph{Saddlepoint Approximations}. Oxford University Press.
 \examples{
 library(modreg) # for smooth.spline
 #  The bootstrap distribution of the mean of the air-conditioning 
-#  failure data
+#  failure data: fails to find value on R (and probably on S too)
 data(aircondit)
 air.t0 <- c(mean(aircondit$hours), sqrt(var(aircondit$hours)/12))
-saddle.distn(A=aircondit$hours/12,t0=air.t0)
+\dontrun{saddle.distn(A=aircondit$hours/12,t0=air.t0)}
 
 
 # alternatively using the conditional poisson

@@ -58,5 +58,5 @@ statistical method to the tau-decay-mode problem.
 \emph{Physical Review, D}, \bold{39},
 274-279.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

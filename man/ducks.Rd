@@ -49,5 +49,5 @@ Inheritance of behavioral characters in
 (\emph{Anas Platyrhynchos L.  x  Anas Acuta L.}) 
 hybrids. \emph{Behaviour}, \bold{27}, 259-272.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

@@ -175,10 +175,11 @@ Politis, D.N. and Romano, J.P. (1994) The stationary bootstrap.
 \emph{Journal of the American Statistical Association}, \bold{89}, 1303-1313.
 }
 \seealso{
-\code{\link{boot}}, \code{\link{arima.sim}}
+  \code{\link{boot}}
+%  , \code{\link{arima.sim}}
 }
 \examples{
-## no ar function in R
+library(ts)
 data(lynx)
 lynx.fun <- function(tsb) 
 {    ar.fit <- ar(tsb, order.max=25)
@@ -224,7 +225,7 @@ lynx.3 <- tsboot(lynx.res, lynx.fun, R=99, sim="model", n.sim=114,
 lynx.black <- function(res, n.sim, ran.args) 
 {    ts.orig <- ran.args$ts
      ts.mod <- ran.args$model
-     mean(ts.orig) + rts(arima.sim(model=ts.mod,n=n.sim,innov=res))
+     mean(ts.orig) + ts(arima.sim(model=ts.mod,n=n.sim,innov=res))
 }
 
 

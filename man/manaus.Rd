@@ -45,5 +45,5 @@ uncertain future. In
 Nishizawa, T. and Uitto, J.I. (editors),
 United Nations University Press, 113-179.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

@@ -64,5 +64,5 @@ Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Applica
 Venables, W.N. and Ripley, B.D. (1994) 
 \emph{Modern Applied Statistics with S-Plus}. Springer-Verlag.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

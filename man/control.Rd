@@ -126,6 +126,7 @@ Efron, B. (1990) More efficient bootstrap computations.
 \code{\link{boot}}, \code{\link{empinf}}, \code{\link{k3.linear}}, \code{\link{linear.approx}}, \code{\link{saddle.distn}}, \code{\link{smooth.spline}}, \code{\link{var.linear}}
 }
 \examples{
+library(modreg) # for smooth.spline
 # Use of control variates for the variance of the air-conditioning data
 mean.fun <- function(d, i)
 {    m <- mean(d$hours[i])

@@ -44,5 +44,5 @@ Davison, A.C. and Hinkley, D.V. (1997)
 Whittaker, J. (1990) \emph{Graphical Models in Applied Multivariate Statistics}.
 John Wiley.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.

@@ -39,5 +39,5 @@ Davison, A.C. and Hinkley, D.V. (1997)
 Proschan, F. (1963) Theoretical explanation of observed decreasing failure 
 rate. \emph{Technometrics}, \bold{5}, 375-383.
 }
-\keyword{sysdata}
+\keyword{datasets}
 % Converted by Sd2Rd version 0.3-1.
