@@ -1,0 +1,117 @@
+Bootstrap S-Plus Functions  (Version 1.1; May 1998)
+===========================================================
+
+This version corrects some minor errors in Version 1.0 of the code
+distributed with the first printing of Davison and Hinkley (1997).
+The author would like to thank those users who pointed out errors or
+possible improvements to the code.  Any further errors found should be
+reported to the author at the address below for correction in the
+next version.
+
+The library contains the following functions, all of which
+have online help available.
+
+abc.ci		ABC confidence intervals
+boot		Main bootstrap function
+boot.array	Generate a bootstrap frequency/index array
+boot.ci		Bootstrap simulation confidence intervals
+censboot	Bootstrap for censored data and Cox regression models.
+control		Control variate calculations
+corr		Weighted form of correlation coefficient
+cum3		Estimate the skewness
+cv.glm		Cross-validation for generalized linear models
+empinf		Calculate empirical influence values
+envelope	Confidence envelopes for functions
+exp.tilt	Exponential tilting
+freq.array	Convert an index array into a frequency array
+glm.diag	Diagnostics for generalized linear models
+glm.diag.plots	Diagnostic plots for glm's
+imp.moments	Importance resampling estimates of moments
+imp.prob	Importance resampling estimates of probabilities
+imp.quantile	Importance resampling estimates of quantiles
+imp.weights	Weights for importance resampling
+inv.logit	Inverse logit function
+jack.after.boot	Jackknife after bootstrap plots
+k3.linear	Linear skewness approximation
+linear.approx	Linear approximation to a statistic
+lines.saddle.distn  Lines method for a saddlepoint distribution object
+logit		Logit of a proportion
+norm.ci		Normal approximation confidence intervals
+plot.boot	Plot method for a bootstrap object
+print.boot	Print method for a bootstrap object
+print.bootci	Print method for a bootstrap confidence interval object
+print.saddle.distn  Print method for a saddlepoint distribution object
+print.simplex	Print method for a simplex object
+saddle		Simple and conditional saddlepoint calculations
+saddle.distn	Approximate a distribution by saddlepoint
+simplex		Tableau simplex method for linear programming
+smooth.f	Frequency smoothing
+tilt.boot	Tilted bootstrap
+tsboot		Bootstrap for time series
+var.linear	Linear variance approximation
+
+As well as these functions the following functions are included.
+These functions are not intended to be used alone but are used by the
+above functions.
+
+antithetic.array	anti.arr		balanced.array
+basic.ci		bca.ci			boot.return
+cens.case		cens.resamp		cens.return		
+cens.weird		const			empinf.reg
+extra.array		iden			importance.array	
+importance.array.bal	imp.reg			index.array
+inf.jack		make.ends		norm.inter
+normalize		ordinary.array		perc.ci
+permutation.array	positive.jack		scramble
+simplex1		stud.ci			ts.array		
+ts.return		usual.jack		zero			
+
+
+The library contains the following dataframes
+
+acme		aids		aircondit	aircondit7	amis
+aml		beaver		bigcity		birthwt		brambles
+breslow		calcium		cane		capability	cats
+catsM		cav		cd4		cement		channing
+city		claridge	cloth		coal		co.transfer
+darwin		downs.bc	ducks		fir		frets
+gravity		grav		hirose		islay		leuk
+mammals		manaus		mcycle		melanoma	motor
+neuro		nitrofen	nodal		nuclear		paulsen
+phones		poisons		polar		remission	rock
+salinity	survival	tau		tuna		urine
+wool
+
+It also contains two regular time series of class "rts"
+lynx		sunspot
+(The beaver dataframe is also of class "rts")
+
+Each of these data sets has an associated help file giving brief details
+of the data and its source.
+
+In addition there are help files for the four classes of objects that are
+used in this library.  Those objects are
+
+boot.object	bootci.object	saddle.distn.object	simplex.object
+
+The library also contains some items used in the practicals of
+"Bootstrap Methods and Their Applications" by A.C. Davison and D.V. Hinkley
+(1997, Cambridge University Press).  The objects are not intended to be used
+except in the context of these practicals.  The objects are
+
+cd4.nested	A nested bootstrap referred to in Practical 5.5
+corr.nested	The statistic used in cd4.nested
+EL.profile, EEF.profile, and lik.CI 
+	functions defined for use in the practicals of chapter 10.
+
+
+
+Angelo Canty
+Dept of Mathematics
+Swiss Federal Institute of Technology
+1015 Lausanne
+Switzerland
+
+Tel : +41 21 693 5503
+Fax : +41 21 693 4250
+email : canty@dma.epfl.ch

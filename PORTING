@@ -1,0 +1,70 @@
+version 1.0-2 99/02/24
+
+    Removed sample, model.response from zzz.R
+
+    Changed attributes(out$spa)$name<- to names(out$spa)<- in saddle.
+
+    Altered test/test-examples to make use of the examples now in R-ex.
+
+    Note that saddle.distn and functions that depend on it (control) 
+    may fail due to lack of robustness of nlm.
+
+
+version 1.0-1 98/07/24
+
+boot/R:
+
+    Many funs store the .Random.seed but that need not exist, so call
+    runif(1) first.
+
+    Add missing function union in zzz.R
+
+    Added version of sample that uses prob= in zzz.R
+
+    Replace is.matrix by isMatrix <- function(x) length(dim(x)) == 2
+    as R does not think a data frame is a matrix.
+
+    Replace reading of a number in glm.diag.plots by readline.
+
+    Replace nlmin by nlm, with appropriate changes to returned components.
+    (This is not wholly successful, as nlm seems less tolerant.)
+
+    Comment out assigns to frame=1.
+
+    split.screen etc are not in R yet: use par(mfrow) in plot.glm.diag and
+    layout in plot.boot.
+
+    add drop=F in cv.glm, cens.weird.
+
+    change is.inf to is.infinite.
+
+    change maxit= in glm calls in saddle to calls to control=
+
+boot/data:
+
+    add a dummy rts:  rts <- function(units, name, ...) ts(...)
+    to top of bootdata.q
+
+    edit n= to nmax= in scan (carefully: also occurs in lists in scan 
+    commands).
+
+    add
+
+       for(obj in ls()) save(obj, file = paste(obj, ".rda", sep=""), ascii=T)
+
+    to end of bootdata.q
+
+       R -v 20 --no-save < bootdata.q
+
+    cd4.nested is made by bd.q in the top directory.
+
+boot/man:
+
+    convert files by Sd2Rd. Add data() lines.
+
+boot/test:
+
+    script to test the examples in the help files. Not all will run,
+    as far as I know due to things missing in R or nlm not coping
+    as well as nlmin.
+

@@ -1,0 +1,9 @@
+#! /bin/csh
+# set this to the installed library location.
+set rlib=/ext/R/library
+foreach g ($rlib/boot/R-ex/*)
+set g1=`basename $g .R`
+echo $g1
+(echo "invisible(options(echo=T));library(boot)"; cat $g; echo "proc.time()")\
+| R -v 30 --no-restore --no-save >! ${g1}.Rout
+end

@@ -1,0 +1,58 @@
+Dataframes:
+
+acme         	Monthly Excess Returns
+aids         	Delay in AIDS Reporting in England and Wales
+aircondit    	Failures of Air-conditioning Equipment
+aircondit7		ditto
+amis         	Car Speeding and Warning Signs.
+aml          	Remission Times for Acute Myelogenous Leukaemia
+beaver       	Beaver Body Temperature Data
+bigcity      	Population of U.S. Cities
+birthwt      	Risk Factors for Low Birth Weight
+brambles     	Spatial Location of Bramble Canes
+breslow      	Smoking Deaths Among Doctors
+calcium      	Calcium Uptake Data
+cane         	Sugar-cane Disease Data
+capability   	Simulated Manufacturing Process Data
+cats         	Weight Data for Domestic Cats
+catsM			ditto
+cav          	Position of Muscle Caveolae
+cd4          	CD4 Counts for HIV-Positive Patients
+cd4.nested   	Nested Bootstrap of `cd4' data
+cement       	Cement Composition Data
+channing     	Channing House Data
+claridge     	Genetic Links to Left-handedness
+cloth        	Number of Flaws in Cloth
+co.transfer  	Carbon Monoxide Transfer
+coal         	Dates of Coal Mining Disasters
+darwin       	Darwin's Plant Height Differences
+downs.bc     	Incidence of Down's Syndrome in British Columbia
+ducks        	Behavioral and Plumage Characteristics of Hybrid Ducks
+fir          	Counts of Balsam-fir Seedlings
+frets        	Head Dimensions in Brothers
+gravity      	Acceleration Due to Gravity
+grav			ditto
+hirose       	Failure Time of PET Film
+islay        	Jura Quartzite Azimuths on Islay
+leuk         	Survival Times and White Blood Counts for Leukaemia Patients
+mammals      	Brain and Body Weights in Mammals
+manaus       	Average Heights of the Rio Negro river at Manaus
+mcycle       	Data from a Simulated Motorcycle Accident
+melanoma     	Survival from Malignant Melanoma
+motor        	Data from a Simulated Motorcycle Accident
+neuro        	Neurophysiological Point Process Data
+nitrofen     	Toxicity of Nitrofen in Aquatic Systems
+nodal        	Nodal Involvement in Prostate Cancer
+nuclear      	Nuclear Power Station Construction Data
+paulsen      	Neurotransmission in Guinea Pig Brains.
+phones       	Belgium Phone Calls 1950-1973
+poisons      	Animal Survival Times
+polar        	Pole Positions of New Caledonian Laterites
+remission    	Cancer Remission and Cell Activity
+rock         	Measurements on Petroleum Rock Samples
+salinity     	Water Salinity and River Discharge.
+survival     	Survival of Rats after Radiation Doses
+tau          	Tau Particle Decay Modes
+tuna         	Tuna Sighting Data
+urine        	Urine Analysis Data
+wool         	Australian Relative Wool Prices
