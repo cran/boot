@@ -1,3 +1,7 @@
+version 1.2-21 2005-01-21
+
+    remove <<see below>> in ?boot.array
+
 version 1.2-20 2004-11-03
 
     remove require(ts) call in tsboot
