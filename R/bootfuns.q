@@ -2008,7 +2008,7 @@ exp.tilt <- function(L, theta=NULL, t0=0, lambda=NULL,
             para <- list(theta[i],L,strata)
 #			assign("para",para,frame=1)
 #			lambda[i] <- nlmin(tilt.dis, 0 )$x
-            lambda[i] <- optim(0, tilt.dis)$par
+            lambda[i] <- optim(0, tilt.dis, method="BFGS")$par
             msd <- tilt.dis(lambda[i])
             if (is.na(msd) || (abs(msd) > 1e-6))
                 stop(paste("unable to find multiplier for",

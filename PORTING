@@ -1,3 +1,7 @@
+version 1.2-10 2002-11-30
+
+    Use optim(method="BFGS") for 1D optimization
+
 version 1.2-9 2002-11-05
 
     Remove datasets taken from MASS package.

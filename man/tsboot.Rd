@@ -177,7 +177,7 @@ Politis, D.N. and Romano, J.P. (1994) The stationary bootstrap.
 \emph{Journal of the American Statistical Association}, \bold{89}, 1303--1313.
 }
 \seealso{
-  \code{\link{boot}}, \code{\link{arima.sim}}
+  \code{\link{boot}}, \code{\link[ts]{arima.sim}}
 }
 \examples{
 library(ts)

@@ -21,4 +21,4 @@ Davison, A. C. and Hinkley, D. V. (1997)
 Press.
 }
 \author{ Angelo J. Canty }
-\keyword{internal} 
+\keyword{internal}
