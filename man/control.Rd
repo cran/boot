@@ -116,11 +116,11 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 
 Davison, A.C., Hinkley, D.V. and Schechtman, E. (1986) Efficient bootstrap 
-simulation. \emph{Biometrika}, \bold{73}, 555-566.
+simulation. \emph{Biometrika}, \bold{73}, 555--566.
 
 
 Efron, B. (1990) More efficient bootstrap computations.
-\emph{Journal of the American Statistical Association}, \bold{55}, 79-89.
+\emph{Journal of the American Statistical Association}, \bold{55}, 79--89.
 }
 \seealso{
 \code{\link{boot}}, \code{\link{empinf}}, \code{\link{k3.linear}}, \code{\link{linear.approx}}, \code{\link{saddle.distn}}, \code{\link{smooth.spline}}, \code{\link{var.linear}}
@@ -142,4 +142,4 @@ air.cont <- control(air.boot, index=2)
 air.cont1 <- control(air.boot, t0=log(air.boot$t0[2]), t=log(air.boot$t[,2]))
 }
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

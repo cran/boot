@@ -41,14 +41,14 @@ the estimated shape parameter in the Gamma family.  In all other cases it is 1.
 \references{
 Davison, A.C. and Snell, E.J.  (1991)  Residuals and diagnostics.  
 In \emph{Statistical Theory and Modelling: In Honour of Sir David Cox}.
-D.V. Hinkley, N. Reid and E.J. Snell (editors), 83-106.  Chapman and Hall. 
+D.V. Hinkley, N. Reid and E.J. Snell (editors), 83--106.  Chapman and Hall. 
 }
 \seealso{
-\code{\link{glm}}, \code{\link{glm.diag.plots}}, \code{\link{glm.object}}, \code{\link{summary.glm}}
+\code{\link{glm}}, \code{\link{glm.diag.plots}}, \code{\link{summary.glm}}
 }
-\section{NOTE}{
+\note{
 See the helpfile for \code{glm.diag.plots} for an example of the use of \code{glm.diag}.
 }
 \keyword{regression}
 \keyword{dplot}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

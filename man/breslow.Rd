@@ -3,7 +3,7 @@
 \title{
 Smoking Deaths Among Doctors
 }
-\section{SUMMARY}{
+\description{
 The \code{breslow} data frame has 10 rows and 5 columns.
 
 
@@ -14,37 +14,39 @@ and causes of death were assigned on the basis of these certificates.  The
 \code{breslow} data set contains the person-years of observations and deaths from
 coronary artery disease accumulated during the first ten years of the study.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(breslow)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{age}{
+\describe{
+\item{\code{age}}{
 The mid-point of the 10 year age-group for the doctors.
 }
-\item{smoke}{
+\item{\code{smoke}}{
 An indicator of whether the doctors smoked (1) or not (0).
 }
-\item{n}{
+\item{\code{n}}{
 The number of person-years in the category.
 }
-\item{y}{
+\item{\code{y}}{
 The number of deaths attributed to coronary artery disease.
 }
-\item{ns}{
+\item{\code{ns}}{
 The number of smoker years in the category (\code{smoke*n}).
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Breslow, N.E. (1985) Cohort Analysis in Epidemiology. In 
 \emph{A Celebration of Statistics} 
-A.C. Atkinson and S.E. Fienberg (editors), 109-143.
+A.C. Atkinson and S.E. Fienberg (editors), 109--143.
 Springer-Verlag.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -54,4 +56,4 @@ smoking: Observations on coronary thrombosis.
 \emph{National Cancer Institute Monograph}, \bold{19}, 205-268.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Beaver Body Temperature Data
 }
-\section{SUMMARY}{
+\description{
 The \code{beaver} data frame has 100 rows and 4 columns.  It is a multivariate
 time series of class \code{"rts"} and also inherits from class \code{"data.frame"}.
 
@@ -20,36 +20,38 @@ retreat.
 The data in this data frame are those readings for one of the beavers on a day
 in autumn.  
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(beaver)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{day}{
+\describe{
+\item{\code{day}}{
 The day number.  The data includes only data from day 307 and early 308.
 }
-\item{time}{
+\item{\code{time}}{
 The time of day formatted as hour-minute.
 }
-\item{temp}{
+\item{\code{temp}}{
 The body temperature in degrees Celsius.
 }
-\item{activ}{
+\item{\code{activ}}{
 The dichotomized activity indicator. \code{1} indicates that the beaver is outside
 of the retreat and therefore engaged in high-intensity activity.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Reynolds, P.S. (1994) Time-series analyses of beaver body temperatures.
 In \emph{Case Studies in Biometry}. N. Lange, L. Ryan, L. Billard, 
-D. Brillinger, L. Conquest and J. Greenhouse (editors), 211-228. John Wiley.
+D. Brillinger, L. Conquest and J. Greenhouse (editors), 211--228. John Wiley.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

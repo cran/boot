@@ -3,7 +3,7 @@
 \title{
 Average Heights of the Rio Negro river at Manaus
 }
-\section{SUMMARY}{
+\description{
 The \code{manaus} time series is of class \code{"rts"} and has 1080 observations on
 one variable.
 
@@ -27,11 +27,11 @@ an altitude cannot, by any means, be considered to be a precise datum
 point, observations have been provisionally referred to it.  The measurements
 are in metres.
 }
-\section{SOURCE}{
+\source{
 The data were kindly made available by Professors H. O'Reilly Sternberg and 
 D. R. Brillinger of the University of California at Berkeley.  
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
 
@@ -46,4 +46,4 @@ Nishizawa, T. and Uitto, J.I. (editors),
 United Nations University Press, 113-179.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

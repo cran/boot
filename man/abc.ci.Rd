@@ -67,12 +67,12 @@ Cambridge University Press.
 
 
 DiCiccio, T. J. and Efron B. (1992) More accurate confidence intervals in 
-exponential families. \emph{Biometrika}, \bold{79}, 231-245.
+exponential families. \emph{Biometrika}, \bold{79}, 231--245.
 
 
 DiCiccio, T. J.  and Efron  B. (1996) Bootstrap confidence intervals (with
 Discussion). 
-\emph{Statistical Science}, \bold{11}, 189-228.
+\emph{Statistical Science}, \bold{11}, 189--228.
 }
 \seealso{
 \code{\link{boot.ci}}
@@ -100,4 +100,4 @@ abc.ci(grav1, mean.diff, strata=grav1$series)
 }
 \keyword{nonparametric}
 \keyword{htest}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -1813,7 +1813,9 @@ glm.diag <- function(glmfit)
 		sd)
 	dev <- residuals(glmfit, type = "deviance")/sd
 	pear <- residuals(glmfit, type = "pearson")/sd
-	h <- lm.influence(glmfit)$hat
+        ## R change: lm.influence drops 0-wt cases.
+        h <- rep(0, length(w))
+        h[w != 0] <- lm.influence(glmfit)$hat
 	p <- glmfit$rank
 	rp <- pear/sqrt(1 - h)
 	rd <- dev/sqrt(1 - h)

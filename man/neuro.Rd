@@ -3,23 +3,23 @@
 \title{
 Neurophysiological Point Process Data
 }
-\section{SUMMARY}{
+\description{
 \code{neuro} is a matrix containing times of observed firing of a neuron in windows
 of 250ms either side of the application of a stimulus to a human subject.
 Each row of the matrix is a replication of the experiment and there were a 
 total of 469 replicates.
 }
-\section{NOTE}{
+\note{
 There are a lot of missing values in the matrix as different numbers of 
 firings 
 were observed in different replicates.  The number of firings observed varied 
 from 2 to 6.
 }
-\section{SOURCE}{
+\source{
 The data were collected and kindly made available by Dr. S.J. Boniface of the
 Neurophysiology Unit at the Radcliffe Infirmary, Oxford.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -29,4 +29,4 @@ the effect of magnetic brain stimulation on a motoneurone. To appear in
 \emph{Applied Statistics}. 
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

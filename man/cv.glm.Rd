@@ -80,7 +80,7 @@ Brieman, L., Friedman, J.H., Olshen, R.A. and Stone, C.J. (1984)
 
 Burman, P. (1989) A comparitive study of ordinary cross-validation, 
 \emph{v}-fold cross-validation and repeated learning-testing methods.
-\emph{Biometrika}, \bold{76}, 503-514
+\emph{Biometrika}, \bold{76}, 503--514
 
 
 Davison, A.C. and Hinkley, D.V. (1997) 
@@ -88,12 +88,12 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 
 Efron, B. (1986) How biased is the apparent error rate of a prediction rule?
-\emph{Journal of the American Statistical Association}, \bold{81}, 461-470.
+\emph{Journal of the American Statistical Association}, \bold{81}, 461--470.
 
 
 Stone, M.  (1974) Cross-validation choice and assessment of statistical
 predictions (with Discussion). 
-\emph{Journal of the Royal Statistical Society, B}, \bold{36}, 111-147.
+\emph{Journal of the Royal Statistical Society, B}, \bold{36}, 111--147.
 }
 \seealso{
 \code{\link{glm}}, \code{\link{glm.diag}}, \code{\link{predict}}
@@ -128,4 +128,4 @@ cv.11.err <- cv.glm(nodal, nodal.glm, cost, K=11)$delta
 
 }
 \keyword{regression}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

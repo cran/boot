@@ -94,10 +94,10 @@ Davison, A. C. and Hinkley, D. V. (1997)
 
 
 Efron, B. (1981) Nonparametric standard errors and confidence intervals 
-(with Discussion). \emph{Canadian Journal of Statistics}, \bold{9}, 139-172.
+(with Discussion). \emph{Canadian Journal of Statistics}, \bold{9}, 139--172.
 }
 \seealso{
-\code{\link{empinf}}, \code{\link{imp.prob}}, \code{\link{imp.quantile}}, \code{\link{nlmin}}, \code{\link{smooth.f}}, \code{\link{tilt.boot}}
+\code{\link{empinf}}, \code{\link{imp.prob}}, \code{\link{imp.quantile}}, \code{\link{optim}}, \code{\link{smooth.f}}, \code{\link{tilt.boot}}
 }
 \examples{
 # Example 9.8 of Davison and Hinkley (1997) requires tilting the resampling
@@ -124,4 +124,4 @@ boot(grav1, grav.fun, R=499, stype="w", weights=grav.tilt$p,
 }
 \keyword{nonparametric}
 \keyword{smooth}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

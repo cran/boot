@@ -3,33 +3,35 @@
 \title{
 Cancer Remission and Cell Activity
 }
-\section{SUMMARY}{
+\description{
 The \code{remission} data frame has 27 rows and 3 columns.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(remission)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{LI}{
+\describe{
+\item{\code{LI}}{
 A measure of cell activity.
 }
-\item{m}{
+\item{\code{m}}{
 The number of patients in each group (all values are actually 1 here).
 }
-\item{r}{
+\item{\code{r}}{
 The number of patients (out of \code{m}) who went into remission.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Freeman, D.H. (1987) \emph{Applied Categorical Data Analysis}. Marcel Dekker.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Nodal Involvement in Prostate Cancer
 }
-\section{SUMMARY}{
+\description{
 The \code{nodal} data frame has 53 rows and 7 columns.
 
 
@@ -20,50 +20,52 @@ determine nodal involvement.  It was required to see if nodal involvement could
 be accurately predicted from the predictor variables and which ones were
 most important.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(nodal)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{m}{
+\describe{
+\item{\code{m}}{
 A column of ones.
 }
-\item{r}{
+\item{\code{r}}{
 An indicator of nodal involvement. 
 }
-\item{aged}{
+\item{\code{aged}}{
 The patients age dichotomized into less than 60 (\code{0}) and 60 or over \code{1}.
 }
-\item{stage}{
+\item{\code{stage}}{
 A measurement of the size and position of the tumour observed by palpatation
 with the fingers via the rectum.  A value of \code{1} indicates a more serious
 case of the cancer.
 }
-\item{grade}{
+\item{\code{grade}}{
 Another indicator of the seriousness of the cancer, this one is determined by
 a pathology reading of a biopsy taken by needle before surgery.
 A value of \code{1} indicates a more serious case of the cancer.
 }
-\item{xray}{
+\item{\code{xray}}{
 A third measure of the seriousness of the cancer taken from an X-ray reading.
 A value of \code{1} indicates a more serious case of the cancer.
 }
-\item{acid}{
+\item{\code{acid}}{
 The level of acid phosphatase in the blood serum.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Brown, B.W. (1980) Prediction analysis for binary data. In 
 \emph{Biostatistics Casebook}.
 R.G. Miller, B. Efron, B.W. Brown and L.E. Moses (editors),
-3-18. John Wiley.
+3--18. John Wiley.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

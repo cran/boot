@@ -3,7 +3,7 @@
 \title{
 Cement Composition Data
 }
-\section{SUMMARY}{
+\description{
 The \code{cement} data frame has 13 rows and 5 columns.
 
 
@@ -11,37 +11,39 @@ The \code{cement} data frame has 13 rows and 5 columns.
 four main chemical ingredients was accurately measured.  While the cement was
 setting the amount of heat evolved was also measured.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(cement)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{x1}{
+\describe{
+\item{\code{x1}}{
 The percentage by weight of tricalcium aluminate in the sample.
 }
-\item{x2}{
+\item{\code{x2}}{
 The percentage by weight of tricalcium silictate in the sample.
 }
-\item{x3}{
+\item{\code{x3}}{
 The percentage by weight of tricalcium alumino ferrite in the sample.
 }
-\item{x4}{
+\item{\code{x4}}{
 The percentage by weight of dicalcium silictate in the sample.
 }
-\item{y}{
+\item{\code{y}}{
 The heat (in calories per gramme of cement) evolved while the sample was 
 setting.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Woods, H., Steinour, H.H. and Starke, H.R. (1932) Effect of composition of 
 Portland cement on heat evolved during hardening. 
-\emph{Industrial Engineering and Chemistry}, \bold{24}, 1207-1214.
+\emph{Industrial Engineering and Chemistry}, \bold{24}, 1207--1214.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -50,4 +52,4 @@ Venables, W.N. and Ripley, B.D. (1994)
 \emph{Modern Applied Statistics with S-Plus}. Springer-Verlag.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Nuclear Power Station Construction Data
 }
-\section{SUMMARY}{
+\description{
 The \code{nuclear} data frame has 32 rows and 11 columns.
 
 
@@ -14,60 +14,62 @@ LWR plants.  6 of the power plants had partial turnkey guarantees and it is
 possible that, for these plants, some manufacturers' subsidies may be hidden 
 in the quoted capital costs.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(nuclear)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{cost}{
+\describe{
+\item{\code{cost}}{
 The capital cost of construction in millions of dollars adjusted to 1976 base.
 }
-\item{date}{
+\item{\code{date}}{
 The date on which the construction permit was issued.  The data are measured in
 years since January 1 1990 to the nearest month.
 }
-\item{t1}{
+\item{\code{t1}}{
 The time between application for and issue of the construction permit.
 }
-\item{t2}{
+\item{\code{t2}}{
 The time between issue of operating license and construction permit.
 }
-\item{cap}{
+\item{\code{cap}}{
 The net capacity of the power plant (MWe).
 }
-\item{pr}{
+\item{\code{pr}}{
 A binary variable where \code{1} indicates the prior existence of a LWR plant at
 the same site.
 }
-\item{ne}{
+\item{\code{ne}}{
 A binary variable where \code{1} indicates that the plant was constructed in the 
 north-east region of the U.S.A.
 }
-\item{ct}{
+\item{\code{ct}}{
 A binary variable where \code{1} indicates the use of a cooling tower in the plant.
 }
-\item{bw}{
+\item{\code{bw}}{
 A binary variable where \code{1} indicates that the nuclear steam supply system was
 manufactured by Babcock-Wilcox.
 }
-\item{cum.n}{
+\item{\code{cum.n}}{
 The cumulative number of power plants constructed by each architect-engineer.
 }
-\item{pt}{
+\item{\code{pt}}{
 A binary variable where \code{1} indicates those plants with partial turnkey
 guarantees.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Cox, D.R. and Snell, E.J. (1981) 
 \emph{Applied Statistics: Principles and Examples}. Chapman and Hall.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

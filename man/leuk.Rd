@@ -3,7 +3,7 @@
 \title{
 Survival Times and White Blood Counts for Leukaemia Patients
 }
-\section{SUMMARY}{
+\description{
 The \code{leuk} data frame has 33 rows and 3 columns.
 
 
@@ -15,31 +15,33 @@ Patients termed AG positive were identified by the presence of Auer rods
 and/or  significant granulation  of the leukaemic cells in the bone marrow at 
 the time of diagnosis.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(leuk)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{wbc}{
+\describe{
+\item{\code{wbc}}{
 White blood cell count.
 }
-\item{ag}{
+\item{\code{ag}}{
 Factor describing the patients group according to the test described above.
 Levels are \code{present} and \code{absent}.
 }
-\item{time}{
+\item{\code{time}}{
 Survival time in weeks after diagnosis.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Feigl, P. and Zelen, M. (1965) Estimation of exponential survival 
 probabilities with concomitant information. \emph{Biometrics}, \bold{21}, 
-826-838.
+826--838.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -48,4 +50,4 @@ Venables, W.N. and Ripley, B.D. (1994)
 \emph{Modern Applied Statistics with S-Plus}. Springer-Verlag.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

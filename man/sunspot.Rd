@@ -3,7 +3,7 @@
 \title{
 Annual Mean Sunspot Numbers
 }
-\section{SUMMARY}{
+\description{
 \code{sunspot} is a time series of class \code{"rts"} and contains 289 observations.
 
 
@@ -18,20 +18,20 @@ relative numbers are then averaged to give an annual figure.
 See Insenman (1983) for a discussion of the relative numbers. The figures are
 for the years 1700-1988.
 }
-\section{NOTE}{
+\note{
 These data are not related to dataset of the same name in the \code{trellis} 
 library.  They are, however, similar to the \code{S-Plus} dataset \code{sunspots}
 except that this set contains annual averages instead of monthly averages
 and it is for a longer period of time.
 }
-\section{SOURCE}{
+\source{
 The data were obtained from
 
 
 Tong, H. (1990) \emph{Nonlinear Time Series: A Dynamical System Approach}.
 Oxford University Press
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -46,4 +46,4 @@ Waldmeir, M. (1961) \emph{The Sunspot Activity in the Years 1610-1960}.
 Schulthess and Co.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -33,4 +33,4 @@ weights.
 \code{\link{boot.array}}
 }
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

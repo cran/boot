@@ -71,7 +71,7 @@ and the original problem solved starting at the solution to the auxiliary
 problem.  If the only constraints are of the "<=" form, the origin is a 
 feasible solution and so the first stage can be omitted. 
 }
-\section{NOTE}{
+\note{
 The method employed here is suitable only for relatively small systems.  Also
 if possible the number of constraints should be reduced to a minimum in order
 to speed up the execution time which is approximately proportional to 
@@ -101,4 +101,4 @@ simplex(a=enj, A1=fat, b1=13800, A2=rbind(vitx, vity, vitz),
         b2=c(600, 300, 550), maxi=T)
 }
 \keyword{optimize}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

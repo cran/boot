@@ -3,7 +3,7 @@
 \title{
 Genetic Links to Left-handedness
 }
-\section{SUMMARY}{
+\description{
 The \code{claridge} data frame has 37 rows and 2 columns.  
 
 
@@ -23,25 +23,27 @@ hand, to 8, indicating someone who always favours their left hand. Between
 these two extremes are people who favour one hand for some tasks and the other 
 for other tasks.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(claridge)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{dnan}{
+\describe{
+\item{\code{dnan}}{
 The genetic measurement on each woman's DNA.
 }
-\item{hand}{
+\item{\code{hand}}{
 The measure of left-handedness on an integer scale from 1 to 8.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were kindly made available by Dr. Gordon S. Claridge from the
 Department of Experimental Psychology, University of Oxford.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

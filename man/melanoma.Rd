@@ -3,7 +3,7 @@
 \title{
 Survival from Malignant Melanoma
 }
-\section{SUMMARY}{
+\description{
 The \code{melanoma} data frame has 205 rows and 7 columns.
 
 
@@ -17,47 +17,49 @@ important prognostic variables in that patients with a thick and/or ulcerated
 tumour have an increased chance of death from melanoma.
 Patients were followed until the end of 1977.  
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(melanoma)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{time}{
+\describe{
+\item{\code{time}}{
 Survival time in days since the operation, possibly censored.
 }
-\item{status}{
+\item{\code{status}}{
 The patients status at the end of the study. 1 indicates that they had died
 from melanoma, 2 indicates that they were still alive and 3 indicates that they
 had died from causes unrelated to their melanoma.
 }
-\item{sex}{
+\item{\code{sex}}{
 The patients sex; 1=male, 2=female.
 }
-\item{age}{
+\item{\code{age}}{
 Age in years at the time of the operation.
 }
-\item{year}{
+\item{\code{year}}{
 Year of operation.
 }
-\item{thickness}{
+\item{\code{thickness}}{
 Tumour thickness in mm.
 }
-\item{ulcer}{
+\item{\code{ulcer}}{
 Indicator of ulceration; 1=present, 0=absent.
-}}
-\section{NOTE}{
+}}}
+\note{
 This dataset is not related to the dataset in the \code{trellis} library
 with the same name.
 }
-\section{SOURCE}{
+\source{
 The data were obtained from
 
 
 Andersen, P.K., Borgan, O., Gill, R.D. and Keiding, N. (1993)
 \emph{Statistical Models Based on Counting Processes}. Springer-Verlag.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
 
@@ -65,4 +67,4 @@ Venables, W.N. and Ripley, B.D. (1994)
 \emph{Modern Applied Statistics with S-Plus}. Springer-Verlag.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

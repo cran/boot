@@ -101,11 +101,11 @@ Davison, A. C. and Hinkley, D. V. (1997)
 
 
 Hesterberg, T. (1995) Weighted average importance sampling and defensive 
-mixture distributions. \emph{Technometrics}, \bold{37}, 185-194.
+mixture distributions. \emph{Technometrics}, \bold{37}, 185--194.
 
 
 Johns, M.V.  (1988) Importance sampling for bootstrap confidence intervals.
-\emph{Journal of the American Statistical Association}, \bold{83}, 709-714.
+\emph{Journal of the American Statistical Association}, \bold{83}, 709--714.
 }
 \seealso{
 \code{\link{boot}}, \code{\link{exp.tilt}}, \code{\link{imp.weights}}, \code{\link{smooth.f}}, \code{\link{tilt.boot}}
@@ -145,4 +145,4 @@ grav.q <- imp.quantile(grav.tilt.boot, w=grav.w, index=3,
 }
 \keyword{htest}
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

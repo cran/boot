@@ -3,7 +3,7 @@
 \title{
 Urine Analysis Data
 }
-\section{SUMMARY}{
+\description{
 The \code{urine} data frame has 79 rows and 7 columns.
 
 
@@ -11,45 +11,47 @@ The \code{urine} data frame has 79 rows and 7 columns.
 characteristics of the urine might be related to the formation of calcium
 oxalate crystals.  
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(urine)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{r}{
+\describe{
+\item{\code{r}}{
 Indicator of the presence of calcium oxalate crystals.
 }
-\item{gravity}{
+\item{\code{gravity}}{
 The specific gravity of the urine.
 }
-\item{ph}{
+\item{\code{ph}}{
 The pH reading of the urine.
 }
-\item{osmo}{
+\item{\code{osmo}}{
 The osmolarity of the urine. Osmolarity is proportional to the concentration
 of molecules in solution.
 }
-\item{cond}{
+\item{\code{cond}}{
 The conductivity of the urine.  Conductivity is proportional to the 
 concentration of charged ions in solution.
 }
-\item{urea}{
+\item{\code{urea}}{
 The urea concentration in millimoles per litre.
 }
-\item{calc}{
+\item{\code{calc}}{
 The calcium concentration in millimoles per litre.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Andrews, D.F. and Herzberg, A.M. (1985) 
 \emph{Data: A Collection of Problems from Many Fields for the Student and Research Worker}. Springer-Verlag.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

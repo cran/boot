@@ -139,7 +139,7 @@ input values or the values derived from the uniform bootstrap and \code{alpha}.
 }}
 \references{
 Booth, J.G., Hall, P. and Wood, A.T.A. (1993) Balanced importance resampling 
-for the bootstrap. \emph{Annals of Statistics}, \bold{21}, 286-298.
+for the bootstrap. \emph{Annals of Statistics}, \bold{21}, 286--298.
 
 
 Davison, A.C. and Hinkley, D.V. (1997) 
@@ -147,7 +147,7 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 
 Hinkley, D.V. and Shi, S. (1989) Importance sampling and the nested bootstrap. 
-\emph{Biometrika}, \bold{76}, 435-446.
+\emph{Biometrika}, \bold{76}, 435--446.
 }
 \seealso{
 \code{\link{boot}}, \code{\link{exp.tilt}}, \code{\link{Imp.Estimates}}, \code{\link{imp.weights}}, \code{\link{smooth.f}}
@@ -195,4 +195,4 @@ acme.boot1 <- tilt.boot(acme, acme.fun, R=c(499, 250, 250),
                         tilt=T, index=3, bhat=acme.b[1])
 }
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

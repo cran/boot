@@ -168,11 +168,11 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 
 Kunsch, H.R. (1989) The jackknife and the bootstrap for general stationary
-observations. \emph{Annals of Statistics}, \bold{17}, 1217-1241.
+observations. \emph{Annals of Statistics}, \bold{17}, 1217--1241.
 
 
 Politis, D.N. and Romano, J.P. (1994) The stationary bootstrap. 
-\emph{Journal of the American Statistical Association}, \bold{89}, 1303-1313.
+\emph{Journal of the American Statistical Association}, \bold{89}, 1303--1313.
 }
 \seealso{
   \code{\link{boot}}
@@ -253,4 +253,4 @@ table(lynx.3$t[,1])
 }
 \keyword{nonparametric}
 \keyword{ts}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Incidence of Down's Syndrome in British Columbia
 }
-\section{SUMMARY}{
+\description{
 The \code{downs.bc} data frame has 30 rows and 3 columns.
 
 
@@ -21,32 +21,34 @@ the first group comprises all mothers with ages in the range 15-17 and the
 last is those with ages 46-49.  No data for
 mothers over 50 or below 15 were collected. 
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(downs.bc)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{age}{
+\describe{
+\item{\code{age}}{
 The average age of all mothers in the age category.
 }
-\item{m}{
+\item{\code{m}}{
 The total number of live births to mothers in the age category.
 }
-\item{r}{
+\item{\code{r}}{
 The number of cases of Down's syndrome.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Geyer, C.J. (1991) Constrained maximum likelihood exemplified by isotonic 
 convex logistic regression. 
-\emph{Journal of the American Statistical Association}, \bold{86}, 717-724.
+\emph{Journal of the American Statistical Association}, \bold{86}, 717--724.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -172,7 +172,7 @@ Andersen, P.K., Borgan, O., Gill, R.D. and Keiding, N. (1993)
 
 Burr, D. (1994) A comparison of certain bootstrap confidence intervals in the
 Cox model. \emph{Journal of the American Statistical Association}, 
-\bold{89}, 1290-1302.
+\bold{89}, 1290--1302.
 
 
 Davison, A.C. and Hinkley, D.V. (1997) 
@@ -180,7 +180,7 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 
 Efron, B. (1981) Censored data and the bootstrap. 
-\emph{Journal of the  American Statistical Association}, \bold{76}, 312-319.
+\emph{Journal of the  American Statistical Association}, \bold{76}, 312--319.
 
 
 Hjort, N.L. (1985) Bootstrapping Cox's regression model. Technical report 
@@ -281,4 +281,4 @@ lines(seq(0.25,10,by=0.25),mel.env[2,],lty=2)
 lines(seq(0.25,10,by=0.25),mel.mod$t0,lty=1)
 }
 \keyword{survival}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -7,14 +7,14 @@ Saddlepoint Distribution Approximation Objects
 Class of objects that result from calculating saddlepoint distribution
 approximations by a call to \code{saddle.distn}.
 }
-\section{GENERATION}{
+\section{Generation}{
 This class of objects is returned from calls to the function \code{saddle.distn}.
 }
-\section{METHODS}{
+\section{Methods}{
 The class \code{"saddle.distn"} has methods for the functions \code{lines} and
 \code{print}.
 }
-\section{STRUCTURE}{
+\section{Structure}{
 Objects of class \code{"saddle.distn"} are implemented as a list with the following
 components.
 
@@ -52,4 +52,4 @@ used.
 \keyword{nonparametric}
 \keyword{methods}
 \keyword{smooth}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Car Speeding and Warning Signs.
 }
-\section{SUMMARY}{
+\description{
 The \code{amis} data frame has 8437 rows and 4 columns.
 
 
@@ -18,38 +18,40 @@ exactly 100 measurements. These speed measurements were taken before the
 erection of the sign, shortly after the erection of the sign, and again after 
 the sign had been in place for some time.  
 }
-\section{DATA DESCRIPTION}{
-This data frame contains the following columns:
+\usage{
+data(amis)
 }
-\arguments{
-\item{speed}{
+\format{
+This data frame contains the following columns:
+\describe{
+\item{\code{speed}}{
 Speeds of cars (in miles per hour).
 }
-\item{period}{
+\item{\code{period}}{
 A numeric column indicating the time that the reading was taken.
 A value of 1 indicates a reading taken before the sign was erected, 
 a 2 indicates a reading
 taken shortly after erection of the sign and a 3 indicates a reading taken 
 after the sign had been in place for some time.
 }
-\item{warning}{
+\item{\code{warning}}{
 A numeric column indicating whether the location of the reading was chosen to
 have a warning sign erected. A value of 1 indicates presence of a sign and a
 value of 2 indicates that no sign was erected.
 }
-\item{pair}{
+\item{\code{pair}}{
 A numeric column giving the pair number at which the reading was taken. Pairs
 were numbered from 1 to 14.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were kindly made available by Mr. Graham Amis, Cambridgeshire County
 Council, U.K.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
 
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

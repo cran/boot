@@ -3,7 +3,7 @@
 \title{
 Neurotransmission in Guinea Pig Brains.
 }
-\section{SUMMARY}{
+\description{
 The \code{paulsen} data frame has 346 rows and 1 columns.  
 
 
@@ -17,28 +17,30 @@ would be expected that the distribution of the current amplitude would be
 multimodal with modes at regular intervals.  The modes would be expected to
 decrease in magnitude for higher current amplitudes.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(paulsen)
+}
+\format{
 This data frame contains the following column:
 
 
-}
-\arguments{
-\item{y}{
+\describe{
+\item{\code{y}}{
 The current flowing into individual brain cells. The currents are
 measured in pico-amperes.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were kindly made available by Dr. O. Paulsen from the Department
 of Pharmacology at the University of Oxford. 
 
 
 Paulsen, O. and Heggelund, P. (1994) The quantal size at retinogeniculate 
 synapses determined from spontaneous and evoked EPSCs in guinea-pig thalamic 
-slices. \emph{Journal of Physiology}, \bold{480}, 505-511. 
+slices. \emph{Journal of Physiology}, \bold{480}, 505--511. 
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

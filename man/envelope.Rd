@@ -104,4 +104,4 @@ lines(grav.qq$x,grav.env$overall[2,],lty=1)
 }
 \keyword{dplot}
 \keyword{htest}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

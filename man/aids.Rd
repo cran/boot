@@ -3,7 +3,7 @@
 \title{
 Delay in AIDS Reporting in England and Wales
 }
-\section{SUMMARY}{
+\description{
 The \code{aids} data frame has 570 rows and 6 columns.
 
 
@@ -16,46 +16,48 @@ reported cases of AIDS diagnosed from July 1983 and until the end of 1992.
 The data are cross-classified by the date of diagnosis and the time delay in 
 the reporting of the cases.  
 }
-\section{DATA DESCRIPTION}{
-This data frame contains the following columns:
+\usage{
+data(aids)
 }
-\arguments{
-\item{year}{
+\format{
+This data frame contains the following columns:
+\describe{
+\item{\code{year}}{
 The year of the diagnosis.
 }
-\item{quarter}{
+\item{\code{quarter}}{
 The quarter of the year in which diagnosis was made.
 }
-\item{delay}{
+\item{\code{delay}}{
 The time delay (in months) between diagnosis and reporting. 0 means that the
 case was reported within one month.  Longer delays are grouped in 3 month
 intervals and the value of \code{delay} is the midpoint of the interval (therefore
 a value of \code{2} indicates that reporting was delayed for between 1 and 3 
 months).
 }
-\item{dud}{
+\item{\code{dud}}{
 An indicator of censoring. These are categories for which full information is
 not yet available and the number recorded is a lower bound only.
 }
-\item{time}{
+\item{\code{time}}{
 The time interval of the diagnosis. That is the number of quarters from July
 1983 until the end of the quarter in which these cases were diagnosed.
 }
-\item{y}{
+\item{\code{y}}{
 The number of AIDS cases reported.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 De Angelis, D. and Gilks, W.R. (1994) Estimating acquired immune
 deficiency syndrome accounting for reporting delay.
-\emph{Journal of the Royal Statistical Society, A}, \bold{157}, 31-40.
+\emph{Journal of the Royal Statistical Society, A}, \bold{157}, 31--40.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997)
 \emph{Bootstrap Methods and Their Application}.
 Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

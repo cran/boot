@@ -89,7 +89,7 @@ Davison, A. C. and Hinkley, D. V. (1997)
 
 Davison, A.C. and Snell, E.J.  (1991)  Residuals and diagnostics.  In 
 \emph{Statistical Theory and Modelling: In Honour of Sir David Cox}
-D.V. Hinkley, N. Reid, and E.J. Snell (editors), 83-106. Chapman and Hall.
+D.V. Hinkley, N. Reid, and E.J. Snell (editors), 83--106. Chapman and Hall.
 }
 \seealso{
 \code{\link{glm}}, \code{\link{glm.diag}}, \code{\link{identify}}
@@ -105,4 +105,4 @@ glm.diag.plots(leuk.mod,leuk.diag)
 \keyword{regression}
 \keyword{dplot}
 \keyword{hplot}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

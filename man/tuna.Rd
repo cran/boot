@@ -3,7 +3,7 @@
 \title{
 Tuna Sighting Data
 }
-\section{SUMMARY}{
+\description{
 The \code{tuna} data frame has 64 rows and 1 columns.  
 
 
@@ -14,26 +14,28 @@ Each school of tuna sighted is counted and its perpendicular distance from the
 transect measured.  The survey was conducted in summer when tuna tend to stay
 on the surface.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(tuna)
+}
+\format{
 This data frame contains the following column:
 
 
-}
-\arguments{
-\item{y}{
+\describe{
+\item{\code{y}}{
 The perpendicular distance, in miles, from the transect for 64 independent 
 sightings of tuna schools.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Chen, S.X. (1996) Empirical likelihood confidence intervals for
-nonparametric density estimation. \emph{Biometrika}, \bold{83}, 329-341.
+nonparametric density estimation. \emph{Biometrika}, \bold{83}, 329--341.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Remission Times for Acute Myelogenous Leukaemia
 }
-\section{SUMMARY}{
+\description{
 The \code{aml} data frame has 23 rows and 3 columns.
 
 
@@ -16,32 +16,34 @@ second group did not.  The aim of the study was to see if maintenance
 chemotherapy increased the length of the remission.  The data here formed a
 preliminary analysis which was conducted in October 1974.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(aml)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{time}{
+\describe{
+\item{\code{time}}{
 The length of the complete remission (in weeks).
 }
-\item{cens}{
+\item{\code{cens}}{
 An indicator of right censoring.  1 indicates that the patient had a relapse
 and so \code{time} is the length of the remission. 0 indicates that the patient
 had left the study or was still in remission in October 1974, that is the
 length of remission is right-censored.
 }
-\item{group}{
+\item{\code{group}}{
 The group into which the patient was randomized.  Group 1 received
 maintenance chemotherapy, group 2 did not.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Miller, R.G. (1981) \emph{Survival Analysis}. John Wiley.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -51,4 +53,4 @@ Schrier, S.L. (1977) Remission maintenance therapy in  acute myelogenous
 leukaemia. \emph{Western Journal of Medicine}, \bold{126}, 267-272.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

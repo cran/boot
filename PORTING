@@ -1,3 +1,9 @@
+version 1.0-6 2000/11/27
+
+    Re-port all the help files with Sd2Rd 1.15.
+    R-specific change in glm.diag.
+
+
 version 1.0-5 2000/02/06
 
     Change tsboot for R, make tsboot examples work.

@@ -42,4 +42,4 @@ the mean of the observed bootstrap statistics is also printed.
 }
 \keyword{nonparametric}
 \keyword{htest}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

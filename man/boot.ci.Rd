@@ -137,11 +137,11 @@ Davison, A.C. and Hinkley, D.V. (1997)
 
 
 DiCiccio, T.J. and Efron  B. (1996) Bootstrap confidence intervals (with 
-Discussion). \emph{Statistical Science}, \bold{11}, 189-228.
+Discussion). \emph{Statistical Science}, \bold{11}, 189--228.
 
 
 Efron, B. (1987) Better bootstrap confidence intervals (with Discussion).
-\emph{Journal of the American Statistical Association}, \bold{82}, 171-200.
+\emph{Journal of the American Statistical Association}, \bold{82}, 171--200.
 }
 \seealso{
 \code{\link{abc.ci}}, \code{\link{boot}}, \code{\link{bootci.object}}, \code{\link{empinf}}, \code{\link{norm.ci}}
@@ -211,4 +211,4 @@ boot.ci(air.boot, type=c("norm", "basic", "perc", "stud"),
 }
 \keyword{nonparametric}
 \keyword{htest}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

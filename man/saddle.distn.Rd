@@ -137,12 +137,12 @@ solve the problem.
 \references{
 Booth, J.G. and Butler, R.W. (1990) Randomization distributions and 
 saddlepoint approximations in generalized linear models. 
-\emph{Biometrika}, \bold{77}, 787-796.
+\emph{Biometrika}, \bold{77}, 787--796.
 
 
 Canty, A.J. and Davison, A.C. (1997) Implementation of saddlepoint 
 approximations to resampling distributions. 
-\emph{Computing Science and Statistics; Proceedings of the 28th Symposium on the Interface} 248-253.
+\emph{Computing Science and Statistics; Proceedings of the 28th Symposium on the Interface} 248--253.
 
 
 Davison, A.C. and Hinkley, D.V. (1997) 
@@ -191,4 +191,4 @@ saddle.distn(A=Afn, u=ufn, wdist="p", type="cond", t0=city.t0,
 \keyword{nonparametric}
 \keyword{smooth}
 \keyword{dplot}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

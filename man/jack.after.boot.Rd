@@ -98,7 +98,7 @@ Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Applica
 
 Efron, B. (1992) Jackknife-after-bootstrap standard errors and influence 
 functions (with Discussion). 
-\emph{Journal of the Royal Statistical Society, B}, \bold{54}, 83-127.
+\emph{Journal of the Royal Statistical Society, B}, \bold{54}, 83--127.
 }
 \seealso{
 \code{\link{boot}}, \code{\link{empinf}}
@@ -139,4 +139,4 @@ jack.after.boot(frets.boot,useJ=F,stinf=F,index=7)
 }
 \keyword{hplot}
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

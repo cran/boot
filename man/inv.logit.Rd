@@ -26,4 +26,4 @@ will also be \code{NA}s in the output.
 \code{\link{logit}}
 }
 \keyword{math}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -76,7 +76,7 @@ supplied then the interval is bias-corrected using the bootstrap bias estimate,
 and so the interval would be centred at \code{2*t0-mean(t)}.  Otherwise the interval
 is centred at \code{t0}.
 }
-\section{NOTE}{
+\note{
 This function is primarily designed to be called by \code{boot.ci} to calculate 
 the normal approximation after a bootstrap but it can also be used without
 doing any bootstrap calculations as long as \code{t0} and \code{var.t0} can be supplied. See the examples below.
@@ -108,4 +108,5 @@ norm.ci(t0=ratio(city,rep(0.1,10)), var.t0=city.v)
 
 
 }
-% Converted by Sd2Rd version 0.3-1.
+\keyword{htest}
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Sugar-cane Disease Data
 }
-\section{SUMMARY}{
+\description{
 The \code{cane} data frame has 180 rows and 5 columns. 
 
 
@@ -21,32 +21,34 @@ containing the disease agent and then some were planted in the plot.  After a
 fixed period of time, the total number of shoots and the number of diseased
 shoots were recorded.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(cane)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{n}{
+\describe{
+\item{\code{n}}{
 The total number of shoots in each plot.
 }
-\item{r}{
+\item{\code{r}}{
 The number of diseased shoots.
 }
-\item{x}{
+\item{\code{x}}{
 The number of pieces of the stems, out of 50, planted in each plot.
 }
-\item{var}{
+\item{\code{var}}{
 A factor indicating the variety of sugar-cane in each plot.
 }
-\item{block}{
+\item{\code{block}}{
 A factor for the blocks.
 }}
-\section{SOURCE}{
+\source{
 The data were kindly supplied by Dr. C.G.B. Demetrio of Escola
 Superior de Agricultura, Universidade de Sao Paolo, Brazil.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }

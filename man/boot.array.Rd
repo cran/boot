@@ -69,4 +69,4 @@ city.perm <- boot(city, perm.cor, R=40, sim="permutation")
 boot.array(city.perm, indices=T)
 }
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

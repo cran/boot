@@ -7,13 +7,13 @@ Bootstrap Confidence Interval Objects
 Class of objects that result from calculating confidence intervals from
 an object of class \code{"boot"}.
 }
-\section{GENERATION}{
+\section{Generation}{
 This class of objects is returned from calls to the function \code{boot.ci},
 }
-\section{METHODS}{
+\section{Methods}{
 The class \code{"bootci"} has methods for \code{print}.
 }
-\section{STRUCTURE}{
+\section{Structure}{
 Objects of class \code{"bootci"} are implemented as a list with the following
 components.
 
@@ -62,4 +62,4 @@ themselves
 \keyword{htest}
 \keyword{nonparametric}
 \keyword{methods}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

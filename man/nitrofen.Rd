@@ -3,7 +3,7 @@
 \title{
 Toxicity of Nitrofen in Aquatic Systems
 }
-\section{SUMMARY}{
+\description{
 The \code{nitrofen} data frame has 50 rows and 5 columns.
 
 
@@ -21,38 +21,40 @@ were randomized into batches of 10 and each batch was put in a solution with
 a measured concentration of nitrofen.  Then the number of live offspring in
 each of the three broods to each animal was recorded.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(nitrofen)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{conc}{
+\describe{
+\item{\code{conc}}{
 The nitrofen concentration in the solution (mug/litre).
 }
-\item{brood1}{
+\item{\code{brood1}}{
 The number of live offspring in the first brood.
 }
-\item{brood2}{
+\item{\code{brood2}}{
 The number of live offspring in the second brood.
 }
-\item{brood3}{
+\item{\code{brood3}}{
 The number of live offspring in the third brood.
 }
-\item{total}{
+\item{\code{total}}{
 The total number of live offspring in the first three broods.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Bailer, A.J. and Oris, J.T. (1994) Assessing toxicity of pollutants in aquatic 
 systems. In \emph{Case Studies in Biometry}. N. Lange, L. Ryan, L. Billard,
-D. Brillinger, L. Conquest and J. Greenhouse (editors), 25-40. John Wiley.
+D. Brillinger, L. Conquest and J. Greenhouse (editors), 25--40. John Wiley.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

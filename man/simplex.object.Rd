@@ -7,13 +7,13 @@ Linear Programming Solution Objects
 Class of objects that result from solving a linear programming
 problem using \code{simplex}.
 }
-\section{GENERATION}{
+\section{Generation}{
 This class of objects is returned from calls to the function \code{simplex}.
 }
-\section{METHODS}{
+\section{Methods}{
 The class \code{"saddle.distn"} has a method for the function \code{print}.
 }
-\section{STRUCTURE}{
+\section{Structure}{
 Objects of class \code{"simplex"} are implemented as a list with the following
 components.
 

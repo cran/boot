@@ -3,7 +3,7 @@
 \title{
 Nested Bootstrap of `cd4' data
 }
-\section{SUMMARY}{
+\description{
 This is an example of a nested bootstrap for the correlation 
 coefficient of the \code{cd4} data frame.  It is used in a practical
 in Chapter 5 of Davison and Hinkley (1997).
@@ -16,4 +16,4 @@ Davison, A.C. and Hinkley, D.V. (1997)
 \code{\link{cd4}}
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

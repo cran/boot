@@ -4,7 +4,7 @@
 \title{
 Acceleration Due to Gravity
 }
-\section{SUMMARY}{
+\description{
 The \code{gravity} data frame has 81 rows and 2 columns.
 
 
@@ -24,28 +24,30 @@ data from all eight experiments.  The \code{grav} dataframe contains the data fr
 the experiments 7 and 8.  The data are expressed as deviations from
 980.000 in centimetres per second squared.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(gravity)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{g}{
+\describe{
+\item{\code{g}}{
 The deviation of the estimate from 980.000 centimetres per second squared.
 }
-\item{series}{
+\item{\code{series}}{
 A factor describing from which experiment the estimate was derived.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Cressie, N. (1982) Playing safe with misweighted means. 
-\emph{Journal of the American Statistical Association}, \bold{77}, 754-759.
+\emph{Journal of the American Statistical Association}, \bold{77}, 754--759.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

@@ -3,7 +3,7 @@
 \title{
 Calcium Uptake Data
 }
-\section{SUMMARY}{
+\description{
 The \code{calcium} data frame has 27 rows and 2 columns.
 
 
@@ -15,28 +15,30 @@ then the amount of radioactive calcium that was absorbed by the cells was
 measured.  The experiment was repeated independently with 9 different
 times of suspension each replicated 3 times.  
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(calcium)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{time}{
+\describe{
+\item{\code{time}}{
 The time (in minutes) that the cells were suspended in the solution.
 }
-\item{cal}{
+\item{\code{cal}}{
 The amount of calcium uptake (nmoles/mg).
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Rawlings, J.O. (1988) \emph{Applied Regression Analysis}. 
 Wadsworth and Brooks/Cole Statistics/Probability Series.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

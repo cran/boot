@@ -83,7 +83,7 @@ the number of observations in \code{data}.
 Any other arguments that \code{statistic} takes.  They will be passed unchanged to
 \code{statistic} every time that it is called.
 }}
-\section{WARNING}{
+\section{Warning}{
 All arguments to \code{empinf} must be passed using the \code{name=value} convention.  If
 this is not followed then unpredictable errors can occur.
 }
@@ -167,4 +167,4 @@ empinf(boot.out=grav.boot,t=grav.z)
 }
 \keyword{nonparametric}
 \keyword{math}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

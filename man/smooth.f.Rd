@@ -61,7 +61,7 @@ Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Applica
 
 Davison, A.C., Hinkley, D.V. and Worton, B.J. (1995) Accurate and efficient 
 construction of bootstrap likelihoods. \emph{Statistics and Computing}, 
-\bold{5}, 257-264.
+\bold{5}, 257--264.
 }
 \seealso{
 \code{\link{boot}}, \code{\link{exp.tilt}}, \code{\link{tilt.boot}}
@@ -109,4 +109,4 @@ imp.prob(grav.boot2,t0=-grav.z0[3],t=-grav.boot2$t[,3])
 }
 \keyword{smooth}
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

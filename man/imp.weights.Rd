@@ -54,18 +54,18 @@ Davison, A. C. and Hinkley, D. V. (1997)
 
 
 Hesterberg, T. (1995) Weighted average importance sampling and defensive 
-mixture distributions. \emph{Technometrics}, \bold{37}, 185-194.
+mixture distributions. \emph{Technometrics}, \bold{37}, 185--194.
 
 
 Johns, M.V.  (1988) Importance sampling for bootstrap confidence intervals.
-\emph{Journal of the American Statistical Association}, \bold{83}, 709-714.
+\emph{Journal of the American Statistical Association}, \bold{83}, 709--714.
 }
 \seealso{
 \code{\link{boot}}, \code{\link{exp.tilt}}, \code{\link{imp.moments}}, \code{\link{smooth.f}}, \code{\link{tilt.boot}}
 }
-\section{NOTE}{
+\note{
 See the example in the help for \code{imp.moments} for an example of using 
 \code{imp.weights}.
 }
 \keyword{nonparametric}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

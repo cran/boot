@@ -3,7 +3,7 @@
 \title{
 Monthly Excess Returns
 }
-\section{SUMMARY}{
+\description{
 The \code{acme} data frame has 60 rows and 3 columns.
 
 
@@ -12,31 +12,33 @@ those for all stocks listed on the New York and American Stock Exchanges were
 recorded over a five year period.  These excess returns are relative to the
 return on a risk-less investment such a U.S. Treasury bills.  
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(acme)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{month}{
+\describe{
+\item{\code{month}}{
 A character string representing the month of the observation.
 }
-\item{market}{
+\item{\code{market}}{
 The excess return of the market as a whole.
 }
-\item{acme}{
+\item{\code{acme}}{
 The excess return for the Acme Cleveland Corporation.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Simonoff, J.S. and Tsai, C.-L. (1994) Use of modified profile likelihood for 
 improved tests of constancy of variance in regression. 
-\emph{Applied Statistics}, \bold{43}, 353-370.
+\emph{Applied Statistics}, \bold{43}, 353--370.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.

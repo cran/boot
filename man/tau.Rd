@@ -3,7 +3,7 @@
 \title{
 Tau Particle Decay Modes
 }
-\section{SUMMARY}{
+\description{
 The \code{tau} data frame has 60 rows and 2 columns.
 
 
@@ -27,28 +27,30 @@ One of the goals of the experiments was to estimate the rate of decay due to
 events other than the four main modes of decay.  These are uncertain events and
 so cannot themselves be observed directly.
 }
-\section{DATA DESCRIPTION}{
+\usage{
+data(tau)
+}
+\format{
 This data frame contains the following columns:
 
 
-}
-\arguments{
-\item{rate}{
+\describe{
+\item{\code{rate}}{
 The decay rate expressed as a percentage.
 }
-\item{decay}{
+\item{\code{decay}}{
 The type of decay measured in the experiment.  It is a factor with levels
 \code{1}, \code{rho}, \code{pi}, \code{e} and \code{mu}.
-}}
-\section{SOURCE}{
+}}}
+\source{
 The data were obtained from
 
 
 Efron, B. (1992) Jackknife-after-bootstrap standard errors and influence 
 functions (with Discussion). 
-\emph{Journal of the Royal Statistical Society, B}, \bold{54}, 83-127.
+\emph{Journal of the Royal Statistical Society, B}, \bold{54}, 83--127.
 }
-\section{OTHER REFERENCES}{
+\references{
 Davison, A.C. and Hinkley, D.V. (1997) 
 \emph{Bootstrap Methods and Their Application}. Cambridge University Press.
 
@@ -59,4 +61,4 @@ statistical method to the tau-decay-mode problem.
 274-279.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 0.3-1.
+% Converted by Sd2Rd version 1.15.
