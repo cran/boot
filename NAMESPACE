@@ -8,8 +8,7 @@ export(abc.ci, boot, boot.array, boot.ci, censboot, control, corr,
 
 # documented but not exported
 # export(lines.saddle.distn, plot.boot, print.boot, print.bootci, print.simplex)
-importFrom(graphics, lines)
-importFrom(graphics, plot)
+importFrom(graphics, lines, plot)
 
 S3method(lines, saddle.distn)
 S3method(plot, boot)

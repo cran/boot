@@ -3339,7 +3339,6 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
 #  the block bootstrap, the stationary bootstrap (these two can also be
 #  post-blackened), model-based resampling and phase scrambling.
 #
-    require(ts)
     tscl <- class(tseries)
 #	if (!is.null(tscl) && (any(tscl == "its")))
 #		stop("Irregular time series cannot be bootstrapped")

@@ -11,8 +11,8 @@
   variate.
 }
 \usage{
-control(boot.out, L = NULL, distn = NULL, index = 1, t0 = NULL, t = NULL, 
-        bias.adj = FALSE, alpha = NULL, \dots)
+control(boot.out, L = NULL, distn = NULL, index = 1, t0 = NULL,
+        t = NULL, bias.adj = FALSE, alpha = NULL, \dots)
 }
 \arguments{
   \item{boot.out}{
@@ -146,6 +146,7 @@ air.boot <- boot(aircondit, mean.fun, R = 999)
 control(air.boot, index = 2, bias.adj = TRUE)
 air.cont <- control(air.boot, index = 2)
 # Now let us try the variance on the log scale.
-air.cont1 <- control(air.boot, t0=log(air.boot$t0[2]), t=log(air.boot$t[,2]))
+air.cont1 <- control(air.boot, t0=log(air.boot$t0[2]),
+                     t=log(air.boot$t[,2]))
 }
 \keyword{nonparametric}

@@ -1,3 +1,7 @@
+version 1.2-20 2004-11-03
+
+    remove require(ts) call in tsboot
+
 version 1.2-19 2004-08-12
 version 1.2-18 2004-08-03
 
