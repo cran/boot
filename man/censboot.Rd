@@ -247,7 +247,6 @@ aml.wei <- censboot(cbind(aml$time,aml$cens),aml.fun1,R=499,
 # number of equally spaced points in the range of interest.
 data(melanoma, package="boot")
 library(splines)# for ns
-library(modreg) # for smooth.spline
 mel.cox <- coxph(Surv(time,status==1)~ns(thickness,df=4)+strata(ulcer),
      data=melanoma)
 mel.surv <- survfit(mel.cox)

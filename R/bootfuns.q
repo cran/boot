@@ -3207,7 +3207,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     spa <- spa[pts.in,]
 #  Fit a spline to the approximations and predict at the required quantile
 #  values.
-    distn <- modreg::smooth.spline(qnorm(spa[,2]),pts)
+    distn <- smooth.spline(qnorm(spa[,2]),pts)
     quantiles <- predict(distn,qnorm(alpha))$y
     quans <- cbind(alpha,quantiles)
     colnames(quans) <- c("alpha", "quantile")
@@ -3263,11 +3263,11 @@ lines.saddle.distn <- function(x, dens=TRUE, h=function(u) u,
     tt1 <- seq(from=rg[1],to=rg[2],length=npts)
     if (dens) {
         gs <- sad.d$points[,2]
-        spl <- modreg::smooth.spline(h(tt,...),log(gs*J(tt,...)))
+        spl <- smooth.spline(h(tt,...),log(gs*J(tt,...)))
         lines(tt1,exp(predict(spl,tt1)$y),lty=lty)
     }
     else {	Gs <- sad.d$points[,3]
-		spl <- modreg::smooth.spline(h(tt,...),qnorm(Gs))
+		spl <- smooth.spline(h(tt,...),qnorm(Gs))
 		lines(tt1,pnorm(predict(spl,tt1)$y))
             }
     invisible(sad.d)
