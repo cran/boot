@@ -8,16 +8,18 @@ This is a method for the function \code{print()} to print objects of the
 class \code{"bootci"}.
 }
 \usage{
-print.bootci(x, hinv=NULL)
+\method{print}{bootci}(x, hinv=NULL, ...)
 }
 \arguments{
-\item{x}{
-The output from a call to \code{boot.ci}.
+  \item{x}{
+    The output from a call to \code{boot.ci}.
+  }
+  \item{hinv}{
+    A transformation to be made to the interval end-points before they are
+    printed.
+  }
+  \item{\dots}{further arguments passed to or from other methods.}
 }
-\item{hinv}{
-A transformation to be made to the interval end-points before they are
-printed.
-}}
 \value{
 The object \code{ci.out} is returned invisibly.
 }

@@ -8,8 +8,8 @@ This function calculates the jackknife influence values from a bootstrap
 output object and plots the corresponding jackknife-after-bootstrap plot.
 }
 \usage{
-jack.after.boot(boot.out, index=1, t=NULL, L=NULL, useJ=T, 
-                stinf=T, alpha=NULL, main="", ylab=NULL, \dots)
+jack.after.boot(boot.out, index=1, t=NULL, L=NULL, useJ=TRUE, 
+                stinf=TRUE, alpha=NULL, main="", ylab=NULL, \dots)
 }
 \arguments{
 \item{boot.out}{

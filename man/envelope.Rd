@@ -9,7 +9,7 @@ curve based on bootstrap replicates of the curve evaluated at a number of
 fixed points.
 }
 \usage{
-envelope(boot.out=NULL, mat=boot.out$t, level=0.95, index=1:ncol(mat))
+envelope(boot.out=NULL, mat=NULL, level=0.95, index=1:ncol(mat))
 }
 \arguments{
 \item{boot.out}{

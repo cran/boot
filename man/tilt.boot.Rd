@@ -13,7 +13,7 @@ distribution.
 }
 \usage{
 tilt.boot(data, statistic, R, sim="ordinary", stype="i", 
-          strata=rep(1, n), L=NULL, theta, 
+          strata=rep(1, n), L=NULL, theta=NULL, 
           alpha=c(0.025, 0.975), tilt=TRUE, width=0.5, 
           index=1, \dots)
 }

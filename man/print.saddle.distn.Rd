@@ -8,12 +8,16 @@ This is a method for the function \code{print()} to print objects of class
 \code{"saddle.distn"}.
 }
 \usage{
-print.saddle.distn(x)
+\method{print}{saddle.distn}(x, ...)
 }
 \arguments{
-\item{x}{
-An object of class \code{"saddle.distn"} created by a call to \code{saddle.distn}.
-}}
+  \item{x}{
+    An object of class \code{"saddle.distn"} created by a call to
+    \code{saddle.distn}.
+  }
+  \item{\dots}{further arguments passed to or from other methods.}
+ 
+}
 \value{
 The input is returned invisibly.
 }

@@ -344,7 +344,7 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
 }
 
 print.boot <- function(x,digits=options()$digits,
-		index=1:ncol(boot.out$t)) {
+		index=1:ncol(boot.out$t), ...) {
 #
 # Print the output of a bootstrap
 #
@@ -650,7 +650,7 @@ index.array <- function(n, R, sim, strata=rep(1,n), m=0, L=NULL, weights=NULL)
 }
 
 jack.after.boot <- function(boot.out, index=1, t=NULL, L=NULL,
-	useJ=T, stinf = T, alpha=NULL, main = "", ylab=NULL, ...)
+	useJ=TRUE, stinf = TRUE, alpha=NULL, main = "", ylab=NULL, ...)
 {
 # jackknife after bootstrap plot
     t.o <- t
@@ -901,7 +901,7 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
     output
 }
 
-print.bootci <- function(x, hinv=NULL) {
+print.bootci <- function(x, hinv=NULL, ...) {
 #
 #  Print the output from boot.ci
 #
@@ -2689,7 +2689,7 @@ simplex1 <- function(a,A,b,init,basic,val=0,stage=2, n1=N, eps=1e-10,
 
 }
 
-print.simplex <- function(x) {
+print.simplex <- function(x, ...) {
 #
 #  Print the output of a simplex solution to a linear programming problem.
 #
@@ -3217,7 +3217,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     out
 }
 
-print.saddle.distn <- function(x) {
+print.saddle.distn <- function(x, ...) {
 #
 #  Print the output from saddle.distn
 #
