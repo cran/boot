@@ -85,7 +85,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
     temp.str <- strata
     strata <- tapply(1:n,as.numeric(strata))
     if ((n == 0) || is.null(n))
-        stop("No data in call to boot")
+        stop("no data in call to boot")
     if (sim != "parametric") {
 	if ((sim == "antithetic") && is.null(L))
             L <- empinf(data=data,statistic=statistic,
@@ -314,8 +314,8 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
         qlab <- paste("Quantiles of Chi-squared(",df,")",sep="")
     }
     else {	if(qdist!="norm")
-                    warning(paste(qdist,"distribution not supported",
-                                  "using normal instead"))
+                    warning(sQuote(qdist),
+                            " distribution not supported using normal instead")
                     qq <- qnorm((1:R)/(R+1))
                     qlab<-"Quantiles of Standard Normal"
                 }
@@ -499,8 +499,7 @@ print.boot <- function(x, digits = getOption("digits"),
     if (!is.null(op)) print(op,digits=digits)
     if (length(ind1) > 0)
         for (j in ind1)
-            cat(paste("WARNING: All values of t",j,"* are NA\n",
-                      sep=""))
+            cat(paste("WARNING: All values of t", j, "* are NA\n", sep=""))
     invisible(boot.out)
 }
 
@@ -788,7 +787,7 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
     temp <- abs(kvals-K)
     if (!any(temp==0))
         K <- kvals[temp==min(temp)][1]
-    if (K!=K.o) warning(paste("K has been set to",K))
+    if (K!=K.o) warning("K has been set to ", K)
     f <- ceiling(n/K)
     s <- sample(rep(1:K, f),n)
     n.s <- table(s)
@@ -843,7 +842,7 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
             t <- boot.out$t[,index]
         }
         else if (ncol(boot.out$t)<max(index)) {
-            warning("Index out of bounds; minimum index only used.")
+            warning("index out of bounds; minimum index only used.")
             index <- min(index)
             t0 <- boot.out$t0[index]
             t <- boot.out$t[,index]
@@ -885,7 +884,7 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
         output <- c(output, list(basic=basic.ci(t0,t,conf,hinv=hinv)))
     if (any(type == "all" | type == "stud")) {
         if (length(index)==1)
-            warning("Bootstrap variances needed for studentized intervals")
+            warning("bootstrap variances needed for studentized intervals")
         else
             output <- c(output, list(student=stud.ci(c(t0,var.t0),
                                      cbind(t,var.t),conf,hinv=hinv)))
@@ -1035,7 +1034,7 @@ norm.ci <- function(boot.out=NULL,conf=0.95,index=1,var.t0=NULL, t0=NULL,
 {
     if (is.null(t0))  {
         if (!is.null(boot.out)) t0 <-boot.out$t0[index]
-        else stop("Bootstrap output object or t0 required")
+        else stop("bootstrap output object or 't0' required")
     }
     if (!is.null(boot.out) && is.null(t))
         t <- boot.out$t[,index]
@@ -1073,7 +1072,7 @@ norm.inter <- function(t,alpha)
     R <- length(t)
     rk <- (R+1)*alpha
     if (!all(rk>1 & rk<R))
-        warning("Extreme Order Statistics used as Endpoints")
+        warning("extreme order statistics used as endpoints")
     k <- trunc(rk)
     inds <- 1:length(k)
     out <- inds
@@ -1111,7 +1110,7 @@ stud.ci <- function(tv0,tv,conf=0.95, hinv=function(t) t)
 #
 {
     if ((length(tv0) < 2) || (ncol(tv) < 2))
-    {	warning("Variance Required for Studentized CI's")
+    {	warning("variance required for Studentized CI's")
         out <- NA
     }
     else
@@ -1174,7 +1173,7 @@ abc.ci <- function(data, statistic, index=1, strata=rep(1,n), conf=0.95,
     if (isMatrix(y)) n <- nrow(y) else n <- length(y)
     strata1 <- tapply(strata,as.numeric(strata))
     if (length(index) != 1)
-    {	warning("Only first element of index used in abc.ci")
+    {	warning("only first element of index used in abc.ci")
         index <- index[1]
     }
     S <- length(table(strata1))
@@ -1259,8 +1258,7 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
         if (!is.null(cox))
             stop("sim=weird cannot be used with coxph object")
         if (ncol(data)>2)
-            warning(paste("only columns",index[1],"and",
-                          index[2],"of data used"))
+            warning("only columns ", index[1], " and ", index[2], " of data used")
         data <- data[,index]
     }
     if (!is.null(cox) && is.null(cox$coefficients) &&
@@ -1536,8 +1534,7 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
 #
     if (!is.null(boot.out))
     {	if(boot.out$sim=="parametric")
-            stop(paste("Influence values cannot be found from",
-                       " a parametric bootstrap"))
+            stop("influence values cannot be found from a parametric bootstrap")
             data <- boot.out$data
             if (is.null(statistic))
                 statistic <- boot.out$statistic
@@ -1548,9 +1545,9 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
 	}
     else
     {	if (is.null(data))
-            stop("No data or bootstrap object specified")
+            stop("no data or bootstrap object specified")
             if (is.null(statistic))
-                stop("No statistic or bootstrap object specified")
+                stop("no statistic or bootstrap object specified")
             if (is.null(stype)) stype <- "w"
 	}
     if (isMatrix(data)) n <- nrow(data)
@@ -1565,9 +1562,9 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
     }
     if (type == "inf") {
 # calculate the infinitesimal jackknife values by numerical differentiation
-    	if (stype !="w") stop("stype must be \"w\" for type=\"inf\"")
+    	if (stype !="w") stop("'stype' must be \"w\" for type=\"inf\"")
         if (length(index) != 1)
-        {	warning("Only first element of index used")
+        {	warning("only first element of index used")
                 index <- index[1]
             }
         if (!is.null(t))
@@ -1577,10 +1574,10 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
     else if (type == "reg") {
 # calculate the regression estimates of the influence values
         if (is.null(boot.out))
-            stop("Bootstrap object needed for type=\"reg\"")
+            stop("bootstrap object needed for type=\"reg\"")
         if (is.null(t)) {
             if (length(index) != 1) {
-                warning("Only first element of index used")
+                warning("only first element of index used")
                 index <- index[1]
             }
             t <- boot.out$t[,index]
@@ -1591,7 +1588,7 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
     {	if (!is.null(t))
             warning("input t ignored; type=\"jack\"")
             if (length(index) != 1)
-            {	warning("Only first element of index used")
+            {	warning("only first element of index used")
                 index <- index[1]
             }
             L <- usual.jack(data, statistic, stype, index, strata, ...)
@@ -1600,7 +1597,7 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
     {	if (!is.null(t))
             warning("input t ignored; type=\"pos\"")
             if (length(index) != 1)
-            {	warning("Only first element of index used")
+            {	warning("only first element of index used")
                 index <- index[1]
             }
             L <- positive.jack(data, statistic, stype, index, strata, ...)
@@ -1761,7 +1758,7 @@ linear.approx <- function(boot.out, L=NULL, index=1, type=NULL,
     f <- boot.array(boot.out)
     n <- length(f[1,  ])
     if ((length(index) > 1) && (is.null(t0) || is.null(t))) {
-        warning("Only first element of index used")
+        warning("only first element of index used")
         index <- index[1]
     }
     if (is.null(t0)) {
@@ -1827,7 +1824,7 @@ envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1:ncol(mat))
     ee <- err.pt
     al <- 1-level[2]
     if (ov[3] > al)
-        warning("Unable to achieve requested overall error rate.")
+        warning("unable to achieve requested overall error rate.")
     else {	continue <- !(ee[3] < al)
 		while(continue) {
 #  If the observed error is greater than the level required for the overall
@@ -2014,8 +2011,7 @@ exp.tilt <- function(L, theta=NULL, t0=0, lambda=NULL,
             lambda[i] <- optim(0, tilt.dis, method="BFGS")$par
             msd <- tilt.dis(lambda[i])
             if (is.na(msd) || (abs(msd) > 1e-6))
-                stop(paste("unable to find multiplier for",
-                           theta[i]))
+                stop("unable to find multiplier for ", theta[i])
         }
     }
     else if (is.null(lambda))
@@ -2081,13 +2077,13 @@ imp.moments <- function(boot.out=NULL, index=1, t=boot.out$t[,index],
 # Calculates raw, ratio, and regression estimates of mean and
 # variance of t using importance sampling weights in w.
     if (missing(t) && is.null(boot.out$t))
-        stop("Bootstrap replicates must be supplied")
+        stop("bootstrap replicates must be supplied")
     if (is.null(w))
         if (!is.null(boot.out))
             w <- imp.weights(boot.out, def, q)
-        else	stop("Either boot.out or w must be specified.")
+        else	stop("either boot.out or w must be specified.")
     if ((length(index) > 1) && missing(t)) {
-        warning("Only first element of index used")
+        warning("only first element of index used")
         t <- boot.out$t[,index[1]]
     }
     fins <- (1:length(t))[is.finite(t)]
@@ -2136,14 +2132,14 @@ imp.quantile <- function(boot.out=NULL, alpha=NULL, index=1,
 # Calculates raw, ratio, and regression estimates of alpha quantiles
 #  of t using importance sampling weights in w.
     if (missing(t) && is.null(boot.out$t))
-        stop("Bootstrap replicates must be supplied")
+        stop("bootstrap replicates must be supplied")
     if (is.null(alpha)) alpha <- c(0.01,0.025,0.05,0.95,0.975,0.99)
     if (is.null(w))
         if (!is.null(boot.out))
             w <- imp.weights(boot.out, def, q)
-        else	stop("Either boot.out or w must be specified.")
+        else	stop("either boot.out or w must be specified.")
     if ((length(index) > 1) && missing(t)){
-        warning("Only first element of index used")
+        warning("only first element of index used")
         t <- boot.out$t[,index[1]]
     }
     fins <- (1:length(t))[is.finite(t)]
@@ -2178,13 +2174,13 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
     is.missing <- function(x) length(x) == 0 || is.na(x)
 
     if (missing(t) && is.null(boot.out$t))
-        stop("Bootstrap replicates must be supplied")
+        stop("bootstrap replicates must be supplied")
     if (is.null(w))
         if (!is.null(boot.out))
             w <- imp.weights(boot.out, def, q)
-        else	stop("Either boot.out or w must be specified.")
+        else	stop("either boot.out or w must be specified.")
     if ((length(index) > 1) && (missing(t) || missing(t0))) {
-        warning("Only first element of index used")
+        warning("only first element of index used")
         index <- index[1]
         if (is.missing(t)) t <- boot.out$t[,index]
         if (is.missing(t0)) t0 <- boot.out$t0[index]
@@ -2212,11 +2208,11 @@ smooth.f <- function(theta, boot.out, index=1, t=boot.out$t[,index],
 # Does frequency smoothing of the frequency array for boot.out with
 # bandwidth A to give frequencies for 'typical' distribution at theta
     if ((length(index) > 1) && missing(t)) {
-        warning("Only first element of index used")
+        warning("only first element of index used")
         t <- boot.out$t[,index[1]]
     }
     if (isMatrix(t)) {
-        warning("Only first column of t used")
+        warning("only first column of t used")
         t <- t[,1]
     }
     fins <- (1:length(t))[is.finite(t)]
@@ -2264,7 +2260,7 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
 #  The function assumes at present that q=0 is the median of the distribution
 #  of t*.
     if ((sim != "ordinary") && (sim != "balanced"))
-        stop("Invalid value of sim supplied")
+        stop("invalid value of sim supplied")
     if (!is.null(theta) && (length(R) != length(theta)+1))
         stop("R and theta have incompatible lengths")
     if (!tilt && (R[1] == 0))
@@ -2280,7 +2276,7 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
                       strata = strata, ... )
         if (is.null(theta)) {
             if (any(c(alpha,1-alpha)*(R[1]+1) <= 5))
-                warning("Extreme values used for quantiles")
+                warning("extreme values used for quantiles")
             theta <- quantile(boot0$t[,index],alpha)
         }
     }
@@ -2343,7 +2339,7 @@ control <- function(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL,
     if(bias.adj) {
 # Find the adjusted bias estimate using post-simulation balance.
         if (length(index) > 1) {
-            warning("Only first element of index used")
+            warning("only first element of index used")
             index <- index[1]
         }
         f.big <- apply(f, 2, sum)
@@ -2364,7 +2360,7 @@ control <- function(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL,
 # of the moments and quantiles of the statistic of interest.
         if (is.null(t) || is.null(t0)) {
             if (length(index) > 1) {
-                warning("Only first element of index used")
+                warning("only first element of index used")
                 index <- index[1]
             }
             if(is.null(L))
@@ -2456,7 +2452,7 @@ logit <- function(p)
     out <- p
     inds <- (1:length(p))[!is.na(p)]
     if (any((p[inds] < 0) | (p[inds] > 1)))
-        stop("Invalid Proportions Input")
+        stop("invalid proportions input")
     out[inds] <- log(p[inds]/(1-p[inds]))
     out[inds][p[inds]==0] <- -Inf
     out[inds][p[inds]==1] <- Inf
@@ -2762,7 +2758,7 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
         n <- nrow(A)
     }
     else if (is.null(K.adj))
-        stop("Either A and u or K.adj and K2 must be supplied")
+        stop("either A and u or K.adj and K2 must be supplied")
     if (!is.null(K.adj)) {
 #  If K.adj and K2 are supplied then calculate the simple saddlepoint.
         if (is.null(d)) d <- 1
@@ -2877,7 +2873,7 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
                         gs <- Gs <- NA
                     }
         }
-        else stop("This type not implemented for Poisson")
+        else stop("this type not implemented for Poisson")
     }
     else if (wdist == "b") {
         if (type == "cond") {
@@ -2913,7 +2909,7 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
                         gs <- Gs <- NA
                     }
         }
-        else stop("This type not implemented for Binary")
+        else stop("this type not implemented for Binary")
     }
     if (type == "simp")
         out <- list(spa=c(gs,Gs),zeta.hat=ahat)
@@ -2942,7 +2938,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     if (is.null(alpha)) alpha <- c(0.001,0.005,0.01,0.025,0.05,0.1,0.2,0.5,
                                    0.8,0.9,0.95,0.975,0.99,0.995,0.999)
     if (is.null(t) && is.null(t0))
-        stop("One of t or t0 required")
+        stop("one of t or t0 required")
     ep1 <- min(c(alpha,0.01))/10
     ep2 <- (1-max(c(alpha,0.99)))/10
     if (type=="simp")  d <- 1
@@ -2981,7 +2977,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 }
                 else	bdl <- t1
                 if (nsads == npts)
-                    stop("Unable to find range")
+                    stop("unable to find range")
                 if (is.null(bdl)) {
                     t1 <- 2*t1-t0[1]
                     sad<-saddle(A=A(t1,...),
@@ -3027,7 +3023,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 }
                 else	bdu <- t2
                 if (nsads == npts)
-                    stop("Unable to find range")
+                    stop("unable to find range")
                 if (is.null(bdu)) {
                     t2 <- 2*t2-t0[1]
                     sad<-saddle(A=A(t2,...),
@@ -3101,7 +3097,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 }
                 else	bdl <- t1
                 if (i == floor(npts/2))
-                    stop("Unable to find range")
+                    stop("unable to find range")
                 if (is.null(bdl)) {
                     t1 <- 2*t1-t0[1]
                     sad<-saddle(A=A, u=c(t1,u),
@@ -3145,7 +3141,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 }
                 else	bdu <- t2
                 if ((i-i1) == floor(npts/2))
-                    stop("Unable to find range")
+                    stop("unable to find range")
                 if (is.null(bdu)) {
                     t2 <- 2*t2-t0[1]
                     sad<-saddle(A=A, u=c(t2,u),
@@ -3341,7 +3337,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
 #
     tscl <- class(tseries)
 #	if (!is.null(tscl) && (any(tscl == "its")))
-#		stop("Irregular time series cannot be bootstrapped")
+#		stop("irregular time series cannot be bootstrapped")
     if (R<=0) stop("R must be positive")
     R <- floor(R)
     call <- match.call()
@@ -3361,7 +3357,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
     if ((sim=="model") || (sim=="scramble"))
         l <- NULL
     else if ((is.null(l) || (l <= 0) || (l > n)))
-        stop("Invalid value of l")
+        stop("invalid value of l")
 #    st <- start(tseries)
 #    freq <- frequency(tseries)
 #	un <- units(tseries)
@@ -3418,7 +3414,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
             t <- rbind(t, tmp)
         }
     }
-    else	stop("Unrecognized value of sim")
+    else	stop("unrecognized value of sim")
     ts.return(t0=t0, t=t, R=R, tseries=tseries, seed=seed,
               stat=statistic, sim=sim, endcorr=endcorr, n.sim=n.sim,
               l=l, ran.gen=ran.gen, ran.args=ran.args, call=call,
@@ -3434,9 +3430,9 @@ scramble <- function(ts, norm=TRUE)
 {
     cl <- class(ts)
     if (any(cl=="its"))
-        stop("Irregular time series not allowed")
+        stop("irregular time series not allowed")
     if (isMatrix(ts))
-        stop("Multivariate time series not allowed")
+        stop("multivariate time series not allowed")
     st <- start(ts)
     dt <- deltat(ts)
     frq <- frequency(ts)
