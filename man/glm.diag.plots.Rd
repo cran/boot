@@ -97,7 +97,7 @@ D.V. Hinkley, N. Reid, and E.J. Snell (editors), 83--106. Chapman and Hall.
 \examples{
 # In this example we look at the leukaemia data which was looked at in 
 # Example 7.1 of Davison and Hinkley (1997)
-data(leuk)
+data(leuk, package="MASS")
 leuk.mod <- glm(time~ag-1+log10(wbc),family=Gamma(log),data=leuk)
 leuk.diag <- glm.diag(leuk.mod)
 glm.diag.plots(leuk.mod,leuk.diag)
@@ -105,4 +105,3 @@ glm.diag.plots(leuk.mod,leuk.diag)
 \keyword{regression}
 \keyword{dplot}
 \keyword{hplot}
-% Converted by Sd2Rd version 1.15.

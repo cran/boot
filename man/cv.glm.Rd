@@ -101,7 +101,7 @@ predictions (with Discussion).
 \examples{
 # leave-one-out and 6-fold cross-validation prediction error for 
 # the mammals data set.
-data(mammals)
+data(mammals, package="MASS")
 mammals.glm <- glm(log(brain)~log(body),data=mammals)
 cv.err <- cv.glm(mammals,mammals.glm)
 cv.err.6 <- cv.glm(mammals, mammals.glm, K=6)

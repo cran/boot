@@ -185,7 +185,8 @@ Hjort, N.L. (1985) Bootstrapping Cox's regression model. Technical report
 NSF-241, Dept. of Statistics, Stanford University.
 }
 \seealso{
-\code{\link{boot}}, \code{\link{boot.object}}, \code{\link{coxph}}, \code{\link{survfit}}
+\code{\link{boot}}, \code{\link{boot.object}}, 
+\code{\link[survival]{coxph}}, \code{\link[survival]{survfit}}
 }
 \examples{
 data(aml, package="boot")

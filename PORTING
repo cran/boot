@@ -1,4 +1,9 @@
+version 1.2-9 2002-11-05
+
+    Remove datasets taken from MASS package.
+
 version 1.2-8 2002-04-11
+
     Remove arima.sim.
     Converted data sets to version 2 .rda, compressed larger ones.
     More care over .Random.seed.
@@ -68,7 +73,7 @@ version 1.0-2 1999/02/24
 
     Altered test/test-examples to make use of the examples now in R-ex.
 
-    Note that saddle.distn and functions that depend on it (control) 
+    Note that saddle.distn and functions that depend on it (control)
     may fail due to lack of robustness of nlm.
 
 
@@ -107,7 +112,7 @@ boot/data:
     add a dummy rts:  rts <- function(units, name, ...) ts(...)
     to top of bootdata.q
 
-    edit n= to nmax= in scan (carefully: also occurs in lists in scan 
+    edit n= to nmax= in scan (carefully: also occurs in lists in scan
     commands).
 
     add
