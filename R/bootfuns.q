@@ -1436,10 +1436,10 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
 	}
 	n <- nrow(data)
 	Fstart <- 1
-	Fstr <- F.surv$str
+	Fstr <- F.surv$strata
 	if (is.null(Fstr)) Fstr <- length(F.surv$time)
 	Gstart <- 1
-	Gstr <- G.surv$str
+	Gstr <- G.surv$strata
 	if (is.null(Gstr)) Gstr <- length(G.surv$time)
 	out <- array(NA,c(R,n,2))
 	y0 <- matrix(NA,R,n)
