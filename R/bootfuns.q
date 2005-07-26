@@ -796,10 +796,13 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
     cost.0 <- cost(glm.y, fitted(glmfit))
     ms <- max(s)
     CV <- 0
+    Call <- glmfit$call
     for(i in 1:ms) {
         j.out <- c(1:n)[(s == i)]
         j.in <- c(1:n)[(s != i)]
-        d.glm <- update(glmfit, data = data[j.in, , drop=FALSE])
+        ## we want data from here but formula from the parent.
+        Call$data <- data[j.in, , drop=FALSE]
+        d.glm <- eval.parent(Call)
         p.alpha <- n.s[i]/n
         cost.i <- cost(glm.y[j.out],
                        predict(d.glm, data[j.out, , drop=FALSE],
@@ -1155,6 +1158,7 @@ bca.ci <- function(boot.out,conf=0.95,index=1,t0=NULL,t=NULL, L=NULL,
     if (is.null(L))
         L <- empinf(boot.out, index=index, t=t.o, ...)
     a <- sum(L^3)/(6*sum(L^2)^1.5)
+    if (!is.finite(a)) stop("estimated adjustment 'a' is NA")
     adj.alpha <- pnorm(w + (w+zalpha)/(1-a*(w+zalpha)))
     qq <- norm.inter(t,adj.alpha)
     out <- cbind(conf, matrix(qq[,1],ncol=2),matrix(hinv(h(qq[,2])),ncol=2))

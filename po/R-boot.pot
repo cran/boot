@@ -7,7 +7,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 
@@ -246,4 +246,7 @@ msgid "likelihood exceeds"
 msgstr ""
 
 msgid "at only one point"
+msgstr ""
+
+msgid "estimated adjustment 'a' is NA"
 msgstr ""
