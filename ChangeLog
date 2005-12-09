@@ -1,3 +1,8 @@
+version 1.2-24 2005-12-09
+
+    catsM.Rd: correct units for hearts to that given (correctly) in MASS.
+    Add French and en@quot translation.
+
 version 1.2-23 2005-07-26
 
     Add error message for a = NA in bca.ci.

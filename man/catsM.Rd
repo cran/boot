@@ -26,7 +26,7 @@ A factor for the sex of the cat (levels are \code{F} and \code{M}).
 Body weight in kg.
 }
 \item{\code{Hwt}}{
-Heart weight in kg.
+Heart weight in g.
 }}}
 \seealso{
   \code{\link[MASS]{cats}}
