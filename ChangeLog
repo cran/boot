@@ -1,3 +1,8 @@
+version 1.2-25 2006-07-25
+
+    censboot.Rd: unique() in mel.fun was not working correctly due to
+    rounding error on some P4 Linux machines.
+
 version 1.2-24 2005-12-09
 
     catsM.Rd: correct units for hearts to that given (correctly) in MASS.

@@ -257,17 +257,17 @@ mel.cens <- survfit(Surv(time-0.001*(status==1),status!=1)~
 mel.fun <- function(d) { 
      t1 <- ns(d$thickness,df=4)
      cox <- coxph(Surv(d$time,d$status==1) ~ t1+strata(d$ulcer))
-     eta <- unique(cox$linear.predictors)
-     u <- unique(d$thickness)
+     ind <- !duplicated(d$thickness)
+     u <- d$thickness[!ind]
+     eta <- cox$linear.predictors[!ind]
      sp <- smooth.spline(u,eta,df=20)
      th <- seq(from=0.25,to=10,by=0.25)
      predict(sp,th)$y
 }
 mel.str<-cbind(melanoma$ulcer,agec)
 # this is slow!
-mel.mod <- censboot(melanoma,mel.fun,R=999,F.surv=mel.surv,
-     G.surv=mel.cens,cox=mel.cox,strata=mel.str,sim="model")
-proc.time()
+system.time(mel.mod <- censboot(melanoma,mel.fun,R=999,F.surv=mel.surv,
+     G.surv=mel.cens,cox=mel.cox,strata=mel.str,sim="model"))
 # To plot the original predictor and a 95\% pointwise envelope for it
 mel.env <- envelope(mel.mod)$point
 plot(seq(0.25,10,by=0.25),mel.env[1,], ylim=c(-2,2),
