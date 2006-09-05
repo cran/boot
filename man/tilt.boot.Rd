@@ -166,7 +166,7 @@ grav.fun <- function(dat, w, orig)
      mns <- tapply(d * w, strata, sum)
      mn2 <- tapply(d * d * w, strata, sum)
      s2hat <- sum((mn2 - mns^2)/ns)
-     c(mns[2]-mns[1],s2hat,(mns[2]-mns[1]-orig)/sqrt(s2hat),)
+     c(mns[2]-mns[1],s2hat,(mns[2]-mns[1]-orig)/sqrt(s2hat))
 }
 grav.z0 <- grav.fun(grav1,rep(1,26),0)
 tilt.boot(grav1, grav.fun, R=c(249,375,375), stype="w", 
