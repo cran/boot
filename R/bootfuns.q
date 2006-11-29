@@ -494,7 +494,7 @@ print.boot <- function(x, digits = getOption("digits"),
 		}
             }
     cat("\nCall:\n")
-    dput(cl)
+    dput(cl, control=NULL)
     cat("\n\nBootstrap Statistics :\n")
     if (!is.null(op)) print(op,digits=digits)
     if (length(ind1) > 0)
@@ -978,7 +978,7 @@ print.bootci <- function(x, hinv=NULL, ...) {
     cat("BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS\n")
     cat(paste("Based on",R,"bootstrap replicates\n\n"))
     cat("CALL : \n")
-    dput(cl)
+    dput(cl, control=NULL)
     cat("\nIntervals : ")
     cat("\nLevel",intlabs[1:n1])
     cat(t(ints1))
@@ -2704,7 +2704,7 @@ print.simplex <- function(x, ...) {
     cat("\nLinear Programming Results\n\n")
     cl <- simp.out$call
     cat("Call : ")
-    dput(cl)
+    dput(cl, control=NULL)
     if (simp.out$maxi) cat("\nMaximization ")
     else cat("\nMinimization ")
     cat("Problem with Objective Function Coefficients\n")
@@ -3242,7 +3242,7 @@ print.saddle.distn <- function(x, ...) {
     quans[,1] <- paste("\n",format(level),"%     ",sep="")
     cat("\nSaddlepoint Distribution Approximations\n\n")
     cat("Call : \n")
-    dput(cl)
+    dput(cl, control=NULL)
     cat("\nQuantiles of the Distribution\n")
     cat(t(quans))
     cat(paste("\n\nSmoothing spline used ",nrow(sad.d$points),
