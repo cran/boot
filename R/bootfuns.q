@@ -674,7 +674,7 @@ jack.after.boot <- function(boot.out, index=1, t=NULL, L=NULL,
     if (isMatrix(data))
         n <- nrow(data)
     else	n <- length(data)
-    f <- boot.array(boot.out)[fins,]
+    f <- boot.array(boot.out)[fins, , drop=TRUE]
     percentiles <- matrix(data = NA, length(alpha), n)
     J <- numeric(n)
     for(j in 1:n) {
@@ -1895,7 +1895,7 @@ glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
         subset <- (1:(length(subset)+length(glmdiag$h)))[subset]
     else if (is.character(subset)) {
         if (is.null(labels)) labels <- subset
-        subset <- seq(along=subset)
+        subset <- seq_along(subset)
     }
 #	close.screen(all = T)
 #	split.screen(c(2, 2))
@@ -2769,7 +2769,7 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
         type <- "simp"
         wdist <- "o"
         speq <- optim(init, K.adj)
-        if (speq$conv == 0) {
+        if (speq$convergence == 0) {
             ahat <- speq$par
             Khat <- K.adj(ahat)
             K2hat <- det(K2(ahat))
@@ -2833,7 +2833,7 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
             }
             K2hat <- det(temp)
         }
-        if (speq$conv == 0) {
+        if (speq$convergence == 0) {
             gs <- 1/sqrt(2*pi*K2hat)^d*exp(Khat)
             if (d == 1) {
                 r <- sgn(ahat)*sqrt(-2*Khat)
@@ -3056,14 +3056,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
 #  Now divide the rest of the npts points so that about half are at
 #  either side of t0[1].
             if ((npts %% 2) == 0) {
-                tt1<- seq(t1,t0[1],length=npts/2-i1+2)[-1]
-                tt2 <- seq(t0[1],t2,length=npts/2+i1-i+2)[-1]
+                tt1<- seq.int(t1,t0[1],length.out=npts/2-i1+2)[-1]
+                tt2 <- seq.int(t0[1],t2,length.out=npts/2+i1-i+2)[-1]
                 t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
             }
             else {	ex <- 1*(t1+t2 > 2*t0[1])
                         ll <- floor(npts/2)+2
-                        tt1 <- seq(t1,t0[1],length=ll-i1+1-ex)[-1]
-                        tt2 <- seq(t0[1],t2,length=ll+i1-i+ex)[-1]
+                        tt1 <- seq.int(t1,t0[1],length.out=ll-i1+1-ex)[-1]
+                        tt2 <- seq.int(t0[1],t2,length.out=ll+i1-i+ex)[-1]
                         t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
                     }
         }
@@ -3175,15 +3175,15 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
 #  Now divide the rest of the npts points so that about half are at
 #  either side of t0[1].
             if ((npts %% 2) == 0) {
-                tt1<- seq(t1,t0[1],length=npts/2-i1+2)[-1]
-                tt2 <- seq(t0[1],t2,length=npts/2+i1-i+2)[-1]
+                tt1 <- seq.int(t1,t0[1],length.out=npts/2-i1+2)[-1]
+                tt2 <- seq.int(t0[1],t2,length.out=npts/2+i1-i+2)[-1]
                 t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
             }
             else {
                 ex <- 1*(t1+t2 > 2*t0[1])
                 ll <- floor(npts/2)+2
-                tt1 <- seq(t1,t0[1],length=ll-i1+1-ex)[-1]
-                tt2 <- seq(t0[1],t2,length=ll+i1-i+ex)[-1]
+                tt1 <- seq.int(t1,t0[1],length.out=ll-i1+1-ex)[-1]
+                tt2 <- seq.int(t0[1],t2,length.out=ll+i1-i+ex)[-1]
                 t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
             }
         }
@@ -3260,7 +3260,7 @@ lines.saddle.distn <- function(x, dens=TRUE, h=function(u) u,
     sad.d <- x
     tt <- sad.d$points[,1]
     rg <- range(h(tt,...))
-    tt1 <- seq(from=rg[1],to=rg[2],length=npts)
+    tt1 <- seq.int(from=rg[1],to=rg[2],length.out=npts)
     if (dens) {
         gs <- sad.d$points[,2]
         spl <- smooth.spline(h(tt,...),log(gs*J(tt,...)))
@@ -3325,7 +3325,7 @@ make.ends <- function(a, n){
 		1 + (i - 1) %% n
 	if (a[2] == 0)
 		out <- numeric(0)
-	else	out <- mod(seq(a[1], a[1]+a[2]-1, length=a[2]), n)
+	else	out <- mod(seq.int(a[1], a[1]+a[2]-1, length.out=a[2]), n)
 	out
 }
 
@@ -3444,7 +3444,7 @@ scramble <- function(ts, norm=TRUE)
     e <- y - mean(y)
     n <- length(e)
     if (!norm) e <- qnorm( rank(e)/(n+1) )
-    f <- fft(e) * complex(length = n, argument = runif(n) * 2 * pi)
+    f <- fft(e) * complex(n, argument = runif(n) * 2 * pi)
     C.f <- Conj(c(0, f[seq(from = n, to = 2, by = -1)]))
     e <- Re(mean(y) + fft((f + C.f)/sqrt(2), inverse = TRUE)/n)
     if (!norm) e <- sort(y)[rank(e)]

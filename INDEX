@@ -8,7 +8,7 @@ possible improvements to the code.  Any further errors found should be
 reported to the author at the address below for correction in the
 next version.
 
-The library contains the following functions, all of which
+The package contains the following functions, all of which
 have online help available.
 
 abc.ci		ABC confidence intervals
@@ -50,7 +50,7 @@ tilt.boot	Tilted bootstrap
 tsboot		Bootstrap for time series
 var.linear	Linear variance approximation
 
-The library also contains some items used in the practicals of
+The package also contains some items used in the practicals of
 "Bootstrap Methods and Their Applications" by A.C. Davison and D.V. Hinkley
 (1997, Cambridge University Press).  The objects are not intended to be used
 except in the context of these practicals.  The objects are

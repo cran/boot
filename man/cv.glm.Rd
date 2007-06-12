@@ -78,7 +78,7 @@ Brieman, L., Friedman, J.H., Olshen, R.A. and Stone, C.J. (1984)
 \emph{Classification and Regression Trees}. Wadsworth.
 
 
-Burman, P. (1989) A comparitive study of ordinary cross-validation, 
+Burman, P. (1989) A comparative study of ordinary cross-validation, 
 \emph{v}-fold cross-validation and repeated learning-testing methods.
 \emph{Biometrika}, \bold{76}, 503--514
 

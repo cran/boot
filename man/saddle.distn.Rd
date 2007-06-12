@@ -14,7 +14,7 @@
   combinations. The distribution of \bold{W} must be one of multinomial,
   Poisson or binary.  The primary use of this function is to calculate
   quantiles of bootstrap distributions using saddlepoint approximations.
-  Such quantiles are required by the library function \code{control} to
+  Such quantiles are required by the function \code{\link{control}} to
   approximate the distribution of the linear approximation to a
   statistic.
 }

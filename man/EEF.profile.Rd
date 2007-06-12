@@ -20,7 +20,7 @@ EL.profile(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t = 25,
     likelihood should be computed.  This must be smaller than 
     \code{max(y)}.}
   \item{n.t}{ The number of points between \code{tmin} and
-    \code{tmax} at which the value of the log-liklihood should be
+    \code{tmax} at which the value of the log-likelihood should be
     computed.}
   \item{u}{A function of the data and the parameter.}
 }

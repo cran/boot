@@ -4,8 +4,7 @@
 Annual Mean Sunspot Numbers
 }
 \description{
-\code{sunspot} is a time series of class \code{"rts"} and contains 289 observations.
-
+\code{sunspot} is a time series and contains 289 observations.
 
 The Zurich sunspot numbers have been analyzed in almost all books on time
 series analysis as well as numerous papers.  The data set, usually attributed
@@ -18,15 +17,8 @@ relative numbers are then averaged to give an annual figure.
 See Insenman (1983) for a discussion of the relative numbers. The figures are
 for the years 1700-1988.
 }
-\note{
-These data are not related to dataset of the same name in the \code{trellis} 
-library.  They are, however, similar to the \code{S-Plus} dataset \code{sunspots}
-except that this set contains annual averages instead of monthly averages
-and it is for a longer period of time.
-}
 \source{
 The data were obtained from
-
 
 Tong, H. (1990) \emph{Nonlinear Time Series: A Dynamical System Approach}.
 Oxford University Press

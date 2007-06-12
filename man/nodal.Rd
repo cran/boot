@@ -38,7 +38,7 @@ An indicator of nodal involvement.
 The patients age dichotomized into less than 60 (\code{0}) and 60 or over \code{1}.
 }
 \item{\code{stage}}{
-A measurement of the size and position of the tumour observed by palpatation
+A measurement of the size and position of the tumour observed by palpitation
 with the fingers via the rectum.  A value of \code{1} indicates a more serious
 case of the cancer.
 }
