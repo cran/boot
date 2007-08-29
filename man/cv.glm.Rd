@@ -24,7 +24,7 @@ A function of two vector arguments specifying the cost function for the
 cross-validation.  The first argument to \code{cost} should correspond to the
 observed responses and the second argument should correspond to the predicted
 or fitted responses from the generalized linear model.  \code{cost} must return a
-non-negative scalar value.  The defualt is the average squared error function.
+non-negative scalar value.  The default is the average squared error function.
 }
 \item{K}{
 The number of groups into which the data should be split to estimate the

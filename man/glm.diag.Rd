@@ -47,7 +47,8 @@ D.V. Hinkley, N. Reid and E.J. Snell (editors), 83--106.  Chapman and Hall.
 \code{\link{glm}}, \code{\link{glm.diag.plots}}, \code{\link{summary.glm}}
 }
 \note{
-See the helpfile for \code{glm.diag.plots} for an example of the use of \code{glm.diag}.
+  See the help for \code{\link{glm.diag.plots}} for an example of the
+  use of \code{glm.diag}.
 }
 \keyword{regression}
 \keyword{dplot}

@@ -9,7 +9,7 @@ time series of class \code{"ts"} and also inherits from class \code{"data.frame"
 
 This data set is part of a long study into body temperature regulation in
 beavers.  Four adult female beavers were live-trapped and had a 
-temperature-sensitive radiotransmitter surgically implanted.  Readings were
+temperature-sensitive radio transmitter surgically implanted.  Readings were
 taken every 10 minutes.  The location of the beaver was also recorded and
 her activity level was dichotomized by whether she was in the retreat or 
 outside of it since high-intensity activities only occur outside of the 

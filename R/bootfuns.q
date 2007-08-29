@@ -1,6 +1,12 @@
+# part of R package boot
+# copyright (C) 1997-2001 Angelo J. Canty
+# corrections (C) 1997-2007 B. D. Ripley
+#
+# Unlimited distribution is permitted
+
 antithetic.array <- function(n, R, L, strata)
 #
-#  Create an array of indices by anthitetic resampling using the
+#  Create an array of indices by antithetic resampling using the
 #  empirical influence values in L.  This function just calls anti.arr
 #  to do the sampling within strata.
 #

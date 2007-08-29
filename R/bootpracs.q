@@ -1,3 +1,8 @@
+# part of R package boot
+# copyright (C) 1997-2001 Angelo J. Canty
+# corrections (C) 1997-2007 B. D. Ripley
+#
+# Unlimited distribution is permitted
 
 # empirical log likelihood ---------------------------------------------------------
 

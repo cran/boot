@@ -33,7 +33,7 @@ from melanoma, 2 indicates that they were still alive and 3 indicates that they
 had died from causes unrelated to their melanoma.
 }
 \item{\code{sex}}{
-The patients sex; 1=male, 2=female.
+The patients sex; 1=male, 0=female.
 }
 \item{\code{age}}{
 Age in years at the time of the operation.
