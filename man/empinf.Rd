@@ -7,7 +7,7 @@
   This function calculates the empirical influence values for a
   statistic applied to a data set.  It allows four types of calculation,
   namely the infinitesimal jackknife (using numerical differentiation),
-  the usual jackknife estimates, the \dQuote{positive} jackknife
+  the usual jackknife estimates, the \sQuote{positive} jackknife
   estimates and a method which estimates the empirical influence values
   using regression of bootstrap replicates of the statistic.  All
   methods can be used with one or more samples.

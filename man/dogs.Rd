@@ -1,6 +1,5 @@
 \name{dogs}
 \alias{dogs}
-\non_function{}
 \title{ Cardiac Data for Domestic Dogs }
 \usage{dogs}
 \description{

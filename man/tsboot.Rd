@@ -83,7 +83,7 @@ tsboot(tseries, statistic, R, l=NULL, sim="model", endcorr=TRUE,
   the generation of the replicate time series will be done in
   \code{ran.gen} (for example through use of \code{\link{arima.sim}}).
   For the other simulation types \code{ran.gen} is used for
-  \dQuote{post-blackening}.  The default is that the function simply returns
+  \sQuote{post-blackening}.  The default is that the function simply returns
   the time series passed to it.
 }
 \item{ran.args}{
