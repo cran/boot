@@ -2729,6 +2729,7 @@ print.simplex <- function(x, ...) {
                   ".\n",sep=""))
     }
     else 	cat("\nNo feasible solution could be found\n")
+    invisible(x)
 }
 
 

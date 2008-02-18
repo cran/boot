@@ -1,3 +1,7 @@
+version 1.2-31 2008-02-18
+
+    print.simplex now returns its result invisibly.
+
 version 1.2-30 2007-10-03
 
     po/R-ru.po: new file
@@ -13,7 +17,7 @@ version 1.2-29 2007-08-29
 version 1.2-28 2007-06-12
 
     INDEX, man: change 'library' to 'package' and remove some references to
-    S-PLUS.
+        S-PLUS.
     bootfuns.q: avoid abbreviating arguments, switch to seq.int, add
 	drop=TRUE.
     DESCRIPTION: R >= 2.4.0 because of seq.int.
