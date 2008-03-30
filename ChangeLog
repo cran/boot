@@ -1,3 +1,7 @@
+version 1.2-32 2008-03-30
+
+    Add inst/CITATION file
+
 version 1.2-31 2008-02-18
 
     print.simplex now returns its result invisibly.
