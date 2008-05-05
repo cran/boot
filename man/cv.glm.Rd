@@ -74,7 +74,7 @@ The second value returned in \code{delta} is the estimate adjusted by this metho
 
 }
 \references{
-Brieman, L., Friedman, J.H., Olshen, R.A. and Stone, C.J. (1984)
+Breiman, L., Friedman, J.H., Olshen, R.A. and Stone, C.J. (1984)
 \emph{Classification and Regression Trees}. Wadsworth.
 
 

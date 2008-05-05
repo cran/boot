@@ -1868,7 +1868,7 @@ glm.diag <- function(glmfit)
     if (is.null(glmfit$prior.weights))
         w <- rep(1,length(glmfit$residuals))
     else	w <- glmfit$prior.weights
-    sd <- ifelse(family(glmfit)$family[1] == "Gaussian", sqrt(glmfit$
+    sd <- ifelse(family(glmfit)$family[1] == "gaussian", sqrt(glmfit$
                                       deviance/glmfit$df.residual), 1)
     sd <- ifelse(family(glmfit)$family[1] == "Gamma", sqrt(sum(w*
                                       (glmfit$y/fitted(glmfit) - 1)^2)/glmfit$df.residual),
