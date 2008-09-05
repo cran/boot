@@ -16,7 +16,7 @@ Importance resampling weights may be specified.
 \usage{
 boot(data, statistic, R, sim="ordinary", stype="i", 
      strata=rep(1,n), L=NULL, m=0, weights=NULL, 
-     ran.gen=function(d, p) d, mle=NULL, \dots)
+     ran.gen=function(d, p) d, mle=NULL, simple=FALSE, \dots)
 }
 \arguments{
 \item{data}{
@@ -107,6 +107,12 @@ The second argument to be passed to \code{ran.gen}.  Typically these will be max
 likelihood estimates of the parameters.  For efficiency \code{mle} is often a list
 containing all of the objects needed by \code{ran.gen} which can be calculated 
 using the original data set only.
+}
+\item{simple}{logical, only allowed to be \code{TRUE} for
+  \code{sim="ordinary", stype="i", n=0} (otherwise ignored with a
+  warning).  By default a \code{n*R} index array is created: this can be
+  large and if \code{simple = TRUE} this is avoided by sampling
+  separately for each replication, which is slower but uses less memory.
 }
 \item{...}{
 Any other arguments for \code{statistic} which are passed unchanged

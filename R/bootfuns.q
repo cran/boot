@@ -1,6 +1,6 @@
 # part of R package boot
 # copyright (C) 1997-2001 Angelo J. Canty
-# corrections (C) 1997-2007 B. D. Ripley
+# corrections (C) 1997-2008 B. D. Ripley
 #
 # Unlimited distribution is permitted
 
@@ -12,7 +12,7 @@ antithetic.array <- function(n, R, L, strata)
 #
 {
     inds <- as.integer(names(table(strata)))
-    out <- matrix(0, R, n)
+    out <- matrix(as.integer(0), R, n)
     for (s in inds)
     {	gp <- (1:n)[strata==s]
         out[ ,gp] <- anti.arr(length(gp), R, L[gp], gp)
@@ -74,7 +74,7 @@ balanced.array <- function(n, R, strata)
 
 boot <- function(data, statistic, R, sim="ordinary", stype="i",
                  strata = rep(1, n), L=NULL, m=0, weights = NULL,
-		 ran.gen=function(d, p) d, mle=NULL, ...)
+		 ran.gen=function(d, p) d, mle=NULL, simple=FALSE,...)
 {
 #
 # R replicates of bootstrap applied to  statistic(data)
@@ -84,6 +84,10 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
 # bootstrap replicates and then this function loops over those replicates.
 #
     call <- match.call()
+    if(simple && (sim != "ordinary" || stype != "i" || sum(m))) {
+        warning("'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0, so ignored")
+        simple <- FALSE
+    }
     if(!exists(".Random.seed", envir=.GlobalEnv, inherits = FALSE)) runif(1)
     seed <- get(".Random.seed", envir=.GlobalEnv, inherits = FALSE)
     if (isMatrix(data)) n <- nrow(data)
@@ -109,7 +113,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
         if (!is.null(weights))
             weights <- t(apply(matrix(weights,n,length(R),byrow=TRUE),
                                2, normalize, strata))
-        i <- index.array(n, R, sim, strata, m, L, weights)
+        if(!simple) i <- index.array(n, R, sim, strata, m, L, weights)
         if(stype == "f")
             original <- rep(1, n)
         else if (stype == "w") {
@@ -141,31 +145,36 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
     else {
 #  Calculate the replicate indices and loop over them to calculate the
 #  bootstrap replicates.
-        if (ncol(i) > n) {
+        if (!simple && ncol(i) > n) {
             pred.i <- as.matrix(i[ , (n+1):ncol(i)])
             i <- i[,1:n]
         }
-        if((stype == "f") || (stype == "w"))
+        if(stype == "f") {
             f <- freq.array(i)
-        if(stype == "f")
-        {	if (sum(m) == 0)
-                    for(r in 1:sum(R))
-                        t.star[r,] <- statistic(data, f[r,  ],...)
-        else for(r in 1:sum(R))
-            t.star[r,] <- statistic(data, f[r, ], pred.i[r, ],...)
+            if (sum(m) == 0)
+                for(r in 1:sum(R))
+                    t.star[r,] <- statistic(data, f[r,  ],...)
+            else for(r in 1:sum(R))
+                t.star[r,] <- statistic(data, f[r, ], pred.i[r, ],...)
+        } else if (stype == "w") {
+            f <- freq.array(i)
+            if (sum(m) == 0)
+                for(r in 1:sum(R))
+                    t.star[r,] <- statistic(data, f[r,  ]/ns,...)
+            else for(r in 1:sum(R))
+                t.star[r,] <- statistic(data, f[r, ]/ns, pred.i[r, ],...)
+        } else if (sum(m) > 0) {
+            for (r in 1:sum(R))
+                t.star[r,] <- statistic(data, i[r, ], pred.i[r,],...)
+        } else if (simple) {
+            for(r in 1:sum(R)) {
+                inds <- index.array(n, 1, sim, strata, m, L, weights)
+                t.star[r,] <- statistic(data, inds,...)
             }
-        else if (stype == "w")
-        {	if (sum(m) == 0)
-                    for(r in 1:sum(R))
-                        t.star[r,] <- statistic(data, f[r,  ]/ns,...)
-        else for(r in 1:sum(R))
-            t.star[r,] <- statistic(data, f[r, ]/ns, pred.i[r, ],...)
-            }
-        else if (sum(m) == 0)
+        } else {
             for(r in 1:sum(R))
                 t.star[r,] <- statistic(data, i[r, ],...)
-        else	for (r in 1:sum(R))
-            t.star[r,] <- statistic(data, i[r, ], pred.i[r,],...)
+        }
     }
     dimnames(t.star) <- NULL
     if (is.null(weights)) weights <- 1/tabulate(strata)[strata]
@@ -297,8 +306,8 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
         if (is.null(t0)) t0 <- boot.out$t0[index]
     }
     t <- t[is.finite(t)]
-    if (const(t, min(1e-8,mean(t)/1e6))) {
-        print(paste("All values of t* are equal to ", mean(t)))
+    if (const(t, min(1e-8,mean(t, na.rm=TRUE)/1e6))) {
+        print(paste("All values of t* are equal to ", mean(t, na.rm=TRUE)))
         return(invisible(boot.out))
     }
     if (is.null(nclass)) nclass <- min(max(ceiling(length(t)/25),10),100)
@@ -633,21 +642,19 @@ index.array <- function(n, R, sim, strata=rep(1,n), m=0, L=NULL, weights=NULL)
 #  function.
 #
     indices <- NULL
-    if (is.null (weights))
-    {	if(sim == "ordinary")
-        {	indices <- ordinary.array(n, R, strata)
-                if (sum(m) > 0)
-                    indices <- cbind(indices,
-                                     extra.array(n, R, m, strata))
-            }
+    if (is.null (weights)) {
+        if(sim == "ordinary") {
+            indices <- ordinary.array(n, R, strata)
+            if (sum(m) > 0)
+                indices <- cbind(indices, extra.array(n, R, m, strata))
+        }
     else if(sim == "balanced")
         indices <- balanced.array(n, R, strata)
     else if(sim == "antithetic")
         indices <- antithetic.array(n, R, L, strata)
     else if(sim == "permutation")
         indices <- permutation.array(n, R, strata)
-	}
-    else {
+    } else {
         if (sim == "ordinary")
             indices <- importance.array(n, R, weights, strata)
         else if (sim == "balanced")
@@ -743,13 +750,18 @@ ordinary.array <- function(n, R, strata)
 #
 # R x n array of bootstrap indices, resampled within strata.
 # This is the function which generates a regular bootstrap array
-# using equal weights within each strata.
+# using equal weights within each stratum.
 #
-    output <- matrix(0, R, n)
     inds <- as.integer(names(table(strata)))
-    for(is in inds)
-    {	gp <- c(1:n)[strata == is]
-        output[,gp] <- matrix(sample(gp,R*length(gp),replace=TRUE),nrow=R)
+    if (length(inds) == 1) {
+        output <- sample(n, n*R, replace=TRUE)
+        dim(output) <- c(R, n)
+    } else {
+        output <- matrix(as.integer(0), R, n)
+        for(is in inds) {
+            gp <- (1:n)[strata == is]
+            output[, gp] <- sample(gp, R*length(gp), replace=TRUE)
+        }
     }
     output
 }
@@ -863,8 +875,8 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
             if (is.null(var.t)) var.t <- boot.out$t[,index[2]]
         }
     }
-    if (const(t, min(1e-8,mean(t)/1e6))) {
-        print(paste("All values of t are equal to ", mean(t),
+    if (const(t, min(1e-8,mean(t, na.rm=TRUE)/1e6))) {
+        print(paste("All values of t are equal to ", mean(t, na.rm=TRUE),
                     "\n Cannot calculate confidence intervals"))
         return(NULL)
     }
@@ -2079,7 +2091,7 @@ imp.weights <- function( boot.out, def=TRUE, q=NULL )
 
 const <- function(w, eps=1e-8) {
 # Are all of the values of w equal to within the tolerance eps.
-	all(abs(w-mean(w)) < eps) }
+	all(abs(w-mean(w, na.rm=TRUE)) < eps) }
 
 imp.moments <- function(boot.out=NULL, index=1, t=boot.out$t[,index],
 			w=NULL, def=TRUE, q=NULL )

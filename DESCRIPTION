@@ -1,7 +1,7 @@
 Package: boot
 Priority: recommended
-Version: 1.2-33
-Date: 2008-05-05
+Version: 1.2-34
+Date: 2008-09-05
 Author: S original <http://statwww.epfl.ch/davison/BMA/library.html>
   by Angelo Canty <cantya@mcmaster.ca>.  
   R port by  Brian Ripley <ripley@stats.ox.ac.uk>.
@@ -15,4 +15,4 @@ Suggests: survival
 LazyLoad: yes
 LazyData: yes
 License: Unlimited
-Packaged: Mon May  5 08:17:04 2008; ripley
+Packaged: Fri Sep  5 13:05:40 2008; ripley

@@ -1,3 +1,10 @@
+version 1.2-34 2008-09-05
+
+    antithetic.arrray, ordinary.array: return integer matrix.
+    ordinary.array: use as little memory as possible.
+    boot: add 'simple' argument.
+    const: use mean(x, na.rm=TRUE)
+
 version 1.2-33 2008-05-05
 
     glm.diag: 'gaussian' not 'Gaussian' for family name.
