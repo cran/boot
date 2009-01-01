@@ -19,20 +19,20 @@ simplex(a, A1 = NULL, b1 = NULL, A2 = NULL, b2 = NULL, A3 = NULL,
     objective function.
   }
   \item{A1}{
-    An \code{m1} by \code{n} matrix of coefficients for the "<=" type of
+    An \code{m1} by \code{n} matrix of coefficients for the \eqn{\leq}{<=} type of
     constraints.
   }
   \item{b1}{
-    A vector of length \code{m1} giving the right hand side of the "<="
+    A vector of length \code{m1} giving the right hand side of the \eqn{\leq}{<=}
     constraints. This argument is required if \code{A1} is given and
     ignored otherwise.  All values in \code{b1} must be non-negative.
   }
   \item{A2}{
-    An \code{m2} by \code{n} matrix of coefficients for the ">=" type of
+    An \code{m2} by \code{n} matrix of coefficients for the \eqn{\geq}{>=} type of
     constraints.
   }
   \item{b2}{
-    A vector of length \code{m2} giving the right hand side of the ">="
+    A vector of length \code{m2} giving the right hand side of the \eqn{\geq}{>=}
     constraints. This argument is required if \code{A2} is given and
     ignored otherwise.  All values in \code{b2} must be non-negative.
     Note that the constraints \code{x >= 0} are included automatically
@@ -66,15 +66,15 @@ simplex(a, A1 = NULL, b1 = NULL, A2 = NULL, b2 = NULL, A3 = NULL,
 }
 \details{
   The method employed by this function is the two phase tableau simplex
-  method. If there are ">=" or equality constraints an initial feasible
+  method. If there are \eqn{\geq}{>=} or equality constraints an initial feasible
   solution is not easy to find.  To find a feasible solution an
-  artificial variable is introduced into each ">=" or equality
+  artificial variable is introduced into each \eqn{\geq}{>=} or equality
   constraint and an auxiliary objective function is defined as the sum
   of these artificial variables.  If a feasible solution to the set of
   constraints exists then the auxiliary objective will be minimized when
   all of the artificial variables are 0. These are then discarded and
   the original problem solved starting at the solution to the auxiliary
-  problem.  If the only constraints are of the "<=" form, the origin is
+  problem.  If the only constraints are of the \eqn{\leq}{<=} form, the origin is
   a feasible solution and so the first stage can be omitted.
 }
 \note{

@@ -72,7 +72,7 @@ tsboot(tseries, statistic, R, l=NULL, sim="model", endcorr=TRUE,
 }
 \item{ran.gen}{
   This is a function of three arguments.  The first argument is a time
-  series.  If \code{sim} is code{"model"} then it will always be
+  series.  If \code{sim} is \code{"model"} then it will always be
   \code{tseries} that is passed.  For other simulation types it is the
   result of selecting \code{n.sim} observations from \code{tseries} by
   some scheme and converting the result back into a time series of the

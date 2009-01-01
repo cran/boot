@@ -12,15 +12,15 @@ antithetic.array <- function(n, R, L, strata)
 #
 {
     inds <- as.integer(names(table(strata)))
-    out <- matrix(as.integer(0), R, n)
+    out <- matrix(0L, R, n)
     for (s in inds)
-    {	gp <- (1:n)[strata==s]
+    {	gp <- (1L:n)[strata==s]
         out[ ,gp] <- anti.arr(length(gp), R, L[gp], gp)
     }
     out
 }
 
-anti.arr <- function(n, R, L, inds=1:n)
+anti.arr <- function(n, R, L, inds=1L:n)
 {
 #  R x n array of bootstrap indices, generated antithetically
 #  according to the empirical influence values in L.
@@ -28,11 +28,11 @@ anti.arr <- function(n, R, L, inds=1:n)
 # Assign unique ranks to a numeric vector
         ranks <- rank(x)
         if (any(duplicated(ranks))) {
-            inds <- 1:length(x)
+            inds <- 1L:length(x)
             uniq <- sort(unique(ranks))
             tab <- table(ranks)
-            for (i in 1:length(uniq))
-                if (tab[i] >1) {
+            for (i in 1L:length(uniq))
+                if (tab[i] > 1L) {
                     gp <- inds[ranks == uniq[i]]
                     ranks[gp] <- sample(inds[sort(ranks) == uniq[i]])
                 }
@@ -43,7 +43,7 @@ anti.arr <- function(n, R, L, inds=1:n)
     mat1 <- matrix(sample(inds, R1*n, replace=TRUE),R1,n)
     ranks <- unique.rank(L)
     rev <- inds
-    for (i in 1:n)
+    for (i in 1L:n)
         rev[i] <- inds[ranks==(n+1-ranks[i])]
     mat1 <- rbind(mat1,matrix(rev[mat1],R1,n))
     if (R != 2*R1)
@@ -60,11 +60,11 @@ balanced.array <- function(n, R, strata)
 # R x n array of bootstrap indices, sampled hypergeometrically
 # within strata.
 #
-    output <- matrix(rep(1:n, R), n, R)
+    output <- matrix(rep(1L:n, R), n, R)
     inds <- as.integer(names(table(strata)))
     for(is in inds) {
-        group <- c(1:n)[strata == is]
-        if(length(group) > 1) {
+        group <- c(1L:n)[strata == is]
+        if(length(group) > 1L) {
             g <- matrix(sample(output[group,  ]), length(group), R)
             output[group,  ] <- g
         }
@@ -93,7 +93,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
     if (isMatrix(data)) n <- nrow(data)
     else n <- length(data)
     temp.str <- strata
-    strata <- tapply(1:n,as.numeric(strata))
+    strata <- tapply(1L:n,as.numeric(strata))
     if ((n == 0) || is.null(n))
         stop("no data in call to boot")
     if (sim != "parametric") {
@@ -104,7 +104,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
             m <- 0
         else if (any(m < 0))
             stop("negative value of m supplied")
-        if ((length(m) != 1) && (length(m) != length(table(strata))))
+        if ((length(m) != 1L) && (length(m) != length(table(strata))))
             stop("length of m incompatible with strata")
         if ((sim == "ordinary") || (sim == "balanced")) {
             if (isMatrix(weights) && (nrow(weights) != length(R)))
@@ -120,7 +120,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
             ns <- tabulate(strata)[strata]
             original <- 1/ns
         }
-        else original <- 1:n
+        else original <- 1L:n
         if (sum(m) > 0) {
             t0 <- statistic(data, original, rep(1,sum(m)),...)
             lt0 <- length(t0)
@@ -138,7 +138,7 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
     pred.i <- NULL
     if(sim == "parametric") {
 #  Generate the data and bootstrap replicates for the parametric bootstrap
-        for(r in 1:R) {
+        for(r in 1L:R) {
             t.star[r,] <- statistic(ran.gen(data, mle),...)
         }
     }
@@ -146,33 +146,33 @@ boot <- function(data, statistic, R, sim="ordinary", stype="i",
 #  Calculate the replicate indices and loop over them to calculate the
 #  bootstrap replicates.
         if (!simple && ncol(i) > n) {
-            pred.i <- as.matrix(i[ , (n+1):ncol(i)])
-            i <- i[,1:n]
+            pred.i <- as.matrix(i[ , (n+1L):ncol(i)])
+            i <- i[,1L:n]
         }
         if(stype == "f") {
             f <- freq.array(i)
             if (sum(m) == 0)
-                for(r in 1:sum(R))
+                for(r in 1L:sum(R))
                     t.star[r,] <- statistic(data, f[r,  ],...)
-            else for(r in 1:sum(R))
+            else for(r in 1L:sum(R))
                 t.star[r,] <- statistic(data, f[r, ], pred.i[r, ],...)
         } else if (stype == "w") {
             f <- freq.array(i)
             if (sum(m) == 0)
-                for(r in 1:sum(R))
+                for(r in 1L:sum(R))
                     t.star[r,] <- statistic(data, f[r,  ]/ns,...)
-            else for(r in 1:sum(R))
+            else for(r in 1L:sum(R))
                 t.star[r,] <- statistic(data, f[r, ]/ns, pred.i[r, ],...)
         } else if (sum(m) > 0) {
-            for (r in 1:sum(R))
+            for (r in 1L:sum(R))
                 t.star[r,] <- statistic(data, i[r, ], pred.i[r,],...)
         } else if (simple) {
-            for(r in 1:sum(R)) {
+            for(r in 1L:sum(R)) {
                 inds <- index.array(n, 1, sim, strata, m, L, weights)
                 t.star[r,] <- statistic(data, inds,...)
             }
         } else {
-            for(r in 1:sum(R))
+            for(r in 1L:sum(R))
                 t.star[r,] <- statistic(data, i[r, ],...)
         }
     }
@@ -191,7 +191,7 @@ normalize <- function(wts, strata)
     out <- wts
     inds <- as.integer(names(table(strata)))
     for (is in inds) {
-        gp <- c(1:n)[strata == is]
+        gp <- c(1L:n)[strata == is]
         out[gp] <- wts[gp]/sum(wts[gp]) }
     out
 }
@@ -240,7 +240,7 @@ boot.array <- function(boot.out, indices=FALSE) {
     else	n <- length(boot.out$data)
     R <- boot.out$R
     sim <- boot.out$sim
-    if (boot.out$call[[1]]=="tsboot") {
+    if (boot.out$call[[1L]]=="tsboot") {
 #  Recreate the array for an object created by tsboot, The default for
 #  such objects is to return the index array unless index is specifically
 #  passed as F
@@ -251,23 +251,23 @@ boot.array <- function(boot.out, indices=FALSE) {
         i.a <- ts.array(n, n.sim, R, boot.out$l,
 			sim, boot.out$endcorr)
         out <- matrix(NA,R,n.sim)
-        for(r in 1:R) {
+        for(r in 1L:R) {
             if (sim == "geom")
                 ends <- cbind(i.a$starts[r,  ],
                               i.a$lengths[r,  ])
             else
                 ends <- cbind(i.a$starts[r,], i.a$lengths)
-            inds <- apply(ends, 1, make.ends, n)
+            inds <- apply(ends, 1L, make.ends, n)
             if (is.list(inds))
-                inds <- unlist(inds)[1:n.sim]
+                inds <- unlist(inds)[1L:n.sim]
             out[r,] <- inds
         }
     }
-    else if(boot.out$call[[1]]=="censboot") {
+    else if(boot.out$call[[1L]]=="censboot") {
 #  Recreate the array for an object created by censboot as long
 #  as censboot was called with sim="ordinary"
         if (sim=="ordinary") {
-            strata <- tapply(1:n,as.numeric(boot.out$strata))
+            strata <- tapply(1L:n,as.numeric(boot.out$strata))
             out <- cens.case(n,strata,R)
         }
         else	stop("boot.array not implemented for this object")
@@ -276,8 +276,8 @@ boot.array <- function(boot.out, indices=FALSE) {
 #  Recreate the array for objects created by boot or tilt.boot
         if (sim=="parametric")
             stop("array cannot be found for parametric bootstrap")
-        strata <- tapply(1:n,as.numeric(boot.out$strata))
-        if (boot.out$call[[1]] == "tilt.boot")
+        strata <- tapply(1L:n,as.numeric(boot.out$strata))
+        if (boot.out$call[[1L]] == "tilt.boot")
             weights <- boot.out$weights
         else {
             weights <- boot.out$call$weights
@@ -315,27 +315,27 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
 #  Calculate the breakpoints for the histogram so that one of them is
 #  exactly t0.
         rg <- range(t)
-        if (t0<rg[1]) rg[1] <- t0
-        else if (t0 >rg[2]) rg[2] <- t0
+        if (t0<rg[1L]) rg[1L] <- t0
+        else if (t0 >rg[2L]) rg[2L] <- t0
         rg <- rg+0.05*c(-1,1)*diff(rg)
         lc <- diff(rg)/(nclass-2)
-        n1 <- ceiling((t0-rg[1])/lc)
-        n2 <- ceiling((rg[2]-t0)/lc)
+        n1 <- ceiling((t0-rg[1L])/lc)
+        n2 <- ceiling((rg[2L]-t0)/lc)
         bks <- t0+(-n1:n2)*lc
     }
     R <- boot.out$R
     if (qdist=="chisq") {
-        qq <- qchisq((1:R)/(R+1),df=df)
+        qq <- qchisq((1L:R)/(R+1),df=df)
         qlab <- paste("Quantiles of Chi-squared(",df,")",sep="")
     }
     else {	if(qdist!="norm")
                     warning(sQuote(qdist),
                             " distribution not supported using normal instead")
-                    qq <- qnorm((1:R)/(R+1))
+                    qq <- qnorm((1L:R)/(R+1))
                     qlab<-"Quantiles of Standard Normal"
                 }
     if (jack) {
-        layout(mat = matrix(c(1,2,3,3), 2, 2, byrow=TRUE))
+        layout(mat = matrix(c(1,2,3,3), 2L, 2L, byrow=TRUE))
         if (is.null(t0))
             hist(t,nclass=nclass,probability=TRUE,xlab="t*")
         else	hist(t,breaks=bks,probability=TRUE,xlab="t*")
@@ -360,7 +360,7 @@ plot.boot <- function(x,index=1, t0=NULL, t=NULL, jack=FALSE,
 }
 
 print.boot <- function(x, digits = getOption("digits"),
-                          index = 1:ncol(boot.out$t), ...)
+                          index = 1L:ncol(boot.out$t), ...)
 {
 #
 # Print the output of a bootstrap
@@ -369,43 +369,43 @@ print.boot <- function(x, digits = getOption("digits"),
     sim <- boot.out$sim
     cl <- boot.out$call
     t <- matrix(boot.out$t[, index], nrow = nrow(boot.out$t))
-    allNA <- apply(t,2,function(t) all(is.na(t)))
+    allNA <- apply(t,2L,function(t) all(is.na(t)))
     ind1 <- index[allNA]
     index <- index[!allNA]
     t <- matrix(t[, !allNA], nrow = nrow(t))
     rn <- paste("t",index,"*",sep="")
-    if (length(index) == 0)
+    if (length(index) == 0L)
         op <- NULL
     else if (is.null(t0 <- boot.out$t0)) {
         if (is.null(boot.out$call$weights))
-            op <- cbind(apply(t,2,mean,na.rm=TRUE),
-                        sqrt(apply(t,2,function(t.st) var(t.st[!is.na(t.st)]))))
+            op <- cbind(apply(t,2L,mean,na.rm=TRUE),
+                        sqrt(apply(t,2L,function(t.st) var(t.st[!is.na(t.st)]))))
         else {
             op <- NULL
             for (i in index)
                 op <- rbind(op, imp.moments(boot.out,index=i)$rat)
-            op[,2] <- sqrt(op[,2])
+            op[,2L] <- sqrt(op[,2])
         }
         dimnames(op) <- list(rn,c("mean", "std. error"))
     }
     else {
         t0 <- boot.out$t0[index]
         if (is.null(boot.out$call$weights)) {
-            op <- cbind(t0,apply(t,2,mean,na.rm=TRUE)-t0,
-                        sqrt(apply(t,2,function(t.st) var(t.st[!is.na(t.st)]))))
+            op <- cbind(t0,apply(t,2L,mean,na.rm=TRUE)-t0,
+                        sqrt(apply(t,2L,function(t.st) var(t.st[!is.na(t.st)]))))
             dimnames(op) <- list(rn, c("original"," bias  "," std. error"))
         }
         else {
             op <- NULL
             for (i in index)
                 op <- rbind(op, imp.moments(boot.out,index=i)$rat)
-            op <- cbind(t0,op[,1]-t0,sqrt(op[,2]),
-                        apply(t,2,mean,na.rm=TRUE))
+            op <- cbind(t0,op[,1L]-t0,sqrt(op[,2L]),
+                        apply(t,2L,mean,na.rm=TRUE))
             dimnames(op) <- list(rn,c("original", " bias  ",
                                       " std. error", " mean(t*)"))
         }
     }
-    if (cl[[1]]=="boot") {
+    if (cl[[1L]]=="boot") {
         if (sim=="parametric")
             cat("\nPARAMETRIC BOOTSTRAP\n\n")
         else if (sim=="antithetic") {
@@ -436,32 +436,32 @@ print.boot <- function(x, digits = getOption("digits"),
         else 	cat("\nSTRATIFIED WEIGHTED BOOTSTRAP\n\n")
 		}
     }
-    else if(cl[[1]] == "tilt.boot") {
+    else if(cl[[1L]] == "tilt.boot") {
         R <- boot.out$R
         th <- boot.out$theta
         if (sim=="balanced")
             cat("\nBALANCED TILTED BOOTSTRAP\n\n")
         else	cat("\nTILTED BOOTSTRAP\n\n")
-        if ((R[1]==0) || is.null(cl$tilt) || eval(cl$tilt))
+        if ((R[1L]==0) || is.null(cl$tilt) || eval(cl$tilt))
             cat("Exponential tilting used\n")
         else	cat("Frequency Smoothing used\n")
         i1 <- 1
-        if (boot.out$R[1]>0)
-            cat(paste("First",R[1],"replicates untilted,\n"))
+        if (boot.out$R[1L]>0)
+            cat(paste("First",R[1L],"replicates untilted,\n"))
         else {
-            cat(paste("First ",R[2]," replicates tilted to ",
-                      signif(th[1],4),",\n",sep=""))
+            cat(paste("First ",R[2L]," replicates tilted to ",
+                      signif(th[1L],4),",\n",sep=""))
             i1 <- 2
         }
         if (i1 <= length(th)) {
             for (j in i1:length(th))
-                cat(paste("Next ",R[j+1]," replicates tilted to ",
-                          signif(th[j],4),
+                cat(paste("Next ",R[j+1L]," replicates tilted to ",
+                          signif(th[j],4L),
                           ifelse(j!=length(th),",\n",".\n"),sep=""))
         }
-        op <- op[,1:3]
+        op <- op[,1L:3]
     }
-    else if(cl[[1]]=="tsboot") {
+    else if(cl[[1L]]=="tsboot") {
         if (!is.null(cl$indices))
             cat("\nTIME SERIES BOOTSTRAP USING SUPPLIED INDICES\n\n")
         else if (sim=="model")
@@ -512,7 +512,7 @@ print.boot <- function(x, digits = getOption("digits"),
     dput(cl, control=NULL)
     cat("\n\nBootstrap Statistics :\n")
     if (!is.null(op)) print(op,digits=digits)
-    if (length(ind1) > 0)
+    if (length(ind1) > 0L)
         for (j in ind1)
             cat(paste("WARNING: All values of t", j, "* are NA\n", sep=""))
     invisible(boot.out)
@@ -525,10 +525,9 @@ corr <- function(d, w=rep(1,nrow(d))/nrow(d))
 {
 #  The correlation coefficient in weighted form.
     s <- sum(w)
-    m1 <- sum(d[, 1] * w)/s
-    m2 <- sum(d[, 2] * w)/s
-    (sum(d[, 1] * d[, 2] * w)/s - m1 * m2)/sqrt((sum(d[, 1]^2 * w)/s - m1^2
-                                                 ) * (sum(d[, 2]^2 * w)/s - m2^2))
+    m1 <- sum(d[, 1L] * w)/s
+    m2 <- sum(d[, 2L] * w)/s
+    (sum(d[, 1L] * d[, 2L] * w)/s - m1 * m2)/sqrt((sum(d[, 1L]^2 * w)/s - m1^2) * (sum(d[, 2L]^2 * w)/s - m2^2))
 }
 
 
@@ -541,15 +540,15 @@ extra.array <- function(n, R, m, strata=rep(1,n))
 # be a positive integer or a vector of the same length as
 # strata.
 #
-	if (length(m) == 1)
-		output <- matrix(sample(1:n, m*R, replace=TRUE), R, m)
+	if (length(m) == 1L)
+		output <- matrix(sample(1L:n, m*R, replace=TRUE), R, m)
 	else
 	{	inds <- as.integer(names(table(strata)))
 		output <- matrix(NA, R, sum(m))
 		st <- 0
 		for (i in inds)
 		{	if (m[i] > 0)
-			{	gp <- (1:n)[strata == i]
+			{	gp <- (1L:n)[strata == i]
 				inds1 <- (st+1):(st+m[i])
 				output[,inds1] <- matrix(sample(gp, R*m[i], replace=TRUE),
 						        R, m[i])
@@ -581,16 +580,16 @@ importance.array <- function(n, R, weights, strata){
 #  R must be a vector of length nrow(weights) otherwise weights
 #  must be a vector of length n and R must be a scalar.
 #
-    imp.arr <- function(n, R, wts, inds=1:n)
+    imp.arr <- function(n, R, wts, inds=1L:n)
         matrix(sample(inds, n*R, replace=TRUE, prob=wts), R, n)
     output <- NULL
     if (!isMatrix(weights))
         weights <- matrix(weights,nrow=1)
     inds <- as.integer(names(table(strata)))
-    for (ir in 1:length(R)) {
-        out <- matrix(rep(1:n, R[ir]), R[ir], n, byrow=TRUE)
+    for (ir in 1L:length(R)) {
+        out <- matrix(rep(1L:n, R[ir]), R[ir], n, byrow=TRUE)
         for (is in inds) {
-            gp <- c(1:n)[strata==is]
+            gp <- c(1L:n)[strata==is]
             out[, gp] <- imp.arr(length(gp), R[ir],
                                  weights[ir,gp], gp)
         }
@@ -606,7 +605,7 @@ importance.array.bal <- function(n, R, weights, strata) {
 #  a way that each index appears in the array approximately in
 #  proportion to its weight.
 #
-    imp.arr.bal <- function(n, R, wts, inds=1:n) {
+    imp.arr.bal <- function(n, R, wts, inds=1L:n) {
         if (sum (wts) != 1) wts <- wts / sum(wts)
         nRw1 <- floor(n*R*wts)
         nRw2 <- n*R*wts - nRw1
@@ -620,10 +619,10 @@ importance.array.bal <- function(n, R, weights, strata) {
     if (!isMatrix(weights))
         weights <- matrix(weights,nrow=1)
     inds <- as.integer(names(table(strata)))
-    for (ir in 1:length(R)) {
-        out <- matrix(rep(1:n, R[ir]), R[ir], n, byrow=TRUE)
+    for (ir in 1L:length(R)) {
+        out <- matrix(rep(1L:n, R[ir]), R[ir], n, byrow=TRUE)
         for (is in inds) {
-            gp <- c(1:n)[strata==is]
+            gp <- c(1L:n)[strata==is]
             out[,gp] <- imp.arr.bal(length(gp), R[ir],
                                     weights[ir,gp], gp)
         }
@@ -669,13 +668,13 @@ jack.after.boot <- function(boot.out, index=1, t=NULL, L=NULL,
 # jackknife after bootstrap plot
     t.o <- t
     if(is.null(t)) {
-        if (length(index) > 1) {
-            index <- index[1]
+        if (length(index) > 1L) {
+            index <- index[1L]
             warning("only first element of index used")
         }
         t <- boot.out$t[, index]
     }
-    fins <- (1:length(t))[is.finite(t)]
+    fins <- (1L:length(t))[is.finite(t)]
     t <- t[fins]
     if (is.null(alpha)) {
         alpha <- c(0.05, 0.1, 0.16, 0.5, 0.84, 0.9, 0.95)
@@ -690,7 +689,7 @@ jack.after.boot <- function(boot.out, index=1, t=NULL, L=NULL,
     f <- boot.array(boot.out)[fins, , drop=TRUE]
     percentiles <- matrix(data = NA, length(alpha), n)
     J <- numeric(n)
-    for(j in 1:n) {
+    for(j in 1L:n) {
 # Find the quantiles of the bootstrap distribution on omitting each point.
         values <- t[f[, j] == 0]
         J[j] <- mean(values)
@@ -722,11 +721,11 @@ jack.after.boot <- function(boot.out, index=1, t=NULL, L=NULL,
 # jackknife values.
     plot(sort(J), percentiles[1,  ], ylim = ylts, type = "n", xlab = xtext,
          ylab = ylab, main=main)
-    for(j in 1:length(alpha)) {
+    for(j in 1L:length(alpha)) {
         lines(sort(J), percentiles[j,  ], type = "b", pch = "*")
     }
     percentiles <- quantile(t, alpha) - mean(t)
-    for(j in 1:length(alpha)) {
+    for(j in 1L:length(alpha)) {
         abline(h=percentiles[j],lty=2)
     }
 # Now print the observation numbers below the plotted lines.  They are printed
@@ -753,13 +752,13 @@ ordinary.array <- function(n, R, strata)
 # using equal weights within each stratum.
 #
     inds <- as.integer(names(table(strata)))
-    if (length(inds) == 1) {
+    if (length(inds) == 1L) {
         output <- sample(n, n*R, replace=TRUE)
         dim(output) <- c(R, n)
     } else {
-        output <- matrix(as.integer(0), R, n)
+        output <- matrix(as.integer(0L), R, n)
         for(is in inds) {
-            gp <- (1:n)[strata == is]
+            gp <- (1L:n)[strata == is]
             output[, gp] <- sample(gp, R*length(gp), replace=TRUE)
         }
     }
@@ -773,12 +772,12 @@ permutation.array <- function(n, R, strata)
 # This is similar to ordinary array except that resampling is
 # done without replacement in each row.
 #
-    output <- matrix(rep(1:n, R), n, R)
+    output <- matrix(rep(1L:n, R), n, R)
     inds <- as.integer(names(table(strata)))
     for(is in inds) {
-        group <- c(1:n)[strata == is]
-        if(length(group) > 1) {
-            g <- apply(output[group,  ], 2, sample)
+        group <- c(1L:n)[strata == is]
+        if(length(group) > 1L) {
+            g <- apply(output[group,  ], 2L, sample)
             output[group,  ] <- g
         }
     }
@@ -801,13 +800,13 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
         stop("K outside allowable range")
     K.o <- K
     K <- round(K)
-    kvals <- unique(round(n/(1:floor(n/2))))
+    kvals <- unique(round(n/(1L:floor(n/2))))
     temp <- abs(kvals-K)
     if (!any(temp==0))
-        K <- kvals[temp==min(temp)][1]
+        K <- kvals[temp==min(temp)][1L]
     if (K!=K.o) warning("K has been set to ", K)
     f <- ceiling(n/K)
-    s <- sample(rep(1:K, f),n)
+    s <- sample(rep(1L:K, f),n)
     n.s <- table(s)
 #    glm.f <- formula(glmfit)
     glm.y <- glmfit$y
@@ -815,9 +814,9 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
     ms <- max(s)
     CV <- 0
     Call <- glmfit$call
-    for(i in 1:ms) {
-        j.out <- c(1:n)[(s == i)]
-        j.in <- c(1:n)[(s != i)]
+    for(i in 1L:ms) {
+        j.out <- c(1L:n)[(s == i)]
+        j.in <- c(1L:n)[(s != i)]
         ## we want data from here but formula from the parent.
         Call$data <- data[j.in, , drop=FALSE]
         d.glm <- eval.parent(Call)
@@ -838,7 +837,7 @@ cv.glm <- function(data, glmfit, cost=function(y,yhat) mean((y-yhat)^2),
 
 
 boot.ci <- function(boot.out,conf=0.95,type="all",
-		    index=1:min(2,length(boot.out$t0)),
+		    index=1L:min(2L,length(boot.out$t0)),
 		    var.t0=NULL ,var.t=NULL, t0=NULL, t=NULL,
 		    L=NULL, h=function(t) t, hdot=function(t) rep(1,length(t)),
 		    hinv=function(t) t, ...)
@@ -858,7 +857,7 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
 #    vt.o <- var.t
     vt0.o <- var.t0
     if (is.null(t)) {
-        if (length(index) == 1) {
+        if (length(index) == 1L) {
             t0 <- boot.out$t0[index]
             t <- boot.out$t[,index]
         }
@@ -869,10 +868,10 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
             t <- boot.out$t[,index]
         }
         else {
-            t0 <- boot.out$t0[index[1]]
-            t <- boot.out$t[,index[1]]
-            if (is.null(var.t0)) var.t0 <- boot.out$t0[index[2]]
-            if (is.null(var.t)) var.t <- boot.out$t[,index[2]]
+            t0 <- boot.out$t0[index[1L]]
+            t <- boot.out$t[,index[1L]]
+            if (is.null(var.t0)) var.t0 <- boot.out$t0[index[2L]]
+            if (is.null(var.t)) var.t <- boot.out$t[,index[2L]]
         }
     }
     if (const(t, min(1e-8,mean(t, na.rm=TRUE)/1e6))) {
@@ -883,8 +882,8 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
     if (length(t) != boot.out$R)
         stop(paste("t must of length",boot.out$R))
     if (is.null(var.t))
-        fins <- (1:length(t))[is.finite(t)]
-    else {	fins <- (1:length(t))[is.finite(t) & is.finite(var.t)]
+        fins <- (1L:length(t))[is.finite(t)]
+    else {	fins <- (1L:length(t))[is.finite(t) & is.finite(var.t)]
 		var.t <- var.t[fins]
             }
     t <- t[fins]
@@ -899,12 +898,12 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
     if (any(type == "all" | type=="norm"))
         output <- c(output,
                     list(normal=norm.ci(boot.out, conf,
-                         index[1], var.t0=vt0.o, t0=t0.o, t=t.o,
+                         index[1L], var.t0=vt0.o, t0=t0.o, t=t.o,
                          L=L, h=h, hdot=hdot, hinv=hinv)))
     if (any(type == "all" | type == "basic"))
         output <- c(output, list(basic=basic.ci(t0,t,conf,hinv=hinv)))
     if (any(type == "all" | type == "stud")) {
-        if (length(index)==1)
+        if (length(index)==1L)
             warning("bootstrap variances needed for studentized intervals")
         else
             output <- c(output, list(student=stud.ci(c(t0,var.t0),
@@ -913,11 +912,11 @@ boot.ci <- function(boot.out,conf=0.95,type="all",
     if (any(type == "all" | type == "perc"))
         output <- c(output, list(percent=perc.ci(t,conf,hinv=hinv)))
     if (any(type == "all" | type == "bca")) {
-        if (as.character(boot.out$call[1])=="tsboot")
+        if (as.character(boot.out$call[1L])=="tsboot")
             warning("BCa intervals not defined for time series bootstraps.")
         else
             output <- c(output, list(bca=bca.ci(boot.out,conf,
-                                     index[1],L=L,t=t.o, t0=t0.o,
+                                     index[1L],L=L,t=t.o, t0=t0.o,
                                      h=h,hdot=hdot, hinv=hinv, ...)))
     }
     class(output) <- "bootci"
@@ -930,8 +929,8 @@ print.bootci <- function(x, hinv=NULL, ...) {
 #
     ci.out <- x
     cl <- ci.out$call
-    ntypes <- length(ci.out)-3
-    nints <- nrow(ci.out[[4]])
+    ntypes <- length(ci.out)-3L
+    nints <- nrow(ci.out[[4L]])
     t0 <- ci.out$t0
     if (!is.null(hinv)) t0 <- hinv(t0)  #
 #  Find the number of decimal places which should be used
@@ -955,13 +954,13 @@ print.bootci <- function(x, hinv=NULL, ...) {
     if (!is.null(ci.out$bca)) {
         intlabs <- c(intlabs,"      BCa          ")
         bcarg <- range(ci.out$bca[,2:3]) }
-    level <- 100*ci.out[[4]][,1]
-    if (ntypes == 4) n1 <- n2 <- 2
-    else if (ntypes ==5) {n1 <- 3; n2 <- 2}
-    else {n1 <- ntypes; n2 <- 0}
-    ints1 <- matrix(NA,nints,2*n1+1)
-    ints1[,1] <- level
-    n0 <- 4                             #
+    level <- 100*ci.out[[4L]][, 1L]
+    if (ntypes == 4L) n1 <- n2 <- 2L
+    else if (ntypes ==5L) {n1 <- 3L; n2 <- 2L}
+    else {n1 <- ntypes; n2 <- 0L}
+    ints1 <- matrix(NA,nints,2L*n1+1L)
+    ints1[,1L] <- level
+    n0 <- 4L
 #  Re-organize the intervals and coerce them into character data
     for (i in n0:(n0+n1-1)) {
         j <- c(2*i-6,2*i-5)
@@ -973,23 +972,23 @@ print.bootci <- function(x, hinv=NULL, ...) {
     }
     n0 <- 4+n1
     ints1 <- format(round(ints1,digs))
-    ints1[,1] <- paste("\n",level,"%  ",sep="")
-    ints1[,2*(1:n1)] <- paste("(",ints1[,2*(1:n1)],",",sep="")
-    ints1[,2*(1:n1)+1] <- paste(ints1[,2*(1:n1)+1],")  ")
+    ints1[,1L] <- paste("\n",level,"%  ",sep="")
+    ints1[,2*(1L:n1)] <- paste("(",ints1[,2*(1L:n1)],",",sep="")
+    ints1[,2*(1L:n1)+1L] <- paste(ints1[,2*(1L:n1)+1L],")  ")
     if (n2 > 0) {
-        ints2 <- matrix(NA,nints,2*n2+1)
-        ints2[,1] <- level
-        j <- c(2,3)
-        for (i in n0:(n0+n2-1)) {
+        ints2 <- matrix(NA,nints,2L*n2+1L)
+        ints2[,1L] <- level
+        j <- c(2L,3L)
+        for (i in n0:(n0+n2-1L)) {
             if (is.null(hinv))
-                ints2[,j] <- ci.out[[i]][,c(4,5)]
-            else	ints2[,j] <- hinv(ci.out[[i]][,c(4,5)])
-            j <- j+2
+                ints2[,j] <- ci.out[[i]][,c(4L,5L)]
+            else	ints2[,j] <- hinv(ci.out[[i]][,c(4L,5L)])
+            j <- j+2L
         }
         ints2 <- format(round(ints2,digs))
-        ints2[,1] <- paste("\n",level,"%  ",sep="")
-        ints2[,2*(1:n2)] <- paste("(",ints2[,2*(1:n2)],",",sep="")
-        ints2[,2*(1:n2)+1] <- paste(ints2[,2*(1:n2)+1],")  ")
+        ints2[,1L] <- paste("\n",level,"%  ",sep="")
+        ints2[,2*(1L:n2)] <- paste("(",ints2[,2*(1L:n2)],",",sep="")
+        ints2[,2*(1L:n2)+1L] <- paste(ints2[,2*(1L:n2)+1L],")  ")
     }
     R <- ci.out$R                       #
 #  Print the intervals
@@ -998,7 +997,7 @@ print.bootci <- function(x, hinv=NULL, ...) {
     cat("CALL : \n")
     dput(cl, control=NULL)
     cat("\nIntervals : ")
-    cat("\nLevel",intlabs[1:n1])
+    cat("\nLevel",intlabs[1L:n1])
     cat(t(ints1))
     if (n2 > 0) {
         cat("\n\nLevel",intlabs[(n1+1):(n1+n2)])
@@ -1017,27 +1016,27 @@ print.bootci <- function(x, hinv=NULL, ...) {
                     " but Intervals Transformed\n")#
 #  Print any warnings about extreme values.
     if (!is.null(basrg)) {
-        if ((basrg[1] <= 1) || (basrg[2] >= R))
+        if ((basrg[1L] <= 1) || (basrg[2L] >= R))
             cat("Warning : Basic Intervals used Extreme Quantiles\n")
-        if ((basrg[1] <= 10) || (basrg[2] >= R-9))
+        if ((basrg[1L] <= 10) || (basrg[2L] >= R-9))
             cat("Some basic intervals may be unstable\n")
     }
     if (!is.null(strg)) {
-        if ((strg[1] <= 1) || (strg[2] >= R))
+        if ((strg[1L] <= 1) || (strg[2L] >= R))
             cat("Warning : Studentized Intervals used Extreme Quantiles\n")
-        if ((strg[1] <= 10) || (strg[2] >= R-9))
+        if ((strg[1L] <= 10) || (strg[2L] >= R-9))
             cat("Some studentized intervals may be unstable\n")
     }
     if (!is.null(perg)) {
-        if ((perg[1] <= 1) || (perg[2] >= R))
+        if ((perg[1L] <= 1) || (perg[2L] >= R))
             cat("Warning : Percentile Intervals used Extreme Quantiles\n")
-        if ((perg[1] <= 10) || (perg[2] >= R-9))
+        if ((perg[1L] <= 10) || (perg[2L] >= R-9))
             cat("Some percentile intervals may be unstable\n")
     }
     if (!is.null(bcarg)) {
-        if ((bcarg[1] <= 1) || (bcarg[2] >= R))
+        if ((bcarg[1L] <= 1) || (bcarg[2L] >= R))
             cat("Warning : BCa Intervals used Extreme Quantiles\n")
-        if ((bcarg[1] <= 10) || (bcarg[2] >= R-9))
+        if ((bcarg[1L] <= 10) || (bcarg[2L] >= R-9))
             cat("Some BCa intervals may be unstable\n")
     }
     invisible(ci.out)
@@ -1060,7 +1059,7 @@ norm.ci <- function(boot.out=NULL,conf=0.95,index=1,var.t0=NULL, t0=NULL,
     if (!is.null(boot.out) && is.null(t))
         t <- boot.out$t[,index]
     if (!is.null(t)) {
-        fins <- (1:length(t))[is.finite(t)]
+        fins <- (1L:length(t))[is.finite(t)]
         t <- h(t[fins])
     }
     if (is.null(var.t0)) {
@@ -1095,13 +1094,13 @@ norm.inter <- function(t,alpha)
     if (!all(rk>1 & rk<R))
         warning("extreme order statistics used as endpoints")
     k <- trunc(rk)
-    inds <- 1:length(k)
+    inds <- 1L:length(k)
     out <- inds
     kvs <- k[k>0 & k<R]
     tstar <- sort(t,partial=sort(union(c(1,R),c(kvs,kvs+1))))
     ints <- (k == rk)
     if (any(ints)) out[inds[ints]] <- tstar[k[inds[ints]]]
-    out[k==0] <- tstar[1]
+    out[k==0] <- tstar[1L]
     out[k==R] <- tstar[R]
     not <- function(v) xor(rep(TRUE,length(v)),v)
     temp <- inds[not(ints) & k!=0 & k!=R]
@@ -1109,7 +1108,7 @@ norm.inter <- function(t,alpha)
     temp2 <- qnorm(k[temp]/(R+1))
     temp3 <- qnorm((k[temp]+1)/(R+1))
     tk <- tstar[k[temp]]
-    tk1 <- tstar[k[temp]+1]
+    tk1 <- tstar[k[temp]+1L]
     out[temp] <- tk + (temp1-temp2)/(temp3-temp2)*(tk1 - tk)
     cbind(round(rk,2),out)
 }
@@ -1120,8 +1119,8 @@ basic.ci <- function(t0,t,conf=0.95, hinv=function(t) t)
 #
 {
     qq <- norm.inter(t,(1+c(conf,-conf))/2)
-    out <- cbind(conf, matrix(qq[,1],ncol=2),
-                 matrix(hinv(2*t0-qq[,2]),ncol=2))
+    out <- cbind(conf, matrix(qq[,1L],ncol=2L),
+                 matrix(hinv(2*t0-qq[,2L]),ncol=2L))
     out
 }
 
@@ -1135,10 +1134,10 @@ stud.ci <- function(tv0,tv,conf=0.95, hinv=function(t) t)
         out <- NA
     }
     else
-    {	z <- (tv[,1]-tv0[1])/sqrt(tv[,2])
+    {	z <- (tv[,1L]-tv0[1L])/sqrt(tv[,2L])
         qq <- norm.inter(z, (1+c(conf,-conf))/2)
-        out <- cbind(conf, matrix(qq[,1],ncol=2),
-                     matrix(hinv(tv0[1]-sqrt(tv0[2])*qq[,2]),ncol=2))
+        out <- cbind(conf, matrix(qq[,1L],ncol=2L),
+                     matrix(hinv(tv0[1L]-sqrt(tv0[2L])*qq[,2L]),ncol=2L))
     }
     out
 }
@@ -1150,7 +1149,7 @@ perc.ci <- function(t,conf=0.95, hinv=function(t) t)
 {
     alpha <- (1+c(-conf,conf))/2
     qq <- norm.inter(t,alpha)
-    out <- cbind(conf,matrix(qq[,1],ncol=2),matrix(hinv(qq[,2]),ncol=2))
+    out <- cbind(conf,matrix(qq[,1L],ncol=2L),matrix(hinv(qq[,2]),ncol=2L))
     out
 }
 
@@ -1179,7 +1178,7 @@ bca.ci <- function(boot.out,conf=0.95,index=1,t0=NULL,t=NULL, L=NULL,
     if (!is.finite(a)) stop("estimated adjustment 'a' is NA")
     adj.alpha <- pnorm(w + (w+zalpha)/(1-a*(w+zalpha)))
     qq <- norm.inter(t,adj.alpha)
-    out <- cbind(conf, matrix(qq[,1],ncol=2),matrix(hinv(h(qq[,2])),ncol=2))
+    out <- cbind(conf, matrix(qq[,1L],ncol=2L),matrix(hinv(h(qq[,2L])),ncol=2L))
     out
 }
 
@@ -1194,14 +1193,14 @@ abc.ci <- function(data, statistic, index=1, strata=rep(1,n), conf=0.95,
     y <- data
     if (isMatrix(y)) n <- nrow(y) else n <- length(y)
     strata1 <- tapply(strata,as.numeric(strata))
-    if (length(index) != 1)
-    {	warning("only first element of index used in abc.ci")
-        index <- index[1]
+    if (length(index) != 1L) {
+	warning("only first element of index used in abc.ci")
+        index <- index[1L]
     }
     S <- length(table(strata1))
     mat <- matrix(0,n,S)
-    for (s in 1:S)
-    {	gp <- (1:n)[strata1==s]
+    for (s in 1L:S)
+    {	gp <- (1L:n)[strata1==s]
         mat[gp,s] <- 1
     }
 #  Calculate the observed value of the statistic
@@ -1210,7 +1209,7 @@ abc.ci <- function(data, statistic, index=1, strata=rep(1,n), conf=0.95,
 #  Now find the linear and quadratic empirical influence values through
 #  numerical differentiation
     L <- L2 <- numeric(n)
-    for (i in 1:n)
+    for (i in 1L:n)
     {	w1 <- (1-eps)*w.orig
         w1[i] <- w1[i]+eps
         w2 <- (1+eps)*w.orig
@@ -1238,12 +1237,12 @@ abc.ci <- function(data, statistic, index=1, strata=rep(1,n), conf=0.95,
 #  Finally calculate the interval endpoints by calling the statistic with
 #  various weight vectors.
     out <- seq(alpha)
-    for (i in 1:length(alpha))
+    for (i in 1L:length(alpha))
     {	w.fin <- w.orig+lalpha[i]*dhat
         out[i] <- statistic(y,w.fin/(w.fin%*%mat)[strata1], ...)[index]
     }
-    out <- cbind(conf,matrix(out,ncol=2,byrow=TRUE))
-    if (length(conf) == 1) out <- as.vector(out)
+    out <- cbind(conf,matrix(out,ncol=2L,byrow=TRUE))
+    if (length(conf) == 1L) out <- as.vector(out)
     out
 }
 
@@ -1266,13 +1265,13 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
     call <- match.call()
     if (isMatrix(data)) n <- nrow(data)
     else stop("data must be a matrix with at least 2 columns")
-    if (ncol(data) < 2)
+    if (ncol(data) < 2L)
         stop("data must be a matrix with at least 2 columns")
-    if (length(index) < 2)
+    if (length(index) < 2L)
         stop("index must contain 2 elements")
-    if (length(index) > 2) {
+    if (length(index) > 2L) {
         warning("only first 2 elements of index used")
-        index <- index[1:2]
+        index <- index[1L:2L]
     }
     if (ncol(data) < max(index))
         stop("indices are incompatible with ncol(data)")
@@ -1280,7 +1279,7 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
         if (!is.null(cox))
             stop("sim=weird cannot be used with coxph object")
         if (ncol(data)>2)
-            warning("only columns ", index[1], " and ", index[2], " of data used")
+            warning("only columns ", index[1L], " and ", index[2L], " of data used")
         data <- data[,index]
     }
     if (!is.null(cox) && is.null(cox$coefficients) &&
@@ -1300,13 +1299,13 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
     }
     else {	if (nrow(strata)!=n) stop("strata of wrong length")
 		if ((sim=="weird") || (sim=="ordinary"))
-                    temp.str <- strata <- strata[,1]
-		else	temp.str <- strata <- strata[,1:2]
+                    temp.str <- strata <- strata[,1L]
+		else	temp.str <- strata <- strata[,1L:2L]
             }
     if (isMatrix(strata))
-        strata <- apply(strata,2,
-			function(s,n) tapply(1:n,as.numeric(s)),n)
-    else	strata <- tapply(1:n,as.numeric(strata))
+        strata <- apply(strata,2L,
+			function(s,n) tapply(1L:n,as.numeric(s)),n)
+    else	strata <- tapply(1L:n,as.numeric(strata))
     if ((sim=="weird") && !missing(strata))
         t0 <- statistic(data,temp.str,...)
     else	t0 <- statistic(data,...)#
@@ -1322,7 +1321,7 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
         bt <- cens.resamp(data,R,F.surv,G.surv,strata,index,cox,sim)
     lt0 <- length(t0)
     t <- matrix(NA,R,lt0)
-    for (r in 1:R) {
+    for (r in 1L:R) {
 # In this loop we find the bootstrap replicates.  We also find each
 # bootstrap dataset for the weird bootstrap if required.
         temp.str1 <- temp.str
@@ -1331,11 +1330,11 @@ censboot <- function(data,statistic,R,F.surv,G.surv,strata=matrix(1,n,2),
         else if (sim=="weird") {
             bootdata <- cens.weird(data,F.surv,strata)
             temp.str1 <- bootdata[,3]
-            bootdata <- bootdata[,1:2]
+            bootdata <- bootdata[,1L:2]
         }
         else {	bootdata <- data
                 bootdata[,index] <- bt[r,,]
-                oi <- order(bt[r,,1],1-bt[r,,2])
+                oi <- order(bt[r,,1L],1-bt[r,,2L])
                 bootdata <- bootdata[oi,]
             }
         if ((sim=="weird") && !missing(strata))
@@ -1360,8 +1359,8 @@ cens.case <- function(n,strata,R) {
 #  Simple case resampling.
 #
 	out <- matrix(NA,nrow=R,ncol=n)
-	for (s in 1:length(table(strata))) {
-		inds <- (1:n)[strata==s]
+	for (s in 1L:length(table(strata))) {
+		inds <- (1L:n)[strata==s]
 		ns <- length(inds)
 		out[,inds] <- sample(inds,ns*R,replace=TRUE)
 	}
@@ -1388,7 +1387,7 @@ cens.weird <- function(data,surv,strata) {
         str <- rep(1,m)
     }
     else {	nstr <- length(surv$strata)
-		str <- rep(1:nstr,surv$strata)
+		str <- rep(1L:nstr,surv$strata)
             }
     n.ev <- rbinom(m,surv$n.risk,surv$n.event/surv$n.risk)
     while (any(tapply(n.ev,str,sum)==0))
@@ -1396,12 +1395,12 @@ cens.weird <- function(data,surv,strata) {
     times <- rep(surv$time,n.ev)
     str <- rep(str,n.ev)
     out <- NULL
-    for (s in 1:nstr) {
+    for (s in 1L:nstr) {
         temp <- cbind(times[str==s],1)
         temp <- rbind(temp,
                       as.matrix(data[(strata==s&data[,2]==0),, drop=FALSE]))
         temp <- cbind(temp,s)
-        oi <- order(temp[,1],1-temp[,2])
+        oi <- order(temp[,1L],1-temp[,2L])
         out <- rbind(out,temp[oi,])
     }
     if (is.data.frame(data)) out <- as.data.frame(out)
@@ -1438,7 +1437,7 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
         survival <- surv$surv[inds]
         time <- surv$time[inds]
         n1 <- length(time)
-        if (survival[n1]>0) {
+        if (survival[n1]>0L) {
             survival <- c(survival,0)
             time <- c(time,Inf)
         }
@@ -1456,7 +1455,7 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
         }
         ex <- exp(eta)
         Fh <- 1-outer(F0,ex,"^")
-        apply(rbind(0,Fh),2,function(p,y,R)
+        apply(rbind(0,Fh),2L,function(p,y,R)
               sample(y,R,prob=diff(p),replace=TRUE), time,R)
     }
     getc1 <- function(n,R,surv,inds) {
@@ -1487,11 +1486,11 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
         }
         probs <- diff(-c(1,cens))
         cout <- matrix(NA,R,n)
-        for (i in 1:n) {
-            if (data[i,2]==0) cout[,i] <- data[i,1]
-            else {	pri <- probs[time>data[i,1]]
-                        ti <- time[time>data[i,1]]
-                        if (length(ti)==1)
+        for (i in 1L:n) {
+            if (data[i,2]==0) cout[,i] <- data[i,1L]
+            else {	pri <- probs[time>data[i,1L]]
+                        ti <- time[time>data[i,1L]]
+                        if (length(ti)==1L)
                             cout[,i] <- ti
                         else	cout[,i] <- sample(ti,R,prob=pri,
                                                    replace=TRUE)
@@ -1508,18 +1507,18 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
     if (is.null(Gstr)) Gstr <- length(G.surv$time)
     out <- array(NA,c(R,n,2))
     y0 <- matrix(NA,R,n)
-    for (s in 1:length(table(strata[,1]))) {
+    for (s in 1L:length(table(strata[,1L]))) {
 # Find the resampled failure times within strata for failures
-        ns <- sum(strata[,1]==s)
+        ns <- sum(strata[,1L]==s)
         inds <- Fstart:(Fstr[s]+Fstart-1)
         if (is.null(cox))
-            y0[,strata[,1]==s] <- gety1(ns,R,F.surv,inds)
-        else	y0[,strata[,1]==s] <- gety2(ns,R,F.surv,
-                          cox$linear.predictors[strata[,1]==s],inds)
+            y0[,strata[,1L]==s] <- gety1(ns,R,F.surv,inds)
+        else	y0[,strata[,1L]==s] <- gety2(ns,R,F.surv,
+                          cox$linear.predictors[strata[,1L]==s],inds)
         Fstart <- Fstr[s]+Fstart
     }
     c0 <- matrix(NA,R,n)
-    for (s in 1:length(table(strata[,2]))) {
+    for (s in 1L:length(table(strata[,2L]))) {
 # Find the resampled censoring times within strata for censoring times
         ns <- sum(strata[,2]==s)
         inds <- Gstart:(Gstr[s]+Gstart-1)
@@ -1534,9 +1533,9 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
 # If both the resampled failure time and the resampled censoring time
 # are infinite then set the resampled time to be a failure at the largest
 # failure time in the failure time stratum containing the observation.
-        evs <- (1:n)[data[,index[2]]==1]
-        maxf <- tapply(data[evs,index[1]],strata[evs,1],max)
-        maxf <- matrix(maxf[strata[,1]],nrow=R,ncol=n,byrow=TRUE)
+        evs <- (1L:n)[data[,index[2L]]==1]
+        maxf <- tapply(data[evs,index[1L]],strata[evs,1L],max)
+        maxf <- matrix(maxf[strata[,1L]],nrow=R,ncol=n,byrow=TRUE)
         y0[infs] <- maxf[infs]
     }
     out <-array(c(pmin(y0,c0),1*(y0<=c0)),
@@ -1585,10 +1584,10 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
     if (type == "inf") {
 # calculate the infinitesimal jackknife values by numerical differentiation
     	if (stype !="w") stop("'stype' must be \"w\" for type=\"inf\"")
-        if (length(index) != 1)
-        {	warning("only first element of index used")
-                index <- index[1]
-            }
+        if (length(index) != 1L) {
+            warning("only first element of index used")
+            index <- index[1L]
+        }
         if (!is.null(t))
             warning("input t ignored; type=\"inf\"")
         L <- inf.jack(data, statistic, index, strata, eps, ...)
@@ -1598,9 +1597,9 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
         if (is.null(boot.out))
             stop("bootstrap object needed for type=\"reg\"")
         if (is.null(t)) {
-            if (length(index) != 1) {
+            if (length(index) != 1L) {
                 warning("only first element of index used")
-                index <- index[1]
+                index <- index[1L]
             }
             t <- boot.out$t[,index]
         }
@@ -1609,18 +1608,18 @@ empinf <- function(boot.out=NULL, data=NULL, statistic=NULL,
     else if (type == "jack")
     {	if (!is.null(t))
             warning("input t ignored; type=\"jack\"")
-            if (length(index) != 1)
+            if (length(index) != 1L)
             {	warning("only first element of index used")
-                index <- index[1]
+                index <- index[1L]
             }
             L <- usual.jack(data, statistic, stype, index, strata, ...)
 	}
     else if (type == "pos")
     {	if (!is.null(t))
             warning("input t ignored; type=\"pos\"")
-            if (length(index) != 1)
+            if (length(index) != 1L)
             {	warning("only first element of index used")
-                index <- index[1]
+                index <- index[1L]
             }
             L <- positive.jack(data, statistic, stype, index, strata, ...)
 	}
@@ -1635,13 +1634,13 @@ inf.jack <- function(data, stat, index=1, strata = rep(1, n), eps = 0.001, ...)
 #
     if (isMatrix(data)) n <- nrow(data)
     else n <- length(data)
-    L <- 1:n
+    L <- 1L:n
     eps <- eps/n
     strata <- tapply(strata,as.numeric(strata))
     w.orig <- 1/table(strata)[strata]
     tobs <- stat(data, w.orig, ...)[index]
-    for(i in 1:n) {
-        group <- (1:n)[strata == strata[i]]
+    for(i in 1L:n) {
+        group <- (1L:n)[strata == strata[i]]
         w <- w.orig
         w[group] <- (1 - eps)*w[group]
         w[i] <- w[i] + eps
@@ -1650,14 +1649,14 @@ inf.jack <- function(data, stat, index=1, strata = rep(1, n), eps = 0.001, ...)
     L
 }
 
-empinf.reg <- function(boot.out, t=boot.out$t[,1])
+empinf.reg <- function(boot.out, t=boot.out$t[,1L])
 #
 #  Function to estimate empirical influence values using regression.
 #  This method regresses the observed bootstrap values on the bootstrap
 #  frequencies to estimate the empirical influence values
 #
 {
-    fins <- (1:length(t))[is.finite(t)]
+    fins <- (1L:length(t))[is.finite(t)]
     t <- t[fins]
     R <- length(t)
     if (isMatrix(boot.out$data))
@@ -1671,10 +1670,10 @@ empinf.reg <- function(boot.out, t=boot.out$t[,1])
 #    S <- length(ns)
     f <- boot.array(boot.out)[fins,]
     X <- f/matrix(ns[strata],R,n,byrow=TRUE)
-    out <- tapply(1:n, strata, min)
-    inc <- (1:n)[-out]
+    out <- tapply(1L:n, strata, min)
+    inc <- (1L:n)[-out]
     X <- X[,inc]
-    beta <- coefficients(glm(t~X))[-1]
+    beta <- coefficients(glm(t~X))[-1L]
     l <- rep(0,n)
     l[inc] <- beta
     l <- l - tapply(l,strata,mean)[strata]
@@ -1694,7 +1693,7 @@ usual.jack <- function(data, stat, stype="w", index=1, strata=rep(1,n),...)
     if (stype == "w") {
         w0 <- rep(1,n)/table(strata)[strata]
         tobs <- stat(data, w0, ...)[index]
-        for (i in 1:n) {
+        for (i in 1L:n) {
             w1 <- w0
             w1[i] <- 0
             gp <- strata==strata[i]
@@ -1705,7 +1704,7 @@ usual.jack <- function(data, stat, stype="w", index=1, strata=rep(1,n),...)
     else if (stype == "f") {
         f0 <- rep(1,n)
         tobs <- stat(data, f0,...)[index]
-        for (i in 1:n) {
+        for (i in 1L:n) {
             f1 <- f0
             f1[i] <- 0
             gp <- strata==strata[i]
@@ -1713,9 +1712,9 @@ usual.jack <- function(data, stat, stype="w", index=1, strata=rep(1,n),...)
         }
     }
     else {
-        i0 <- 1:n
+        i0 <- 1L:n
         tobs <- stat(data, i0,...)[index]
-        for (i in 1:n) {
+        for (i in 1L:n) {
             i1 <- i0[-i]
             gp <- strata==strata[i]
             l[i] <- (sum(gp)-1)*(tobs - stat(data, i1, ...)[index])
@@ -1738,7 +1737,7 @@ positive.jack <- function(data, stat, stype="w", index=1, strata=rep(1,n), ...)
     if (stype == "w") {
         w0 <- rep(1,n)/table(strata)[strata]
         tobs <- stat(data, w0, ...)[index]
-        for (i in 1:n) {
+        for (i in 1L:n) {
             st1 <- c(strata,strata[i])
             w1 <- 1/table(st1)[strata]
             w1[i] <- 2*w1[i]
@@ -1750,7 +1749,7 @@ positive.jack <- function(data, stat, stype="w", index=1, strata=rep(1,n), ...)
     else if (stype == "f")
     {	f0 <- rep(1,n)
         tobs <- stat(data, f0, ...)[index]
-        for (i in 1:n) {
+        for (i in 1L:n) {
             f1 <- f0
             f1[i] <- 2
             gp <- strata==strata[i]
@@ -1758,9 +1757,9 @@ positive.jack <- function(data, stat, stype="w", index=1, strata=rep(1,n), ...)
         }
     }
     else if (stype == "i")
-    {	i0 <- 1:n
+    {	i0 <- 1L:n
         tobs <- stat(data, i0, ...)[index]
-        for (i in 1:n) {
+        for (i in 1L:n) {
             i1 <- c(i0, i)
             gp <- strata==strata[i]
             L[i] <- (sum(gp)+1)*(stat(data, i1, ...)[index] - tobs)
@@ -1779,9 +1778,9 @@ linear.approx <- function(boot.out, L=NULL, index=1, type=NULL,
 {
     f <- boot.array(boot.out)
     n <- length(f[1,  ])
-    if ((length(index) > 1) && (is.null(t0) || is.null(t))) {
+    if ((length(index) > 1L) && (is.null(t0) || is.null(t))) {
         warning("only first element of index used")
-        index <- index[1]
+        index <- index[1L]
     }
     if (is.null(t0)) {
         t0 <- boot.out$t0[index]
@@ -1801,13 +1800,13 @@ linear.approx <- function(boot.out, L=NULL, index=1, type=NULL,
         strata <- rep(1, n)
     else 	strata <- tapply(strata,as.numeric(strata))
     S <- length(table(strata))
-    for(s in 1:S) {
-        i.s <- c(1:n)[strata == s]
+    for(s in 1L:S) {
+        i.s <- c(1L:n)[strata == s]
         tL <- tL + f[, i.s] %*% L[i.s]/length(i.s)
     }
     as.vector(tL)
 }
-envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1:ncol(mat))
+envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1L:ncol(mat))
 #
 #  Function to estimate pointwise and overall confidence envelopes for
 #  a function.
@@ -1824,8 +1823,8 @@ envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1:ncol(mat))
         if (is.null(k))
             k <- p*(R+1)/2
         else	p <- 2*k/(R+1)
-        kf <- function(x,k,R) 1*((min(x)<=k)|(max(x)>=R+1-k))
-        c(k,p,sum(apply(rmat,1,kf,k,R))/(R+1))
+        kf <- function(x,k,R) 1*((min(x)<=k)|(max(x)>=R+1L-k))
+        c(k,p,sum(apply(rmat,1L,kf,k,R))/(R+1))
     }
     kfun <- function(x,k1,k2)
 # Local function to find the cut-off points in each column of the matrix.
@@ -1834,38 +1833,38 @@ envelope <- function(boot.out=NULL,mat=NULL, level=0.95, index=1:ncol(mat))
         mat <- boot.out$t
     if (!isMatrix(mat)) stop("bootstrap output matrix missing")
     n <- ncol(mat)
-    if (length(index)<2) stop("use boot.ci for scalar parameters")
+    if (length(index) < 2L) stop("use boot.ci for scalar parameters")
     mat <- mat[,index]
-    rmat <- apply(mat,2,rank)
+    rmat <- apply(mat,2L,rank)
     R <- nrow(mat)
-    if (length(level)==1) level <- rep(level,2)
-    k.pt <- floor((R+1)*(1-level[1])/2+1e-10)
+    if (length(level) == 1L) level <- rep(level,2L)
+    k.pt <- floor((R+1)*(1-level[1L])/2+1e-10)
     k.pt <- c(k.pt, R+1-k.pt)
-    err.pt <- emperr(rmat,k=k.pt[1])
+    err.pt <- emperr(rmat,k=k.pt[1L])
     ov <- emperr(rmat,k=1)
     ee <- err.pt
-    al <- 1-level[2]
-    if (ov[3] > al)
+    al <- 1-level[2L]
+    if (ov[3L] > al)
         warning("unable to achieve requested overall error rate.")
-    else {	continue <- !(ee[3] < al)
+    else {	continue <- !(ee[3L] < al)
 		while(continue) {
 #  If the observed error is greater than the level required for the overall
 #  envelope then try another envelope.  This loop uses linear interpolation
-#  on the integers between 1 and k.pt[1] to find the required value.
-                    kk <- ov[1]+round((ee[1]-ov[1])*(al-ov[3])/
-                                      (ee[3]-ov[3]))
-                    if (kk==ov[1]) kk <- kk+1
-                    else if(kk==ee[1]) kk <- kk-1
+#  on the integers between 1 and k.pt[1L] to find the required value.
+                    kk <- ov[1L]+round((ee[1L]-ov[1L])*(al-ov[3L])/
+                                      (ee[3L]-ov[3L]))
+                    if (kk==ov[1L]) kk <- kk+1
+                    else if(kk==ee[1L]) kk <- kk-1
                     temp <- emperr(rmat,k=kk)
-                    if (temp[3] > al) ee <- temp
+                    if (temp[3L] > al) ee <- temp
                     else ov <- temp
-                    continue <- !(ee[1]==ov[1]+1)
+                    continue <- !(ee[1L]==ov[1L]+1)
 		}
             }
-    k.ov <- c(ov[1], R+1-ov[1])
-    err.ov <- ov[-1]
-    out <- apply(mat,2,kfun,k.pt,k.ov)
-    list(point=out[2:1,],overall=out[4:3,],k.pt=k.pt,err.pt=err.pt[-1],
+    k.ov <- c(ov[1L], R+1-ov[1L])
+    err.ov <- ov[-1L]
+    out <- apply(mat,2L,kfun,k.pt,k.ov)
+    list(point=out[2:1,],overall=out[4:3,],k.pt=k.pt,err.pt=err.pt[-1L],
          k.ov=k.ov,err.ov=err.ov,err.nom=1-level)
 }
 
@@ -1880,9 +1879,9 @@ glm.diag <- function(glmfit)
     if (is.null(glmfit$prior.weights))
         w <- rep(1,length(glmfit$residuals))
     else	w <- glmfit$prior.weights
-    sd <- ifelse(family(glmfit)$family[1] == "gaussian", sqrt(glmfit$
+    sd <- ifelse(family(glmfit)$family[1L] == "gaussian", sqrt(glmfit$
                                       deviance/glmfit$df.residual), 1)
-    sd <- ifelse(family(glmfit)$family[1] == "Gamma", sqrt(sum(w*
+    sd <- ifelse(family(glmfit)$family[1L] == "Gamma", sqrt(sum(w*
                                       (glmfit$y/fitted(glmfit) - 1)^2)/glmfit$df.residual),
                  sd)
     dev <- residuals(glmfit, type = "deviance")/sd
@@ -1906,11 +1905,11 @@ glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
     if(is.null(glmdiag))
         glmdiag <- glm.diag(glmfit)
     if(is.null(subset))
-        subset <- c(1:length(glmdiag$h))
+        subset <- c(1L:length(glmdiag$h))
     else if (is.logical(subset))
-        subset <- (1:length(subset))[subset]
+        subset <- (1L:length(subset))[subset]
     else if (is.numeric(subset) && all(subset<0))
-        subset <- (1:(length(subset)+length(glmdiag$h)))[subset]
+        subset <- (1L:(length(subset)+length(glmdiag$h)))[subset]
     else if (is.character(subset)) {
         if (is.null(labels)) labels <- subset
         subset <- seq_along(subset)
@@ -1924,7 +1923,7 @@ glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
     plot(x1, glmdiag$res, xlab = "Linear predictor", ylab =
          "Residuals")
     pars <- vector(4, mode="list")
-    pars[[1]] <- par("usr")
+    pars[[1L]] <- par("usr")
 #	screen(2) #
 #  Plot a normal QQ plot of the standardized deviance residuals
     y2 <- glmdiag$rd
@@ -1932,7 +1931,7 @@ glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
     plot(x2, y2, ylab = "Quantiles of standard normal", xlab =
          "Ordered deviance residuals")
     abline(0, 1, lty = 2)
-    pars[[2]] <- par("usr")
+    pars[[2L]] <- par("usr")
 #	screen(3) #
 #  Plot the Cook statistics against h/(1-h) and draw line to highlight
 #  possible influential and high leverage points.
@@ -1944,20 +1943,20 @@ glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
     nobs <- rank.fit + glmfit$df.residual
     cooky <- 8/(nobs - 2 * rank.fit)
     hy <- (2 * rank.fit)/(nobs - 2 * rank.fit)
-    if ((cooky >= ry[1]) && (cooky <= ry[2]))
+    if ((cooky >= ry[1L]) && (cooky <= ry[2L]))
         abline(h = cooky, lty = 2)
-    if ((hy >= rx[1]) && (hy <= rx[2]))
+    if ((hy >= rx[1L]) && (hy <= rx[2L]))
         abline(v = hy, lty = 2)
-    pars[[3]] <- par("usr")
+    pars[[3L]] <- par("usr")
 #	screen(4) #
 #  Plot the Cook statistics against the observation number in the original
 #  data set.
     plot(subset, glmdiag$cook, xlab = "Case", ylab = "Cook statistic")
-    if ((cooky >= ry[1]) && (cooky <= ry[2]))
+    if ((cooky >= ry[1L]) && (cooky <= ry[2L]))
         abline(h = cooky, lty = 2)
     xx <- list(x1,x2,hh,subset)
     yy <- list(glmdiag$res, y2, glmdiag$cook, glmdiag$cook)
-    pars[[4]] <- par("usr")
+    pars[[4L]] <- par("usr")
 
     if (is.null(labels)) labels <- names(x1)
     while (iden) {
@@ -1970,7 +1969,7 @@ glm.diag.plots <- function(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
         cat("0 will terminate the function \n")
 #		num <- scan(nmax=1)
         num <- as.numeric(readline())
-        if ((length(num) > 0) &&
+        if ((length(num) > 0L) &&
             ((num==1)||(num==2)||(num==3)||(num==4))) {
             cat(paste("Interactive Identification for screen",
                       num,"\n"))
@@ -1997,12 +1996,12 @@ exp.tilt <- function(L, theta=NULL, t0=0, lambda=NULL,
 #  Find the squared error in the mean using the multiplier lambda
 #  This is then minimized to find the correct value of lambda
 #  Note that the function should have minimum 0.
-        L <- para[[2]]
-        theta <- para[[1]]
-        strata <- para[[3]]
+        L <- para[[2L]]
+        theta <- para[[1L]]
+        strata <- para[[3L]]
         ns <- table(strata)
         tilt <- rep(NA, length(L) )
-        for (s in 1:length(ns)) {
+        for (s in 1L:length(ns)) {
             p <- exp(lambda*L[strata==s]/ns[s])
             tilt[strata==s] <- p/sum(p)
         }
@@ -2013,8 +2012,8 @@ exp.tilt <- function(L, theta=NULL, t0=0, lambda=NULL,
         ns <- table(strata)
         m <- length(lambda)
         tilt <- matrix(NA, m, length(L) )
-        for (i in 1:m)
-            for (s in 1:length(ns)) {
+        for (i in 1L:m)
+            for (s in 1L:length(ns)) {
                 p <- exp(lambda[i]*L[strata==s]/ns[s])
                 tilt[i,strata==s] <- p/sum(p)
             }
@@ -2026,7 +2025,7 @@ exp.tilt <- function(L, theta=NULL, t0=0, lambda=NULL,
         theta <- theta-t0
         m <- length(theta)
         lambda <- rep(NA,m)
-        for (i in 1:m) {
+        for (i in 1L:m) {
             para <- list(theta[i],L,strata)
 #			assign("para",para,frame=1)
 #			lambda[i] <- nlmin(tilt.dis, 0 )$x
@@ -2058,7 +2057,7 @@ imp.weights <- function( boot.out, def=TRUE, q=NULL )
 # the mixture they come.
 #
     R <- boot.out$R
-    if(length(R) == 1)
+    if(length(R) == 1L)
         def <- FALSE
     f <- boot.array(boot.out)
     n <- ncol(f)
@@ -2067,23 +2066,23 @@ imp.weights <- function( boot.out, def=TRUE, q=NULL )
     if (is.null(q))  q <- rep(1,ncol(f))
     if (any(q==0)) stop("0 elements not allowed in q")
     p <- boot.out$weights
-    if((length(R) == 1) && all(abs(p - q)/p < 1e-10))
+    if((length(R) == 1L) && all(abs(p - q)/p < 1e-10))
         return(rep(1, R))
     np <- length(R)
     q <- normalize(q, strata)
     lw.q <- as.vector(f %*% log(q))
     if(!isMatrix(p))
         p <- as.matrix(t(p))
-    p <- t(apply(p, 1, normalize, strata))
+    p <- t(apply(p, 1L, normalize, strata))
     lw.p <- matrix(NA, sum(R), np)
-    for(i in 1:np) {
-        zz <- (1:n)[p[i,  ] > 0]
+    for(i in 1L:np) {
+        zz <- (1L:n)[p[i,  ] > 0]
         lw.p[, i] <- f[, zz] %*% log(p[i, zz])
     }
     if(def)
         w <- 1/(exp(lw.p - lw.q) %*% R/sum(R))
     else {
-        i <- cbind(c(1:sum(R)), rep(1:length(R), R))
+        i <- cbind(c(1L:sum(R)), rep(1L:length(R), R))
         w <- exp(lw.q - lw.p[i])
     }
     as.vector(w)
@@ -2104,11 +2103,11 @@ imp.moments <- function(boot.out=NULL, index=1, t=boot.out$t[,index],
         if (!is.null(boot.out))
             w <- imp.weights(boot.out, def, q)
         else	stop("either boot.out or w must be specified.")
-    if ((length(index) > 1) && missing(t)) {
+    if ((length(index) > 1L) && missing(t)) {
         warning("only first element of index used")
-        t <- boot.out$t[,index[1]]
+        t <- boot.out$t[,index[1L]]
     }
-    fins <- (1:length(t))[is.finite(t)]
+    fins <- (1L:length(t))[is.finite(t)]
     t <- t[fins]
     w <- w[fins]
     if (!const(w)) {
@@ -2116,12 +2115,12 @@ imp.moments <- function(boot.out=NULL, index=1, t=boot.out$t[,index],
         m.raw <- mean( y )
         m.rat <- sum( y )/sum( w )
         t.lm <- lm( y~w )
-        m.reg <- mean( y ) - coefficients(t.lm)[2]*(mean(w)-1)
+        m.reg <- mean( y ) - coefficients(t.lm)[2L]*(mean(w)-1)
         v.raw <- mean(w*(t-m.raw)^2)
         v.rat <- sum(w/sum(w)*(t-m.rat)^2)
         x <- w*(t-m.reg)^2
         t.lm2 <- lm( x~w )
-        v.reg <- mean( x ) - coefficients(t.lm2)[2]*(mean(w)-1)
+        v.reg <- mean( x ) - coefficients(t.lm2)[2L]*(mean(w)-1)
     }
     else {	m.raw <- m.rat <- m.reg <- mean(t)
 		v.raw <- v.rat <- v.reg <- var(t)
@@ -2160,11 +2159,11 @@ imp.quantile <- function(boot.out=NULL, alpha=NULL, index=1,
         if (!is.null(boot.out))
             w <- imp.weights(boot.out, def, q)
         else	stop("either boot.out or w must be specified.")
-    if ((length(index) > 1) && missing(t)){
+    if ((length(index) > 1L) && missing(t)){
         warning("only first element of index used")
-        t <- boot.out$t[,index[1]]
+        t <- boot.out$t[,index[1L]]
     }
-    fins <- (1:length(t))[is.finite(t)]
+    fins <- (1L:length(t))[is.finite(t)]
     t <- t[fins]
     w <- w[fins]
     o <- order(t)
@@ -2179,7 +2178,7 @@ imp.quantile <- function(boot.out=NULL, alpha=NULL, index=1,
     cum.reg <- imp.reg(w)
     R <- length(w)
     raw <- rat <- reg <- rep(NA,length(alpha))
-    for (i in 1:length(alpha)) {
+    for (i in 1L:length(alpha)) {
         if(alpha[i]<=0.5) raw[i] <-  max(t[cum<=(R+1)*alpha[i]])
         else raw[i] <- -max(t.m[cum.m<=(R+1)*(1-alpha[i])])
         rat[i] <- max(t[cum.rat <= (R+1)*alpha[i]])
@@ -2193,7 +2192,7 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
 {
 # Calculates raw, ratio, and regression estimates of tail probability
 #  pr( t <= t0 ) using importance sampling weights in w.
-    is.missing <- function(x) length(x) == 0 || is.na(x)
+    is.missing <- function(x) length(x) == 0L || is.na(x)
 
     if (missing(t) && is.null(boot.out$t))
         stop("bootstrap replicates must be supplied")
@@ -2201,13 +2200,13 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
         if (!is.null(boot.out))
             w <- imp.weights(boot.out, def, q)
         else	stop("either boot.out or w must be specified.")
-    if ((length(index) > 1) && (missing(t) || missing(t0))) {
+    if ((length(index) > 1L) && (missing(t) || missing(t0))) {
         warning("only first element of index used")
-        index <- index[1]
+        index <- index[1L]
         if (is.missing(t)) t <- boot.out$t[,index]
         if (is.missing(t0)) t0 <- boot.out$t0[index]
     }
-    fins <- (1:length(t))[is.finite(t)]
+    fins <- (1L:length(t))[is.finite(t)]
     t <- t[fins]
     w <- w[fins]
     o <- order(t)
@@ -2216,7 +2215,7 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
     raw <- rat <- reg <- rep(NA,length(t0))
     cum <- cumsum(w)/sum(w)
     cum.r <- imp.reg(w)
-    for (i in 1:length(t0)) {
+    for (i in 1L:length(t0)) {
         raw[i] <-sum(w[t<=t0[i]])/length(w)
         rat[i] <- max(cum[t<=t0[i]])
         reg[i] <- max(cum.r[t<=t0[i]])
@@ -2229,23 +2228,23 @@ smooth.f <- function(theta, boot.out, index=1, t=boot.out$t[,index],
 {
 # Does frequency smoothing of the frequency array for boot.out with
 # bandwidth A to give frequencies for 'typical' distribution at theta
-    if ((length(index) > 1) && missing(t)) {
+    if ((length(index) > 1L) && missing(t)) {
         warning("only first element of index used")
-        t <- boot.out$t[,index[1]]
+        t <- boot.out$t[,index[1L]]
     }
     if (isMatrix(t)) {
         warning("only first column of t used")
-        t <- t[,1]
+        t <- t[,1L]
     }
-    fins <- (1:length(t))[is.finite(t)]
+    fins <- (1L:length(t))[is.finite(t)]
     t <- t[fins]
     m <- length(theta)
-    v <- imp.moments(boot.out, t=t)$reg[2]
+    v <- imp.moments(boot.out, t=t)$reg[2L]
     eps <- width*sqrt(v)
     if (m ==1)
         w <- dnorm((theta-t)/eps )/eps
     else {	w <- matrix(0,length(t),m)
-		for (i in 1:m)
+		for (i in 1L:m)
                     w[,i] <- dnorm((theta[i]-t)/eps )/eps
             }
     f <- crossprod(boot.array(boot.out)[fins,] , w)
@@ -2253,9 +2252,9 @@ smooth.f <- function(theta, boot.out, index=1, t=boot.out$t[,index],
     strata <- tapply(strata, as.numeric(strata))
     ns <- table(strata)
     out <- matrix(NA,ncol(f),nrow(f))
-    for (s in 1:length(ns))
+    for (s in 1L:length(ns))
     {	ts <- matrix(f[strata==s,],m,ns[s],byrow=TRUE)
-        ss <- apply(ts,1,sum)
+        ss <- apply(ts,1L,sum)
         out[,strata==s] <-  ts/
             matrix(ss,m,ns[s])
     }
@@ -2271,12 +2270,12 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
 #  and simulation type sim.
 #  The levels of R give the number of simulations at each level.  For example,
 #  R=c(199,100,50) will give three separate bootstraps with 199, 100, 50
-#  simulations.  If R[1]>0 the first simulation is assumed to be untilted
+#  simulations.  If R[1L]>0 the first simulation is assumed to be untilted
 #  and L can be estimated from it by regression, or it can be frequency
 #  smoothed to give probabilities p.
 #  If tilt=T use exponential tilting with empirical influence value L
 #  given explicitly or estimated from boot0, but if tilt=F
-#  (in which case R[1] should be large) frequency smoothing of boot0 is used
+#  (in which case R[1L] should be large) frequency smoothing of boot0 is used
 #  with bandwidth A.
 #  Tilting/frequency smoothing is to theta (so length(theta)=length(R)-1).
 #  The function assumes at present that q=0 is the median of the distribution
@@ -2285,19 +2284,19 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
         stop("invalid value of sim supplied")
     if (!is.null(theta) && (length(R) != length(theta)+1))
         stop("R and theta have incompatible lengths")
-    if (!tilt && (R[1] == 0))
-        stop("R[1] must be positive for frequency smoothing")
+    if (!tilt && (R[1L] == 0))
+        stop("R[1L] must be positive for frequency smoothing")
     call <- match.call()
     if (isMatrix(data)) n <- nrow(data)
     else n <- length(data)
-    if (R[1]>0) {
+    if (R[1L]>0) {
 # If required run an initial bootstrap with equal weights.
         if (is.null(theta) && (length(R) != length(alpha)+1))
             stop("R and alpha have incompatible lengths")
-        boot0 <- boot(data, statistic, R = R[1], sim=sim, stype=stype,
+        boot0 <- boot(data, statistic, R = R[1L], sim=sim, stype=stype,
                       strata = strata, ... )
         if (is.null(theta)) {
-            if (any(c(alpha,1-alpha)*(R[1]+1) <= 5))
+            if (any(c(alpha,1-alpha)*(R[1L]+1) <= 5))
                 warning("extreme values used for quantiles")
             theta <- quantile(boot0$t[,index],alpha)
         }
@@ -2307,10 +2306,10 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
 # used.  Also set up a dummy bootstrap object to hold the output.
         tilt <- TRUE
         if (is.null(theta))
-            stop("theta must be supplied if R[1] = 0")
+            stop("theta must be supplied if R[1L] = 0")
         if (!missing(alpha))
-            warning("alpha ignored; R[1]=0")
-        if (stype == "i") orig <- 1:n
+            warning("alpha ignored; R[1L]=0")
+        if (stype == "i") orig <- 1L:n
         else if (stype == "f") orig <- rep(1,n)
         else orig <- rep(1,n)/n
         boot0 <- boot.return(sim=sim,t0=statistic(data,orig,...),
@@ -2321,14 +2320,14 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
     }
 # Calculate the weights for the subsequent bootstraps
     if(is.null(L) & tilt)
-        if (R[1] > 0) L <- empinf(boot0, index, ...)
+        if (R[1L] > 0) L <- empinf(boot0, index, ...)
         else L <- empinf(data=data, statistic=statistic, stype=stype,
                          index=index, ...)
     if (tilt) probs <- exp.tilt(L, theta, strata=strata,
                                 t0=boot0$t0[index])$p
     else probs <- smooth.f(theta, boot0, index, width=width)#
 # Run the weighted bootstraps and collect the output.
-    boot1 <- boot(data, statistic, R[-1], sim=sim, stype=stype,
+    boot1 <- boot(data, statistic, R[-1L], sim=sim, stype=stype,
                   strata=strata, weights=probs, ...)
     boot0$t <- rbind(boot0$t, boot1$t)
     boot0$weights <- rbind(boot0$weights, boot1$weights)
@@ -2360,14 +2359,14 @@ control <- function(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL,
     f <- boot.array(boot.out)
     if(bias.adj) {
 # Find the adjusted bias estimate using post-simulation balance.
-        if (length(index) > 1) {
+        if (length(index) > 1L) {
             warning("only first element of index used")
-            index <- index[1]
+            index <- index[1L]
         }
-        f.big <- apply(f, 2, sum)
+        f.big <- apply(f, 2L, sum)
         if(boot.out$stype=="i")
         { 	n <- ncol(f)
-                i.big <- rep(c(1:n),f.big)
+                i.big <- rep(c(1L:n),f.big)
                 t.big <- stat(data, i.big, ...)[index]
             }
         else if(boot.out$stype=="f")
@@ -2381,9 +2380,9 @@ control <- function(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL,
 # Using the linear approximation as a control variable, find estimates
 # of the moments and quantiles of the statistic of interest.
         if (is.null(t) || is.null(t0)) {
-            if (length(index) > 1) {
+            if (length(index) > 1L) {
                 warning("only first element of index used")
-                index <- index[1]
+                index <- index[1L]
             }
             if(is.null(L))
                 L <- empinf(boot.out, index=index, ...)
@@ -2395,7 +2394,7 @@ control <- function(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL,
                     L <- empinf(boot.out, t=t, ...)
                     tL <- linear.approx(boot.out, L, t0=t0, ...)
 		}
-        fins <- (1:length(t))[is.finite(t)]
+        fins <- (1L:length(t))[is.finite(t)]
         t <- t[fins]
         tL <- tL[fins]
         R <- length(t)
@@ -2410,12 +2409,12 @@ control <- function(boot.out, L=NULL, distn=NULL, index=1, t0=NULL, t=NULL,
 # If distn is not supplied then calculate the saddlepoint approximation to
 # the distribution of the linear approximation.
             distn <- saddle.distn((t0+L)/length(L),
-                                  alpha = (1:R)/(R + 1),
+                                  alpha = (1L:R)/(R + 1),
                                   t0=c(t0,sqrt(var.L)), strata=strata)
             dist.q <- distn$quantiles[,2]
             distn <- distn$distn
         }
-        else	dist.q <- predict(distn, x=qnorm((1:R)/(R+1)))$y#
+        else	dist.q <- predict(distn, x=qnorm((1L:R)/(R+1)))$y#
 # Use the quantiles of the distribution of the linear approximation and
 # the control variates to estimate the quantiles of the statistic of interest.
         distn.L <- sort(dL[order(tL)] + dist.q)
@@ -2433,10 +2432,10 @@ var.linear <- function(L, strata = NULL)
     n <- length(L)
     if(is.null(strata))
         strata <- rep(1, n)
-    else 	strata <- tapply(1:n,as.numeric(strata))
+    else 	strata <- tapply(1L:n,as.numeric(strata))
     S <- length(table(strata))
-    for(s in 1:S) {
-        i.s <- c(1:n)[strata == s]
+    for(s in 1L:S) {
+        i.s <- c(1L:n)[strata == s]
         vL <- vL + sum(L[i.s]^2/length(i.s)^2)
     }
     vL
@@ -2449,10 +2448,10 @@ k3.linear <- function(L, strata = NULL)
     n <- length(L)
     if(is.null(strata))
         strata <- rep(1, n)
-    else	strata <- tapply(1:n,as.numeric(strata))
+    else	strata <- tapply(1L:n,as.numeric(strata))
     S <- length(table(strata))
-    for(s in 1:S) {
-        i.s <- c(1:n)[strata == s]
+    for(s in 1L:S) {
+        i.s <- c(1L:n)[strata == s]
         k3L <- k3L + sum(L[i.s]^3/length(i.s)^3)
     }
     k3L
@@ -2472,7 +2471,7 @@ logit <- function(p)
 #
 {
     out <- p
-    inds <- (1:length(p))[!is.na(p)]
+    inds <- (1L:length(p))[!is.na(p)]
     if (any((p[inds] < 0) | (p[inds] > 1)))
         stop("invalid proportions input")
     out[inds] <- log(p[inds]/(1-p[inds]))
@@ -2548,7 +2547,7 @@ simplex <- function(a,A1=NULL,b1=NULL,A2=NULL,b2=NULL,A3=NULL,b3=NULL,
 # If there are no >= or = constraints then the origin is a feasible
 # solution, and so only the second phase is required.
         out <- simplex1(c(a,rep(0,m1)), cbind(A1,iden(m1)), b1,
-                        c(rep(0,m1),b1), n+(1:m1), eps=eps)
+                        c(rep(0,m1),b1), n+(1L:m1), eps=eps)
     else {
         if (m2 > 0)
             out1 <- simplex1(c(a,rep(0,m1+2*m2+m3)),
@@ -2560,7 +2559,7 @@ simplex <- function(a,A1=NULL,b1=NULL,A2=NULL,b2=NULL,A3=NULL,b3=NULL,
                                          iden(m2+m3))),
                              c(b1,b2,b3),
                              c(rep(0,n),b1,rep(0,m2),b2,b3),
-                             c(n+(1:m1),(n+m1+m2)+(1:(m2+m3))),
+                             c(n+(1L:m1),(n+m1+m2)+(1L:(m2+m3))),
                              stage=1, n1=n+m1+m2,
                              n.iter=n.iter, eps=eps)
         else
@@ -2569,7 +2568,7 @@ simplex <- function(a,A1=NULL,b1=NULL,A2=NULL,b2=NULL,A3=NULL,b3=NULL,
                                    iden(m1+m3)),
                              c(b1,b3),
                              c(rep(0,n),b1,b3),
-                             n+(1:(m1+m3)), stage=1, n1=n+m1,
+                             n+(1L:(m1+m3)), stage=1, n1=n+m1,
                              n.iter=n.iter, eps=eps)
 #  In phase 1 use 1 artificial variable for each constraint and
 #  minimize the sum of the artificial variables.  This gives a
@@ -2579,10 +2578,10 @@ simplex <- function(a,A1=NULL,b1=NULL,A2=NULL,b2=NULL,A3=NULL,b3=NULL,
 #  original problem using the result as the original feasible solution.
         if (out1$val.aux > eps)
             out <- out1
-        else	out <- simplex1(out1$a[1:(n+m1+m2)],
-                                out1$A[,1:(n+m1+m2)],
+        else	out <- simplex1(out1$a[1L:(n+m1+m2)],
+                                out1$A[,1L:(n+m1+m2)],
                                 out1$soln[out1$basic],
-                                out1$soln[1:(n+m1+m2)],
+                                out1$soln[1L:(n+m1+m2)],
                                 out1$basic,
                                 val=out1$value, n.iter=n.iter, eps=eps)
     }
@@ -2591,15 +2590,15 @@ simplex <- function(a,A1=NULL,b1=NULL,A2=NULL,b2=NULL,A3=NULL,b3=NULL,
     }
     out$maxi <- maxi
     if (m1 > 0)
-        out$slack <- out$soln[n+(1:m1)]
+        out$slack <- out$soln[n+(1L:m1)]
     if (m2 > 0)
-        out$surplus <- out$soln[n+m1+(1:m2)]
+        out$surplus <- out$soln[n+m1+(1L:m2)]
     if (out$solved==-1)
-        out$artificial <- out$soln[-(1:n+m1+m2)]
+        out$artificial <- out$soln[-(1L:n+m1+m2)]
     out$obj <- a.o
-    names(out$obj) <- paste("x",1:n,sep="")
-    out$soln <- out$soln[1:n]
-    names(out$soln) <- paste("x",1:n,sep="")
+    names(out$obj) <- paste("x",1L:n,sep="")
+    out$soln <- out$soln[1L:n]
+    names(out$soln) <- paste("x",1L:n,sep="")
     out$call <- call
     class(out) <- "simplex"
     out
@@ -2628,7 +2627,7 @@ simplex1 <- function(a,A,b,init,basic,val=0,stage=2, n1=N, eps=1e-10,
     }
     N <- ncol(A)
     M <- nrow(A)
-    nonbasic <- (1:N)[-basic]
+    nonbasic <- (1L:N)[-basic]
     tableau <- cbind(b,-A[,nonbasic,drop=FALSE])
 #  If in the first stage then find the artifical objective function,
 #  otherwise use the original objective function.
@@ -2636,9 +2635,9 @@ simplex1 <- function(a,A,b,init,basic,val=0,stage=2, n1=N, eps=1e-10,
         tableau <- rbind(tableau,c(val,a[nonbasic]))
         obfun <- a[nonbasic]
     }
-    else {	obfun <- apply(tableau[(M+n1-N+1):M,,drop=FALSE],2,sum)
+    else {	obfun <- apply(tableau[(M+n1-N+1):M,,drop=FALSE],2L,sum)
 		tableau <- rbind(c(val,a[nonbasic]),tableau,obfun)
-		obfun <- obfun[-1]
+		obfun <- obfun[-1L]
             }
     it <- 1
     while (!all(obfun> -eps) && (it <= n.iter))
@@ -2647,67 +2646,67 @@ simplex1 <- function(a,A,b,init,basic,val=0,stage=2, n1=N, eps=1e-10,
 #	complete the matrix operations required
 #	update the lists of basic and non-basic variables
     {
-        pcol <- 1+order(obfun)[1]
+        pcol <- 1+order(obfun)[1L]
         if (stage == 2)
-            neg <- (1:M)[tableau[1:M,pcol]< -eps]
-        else 	neg <- 1+ (1:M)[tableau[2:(M+1),pcol] < -eps]
-        ratios <- -tableau[neg,1]/tableau[neg,pcol]
-        prow <- neg[order(ratios)[1]]
+            neg <- (1L:M)[tableau[1L:M,pcol]< -eps]
+        else 	neg <- 1+ (1L:M)[tableau[2:(M+1),pcol] < -eps]
+        ratios <- -tableau[neg,1L]/tableau[neg,pcol]
+        prow <- neg[order(ratios)[1L]]
         tableau <- pivot(tableau,prow,pcol)
         if (stage == 1) {
-            temp <- basic[prow-1]
-            basic[prow-1] <- nonbasic[pcol-1]
-            nonbasic[pcol-1] <- temp
-            obfun <- tableau[M+2,-1]
+            temp <- basic[prow-1L]
+            basic[prow-1L] <- nonbasic[pcol-1L]
+            nonbasic[pcol-1L] <- temp
+            obfun <- tableau[M+2L,-1L]
         }
         else {	temp <- basic[prow]
-                basic[prow] <- nonbasic[pcol-1]
-                nonbasic[pcol-1] <- temp
-                obfun <- tableau[M+1,-1]
+                basic[prow] <- nonbasic[pcol-1L]
+                nonbasic[pcol-1L] <- temp
+                obfun <- tableau[M+1L,-1L]
             }
         it <- it+1
     }
 #  END of while loop
     if (stage == 1) {
-        val.aux <- tableau[M+2,1]
+        val.aux <- tableau[M+2,1L]
 # If the value of the auxilliary objective function is zero but some
 # of the artificial variables are basic (with value 0) then switch
 # them with some nonbasic variables (which are not artificial).
         if ((val.aux < eps) && any(basic>n1)) {
-            ar <- (1:M)[basic>n1]
-            for (j in 1:length(temp)) {
+            ar <- (1L:M)[basic>n1]
+            for (j in 1L:length(temp)) {
                 prow <- 1+ar[j]
                 pcol <- 1 + order(
-                                  nonbasic[abs(tableau[prow,-1])>eps])[1]
+                                  nonbasic[abs(tableau[prow,-1L])>eps])[1L]
                 tableau <- pivot(tableau,prow,pcol)
-                temp1 <- basic[prow-1]
-                basic[prow-1] <- nonbasic[pcol-1]
-                nonbasic[pcol-1] <- temp1
+                temp1 <- basic[prow-1L]
+                basic[prow-1L] <- nonbasic[pcol-1L]
+                nonbasic[pcol-1L] <- temp1
             }
         }
         soln <- rep(0,N)
-        soln[basic] <- tableau[2:(M+1),1]
-        val.orig <- tableau[1,1]
+        soln[basic] <- tableau[2:(M+1L),1L]
+        val.orig <- tableau[1L,1L]
         A.out <- matrix(0,M,N)
         A.out[,basic] <- iden(M)
-        A.out[,nonbasic] <- -tableau[2:(M+1),-1]
+        A.out[,nonbasic] <- -tableau[2L:(M+1L),-1L]
         a.orig <- rep(0,N)
-        a.orig[nonbasic] <- tableau[1,-1]
+        a.orig[nonbasic] <- tableau[1L,-1L]
         a.aux <- rep(0,N)
-        a.aux[nonbasic] <- tableau[M+2,-1]
+        a.aux[nonbasic] <- tableau[M+2,-1L]
         list(soln=soln, solved=-1, value=val.orig, val.aux=val.aux,
              A=A.out, a=a.orig, a.aux=a.aux, basic=basic)
     }
     else { 	soln <- rep(0,N)
-		soln[basic] <- tableau[1:M,1]
-		val <- tableau[(M+1),1]
+		soln[basic] <- tableau[1L:M,1L]
+		val <- tableau[(M+1L),1L]
 		A.out <- matrix(0,M,N)
 		A.out[,basic] <- iden(M)
-		A.out[,nonbasic] <- tableau[1:M,-1]
+		A.out[,nonbasic] <- tableau[1L:M,-1L]
 		a.out <- rep(0,N)
-		a.out[nonbasic] <- tableau[M+1,-1]
-		if (it <= n.iter) solved <- 1
-		else solved <- 0
+		a.out[nonbasic] <- tableau[M+1L,-1L]
+		if (it <= n.iter) solved <- 1L
+		else solved <- 0L
 		list(soln=soln, solved=solved, value=val,  A=A.out,
                      a=a.out, basic=basic)
             }
@@ -2811,8 +2810,8 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
             para <- list(p,A,u,n)
 #			assign("para",para,frame=1)
             K <- function(al) {
-                w <- para[[1]]*exp(al%*%t(para[[2]]))
-                para[[4]]*log(sum(w))-sum(al*para[[3]])
+                w <- para[[1L]]*exp(al%*%t(para[[2L]]))
+                para[[4L]]*log(sum(w))-sum(al*para[[3L]])
             }
             speq <- optim(init, K)
             ahat <- speq$par
@@ -2834,17 +2833,17 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
             para <- list(p,A,u,strata,ns)
 #	    assign("para",para,frame=1)
             K <- function(al) {
-                w <- para[[1]]*exp(al%*%t(para[[2]]))
-                sum(para[[5]]*log(tapply(w,para[[4]],sum))) -
-                    sum(al*para[[3]])
+                w <- para[[1L]]*exp(al%*%t(para[[2L]]))
+                sum(para[[5]]*log(tapply(w,para[[4L]],sum))) -
+                    sum(al*para[[3L]])
             }
             speq <- optim(init, K)
             ahat <- speq$par
             w <- p*exp(ahat%*%t(A))
             Khat <- sum(ns*log(tapply(w,strata,sum)))-sum(ahat*u)
             temp <- matrix(0,d,d)
-            for (s in 1:length(ns)) {
-                gp <- (1:n)[strata==s]
+            for (s in 1L:length(ns)) {
+                gp <- (1L:n)[strata==s]
                 sw <- sum(w[gp])
                 saw <- w[gp]%*%A[gp,]
                 sa2w <- t(matrix(w[gp],ns[s],d)*A[gp,])%*%A[gp,]
@@ -2872,21 +2871,21 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
             smp <- simplex(rep(0,n),A3=t(A),b3=u)
             if (smp$solved==1) {
                 y <- smp$soln
-                A1 <- A[,1:d1]
-                A2 <- A[,-(1:d1)]
+                A1 <- A[,1L:d1]
+                A2 <- A[,-(1L:d1)]
                 mod1 <- summary(glm(y~A1+A2+offset(log(mu))-1,
                                     poisson, control=glm.control(maxit=100)))
                 mod2 <- summary(glm(y~A2+offset(log(mu))-1,
                                     poisson,control=glm.control(maxit=100)))
-                ahat <- mod1$coefficients[,1]
-                ahat2 <- mod2$coefficients[,1]
+                ahat <- mod1$coefficients[,1L]
+                ahat2 <- mod2$coefficients[,1L]
                 temp1 <- mod2$deviance-mod1$deviance
                 temp2 <- det(mod2$cov.unscaled)/
                     det(mod1$cov.unscaled)
                 gs <- 1/sqrt((2*pi)^d1*temp2)*exp(-temp1/2)
                 if (d1 == 1) {
-                    r <- sgn(ahat[1])*sqrt(temp1)
-                    v <- ahat[1]*sqrt(temp2)
+                    r <- sgn(ahat[1L])*sqrt(temp1)
+                    v <- ahat[1L]*sqrt(temp2)
                     if (LR)	Gs<-pnorm(r)+dnorm(r)*(1/r-1/v)
                     else	Gs <- pnorm(r+log(v/r)/r)
                 }
@@ -2901,28 +2900,28 @@ saddle <- function(A=NULL, u=NULL, wdist="m", type="simp", d=NULL, d1=1,
     else if (wdist == "b") {
         if (type == "cond") {
             smp <- simplex(rep(0,n),A1=iden(n),b1=rep(1-2e-6,n),
-                           A3=t(A),b3=u-1e-6*apply(A,2,sum))
+                           A3=t(A),b3=u-1e-6*apply(A,2L,sum))
 #  For the binary case we require that the values are in the interval (0,1)
 #  since glm code seems to have problems when there are too many 0's or 1's.
             if (smp$solved==1) {
                 y <- smp$soln+1e-6
-                A1 <- A[,1:d1]
-                A2 <- A[,-(1:d1)]
+                A1 <- A[,1L:d1]
+                A2 <- A[,-(1L:d1)]
                 mod1 <- summary(glm(
                                     cbind(y,1-y)~A1+A2+offset(logit(mu))-1,
                                     binomial,control=glm.control(maxit=100)))
                 mod2 <- summary(glm(
                                     cbind(y,1-y)~A2+offset(logit(mu))-1,
                                     binomial,control=glm.control(maxit=100)))
-                ahat <- mod1$coefficients[,1]
-                ahat2 <- mod2$coefficients[,1]
+                ahat <- mod1$coefficients[,1L]
+                ahat2 <- mod2$coefficients[,1L]
                 temp1 <- mod2$deviance-mod1$deviance
                 temp2 <- det(mod2$cov.unscaled)/
                     det(mod1$cov.unscaled)
                 gs <- 1/sqrt((2*pi)^d1*temp2)*exp(-temp1/2)
                 if (d1 == 1) {
-                    r <- sgn(ahat[1])*sqrt(temp1)
-                    v <- ahat[1]*sqrt(temp2)
+                    r <- sgn(ahat[1L])*sqrt(temp1)
+                    v <- ahat[1L]*sqrt(temp2)
                     if (LR)	Gs<-pnorm(r)+dnorm(r)*(1/r-1/v)
                     else	Gs <- pnorm(r+log(v/r)/r)
                 }
@@ -2967,30 +2966,30 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     if (type=="simp")  d <- 1
     else if (is.function(u)) {
         if (is.null(t))
-            d <- length(u(t0[1],...))
-        else	d <- length(u(t[1],...))
+            d <- length(u(t0[1L],...))
+        else	d <- length(u(t[1L],...))
     }
-    else	d <- 1+length(u)
+    else	d <- 1L+length(u)
     i <- nsads <- 0
     if (!is.null(t)) npts <- length(t)
-    zeta <- matrix(NA,npts,2*d-1)
-    spa <- matrix(NA,npts,2)
+    zeta <- matrix(NA,npts,2L*d-1L)
+    spa <- matrix(NA,npts,2L)
     pts <- NULL
     if (is.function(A)) {
-        n <- nrow(as.matrix(A(t0[1],...)))
+        n <- nrow(as.matrix(A(t0[1L],...)))
         if (is.null(u)) stop("function u missing")
         if (!is.function(u)) stop("u must be a function")
         if (is.null(t)) {
-            t1 <- t0[1]-2*t0[2]
+            t1 <- t0[1L]-2*t0[2L]
             sad <- saddle(A=A(t1,...), u=u(t1,...),
                           wdist=wdist, type=type, d1=1,
                           init=init, mu=mu, LR=LR, strata=strata)
             bdu <- bdl <- NULL
-            while (is.na(sad$spa[2]) || (sad$spa[2] > ep1) ||
-                   (sad$spa[2] < ep1/100)) {
+            while (is.na(sad$spa[2L]) || (sad$spa[2L] > ep1) ||
+                   (sad$spa[2L] < ep1/100)) {
                 nsads <- nsads+1
 #  Find a lower bound on the effective range of the saddlepoint distribution
-                if (!is.na(sad$spa[2]) && (sad$spa[2] > ep1)) {
+                if (!is.na(sad$spa[2L]) && (sad$spa[2L] > ep1)) {
                     i <- i+1
                     zeta[i,] <- c(sad$zeta.hat,
                                   sad$zeta2.hat)
@@ -3002,14 +3001,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 if (nsads == npts)
                     stop("unable to find range")
                 if (is.null(bdl)) {
-                    t1 <- 2*t1-t0[1]
+                    t1 <- 2*t1-t0[1L]
                     sad<-saddle(A=A(t1,...),
                                 u=u(t1,...), wdist=wdist,
                                 type=type, d1=1, init=init,
                                 mu=mu, LR=LR, strata=strata)
                 }
                 else if (is.null(bdu)) {
-                    t1 <- (t0[1]+bdl)/2
+                    t1 <- (t0[1L]+bdl)/2
                     sad<-saddle(A=A(t1,...),
                                 u=u(t1,...), wdist=wdist,
                                 type=type, d1=1, init=init,
@@ -3027,16 +3026,16 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
             zeta[i,] <- c(sad$zeta.hat, sad$zeta2.hat)
             spa[i,] <- sad$spa
             pts <- c(pts,t1)
-            t2 <- t0[1]+2*t0[2]
+            t2 <- t0[1L]+2*t0[2L]
             sad <- saddle(A=A(t2,...), u=u(t2,...),
                           wdist=wdist, type=type, d1=1, init=init,
                           mu=mu, LR=LR, strata=strata)
             bdu <- bdl <- NULL
-            while (is.na(sad$spa[2]) || (1-sad$spa[2] > ep2) ||
-                   (1-sad$spa[2] < ep2/100)){
+            while (is.na(sad$spa[2L]) || (1-sad$spa[2L] > ep2) ||
+                   (1-sad$spa[2L] < ep2/100)){
 #  Find an upper bound on the effective range of the saddlepoint distribution
                 nsads <- nsads+1
-                if (!is.na(sad$spa[2])&&(1-sad$spa[2] > ep2)) {
+                if (!is.na(sad$spa[2L])&&(1-sad$spa[2L] > ep2)) {
                     i <- i+1
                     zeta[i,] <- c(sad$zeta.hat,
                                   sad$zeta2.hat)
@@ -3048,14 +3047,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 if (nsads == npts)
                     stop("unable to find range")
                 if (is.null(bdu)) {
-                    t2 <- 2*t2-t0[1]
+                    t2 <- 2*t2-t0[1L]
                     sad<-saddle(A=A(t2,...),
                                 u=u(t2,...), wdist=wdist,
                                 type=type, d1=1, init=init,
                                 mu=mu, LR=LR, strata=strata)
                 }
                 else if (is.null(bdl)) {
-                    t2 <- (t0[1]+bdu)/2
+                    t2 <- (t0[1L]+bdu)/2
                     sad<-saddle(A=A(t2,...),
                                 u=u(t2,...), wdist=wdist,
                                 type=type, d1=1, init=init,
@@ -3073,16 +3072,16 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
             spa[i,] <- sad$spa
             pts <- c(pts,t2)
 #  Now divide the rest of the npts points so that about half are at
-#  either side of t0[1].
+#  either side of t0[1L].
             if ((npts %% 2) == 0) {
-                tt1<- seq.int(t1,t0[1],length.out=npts/2-i1+2)[-1]
-                tt2 <- seq.int(t0[1],t2,length.out=npts/2+i1-i+2)[-1]
+                tt1<- seq.int(t1,t0[1L],length.out=npts/2-i1+2)[-1L]
+                tt2 <- seq.int(t0[1L],t2,length.out=npts/2+i1-i+2)[-1L]
                 t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
             }
-            else {	ex <- 1*(t1+t2 > 2*t0[1])
+            else {	ex <- 1*(t1+t2 > 2*t0[1L])
                         ll <- floor(npts/2)+2
-                        tt1 <- seq.int(t1,t0[1],length.out=ll-i1+1-ex)[-1]
-                        tt2 <- seq.int(t0[1],t2,length.out=ll+i1-i+ex)[-1]
+                        tt1 <- seq.int(t1,t0[1L],length.out=ll-i1+1-ex)[-1L]
+                        tt2 <- seq.int(t0[1L],t2,length.out=ll+i1-i+ex)[-1L]
                         t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
                     }
         }
@@ -3103,14 +3102,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
         n <- nrow(A)
         if (is.null(t)) {
 #  Find a lower bound on the effective range of the saddlepoint distribution
-            t1 <- t0[1]-2*t0[2]
+            t1 <- t0[1L]-2*t0[2L]
             sad <- saddle(A=A, u=c(t1,u), wdist=wdist, type=type,
                           d=d, d1=1, init=init, mu=mu, LR=LR,
                           strata=strata)
             bdu <- bdl <- NULL
-            while (is.na(sad$spa[2]) || (sad$spa[2] > ep1) ||
-                   (sad$spa[2] < ep1/100)) {
-                if (!is.na(sad$spa[2]) && (sad$spa[2] > ep1)) {
+            while (is.na(sad$spa[2L]) || (sad$spa[2L] > ep1) ||
+                   (sad$spa[2L] < ep1/100)) {
+                if (!is.na(sad$spa[2L]) && (sad$spa[2L] > ep1)) {
                     i <- i+1
                     zeta[i,] <- c(sad$zeta.hat,
                                   sad$zeta2.hat)
@@ -3122,14 +3121,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 if (i == floor(npts/2))
                     stop("unable to find range")
                 if (is.null(bdl)) {
-                    t1 <- 2*t1-t0[1]
+                    t1 <- 2*t1-t0[1L]
                     sad<-saddle(A=A, u=c(t1,u),
                                 wdist=wdist, type=type, d=d,
                                 d1=1, init=init, mu=mu, LR=LR,
                                 strata=strata)
                 }
                 else if (is.null(bdu)) {
-                    t1 <- (t0[1]+bdl)/2
+                    t1 <- (t0[1L]+bdl)/2
                     sad<-saddle(A=A, u=c(t1,u),
                                 wdist=wdist, type=type, d=d,
                                 d1=1, init=init, mu=mu, LR=LR,
@@ -3147,14 +3146,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
             spa[i,] <- sad$spa
             pts <- c(pts,t1)
 #  Find an upper bound on the effective range of the saddlepoint distribution
-            t2 <- t0[1]+2*t0[2]
+            t2 <- t0[1L]+2*t0[2L]
             sad <- saddle(A=A, u=c(t2,u), wdist=wdist, type=type,
                           d=d, d1=1, init=init, mu=mu, LR=LR,
                           strata=strata)
             bdu <- bdl <- NULL
-            while (is.na(sad$spa[2]) || (1-sad$spa[2] > ep2) ||
-                   (1-sad$spa[2] < ep2/100)){
-                if (!is.na(sad$spa[2])&&(1-sad$spa[2] > ep2)) {
+            while (is.na(sad$spa[2L]) || (1-sad$spa[2L] > ep2) ||
+                   (1-sad$spa[2L] < ep2/100)){
+                if (!is.na(sad$spa[2L])&&(1-sad$spa[2L] > ep2)) {
                     i <- i+1
                     zeta[i,] <- c(sad$zeta.hat,
                                   sad$zeta2.hat)
@@ -3166,14 +3165,14 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
                 if ((i-i1) == floor(npts/2))
                     stop("unable to find range")
                 if (is.null(bdu)) {
-                    t2 <- 2*t2-t0[1]
+                    t2 <- 2*t2-t0[1L]
                     sad<-saddle(A=A, u=c(t2,u),
                                 wdist=wdist, type=type, d=d,
                                 d1=1, init=init, mu=mu, LR=LR,
                                 strata=strata)
                 }
                 else if (is.null(bdl)) {
-                    t2 <- (t0[1]+bdu)/2
+                    t2 <- (t0[1L]+bdu)/2
                     sad<-saddle(A=A, u=c(t2,u),
                                 wdist=wdist, type=type, d=d,
                                 d1=1, init=init, mu=mu, LR=LR,
@@ -3192,17 +3191,17 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
             spa[i,] <- sad$spa
             pts <- c(pts,t2)
 #  Now divide the rest of the npts points so that about half are at
-#  either side of t0[1].
+#  either side of t0[1L].
             if ((npts %% 2) == 0) {
-                tt1 <- seq.int(t1,t0[1],length.out=npts/2-i1+2)[-1]
-                tt2 <- seq.int(t0[1],t2,length.out=npts/2+i1-i+2)[-1]
+                tt1 <- seq.int(t1,t0[1L],length.out=npts/2-i1+2)[-1L]
+                tt2 <- seq.int(t0[1L],t2,length.out=npts/2+i1-i+2)[-1L]
                 t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
             }
             else {
-                ex <- 1*(t1+t2 > 2*t0[1])
+                ex <- 1*(t1+t2 > 2*t0[1L])
                 ll <- floor(npts/2)+2
-                tt1 <- seq.int(t1,t0[1],length.out=ll-i1+1-ex)[-1]
-                tt2 <- seq.int(t0[1],t2,length.out=ll+i1-i+ex)[-1]
+                tt1 <- seq.int(t1,t0[1L],length.out=ll-i1+1-ex)[-1L]
+                tt2 <- seq.int(t0[1L],t2,length.out=ll+i1-i+ex)[-1L]
                 t <- c(tt1[-length(tt1)],tt2[-length(tt2)])
             }
         }
@@ -3219,8 +3218,8 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     }
 #  Omit points too close to the center as the distribution approximation is
 #  not good at those points.
-    pts.in <- (1:npts)[(abs(zeta[,1]) > 1e-6) &
-                       (abs(spa[,2]-0.5) < 0.5-1e-10)]
+    pts.in <- (1L:npts)[(abs(zeta[,1L]) > 1e-6) &
+                       (abs(spa[,2L]-0.5) < 0.5-1e-10)]
     pts <- c(pts,t)[pts.in]
     zeta <- as.matrix(zeta[pts.in,])
     spa <- spa[pts.in,]
@@ -3234,7 +3233,7 @@ saddle.distn <- function(A, u=NULL, alpha=NULL, wdist="m",
     psa <- cbind(pts[inds],spa[inds,],zeta[inds,])
     if (d == 1) anames <- "zeta"
     else {	anames <- rep("",2*d-1)
-		for (j in 1:d) anames[j] <- paste("zeta1.",j,sep="")
+		for (j in 1L:d) anames[j] <- paste("zeta1.",j,sep="")
 		for (j in (d+1):(2*d-1)) anames[j] <- paste("zeta2.",j-d,sep="")
             }
     dimnames(psa) <- list(NULL,c("t", "gs", "Gs", anames))
@@ -3249,23 +3248,23 @@ print.saddle.distn <- function(x, ...) {
 #
     sad.d <- x
     cl <- sad.d$call
-    rg <- range(sad.d$points[,1])
+    rg <- range(sad.d$points[,1L])
     mid <- mean(rg)
     digs <- ceiling(log10(abs(mid)))
     if (digs <= 0) digs <- 4
     else if (digs >= 4) digs <- 0
     else digs <- 4-digs
     rg <- round(rg,digs)
-    level <- 100*sad.d$quantiles[,1]
+    level <- 100*sad.d$quantiles[,1L]
     quans <- format(round(sad.d$quantiles,digs))
-    quans[,1] <- paste("\n",format(level),"%     ",sep="")
+    quans[,1L] <- paste("\n",format(level),"%     ",sep="")
     cat("\nSaddlepoint Distribution Approximations\n\n")
     cat("Call : \n")
     dput(cl, control=NULL)
     cat("\nQuantiles of the Distribution\n")
     cat(t(quans))
     cat(paste("\n\nSmoothing spline used ",nrow(sad.d$points),
-              " points in the range ",rg[1]," to ",rg[2],".\n",sep=""))
+              " points in the range ",rg[1L]," to ",rg[2L],".\n",sep=""))
     if (sad.d$LR)
         cat("Lugananni-Rice approximations used\n")
     invisible(sad.d)
@@ -3277,9 +3276,9 @@ lines.saddle.distn <- function(x, dens=TRUE, h=function(u) u,
 #  Add lines corresponding to a saddlepoint approximation to a plot
 #
     sad.d <- x
-    tt <- sad.d$points[,1]
+    tt <- sad.d$points[,1L]
     rg <- range(h(tt,...))
-    tt1 <- seq.int(from=rg[1],to=rg[2],length.out=npts)
+    tt1 <- seq.int(from=rg[1L],to=rg[2L],length.out=npts)
     if (dens) {
         gs <- sad.d$points[,2]
         spl <- smooth.spline(h(tt,...),log(gs*J(tt,...)))
@@ -3319,7 +3318,7 @@ ts.array <- function(n, n.sim, R, l, sim, endcorr)
         len.tot <- rep(0,R)
         lens <- NULL
         while (cont) {
-#            inds <- (1:R)[len.tot < n.sim]
+#            inds <- (1L:R)[len.tot < n.sim]
             temp <- 1+rgeom(R,1/l)
             temp <- pmin(temp,n.sim-len.tot)
             lens <- cbind(lens,temp)
@@ -3342,9 +3341,9 @@ make.ends <- function(a, n){
 #  indices for a time series simulation.
 	mod <- function(i, n)
 		1 + (i - 1) %% n
-	if (a[2] == 0)
+	if (a[2L] == 0)
 		out <- numeric(0)
-	else	out <- mod(seq.int(a[1], a[1]+a[2]-1, length.out=a[2]), n)
+	else	out <- mod(seq.int(a[1L], a[1L]+a[2L]-1, length.out=a[2L]), n)
 	out
 }
 
@@ -3389,7 +3388,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
     if (sim == "geom") endcorr <- TRUE
     if (sim == "scramble") {
 # Phase scrambling
-        for (r in 1:R) {
+        for (r in 1L:R) {
             ts.b <- scramble(tseries,norm)
             tmp <- statistic(ts.b, ...)
             t <- rbind(t, tmp)
@@ -3397,7 +3396,7 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
     }
     else if (sim == "model") {
 # Model-based resampling
-        for (r in 1:R) {
+        for (r in 1L:R) {
             ts.b <- ran.gen(tseries, n.sim, ran.args)
             tmp <- statistic(ts.b, ...)
             t <- rbind(t, tmp)
@@ -3409,15 +3408,15 @@ tsboot <- function(tseries, statistic, R, l=NULL, sim = "model",
 # indices used for the resampling.  If ran.gen is present then
 # post-blackening is required when the blocks have been formed.
 	i.a <- ts.array(n, n.sim, R, l, sim, endcorr)
-        for(r in 1:R) {
+        for(r in 1L:R) {
             if (sim == "geom")
                 ends <- cbind(i.a$starts[r,  ],
                               i.a$lengths[r,  ])
             else	ends <- cbind(i.a$starts[r,], i.a$lengths)
-            inds <- apply(ends, 1, make.ends, n)
+            inds <- apply(ends, 1L, make.ends, n)
             if(is.list(inds))
-                inds <- matrix(unlist(inds)[1:n.sim],n.sim,1)
-            else inds <- matrix(inds, n.sim, 1)
+                inds <- matrix(unlist(inds)[1L:n.sim],n.sim,1L)
+            else inds <- matrix(inds, n.sim, 1L)
             ts.b <- ts.orig[inds,]
 # 			if (is.null(tscl))
 # 				ts.b <- ts(ts.orig[inds,], start=st,

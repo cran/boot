@@ -69,7 +69,7 @@ are given by \code{p[j]} proportional to
 \code{lambda} is then 
 chosen to make the mean of the bootstrap
 distribution, of the linear approximation to the statistic of interest, equal
-to the the required value \code{theta}.  Thus \code{lambda} is defined as the 
+to the required value \code{theta}.  Thus \code{lambda} is defined as the 
 solution of a nonlinear equation.   
 The equation is solved by minimizing the Euclidean distance between 
 the left and right hand sides of the equation using the function \code{nlmin}.

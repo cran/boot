@@ -68,10 +68,10 @@ lik.CI <- function(like, lim ) {
 	L <- like[,2]
 	theta <- like[,1]
 	n <- length(L)
-	i <- min(c(1:n)[L>lim])
+	i <- min(c(1L:n)[L>lim])
 	if (is.na(i))
 		stop("likelihood never exceeds ",lim)
-	j <- max(c(1:n)[L>lim])
+	j <- max(c(1L:n)[L>lim])
 	if (i==j)
 		stop("likelihood exceeds ", lim, " at only one point")
 	if (i==1) bot <- -Inf
@@ -79,14 +79,14 @@ lik.CI <- function(like, lim ) {
 		x <- theta[i]
 		y <- L[i]-lim;
 		co <- coefficients( lm(y~x+x^2) );
-		bot <- (-co[2]+sqrt( co[2]^2-4*co[1]*co[3] ) )/(2*co[3] )
+		bot <- (-co[2L]+sqrt( co[2L]^2-4*co[1L]*co[3L] ) )/(2*co[3L] )
 	}
 	if (j==n) top <- Inf
 	else {	j <- j+c(-1,0,1)
 		x <- theta[j]
 		y <- L[j]-lim;
 		co <- coefficients( lm(y~x+x^2) );
-		top <- (-co[2]-sqrt( co[2]^2-4*co[1]*co[3] ) )/(2*co[3] );
+		top <- (-co[2L]-sqrt( co[2L]^2-4*co[1L]*co[3L] ) )/(2*co[3L] );
 	}
 	out <- c( bot, top )
 	names(out) <- NULL
@@ -103,17 +103,17 @@ nested.corr <- function(data,w,t0,M) {
 		v1 <- sum(d[,1]^2*w)-m1^2
 		v2 <- sum(d[,2]^2*w)-m2^2
 		rho <- (sum(d[,1]*d[,2]*w)-m1*m2)/sqrt(v1*v2)
-		i <- rep(1:n,round(n*w))
+		i <- rep(1L:n,round(n*w))
 		us <- (d[i,1]-m1)/sqrt(v1)
 		xs <- (d[i,2]-m2)/sqrt(v2)
 		L <- us*xs-0.5*rho*(us^2+xs^2)
 		c(rho, sum(L^2)/nrow(d)^2)
 	}
 	n <- nrow(data)
-	i <- rep(1:n,round(n*w))
+	i <- rep(1L:n,round(n*w))
 	t <- corr.fun(data,w)
-	z <- (t[1]-t0)/sqrt(t[2])
+	z <- (t[1L]-t0)/sqrt(t[2L])
 	nested.boot <- boot(data[i,],corr.fun,R=M,stype="w")
-	z.nested <- (nested.boot$t[,1]-t[1])/sqrt(nested.boot$t[,2])
+	z.nested <- (nested.boot$t[,1]-t[1L])/sqrt(nested.boot$t[,2])
 	c(z,sum(z.nested<z)/(M+1))
 }

@@ -14,7 +14,7 @@ The relative number for a day is given by k(f+10g) where g is the number of
 sunspot groups observed, f is the total number of spots within the groups and
 k is a scaling factor relating the observer and telescope to a baseline. The
 relative numbers are then averaged to give an annual figure.   
-See Insenman (1983) for a discussion of the relative numbers. The figures are
+See Inzenman (1983) for a discussion of the relative numbers. The figures are
 for the years 1700-1988.
 }
 \source{

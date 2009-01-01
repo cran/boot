@@ -34,7 +34,7 @@ The vector of approximate Cook statistics.
 The vector of leverages of the observations.
 }
 \item{sd}{
-The value used to standardize the residuals.  This is the the estimate of
+The value used to standardize the residuals.  This is the estimate of
 residual standard deviation in the Gaussian family and is the square root of
 the estimated shape parameter in the Gamma family.  In all other cases it is 1.
 }}

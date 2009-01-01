@@ -6,7 +6,7 @@ Bootstrap Resampling Arrays
 \description{
   This function takes a bootstrap object calculated by one of the
   functions \code{boot}, \code{censboot}, or \code{tilt.boot} and
-  returns the frequency (or index) array for the the bootstrap
+  returns the frequency (or index) array for the bootstrap
   resamples.
 }
 \usage{
