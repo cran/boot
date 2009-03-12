@@ -34,7 +34,7 @@ anti.arr <- function(n, R, L, inds=1L:n)
             for (i in 1L:length(uniq))
                 if (tab[i] > 1L) {
                     gp <- inds[ranks == uniq[i]]
-                    ranks[gp] <- sample(inds[sort(ranks) == uniq[i]])
+                    ranks[gp] <- ssample(inds[sort(ranks) == uniq[i]])
                 }
         }
         ranks
@@ -65,7 +65,7 @@ balanced.array <- function(n, R, strata)
     for(is in inds) {
         group <- c(1L:n)[strata == is]
         if(length(group) > 1L) {
-            g <- matrix(sample(output[group,  ]), length(group), R)
+            g <- matrix(ssample(output[group,  ]), length(group), R)
             output[group,  ] <- g
         }
     }
@@ -613,7 +613,7 @@ importance.array.bal <- function(n, R, weights, strata) {
         if (any (nRw2 != 0))
             output <- c(output,
                         sample(inds, round(sum(nRw2)), prob=nRw2))
-        matrix(sample(output), R, n)
+        matrix(ssample(output), R, n)
     }
     output <- NULL
     if (!isMatrix(weights))
@@ -759,7 +759,7 @@ ordinary.array <- function(n, R, strata)
         output <- matrix(as.integer(0L), R, n)
         for(is in inds) {
             gp <- (1L:n)[strata == is]
-            output[, gp] <- sample(gp, R*length(gp), replace=TRUE)
+            output[, gp] <- if(length(gp) == 1) rep(gp, R) else sample(gp, R*length(gp), replace=TRUE)
         }
     }
     output
@@ -777,7 +777,7 @@ permutation.array <- function(n, R, strata)
     for(is in inds) {
         group <- c(1L:n)[strata == is]
         if(length(group) > 1L) {
-            g <- apply(output[group,  ], 2L, sample)
+            g <- apply(output[group,  ], 2L, ssample)
             output[group,  ] <- g
         }
     }
@@ -1362,7 +1362,7 @@ cens.case <- function(n,strata,R) {
 	for (s in 1L:length(table(strata))) {
 		inds <- (1L:n)[strata==s]
 		ns <- length(inds)
-		out[,inds] <- sample(inds,ns*R,replace=TRUE)
+		out[,inds] <- sample(inds, ns*R, replace=TRUE)
 	}
 	out
 }
@@ -1442,7 +1442,7 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
             time <- c(time,Inf)
         }
         probs <- diff(-c(1,survival))
-        matrix(sample(time,n*R,replace=TRUE,prob=probs),R,n)
+        matrix(sample(time, n*R, replace=TRUE, prob=probs), R, n)
     }
     gety2 <- function(n,R,surv,eta,inds) {
 # Sample failure times from the Cox regression model.
@@ -1456,7 +1456,7 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
         ex <- exp(eta)
         Fh <- 1-outer(F0,ex,"^")
         apply(rbind(0,Fh),2L,function(p,y,R)
-              sample(y,R,prob=diff(p),replace=TRUE), time,R)
+              sample(y, R,prob=diff(p), replace=TRUE), time,R)
     }
     getc1 <- function(n,R,surv,inds) {
 # Sample censoring times from the product-limit estimate of the
@@ -1469,7 +1469,7 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
             time <- c(time,Inf)
         }
         probs <- diff(-c(1,cens))
-        matrix(sample(time,n*R,replace=TRUE,prob=probs),nrow=R)
+        matrix(sample(time, n*R, replace=TRUE, prob=probs), nrow=R)
     }
     getc2 <- function(n,R,surv,inds,data,index) {
 # Sample censoring times form the conditional distribution.  If a failure
@@ -1492,7 +1492,7 @@ cens.resamp <- function(data,R,F.surv,G.surv,strata,index=c(1,2),cox=NULL,
                         ti <- time[time>data[i,1L]]
                         if (length(ti)==1L)
                             cout[,i] <- ti
-                        else	cout[,i] <- sample(ti,R,prob=pri,
+                        else	cout[,i] <- sample(ti, R, prob = pri,
                                                    replace=TRUE)
                     }
         }

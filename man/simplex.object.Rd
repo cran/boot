@@ -76,7 +76,7 @@ The class \code{"saddle.distn"} has a method for the function \code{print}.
     \item{surplus}{
       The final values of the \code{m2} surplus variables which arise when
       the "<=" constraints are re-expressed as the equalities \code{A2\%*\%x -
-	surplus = b2}.
+        surplus = b2}.
     }
     \item{artificial}{
       This is NULL if a feasible solution can be found.  If no solution
