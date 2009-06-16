@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: R 2.6.0\n"
-"Report-Msgid-Bugs-To: bugs@R-project.org\n"
-"POT-Creation-Date: 2005-12-08 20:39\n"
+"Report-Msgid-Bugs-To: bugs@r-project.org\n"
+"POT-Creation-Date: 2009-05-08 14:08\n"
 "PO-Revision-Date: 2007-09-18 01:23-0800\n"
 "Last-Translator: Alexey Shipunov <dactylorhiza@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -17,7 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=KOI8-R\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Russian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid ""
+"'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0, so "
+"ignored"
+msgstr ""
 
 msgid "no data in call to boot"
 msgstr "нет данных в вызове boot"
@@ -187,8 +193,8 @@ msgstr "указано неправильное значение sim"
 msgid "R and theta have incompatible lengths"
 msgstr "у R и theta -- несовместимые длины"
 
-msgid "R[1] must be positive for frequency smoothing"
-msgstr "R[1] должен быть положительным для частотного сглаживания"
+msgid "R[1L] must be positive for frequency smoothing"
+msgstr "R[1L] должен быть положительным для частотного сглаживания"
 
 msgid "R and alpha have incompatible lengths"
 msgstr "R и alpha должны иметь совместимые длины"
@@ -196,11 +202,11 @@ msgstr "R и alpha должны иметь совместимые длины"
 msgid "extreme values used for quantiles"
 msgstr "экстремальные значения использованы для квантилей"
 
-msgid "theta must be supplied if R[1] = 0"
-msgstr "надо указать theta, если R[1] = 0"
+msgid "theta must be supplied if R[1L] = 0"
+msgstr "надо указать theta, если R[1L] = 0"
 
-msgid "alpha ignored; R[1]=0"
-msgstr "alpha пропущен; R[1]=0"
+msgid "alpha ignored; R[1L]=0"
+msgstr "alpha пропущен; R[1L]=0"
 
 msgid "control methods undefined when boot.out has weights"
 msgstr "методы контроля не определены в то время как у 'boot.out' есть веса"
@@ -213,6 +219,9 @@ msgstr "количество колонок A ("
 
 msgid ") not equal to length of u ("
 msgstr ") не равно длине u ("
+
+msgid ")"
+msgstr ""
 
 msgid "either A and u or K.adj and K2 must be supplied"
 msgstr "надо указать либо A и u, либо K.adj и K2"
@@ -258,4 +267,3 @@ msgstr "правдоподобие превышает"
 
 msgid "at only one point"
 msgstr "только в одной точке"
-

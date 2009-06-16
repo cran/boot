@@ -1,4 +1,9 @@
-version 1.2-34 2009-03-12
+version 1.2-37 2009-06-16
+
+    example(censboot) returned the value of a for() loop: need to change
+    for R 2.10.x.
+
+version 1.2-36 2009-03-12
 
     guard aginst (some uses of) sample() on length-1 input
 

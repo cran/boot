@@ -233,6 +233,7 @@ aml.fun1 <- function(data,str) {
           st <- st+surv$strata[s]
           out <- c(out,md)
      }
+     out
 }
 aml.wei <- censboot(cbind(aml$time,aml$cens),aml.fun1,R=499,
      strata=aml$group, F.surv=aml.s1,sim="weird")

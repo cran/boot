@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.3.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2005-12-08 20:39\n"
+"POT-Creation-Date: 2009-05-08 14:08\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,6 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
+msgid "'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0, so ignored"
+msgstr ""
 
 msgid "no data in call to boot"
 msgstr ""
@@ -179,7 +182,7 @@ msgstr ""
 msgid "R and theta have incompatible lengths"
 msgstr ""
 
-msgid "R[1] must be positive for frequency smoothing"
+msgid "R[1L] must be positive for frequency smoothing"
 msgstr ""
 
 msgid "R and alpha have incompatible lengths"
@@ -188,10 +191,10 @@ msgstr ""
 msgid "extreme values used for quantiles"
 msgstr ""
 
-msgid "theta must be supplied if R[1] = 0"
+msgid "theta must be supplied if R[1L] = 0"
 msgstr ""
 
-msgid "alpha ignored; R[1]=0"
+msgid "alpha ignored; R[1L]=0"
 msgstr ""
 
 msgid "control methods undefined when boot.out has weights"
@@ -204,6 +207,9 @@ msgid "number of columns of A ("
 msgstr ""
 
 msgid ") not equal to length of u ("
+msgstr ""
+
+msgid ")"
 msgstr ""
 
 msgid "either A and u or K.adj and K2 must be supplied"
