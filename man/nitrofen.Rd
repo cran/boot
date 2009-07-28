@@ -11,7 +11,7 @@ broad-leaved and grass weeds in cereals and rice. Although it is relatively
 non-toxic to adult mammals, nitrofen is a significant tetragen and mutagen.
 It is also acutely toxic and reproductively toxic to cladoceran zooplankton.
 Nitrofen is no longer in commercial use in the U.S., having been the first
-pesticide to be withdrawn due to tetrogenic effects.
+pesticide to be withdrawn due to tetragenic effects.
 
 The data here come from an experiment to measure the reproductive toxicity
 of nitrofen on a species of zooplankton (\emph{Ceriodaphnia dubia}).  50 animals

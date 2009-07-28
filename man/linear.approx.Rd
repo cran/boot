@@ -29,7 +29,7 @@ The index of the variable of interest within the output of
 \item{type}{
 This gives the type of empirical influence values to be calculated.  It is
 not used if \code{L} is supplied.  The possible types of empirical influence
-values are described in the helpfile for \code{empinf}.
+values are described in the help for \code{\link{empinf}}.
 }
 \item{t0}{
 The observed value of the statistic of interest.  The input value is used only 

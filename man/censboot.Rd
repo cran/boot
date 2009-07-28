@@ -267,8 +267,8 @@ mel.fun <- function(d) {
 }
 mel.str<-cbind(melanoma$ulcer,agec)
 # this is slow!
-system.time(mel.mod <- censboot(melanoma,mel.fun,R=999,F.surv=mel.surv,
-     G.surv=mel.cens,cox=mel.cox,strata=mel.str,sim="model"))
+mel.mod <- censboot(melanoma,mel.fun,R=999,F.surv=mel.surv,
+     G.surv=mel.cens,cox=mel.cox,strata=mel.str,sim="model")
 # To plot the original predictor and a 95\% pointwise envelope for it
 mel.env <- envelope(mel.mod)$point
 plot(seq(0.25,10,by=0.25),mel.env[1,], ylim=c(-2,2),

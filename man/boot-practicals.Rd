@@ -17,7 +17,7 @@ Davison and Hinkley (1997).
 }
 \references{ 
 Davison, A. C. and Hinkley, D. V. (1997)
-\emph{Bootstrap MEthods and Their Application}. Cambridge University
+\emph{Bootstrap Methods and Their Application}. Cambridge University
 Press.
 }
 \author{ Angelo J. Canty }
