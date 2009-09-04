@@ -763,8 +763,6 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
 > # this is slow!
 > mel.mod <- censboot(melanoma,mel.fun,R=999,F.surv=mel.surv,
 +      G.surv=mel.cens,cox=mel.cox,strata=mel.str,sim="model")
-Warning in fitter(X, Y, strats, offset, init, control, weights = weights,  :
-  Loglik converged before variable  2 ; beta may be infinite. 
 > # To plot the original predictor and a 95% pointwise envelope for it
 > mel.env <- envelope(mel.mod)$point
 > plot(seq(0.25,10,by=0.25),mel.env[1,], ylim=c(-2,2),

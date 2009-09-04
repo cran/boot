@@ -6,7 +6,7 @@ Data from a Simulated Motorcycle Accident
 \description{
 The \code{motor} data frame has 94 rows and 4 columns.  The rows are
 obtained by removing replicate values of \code{time} from the dataset 
-\code{\link[MASS]{mcycle}}.  Two extra columns are added to allow for strata with
+\code{\link{mcycle}}.  Two extra columns are added to allow for strata with
 a different residual variance in each stratum.
 }
 \usage{
@@ -47,7 +47,7 @@ Venables, W.N. and Ripley, B.D. (1994)
 \emph{Modern Applied Statistics with S-Plus}. Springer-Verlag.
 }
 \seealso{
-\code{\link[MASS]{mcycle}}
+\code{\link{mcycle}}
 }
 \keyword{datasets}
 % Converted by Sd2Rd version 1.15.

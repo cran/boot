@@ -186,7 +186,7 @@ NSF-241, Dept. of Statistics, Stanford University.
 }
 \seealso{
 \code{\link{boot}}, 
-\code{\link[survival]{coxph}}, \code{\link[survival]{survfit}}
+\code{\link{coxph}}, \code{\link{survfit}}
 }
 \examples{
 data(aml, package="boot")

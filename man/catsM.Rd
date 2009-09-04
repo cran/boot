@@ -9,7 +9,7 @@ The \code{catsM} data frame has 97 rows and 3 columns.
 144 adult (over 2kg in weight) cats used for experiments with the drug
 digitalis had their heart and body weight recorded.  47 of the cats were
 female and 97 were male.  The \code{catsM} data frame consists of the data for
-the male cats.  The full data are in dataset \code{\link[MASS]{cats}}
+the male cats.  The full data are in dataset \code{\link{cats}}
 in package \code{MASS}.
 }
 \usage{
@@ -29,7 +29,7 @@ Body weight in kg.
 Heart weight in g.
 }}}
 \seealso{
-  \code{\link[MASS]{cats}}
+  \code{\link{cats}}
 }
 \source{
 The data were obtained from
