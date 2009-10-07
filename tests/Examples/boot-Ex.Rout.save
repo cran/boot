@@ -1,11 +1,13 @@
 
-R version 2.9.1 beta (2009-06-16 r48788)
+R version 2.10.0 alpha (2009-10-06 r49961)
 Copyright (C) 2009 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -192,6 +194,7 @@ Bootstrap Statistics :
     original     bias    std. error
 t1* 1.520313 0.03959996   0.2167146
 > 
+> 
 > # Stratified resampling for the difference of means.  In this
 > # example we will look at the difference of means between the final
 > # two series in the gravity data.
@@ -222,6 +225,7 @@ Bootstrap Statistics :
 t1* -2.846154  0.002541003    1.546664
 t2* 16.846154 -1.457662791    6.759103
 > 
+> 
 > #  In this example we show the use of boot in a prediction from 
 > #  regression based on the nuclear data.  This example is taken 
 > #  from Example 6.8 of Davison and Hinkley (1997).  Notice also 
@@ -232,14 +236,17 @@ t2* 16.846154 -1.457662791    6.759103
 > nuke.res <- nuke.diag$res*nuke.diag$sd
 > nuke.res <- nuke.res-mean(nuke.res)
 > 
+> 
 > #  We set up a new data frame with the data, the standardized 
 > #  residuals and the fitted values for use in the bootstrap.
 > nuke.data <- data.frame(nuke,resid=nuke.res,fit=fitted(nuke.lm))
+> 
 > 
 > #  Now we want a prediction of plant number 32 but at date 73.00
 > new.data <- data.frame(cost=1, date=73.00, cap=886, ne=0,
 +                        ct=0, cum.n=11, pt=1)
 > new.fit <- predict(nuke.lm, new.data)
+> 
 > 
 > nuke.fun <- function(dat, inds, i.pred, fit.pred, x.pred)
 + {
@@ -251,6 +258,7 @@ t2* 16.846154 -1.457662791    6.759103
 +      c(coef(lm.b), pred.b-(fit.pred+dat$resid[i.pred]))
 + }
 > 
+> 
 > nuke.boot <- boot(nuke.data, nuke.fun, R=999, m=1, 
 +      fit.pred=new.fit, x.pred=new.data)
 > #  The bootstrap prediction error would then be found by
@@ -259,6 +267,7 @@ t2* 16.846154 -1.457662791    6.759103
 > #  Basic bootstrap prediction limits would be
 > new.fit-sort(nuke.boot$t[,8])[c(975,25)]
 [1] 6.160255 7.298819
+> 
 > 
 > 
 > 
@@ -280,6 +289,7 @@ t2* 16.846154 -1.457662791    6.759103
 +      c(ybar, khat)
 + }
 > 
+> 
 > air.rg <- function(data, mle)
 + #  Function to generate random exponential variates.  mle will contain 
 + #  the mean of the original data
@@ -290,6 +300,7 @@ t2* 16.846154 -1.457662791    6.759103
 > 
 > air.boot <- boot(aircondit, air.fun, R=999, sim="parametric",
 +      ran.gen=air.rg, mle=mean(aircondit$hours))
+> 
 > 
 > # The bootstrap p-value can then be approximated by
 > sum(abs(air.boot$t[,2]-1) > abs(air.boot$t0[2]-1))/(1+air.boot$R)
@@ -699,6 +710,7 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
 Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
   no non-missing arguments to min; returning Inf
 > 
+> 
 > # For the weird bootstrap we must redefine our function slightly since
 > # the data will not contain the group number.
 > aml.fun1 <- function(data,str) {
@@ -913,11 +925,13 @@ Warning in optim(init, K) :
 > cv.err <- cv.glm(mammals,mammals.glm)
 > cv.err.6 <- cv.glm(mammals, mammals.glm, K=6)
 > 
+> 
 > # As this is a linear model we could calculate the leave-one-out 
 > # cross-validation estimate without any extra model-fitting.
 > muhat <- mammals.glm$fitted
 > mammals.diag <- glm.diag(mammals.glm)
 > cv.err <- mean((mammals.glm$y-muhat)^2/(1-mammals.diag$h)^2)
+> 
 > 
 > # leave-one-out and 11-fold cross-validation prediction error for 
 > # the nodal data set.  Since the response is a binary variable an
@@ -1123,6 +1137,7 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 +      diag(q) <- round(diag(q))
 +      q
 + }
+> 
 > 
 > frets.fun <- function( data, i )
 + {    d <- data[i,]
@@ -1362,11 +1377,13 @@ Warning in optim(init, K) :
 +      c(mns[2]-mns[1],s2hat)
 + }
 > 
+> 
 > grav.boot <- boot(grav1, grav.fun, R=499, stype="w", strata=grav1[,2])
 > plot(grav.boot)
 > # now suppose we want to look at the studentized differences.
 > grav.z <- (grav.boot$t[,1]-grav.boot$t0[1])/sqrt(grav.boot$t[,2])
 > plot(grav.boot,t=grav.z,t0=0)
+> 
 > 
 > # In this example we look at the one of the partial correlations for the
 > # head dimensions in the dataset frets.
@@ -1387,6 +1404,7 @@ Warning in optim(init, K) :
 +      diag(q) <- round(diag(q));
 +      q
 + }
+> 
 > 
 > frets.fun <- function( data, i )
 + {    d <- data[i,];
@@ -1980,10 +1998,12 @@ The optimal value of the objective  function is 41400.
 +                   strata=grav1[,2], orig=grav.z0[1])
 > grav.sm <- smooth.f(grav.z0[3], grav.boot, index=3)
 > 
+> 
 > # Now we can run another bootstrap using these weights
 > grav.boot2 <- boot(grav1, grav.fun, R=499, stype="w", 
 +                    strata=grav1[,2], orig=grav.z0[1],
 +                    weights=grav.sm)
+> 
 > 
 > # Estimated p-values can be found from these as follows
 > mean(grav.boot$t[,3] >= grav.z0[3])
@@ -2002,6 +2022,7 @@ $rat
 $reg
 [1] 0.02174393
 
+> 
 > 
 > # Note that for the importance sampling probability we must 
 > # multiply everything by -1 to ensure that we find the correct
@@ -2026,6 +2047,7 @@ $reg
 > ### ** Examples
 > 
 > # Note that these examples can take a while to run.
+> 
 > 
 > # Example 9.9 of Davison and Hinkley (1997).
 > grav1 <- gravity[as.numeric(gravity[,2])>=7,]
@@ -2061,6 +2083,7 @@ Bootstrap Statistics :
 t1* 2.846154 -0.4487564    2.500644
 t2* 2.392353 -0.3221155    1.187574
 t3* 0.000000 -0.8862944    2.208945
+> 
 > 
 > #  Example 9.10 of Davison and Hinkley (1997) requires a balanced 
 > #  importance resampling bootstrap to be run.  In this example we 
@@ -2196,7 +2219,7 @@ t3* 0.000000 -0.8862944    2.208945
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  93.502 0.571 94.396 0 0 
+Time elapsed:  58.725 0.057 58.806 0 0 
 > grDevices::dev.off()
 null device 
           1 

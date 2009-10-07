@@ -1170,6 +1170,7 @@ bca.ci <- function(boot.out,conf=0.95,index=1,t0=NULL,t=NULL, L=NULL,
     }
     t <- t[is.finite(t)]
     w <- qnorm(sum(t < t0)/length(t))
+    if (!is.finite(w)) stop("estimated adjustment 'w' is infinite")
     alpha <- (1+c(-conf,conf))/2
     zalpha <- qnorm(alpha)
     if (is.null(L))

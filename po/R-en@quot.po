@@ -22,10 +22,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.10.0\n"
+"Project-Id-Version: R 2.11.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-05-08 14:08\n"
-"PO-Revision-Date: 2009-05-08 14:08\n"
+"POT-Creation-Date: 2009-09-30 11:54\n"
+"PO-Revision-Date: 2009-09-30 11:54\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,9 @@ msgstr "extreme order statistics used as endpoints"
 
 msgid "variance required for Studentized CI's"
 msgstr "variance required for Studentized CI's"
+
+msgid "estimated adjustment 'w' is infinite"
+msgstr "estimated adjustment ‘w’ is infinite"
 
 msgid "estimated adjustment 'a' is NA"
 msgstr "estimated adjustment ‘a’ is NA"
