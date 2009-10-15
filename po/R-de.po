@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.9.2 / boot 1.2.38\n"
+"Project-Id-Version: R 2.10.0 / boot 1.2-40\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
 "POT-Creation-Date: 2009-09-30 11:54\n"
-"PO-Revision-Date: 2009-09-03 14:57+0200\n"
+"PO-Revision-Date: 2009-10-11 13:03+0200\n"
 "Last-Translator: Chris Leick <c.leick@vollbio.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -90,9 +90,8 @@ msgstr "Extremwertstatistiken werden als Endpunkte benutzt"
 msgid "variance required for Studentized CI's"
 msgstr "Varianz für studentisierte CI's benötigt"
 
-#, fuzzy
 msgid "estimated adjustment 'w' is infinite"
-msgstr "geschätzte Einstellung »a« ist NA"
+msgstr "geschätzte Anpassung 'w' ist unendlich"
 
 msgid "estimated adjustment 'a' is NA"
 msgstr "geschätzte Einstellung »a« ist NA"

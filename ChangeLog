@@ -1,3 +1,7 @@
+version 1.2-41 2009-10-15
+
+    Update German and Russian translations.
+
 version 1.2-40 2009-10-07
 
     Add error message in bca.ci for misuse when all the samples are the same.
