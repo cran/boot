@@ -1,6 +1,6 @@
 
-R version 2.10.0 alpha (2009-10-06 r49961)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.11.0 alpha (2010-03-28 r51461)
+Copyright (C) 2010 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -17,79 +17,14 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ### * <HEADER>
-> ###
-> attach(NULL, name = "CheckExEnv")
-> assign("nameEx",
-+        local({
-+ 	   s <- "__{must remake R-ex/*.R}__"
-+            function(new) {
-+                if(!missing(new)) s <<- new else s
-+            }
-+        }),
-+        pos = "CheckExEnv")
-> ## Add some hooks to label plot pages for base and grid graphics
-> assign("base_plot_hook",
-+        function() {
-+            pp <- par(c("mfg","mfcol","oma","mar"))
-+            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
-+                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
-+                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
-+                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
-+                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
-+            }
-+        },
-+        pos = "CheckExEnv")
-> assign("grid_plot_hook",
-+        function() {
-+            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
-+                               grid::unit(1, "lines"), x=0, just="left"))
-+            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
-+                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
-+                            y=grid::unit(0.8, "npc"), rot=90,
-+                            gp=grid::gpar(col="orchid"))
-+        },
-+        pos = "CheckExEnv")
-> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
-> assign("cleanEx",
-+        function(env = .GlobalEnv) {
-+ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
-+            RNGkind("default", "default")
-+ 	   set.seed(1)
-+    	   options(warn = 1)
-+ 	   .CheckExEnv <- as.environment("CheckExEnv")
-+ 	   delayedAssign("T", stop("T used instead of TRUE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   delayedAssign("F", stop("F used instead of FALSE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   sch <- search()
-+ 	   newitems <- sch[! sch %in% .oldSearch]
-+ 	   for(item in rev(newitems))
-+                eval(substitute(detach(item), list(item=item)))
-+ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
-+ 	   if(length(missitems))
-+ 	       warning("items ", paste(missitems, collapse=", "),
-+ 		       " have been removed from the search path")
-+        },
-+        pos = "CheckExEnv")
-> assign("ptime", proc.time(), pos = "CheckExEnv")
-> ## at least one package changes these via ps.options(), so do this
-> ## before loading the package.
-> ## Use postscript as incomplete files may be viewable, unlike PDF.
-> ## Choose a size that is close to on-screen devices, fix paper
-> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
-> grDevices::postscript("boot-Ex.ps")
-> 
-> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
-> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> pkgname <- "boot"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('boot')
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
-> cleanEx(); nameEx("Imp.Estimates")
+> cleanEx()
+> nameEx("Imp.Estimates")
 > ### * Imp.Estimates
 > 
 > flush(stderr()); flush(stdout())
@@ -134,7 +69,8 @@ Type 'q()' to quit R.
 > 
 > 
 > 
-> cleanEx(); nameEx("abc.ci")
+> cleanEx()
+> nameEx("abc.ci")
 > ### * abc.ci
 > 
 > flush(stderr()); flush(stdout())
@@ -166,7 +102,8 @@ Type 'q()' to quit R.
 > 
 > 
 > 
-> cleanEx(); nameEx("boot")
+> cleanEx()
+> nameEx("boot")
 > ### * boot
 > 
 > flush(stderr()); flush(stdout())
@@ -308,7 +245,8 @@ t2* 16.846154 -1.457662791    6.759103
 > 
 > 
 > 
-> cleanEx(); nameEx("boot.array")
+> cleanEx()
+> nameEx("boot.array")
 > ### * boot.array
 > 
 > flush(stderr()); flush(stdout())
@@ -413,7 +351,8 @@ t2* 16.846154 -1.457662791    6.759103
 > 
 > 
 > 
-> cleanEx(); nameEx("boot.ci")
+> cleanEx()
+> nameEx("boot.ci")
 > ### * boot.ci
 > 
 > flush(stderr()); flush(stdout())
@@ -545,7 +484,8 @@ Calculations and Intervals on Original Scale
 > 
 > 
 > 
-> cleanEx(); nameEx("censboot")
+> cleanEx()
+> nameEx("censboot")
 > ### * censboot
 > 
 > flush(stderr()); flush(stdout())
@@ -563,15 +503,13 @@ Loading required package: splines
 
 Attaching package: 'survival'
 
+The following object(s) are masked _by_ '.GlobalEnv':
 
-	The following object(s) are masked _by_ .GlobalEnv :
+    aml
 
-	 aml 
+The following object(s) are masked from 'package:boot':
 
-
-	The following object(s) are masked from package:boot :
-
-	 aml 
+    aml
 
 > # Example 3.9 of Davison and Hinkley (1997) does a bootstrap on some
 > # remission times for patients with a type of leukaemia.  The patients
@@ -785,7 +723,11 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
 > 
 > 
 > 
-> cleanEx(); nameEx("control")
+> cleanEx()
+
+detaching ‘package:survival’, ‘package:splines’
+
+> nameEx("control")
 > ### * control
 > 
 > flush(stderr()); flush(stdout())
@@ -906,7 +848,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("cv.glm")
+> cleanEx()
+> nameEx("cv.glm")
 > ### * cv.glm
 > 
 > flush(stderr()); flush(stdout())
@@ -944,7 +887,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("empinf")
+> cleanEx()
+> nameEx("empinf")
 > ### * empinf
 > 
 > flush(stderr()); flush(stdout())
@@ -1004,7 +948,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("envelope")
+> cleanEx()
+> nameEx("envelope")
 > ### * envelope
 > 
 > flush(stderr()); flush(stdout())
@@ -1036,7 +981,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("exp.tilt")
+> cleanEx()
+> nameEx("exp.tilt")
 > ### * exp.tilt
 > 
 > flush(stderr()); flush(stdout())
@@ -1085,7 +1031,8 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > 
 > 
-> cleanEx(); nameEx("glm.diag.plots")
+> cleanEx()
+> nameEx("glm.diag.plots")
 > ### * glm.diag.plots
 > 
 > flush(stderr()); flush(stdout())
@@ -1106,7 +1053,8 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > 
 > 
-> cleanEx(); nameEx("jack.after.boot")
+> cleanEx()
+> nameEx("jack.after.boot")
 > ### * jack.after.boot
 > 
 > flush(stderr()); flush(stdout())
@@ -1152,7 +1100,8 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > 
 > 
-> cleanEx(); nameEx("k3.linear")
+> cleanEx()
+> nameEx("k3.linear")
 > ### * k3.linear
 > 
 > flush(stderr()); flush(stdout())
@@ -1172,7 +1121,8 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > 
 > 
-> cleanEx(); nameEx("linear.approx")
+> cleanEx()
+> nameEx("linear.approx")
 > ### * linear.approx
 > 
 > flush(stderr()); flush(stdout())
@@ -1230,7 +1180,8 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
-> cleanEx(); nameEx("lines.saddle.distn")
+> cleanEx()
+> nameEx("lines.saddle.distn")
 > ### * lines.saddle.distn
 > 
 > flush(stderr()); flush(stdout())
@@ -1308,7 +1259,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("norm.ci")
+> cleanEx()
+> nameEx("norm.ci")
 > ### * norm.ci
 > 
 > flush(stderr()); flush(stdout())
@@ -1341,7 +1293,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("plot.boot")
+> cleanEx()
+> nameEx("plot.boot")
 > ### * plot.boot
 > 
 > flush(stderr()); flush(stdout())
@@ -1416,7 +1369,8 @@ Warning in optim(init, K) :
 > 
 > 
 > 
-> cleanEx(); nameEx("saddle")
+> cleanEx()
+> nameEx("saddle")
 > ### * saddle
 > 
 > flush(stderr()); flush(stdout())
@@ -1506,7 +1460,8 @@ $zeta.hat
 > 
 > 
 > 
-> cleanEx(); nameEx("saddle.distn")
+> cleanEx()
+> nameEx("saddle.distn")
 > ### * saddle.distn
 > 
 > flush(stderr()); flush(stdout())
@@ -1656,8 +1611,7 @@ Warning in eval(expr, envir, enclos) :
   non-integer counts in a binomial glm!
 Warning in eval(expr, envir, enclos) :
   non-integer counts in a binomial glm!
-Warning in glm.fit(x = X, y = Y, weights = weights, start = start, etastart = etastart,  :
-  fitted probabilities numerically 0 or 1 occurred
+Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 Warning in eval(expr, envir, enclos) :
   non-integer counts in a binomial glm!
 Warning in eval(expr, envir, enclos) :
@@ -1927,7 +1881,8 @@ Smoothing spline used 20 points in the range 1.182 to 2.061.
 > 
 > 
 > 
-> cleanEx(); nameEx("simplex")
+> cleanEx()
+> nameEx("simplex")
 > ### * simplex
 > 
 > flush(stderr()); flush(stdout())
@@ -1966,7 +1921,8 @@ The optimal value of the objective  function is 41400.
 > 
 > 
 > 
-> cleanEx(); nameEx("smooth.f")
+> cleanEx()
+> nameEx("smooth.f")
 > ### * smooth.f
 > 
 > flush(stderr()); flush(stdout())
@@ -2034,7 +1990,8 @@ $reg
 > 
 > 
 > 
-> cleanEx(); nameEx("tilt.boot")
+> cleanEx()
+> nameEx("tilt.boot")
 > ### * tilt.boot
 > 
 > flush(stderr()); flush(stdout())
@@ -2106,7 +2063,8 @@ t3* 0.000000 -0.8862944    2.208945
 > 
 > 
 > 
-> cleanEx(); nameEx("tsboot")
+> cleanEx()
+> nameEx("tsboot")
 > ### * tsboot
 > 
 > flush(stderr()); flush(stdout())
@@ -2196,7 +2154,8 @@ t3* 0.000000 -0.8862944    2.208945
 > 
 > 
 > 
-> cleanEx(); nameEx("var.linear")
+> cleanEx()
+> nameEx("var.linear")
 > ### * var.linear
 > 
 > flush(stderr()); flush(stdout())
@@ -2219,7 +2178,7 @@ t3* 0.000000 -0.8862944    2.208945
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  58.725 0.057 58.806 0 0 
+Time elapsed:  104.074 0.584 104.987 0 0 
 > grDevices::dev.off()
 null device 
           1 
