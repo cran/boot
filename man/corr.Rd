@@ -7,7 +7,7 @@ Correlation Coefficient
 Calculates the weighted correlation given a data set and a set of weights.
 }
 \usage{
-corr(d, w=rep(1,nrow(d))/nrow(d))
+corr(d, w = rep(1, nrow(d))/nrow(d))
 }
 \arguments{
 \item{d}{

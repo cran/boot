@@ -25,7 +25,6 @@ will return \code{-Inf} or \code{Inf} respectively.  Any \code{NA}s in the input
 be \code{NA}s in the output.
 }
 \seealso{
-\code{\link{inv.logit}}
+\code{\link{inv.logit}}, \code{\link{qlogis}} for which this is a wrapper.
 }
 \keyword{math}
-% Converted by Sd2Rd version 1.15.

@@ -6,9 +6,9 @@
  Construct the empirical log likelihood or empirical exponential 
 family log likelihood for a mean.}
 \usage{
-EEF.profile(y, tmin=min(y) + 0.1, tmax=max(y) - 0.1, n.t=25, 
-            u=function(y, t) { y-t})
-EL.profile(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t = 25, 
+EEF.profile(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t = 25, 
+            u = function(y, t) y - t)
+EL.profile(y, tmin  =  min(y) + 0.1, tmax = max(y) - 0.1, n.t  =  25, 
            u = function(y, t) y - t)
 }
 \arguments{

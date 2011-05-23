@@ -19,10 +19,10 @@
   statistic.
 }
 \usage{
-saddle.distn(A, u=NULL, alpha=NULL, wdist="m", 
-             type="simp", npts=20, t=NULL, t0=NULL, 
-             init=rep(0.1, d), mu=rep(0.5, n), LR=FALSE, 
-             strata=NULL, \dots)
+saddle.distn(A, u = NULL, alpha = NULL, wdist = "m", 
+             type = "simp", npts = 20, t = NULL, t0 = NULL, 
+             init = rep(0.1, d), mu = rep(0.5, n), LR = FALSE, 
+             strata = NULL, \dots)
 }
 \arguments{
   \item{A}{
@@ -39,7 +39,7 @@ saddle.distn(A, u=NULL, alpha=NULL, wdist="m",
     matrix returned by \code{A}. Usually all components other than the
     first will be constants as the other components are the values of
     the conditioning variables. If \code{A} is a matrix with more than
-    one column (such as when \code{wdist="cond"}) then \code{u} should
+    one column (such as when \code{wdist = "cond"}) then \code{u} should
     be a vector with length one less than \code{ncol(A)}.  In this case
     \code{u} specifies the values of the conditioning variables.  If
     \code{A} is a matrix with one column or a vector then \code{u} is
@@ -134,7 +134,7 @@ saddle.distn(A, u=NULL, alpha=NULL, wdist="m",
   spline.
 
   Sometimes the function will terminate with the message
-  \code{"Unable to find range"}. There are two main reasons why this may
+  \code{"Unable to find range"}.  There are two main reasons why this may
   occur.  One is that the distribution is too discrete and/or the
   required quantiles too extreme, this can cause the function to be
   unable to find a point within the allowable range which is beyond the

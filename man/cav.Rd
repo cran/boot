@@ -11,7 +11,7 @@ The data gives the positions of the individual caveolae in a square region
 with sides of length 500 units.  This grid was originally on a 2.65mum
 square of muscle fibre.  The data are those points falling in the lower left 
 hand quarter of the region used for the
-dataset \code{caveolae.dat} in the \pkg{spatial} package by B.D. Ripley (1994) which is part of the recommended \pkg{VR} bundle.
+dataset \code{caveolae.dat} in the \pkg{spatial} package by B.D. Ripley (1994).
 }
 \usage{
 cav

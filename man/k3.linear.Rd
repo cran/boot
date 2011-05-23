@@ -7,7 +7,7 @@ Linear Skewness Estimate
 Estimates the skewness of a statistic from its empirical influence values.
 }
 \usage{
-k3.linear(L, strata=NULL)
+k3.linear(L, strata = NULL)
 }
 \arguments{
 \item{L}{
@@ -30,9 +30,8 @@ Davison, A. C. and Hinkley, D. V. (1997)
 }
 \examples{
 #  To estimate the skewness of the ratio of means for the city data.
-ratio <- function(d,w)
-     sum(d$x * w)/sum(d$u * w)
-k3.linear(empinf(data=city,statistic=ratio))
+ratio <- function(d, w) sum(d$x * w)/sum(d$u * w)
+k3.linear(empinf(data = city, statistic = ratio))
 }
 \keyword{nonparametric}
 % Converted by Sd2Rd version 1.15.

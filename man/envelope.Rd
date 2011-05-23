@@ -9,7 +9,7 @@ curve based on bootstrap replicates of the curve evaluated at a number of
 fixed points.
 }
 \usage{
-envelope(boot.out=NULL, mat=NULL, level=0.95, index=1:ncol(mat))
+envelope(boot.out = NULL, mat = NULL, level = 0.95, index = 1:ncol(mat))
 }
 \arguments{
 \item{boot.out}{
@@ -86,20 +86,20 @@ Davison, A.C. and Hinkley, D.V. (1997)
 # Testing whether the final series of measurements of the gravity data
 # may come from a normal distribution.  This is done in Examples 4.7 
 # and 4.8 of Davison and Hinkley (1997).
-grav1 <- gravity$g[gravity$series==8]
-grav.z <- (grav1-mean(grav1))/sqrt(var(grav1))
-grav.gen <- function(dat,mle)
-     rnorm(length(dat))
-grav.qqboot <- boot(grav.z,sort,R=999,sim="parametric",ran.gen=grav.gen)
-grav.qq <- qqnorm(grav.z,plot=FALSE)
-grav.qq <- lapply(grav.qq,sort)
-plot(grav.qq,ylim=c(-3.5,3.5),ylab="Studentized Order Statistics",
-     xlab="Normal Quantiles")
-grav.env <- envelope(grav.qqboot,level=0.9)
-lines(grav.qq$x,grav.env$point[1,],lty=4)
-lines(grav.qq$x,grav.env$point[2,],lty=4)
-lines(grav.qq$x,grav.env$overall[1,],lty=1)
-lines(grav.qq$x,grav.env$overall[2,],lty=1)
+grav1 <- gravity$g[gravity$series == 8]
+grav.z <- (grav1 - mean(grav1))/sqrt(var(grav1))
+grav.gen <- function(dat, mle) rnorm(length(dat))
+grav.qqboot <- boot(grav.z, sort, R = 999, sim = "parametric",
+                    ran.gen = grav.gen)
+grav.qq <- qqnorm(grav.z, plot.it = FALSE)
+grav.qq <- lapply(grav.qq, sort)
+plot(grav.qq, ylim = c(-3.5, 3.5), ylab = "Studentized Order Statistics",
+     xlab = "Normal Quantiles")
+grav.env <- envelope(grav.qqboot, level = 0.9)
+lines(grav.qq$x, grav.env$point[1, ], lty = 4)
+lines(grav.qq$x, grav.env$point[2, ], lty = 4)
+lines(grav.qq$x, grav.env$overall[1, ], lty = 1)
+lines(grav.qq$x, grav.env$overall[2, ], lty = 1)
 }
 \keyword{dplot}
 \keyword{htest}

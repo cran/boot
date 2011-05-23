@@ -87,11 +87,11 @@ abc.ci(bigcity, corr, conf=c(0.90,0.95))
 # the last two samples in gravity
 mean.diff <- function(y, w)
 {    gp1 <- 1:table(as.numeric(y$series))[1]
-     sum(y[gp1,1] * w[gp1]) - sum(y[-gp1,1] * w[-gp1])
+     sum(y[gp1, 1] * w[gp1]) - sum(y[-gp1, 1] * w[-gp1])
 }
-grav1 <- gravity[as.numeric(gravity[,2])>=7,]
-abc.ci(grav1, mean.diff, strata=grav1$series)
+grav1 <- gravity[as.numeric(gravity[, 2]) >= 7, ]
+abc.ci(grav1, mean.diff, strata = grav1$series)
 }
 \keyword{nonparametric}
 \keyword{htest}
-% Converted by Sd2Rd version 1.15.
+

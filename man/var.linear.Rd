@@ -7,7 +7,7 @@ Linear Variance Estimate
 Estimates the variance of a statistic from its empirical influence values.
 }
 \usage{
-var.linear(L, strata=NULL)
+var.linear(L, strata = NULL)
 }
 \arguments{
 \item{L}{
@@ -29,9 +29,8 @@ Davison, A. C. and Hinkley, D. V. (1997) \emph{Bootstrap Methods and Their Appli
 }
 \examples{
 #  To estimate the variance of the ratio of means for the city data.
-ratio <- function(d,w)
-     sum(d$x * w)/sum(d$u * w)
-var.linear(empinf(data=city,statistic=ratio))
+ratio <- function(d,w) sum(d$x * w)/sum(d$u * w)
+var.linear(empinf(data = city, statistic = ratio))
 }
 \keyword{nonparametric}
 % Converted by Sd2Rd version 1.15.

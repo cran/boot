@@ -8,8 +8,8 @@ Makes plot of jackknife deviance residuals against linear predictor,
 normal scores plots of standardized deviance residuals, plot of approximate Cook statistics against leverage/(1-leverage), and case plot of Cook statistic.
 }
 \usage{
-glm.diag.plots(glmfit, glmdiag=glm.diag(glmfit), 
-     subset=NULL, iden=FALSE, labels=NULL, ret=FALSE)
+glm.diag.plots(glmfit, glmdiag = glm.diag(glmfit), subset = NULL,
+               iden = FALSE, labels = NULL, ret = FALSE)
 }
 \arguments{
 \item{glmfit}{
@@ -97,10 +97,10 @@ D.V. Hinkley, N. Reid, and E.J. Snell (editors), 83--106. Chapman and Hall.
 \examples{
 # In this example we look at the leukaemia data which was looked at in 
 # Example 7.1 of Davison and Hinkley (1997)
-data(leuk, package="MASS")
-leuk.mod <- glm(time~ag-1+log10(wbc),family=Gamma(log),data=leuk)
+data(leuk, package = "MASS")
+leuk.mod <- glm(time ~ ag-1+log10(wbc), family = Gamma(log), data = leuk)
 leuk.diag <- glm.diag(leuk.mod)
-glm.diag.plots(leuk.mod,leuk.diag)
+glm.diag.plots(leuk.mod, leuk.diag)
 }
 \keyword{regression}
 \keyword{dplot}

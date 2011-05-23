@@ -60,4 +60,4 @@ Davison, A.C. and Hinkley, D.V. (1997)
 Cambridge University Press.
 }
 \keyword{datasets}
-% Converted by Sd2Rd version 1.15.
+

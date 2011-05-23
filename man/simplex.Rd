@@ -96,8 +96,7 @@ simplex(a, A1 = NULL, b1 = NULL, A2 = NULL, b2 = NULL, A3 = NULL,
   Cambridge University Press.
 }
 \examples{
-#  This example is taken from Exercise 7.5 of Gill, Murray,
-#  and Wright (1991).
+# This example is taken from Exercise 7.5 of Gill, Murray and Wright (1991).
 enj <- c(200, 6000, 3000, -200)
 fat <- c(800, 6000, 1000, 400)
 vitx <- c(50, 3, 150, 100)

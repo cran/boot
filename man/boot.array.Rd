@@ -10,7 +10,7 @@ Bootstrap Resampling Arrays
   resamples.
 }
 \usage{
-boot.array(boot.out, indices=)
+boot.array(boot.out, indices)
 }
 \arguments{
 \item{boot.out}{
@@ -65,13 +65,12 @@ boot.array(boot.out, indices=)
 }
 \examples{
 #  A frequency array for a nonparametric bootstrap
-city.boot <- boot(city, corr, R=40, stype="w")
+city.boot <- boot(city, corr, R = 40, stype = "w")
 boot.array(city.boot)
 
-perm.cor <- function(d,i) 
-     cor(d$x,d$u[i])
-city.perm <- boot(city, perm.cor, R=40, sim="permutation")
-boot.array(city.perm, indices=TRUE)
+perm.cor <- function(d,i) cor(d$x,d$u[i])
+city.perm <- boot(city, perm.cor, R = 40, sim = "permutation")
+boot.array(city.perm, indices = TRUE)
 }
 \keyword{nonparametric}
 % Converted by Sd2Rd version 1.15.

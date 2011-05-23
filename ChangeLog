@@ -1,4 +1,11 @@
-version 1.2-432 2010-09-25
+version 1.2-44 2011-05-22
+
+    Much faster verstion of nested.corr.
+    c() method for class "boot".
+    'parallel' argument for boot() and censboot() using multicore or snow.
+    Code cleanup.
+
+version 1.2-43 2010-09-25
 
     Update CITATION
 
