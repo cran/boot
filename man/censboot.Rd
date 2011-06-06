@@ -13,7 +13,7 @@ resampling using a Cox regression model.
 censboot(data, statistic, R, F.surv, G.surv, strata = matrix(1,n,2),
          sim = "ordinary", cox = NULL, index = c(1, 2), \dots,
          parallel = c("no", "multicore", "snow"),
-         ncpus = getOption("boot.ncpus", 1L))
+         ncpus = getOption("boot.ncpus", 1L), cl = NULL)
 }
 \arguments{
   \item{data}{
@@ -29,7 +29,7 @@ censboot(data, statistic, R, F.surv, G.surv, strata = matrix(1,n,2),
   \item{statistic}{
     A function which operates on the data frame and returns the required
     statistic.  Its first argument must be the data. Any other arguments
-    that it requires can be passed using the \code{\dots{}} argument.  In
+    that it requires can be passed using the \code{\dots} argument.  In
     the case of \code{sim = "weird"}, the data passed to \code{statistic} only
     contains the times and censoring indicator regardless of the actual
     number of columns in \code{data}. In all other cases the data passed to
@@ -71,7 +71,7 @@ censboot(data, statistic, R, F.surv, G.surv, strata = matrix(1,n,2),
   \item{sim}{
     The simulation type.  Possible types are \code{"ordinary"} (case
     resampling), \code{"model"} (equivalent to \code{"ordinary"} if
-    \code{cox} is missing, otherwise it is model based resampling),
+    \code{cox} is missing, otherwise it is model-based resampling),
     \code{"weird"} (the weird bootstrap - this cannot be used if \code{cox}
     is supplied), and \code{"cond"} (the conditional bootstrap, in which
     censoring times are resampled from the conditional censoring
@@ -88,14 +88,15 @@ censboot(data, statistic, R, F.surv, G.surv, strata = matrix(1,n,2),
     respectively.
   }
   \item{\dots}{
-    Any other arguments which are passed unchanged to \code{statistic}
+    Other named arguments which are passed unchanged to \code{statistic}
     each time it is called.  Any such arguments to \code{statistic} must
     follow the arguments which \code{statistic} is required to have for
-    the simulation.  Beware of partial matching to other arguments of
-    \code{censboot}, and that \code{X} and \code{FUN} will clash, as will
-    \code{x} and \code{fun} for \code{parallel = "snow"}.
+    the simulation.  Beware of partial matching to arguments of
+    \code{censboot} listed above, and that arguments named \code{X}
+    and \code{FUN} cause conflicts in some versions of \pkg{boot} (but
+    not this one).
   }
-  \item{parallel, ncpus}{
+  \item{parallel, ncpus, cl}{
     See the help for \code{\link{boot}}.
   }
 }
@@ -181,6 +182,9 @@ censboot(data, statistic, R, F.surv, G.surv, strata = matrix(1,n,2),
   censoring times could be infinite.  When this happens the simulated
   value is considered to be a failure at the time of the largest observed
   failure time in the stratum for the survival distribution.
+
+  When \code{parallel = "snow"} and \code{cl} is not supplied,
+  \code{library(survival)} is run in each of the worker processes.
 }
 \references{
 Andersen, P.K., Borgan, O., Gill, R.D. and Keiding,
@@ -294,5 +298,5 @@ plot(th, mel.env[1, ],  ylim = c(-2, 2),
 lines(th, mel.mod$t0, lty = 1)
 matlines(th, t(mel.env), lty = 2)
 }
-\author{Angelo J. Canty}
+\author{Angelo J. Canty.  Parallel extensions by Brian Ripley}
 \keyword{survival}

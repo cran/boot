@@ -3,7 +3,7 @@
 \alias{boot.return}
 \alias{c.boot}
 \title{
-Bootstrap Resampling 
+Bootstrap Resampling
 }
 \description{
   Generate \code{R} bootstrap replicates of a statistic applied to data.  Both
@@ -19,7 +19,7 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
      strata = rep(1,n), L = NULL, m = 0, weights = NULL, 
      ran.gen = function(d, p) d, mle = NULL, simple = FALSE, ...,
      parallel = c("no", "multicore", "snow"),
-     ncpus = getOption("boot.ncpus", 1L))
+     ncpus = getOption("boot.ncpus", 1L), cl = NULL)
 }
 \arguments{
   \item{data}{
@@ -39,7 +39,7 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
     required, then a third argument is required which would be a vector
     of the random indices used to generate the bootstrap predictions.
     Any further arguments can be passed to \code{statistic} through the
-    \code{\dots{}} argument.
+    \code{\dots} argument.
   }
   \item{R}{
     The number of bootstrap replicates.  Usually this will be a single
@@ -59,14 +59,15 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
     \code{"balanced"} in this case.
   }
   \item{stype}{
-    A character string indicating what the second argument of statistic
+    A character string indicating what the second argument of \code{statistic}
     represents.  Possible values of stype are \code{"i"} (indices - the
-    default), \code{"f"} (frequencies), or \code{"w"} (weights).
+    default), \code{"f"} (frequencies), or \code{"w"} (weights).  Not
+    used for \code{sim = "parametric"}.
   }
   \item{strata}{
     An integer vector or factor specifying the strata for multi-sample
-    problems. This may be specified for any simulation, but is ignored
-    when \code{sim} is \code{"parametric"}.  When \code{strata} is
+    problems.  This may be specified for any simulation, but is ignored
+    when \code{sim = "parametric"}.  When \code{strata} is
     supplied for a nonparametric bootstrap, the simulations are done
     within the specified strata.
   }
@@ -79,14 +80,15 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
   }
   \item{m}{
     The number of predictions which are to be made at each bootstrap
-    replicate. This is most useful for (generalized) linear models.
+    replicate.  This is most useful for (generalized) linear models.
     This can only be used when \code{sim} is \code{"ordinary"}.
     \code{m} will usually be a single integer but, if there are strata,
     it may be a vector with length equal to the number of strata,
     specifying how many of the errors for prediction should come from
     each strata.  The actual predictions should be returned as the final
-    part of the output of \code{statistic}, which should also take a
-    vector of indices of the errors to be used for the predictions.
+    part of the output of \code{statistic}, which should also take an
+    argument giving the vector of indices of the errors to be used for
+    the predictions.
   }
   \item{weights}{
     Vector or matrix of importance weights.  If a vector then it should
@@ -99,7 +101,7 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
     \code{"balanced"}.
   }
   \item{ran.gen}{
-    This function is used only when \code{sim} is \code{"parametric"}
+    This function is used only when \code{sim = "parametric"}
     when it describes how random values are to be generated.  It should
     be a function of two arguments.  The first argument should be the
     observed data and the second argument consists of any other
@@ -107,7 +109,7 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
     may be a list, allowing any number of items to be passed to
     \code{ran.gen}.  The returned value should be a simulated data set
     of the same form as the observed data which will be passed to
-    statistic to get a bootstrap replicate.  It is important that the
+    \code{statistic} to get a bootstrap replicate.  It is important that the
     returned value be of the same shape and type as the original
     dataset.  If \code{ran.gen} is not specified, the default is a
     function which returns the original \code{data} in which case all
@@ -125,24 +127,32 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
   }
   \item{simple}{logical, only allowed to be \code{TRUE} for
     \code{sim = "ordinary", stype = "i", n = 0} (otherwise ignored with a
-    warning).  By default a \code{n*R} index array is created: this can be
-    large and if \code{simple = TRUE} this is avoided by sampling
-    separately for each replication, which is slower but uses less memory.
+    warning).  By default a \code{n} by \code{R} index array is created:
+    this can be large and if \code{simple = TRUE} this is avoided by
+    sampling separately for each replication, which is slower but uses
+    less memory.
   }
   \item{\dots}{
-    Any other arguments for \code{statistic} which are passed unchanged
-    each time it is called.  Any such arguments to \code{statistic} must
-    follow the arguments which \code{statistic} is required to have for
-    the simulation.  Beware of partial matching to other arguments of
-    \code{boot}, and that \code{X}, \code{FUN} will clash, as will
-    \code{x} and \code{fun} for \code{parallel = "snow"}.
+    Other named arguments for \code{statistic} which are passed
+    unchanged each time it is called.  Any such arguments to
+    \code{statistic} should follow the arguments which \code{statistic} is
+    required to have for the simulation.  Beware of partial matching to
+    arguments of \code{boot} listed above, and that arguments named
+    \code{X} and \code{FUN} cause conflicts in some versions of
+    \pkg{boot} (but not this one).
   }
   \item{parallel}{
     The type of parallel operation to be used (if any).  If missing, the
     default is taken from the option \code{"boot.parallel"}.
   }
   \item{ncpus}{
-    integer: number of processes to be used in parallel operation.
+    integer: number of processes to be used in parallel operation:
+    typically one would chose this to the number of available CPUs.
+  }
+  \item{cl}{
+    An optional \pkg{snow} cluster for use if \code{parallel = "snow"}.
+    If not supplied, a socket cluster on the local machine is created
+    for the duration of the \code{boot} call.
   }
 }
 \value{
@@ -153,7 +163,7 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
     The observed value of \code{statistic} applied to \code{data}. 
   }
   \item{t}{
-    A matrix with \code{R} rows each of which is a bootstrap replicate
+    A matrix with \code{sum(R)} rows each of which is a bootstrap replicate
     of the result of calling \code{statistic}.
   }
   \item{R}{
@@ -238,33 +248,42 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
 }
 
 \section{Parallel operation}{
-  Because of the way \pkg{multicore} works, each worker process
-  inherits the environment of the current session, including the
-  workspace and the loaded namespaces and attached packages (but not the
-  random number seed: see below).
+  When \pkg{multicore} is used, each worker process inherits the
+  environment of the current session, including the workspace and the
+  loaded namespaces and attached packages (but not the random number
+  seed: see below).
 
   More work is needed when \pkg{snow} is used: the worker processes are
   newly created \R processes, and \code{statistic} needs to arrange to
   set up the environment it needs: often a good way to do that is to
   make use of lexical scoping since when \code{statistic} is sent to the
-  worker processes its enclosing environment is also sent.  There is
-  only support in \code{boot} for sock clusters on the current machine:
-  \code{parallel = "snow"} is primarily intended to be used on multi-core
-  Windows machine where package \code{multicore} is not available.
+  worker processes its enclosing environment is also sent.  (E.g. see
+  the example for \code{\link{jack.after.boot}} where ancillary
+  functions are nested inside the \code{statistic} function.)
+  \code{parallel = "snow"} is primarily intended to be used on
+  multi-core Windows machine where package \code{multicore} is not
+  available, and by default sets up a socket cluster on the local
+  machine.
 
   For most of the \code{boot} methods the resampling is done in the
-  master process, but not if \code{simple = TRUE} nor
-  \code{sim = "parametric"}.  In those cases (or where \code{statistic}
-  itself uses random numbers), more care is needed.  For \code{parallel
-  = "multicore"} each worker process uses a separate random number
-  stream but it cannot be specified so the results are not repeatable
-  even if \code{seed} is specified.  For \code{parallel = "snow"} the
-  worker processes will either use the same \code{.Random.seed} if one is
-  specified in the \R startup files (or in a saved workspace) or seed
-  the random number generator based on the wall clock.
+  master process, but not if \code{simple = TRUE} nor \code{sim =
+  "parametric"}.  In those cases (or where \code{statistic} itself uses
+  random numbers), more care is needed.  For \code{parallel =
+  "multicore"} each worker process uses a separate random number stream
+  (based on its process ID) but it cannot be specified so the results
+  are not repeatable.
 
   \code{\link{censboot}(sim = "wierd")} is another case where resampling
-  is done in the worker processes.
+  is done in the worker processes.  This is also true of most of the schemes
+  in \code{\link{tsboot}}, the exceptions being \code{sim == "fixed"}
+  and \code{sim == "geom"} with the default \code{ran.gen}.
+
+  When using \pkg{snow} with one of the cases where resampling is done
+  in the worker processes it would be wise to set up your own cluster
+  (as argument \code{cl}) and call \code{snow::clusterSetupRNG} to set up the
+  random-number generation on the cluster.  However if the default
+  \pkg{snow} cluster is used, the random number seed in each worker
+  proces is initialized based on its process ID and the current time.
 }
 \references{
 There are many references explaining the bootstrap and its variations.
@@ -328,9 +347,9 @@ diff.means <- function(d, f)
 grav1 <- gravity[as.numeric(gravity[,2]) >= 7,]
 boot(grav1, diff.means, R = 999, stype = "f", strata = grav1[,2])
 
-# In this example we show the use of boot in a prediction from 
-# regression based on the nuclear data.  This example is taken 
-# from Example 6.8 of Davison and Hinkley (1997).  Notice also 
+# In this example we show the use of boot in a prediction from
+# regression based on the nuclear data.  This example is taken
+# from Example 6.8 of Davison and Hinkley (1997).  Notice also
 # that two extra arguments to 'statistic' are passed through boot.
 nuke <- nuclear[, c(1, 2, 5, 7, 8, 10, 11)]
 nuke.lm <- glm(log(cost) ~ date+log(cap)+ne+ct+log(cum.n)+pt, data = nuke)

@@ -4,7 +4,7 @@ Bootstrap R Functions
 Version 1.3; May 2011:
 
 The main change is support for parallel computation in functions
-boot() and censboot().
+boot(), censboot() and tsboot().
 
 Many of the examples have been tidied up.
 

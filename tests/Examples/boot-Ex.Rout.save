@@ -1,5 +1,5 @@
 
-R version 2.13.0 Patched (2011-05-22 r55972)
+R version 2.13.0 Patched (2011-06-06 r56062)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -169,9 +169,9 @@ Bootstrap Statistics :
 t1* -2.846154  0.002541003    1.546664
 t2* 16.846154 -1.457662791    6.759103
 > 
-> # In this example we show the use of boot in a prediction from 
-> # regression based on the nuclear data.  This example is taken 
-> # from Example 6.8 of Davison and Hinkley (1997).  Notice also 
+> # In this example we show the use of boot in a prediction from
+> # regression based on the nuclear data.  This example is taken
+> # from Example 6.8 of Davison and Hinkley (1997).  Notice also
 > # that two extra arguments to 'statistic' are passed through boot.
 > nuke <- nuclear[, c(1, 2, 5, 7, 8, 10, 11)]
 > nuke.lm <- glm(log(cost) ~ date+log(cap)+ne+ct+log(cum.n)+pt, data = nuke)
@@ -972,32 +972,31 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > #  To draw the jackknife-after-bootstrap plot for the head size data as in
 > #  Example 3.24 of Davison and Hinkley (1997)
-> pcorr <- function(x) { 
-+ #  Function to find the correlations and partial correlations between
-+ #  the four measurements.
-+      v <- cor(x)
-+      v.d <- diag(var(x))
-+      iv <- solve(v)
-+      iv.d <- sqrt(diag(iv))
-+      iv <- - diag(1/iv.d) %*% iv %*% diag(1/iv.d)
-+      q <- NULL
-+      n <- nrow(v)
-+      for (i in 1:(n-1)) 
-+           q <- rbind( q, c(v[i, 1:i], iv[i,(i+1):n]) )
-+      q <- rbind( q, v[n, ] )
-+      diag(q) <- round(diag(q))
-+      q
-+ }
-> 
 > frets.fun <- function(data, i) {
-+      d <- data[i, ]
-+      v <- pcorr(d)
-+      c(v[1,],v[2,],v[3,],v[4,])
++     pcorr <- function(x) { 
++     #  Function to find the correlations and partial correlations between
++     #  the four measurements.
++          v <- cor(x)
++          v.d <- diag(var(x))
++          iv <- solve(v)
++          iv.d <- sqrt(diag(iv))
++          iv <- - diag(1/iv.d) %*% iv %*% diag(1/iv.d)
++          q <- NULL
++          n <- nrow(v)
++          for (i in 1:(n-1)) 
++               q <- rbind( q, c(v[i, 1:i], iv[i,(i+1):n]) )
++          q <- rbind( q, v[n, ] )
++          diag(q) <- round(diag(q))
++          q
++     }
++     d <- data[i, ]
++     v <- pcorr(d)
++     c(v[1,], v[2,], v[3,], v[4,])
 + }
-> frets.boot <- boot(log(as.matrix(frets)), frets.fun, R=999)
+> frets.boot <- boot(log(as.matrix(frets)), frets.fun, R = 999)
 > #  we will concentrate on the partial correlation between head breadth
 > #  for the first son and head length for the second.  This is the 7th
-> #  element in the output of frets.fun so we set index=7
+> #  element in the output of frets.fun so we set index = 7
 > jack.after.boot(frets.boot, useJ = FALSE, stinf = FALSE, index = 7)
 > 
 > 
@@ -1192,27 +1191,26 @@ t3* 0.000000 -0.5160619    1.314298  1.473456
 > 
 > # In this example we look at the one of the partial correlations for the
 > # head dimensions in the dataset frets.
-> pcorr <- function(x) { 
-+ #  Function to find the correlations and partial correlations between
-+ #  the four measurements.
-+      v <- cor(x)
-+      v.d <- diag(var(x))
-+      iv <- solve(v)
-+      iv.d <- sqrt(diag(iv))
-+      iv <- - diag(1/iv.d) %*% iv %*% diag(1/iv.d)
-+      q <- NULL
-+      n <- nrow(v)
-+      for (i in 1:(n-1)) 
-+           q <- rbind( q, c(v[i, 1:i], iv[i, (i+1):n]) )
-+      q <- rbind( q, v[n, ] )
-+      diag(q) <- round(diag(q))
-+      q
-+ }
-> 
 > frets.fun <- function(data, i) {
-+      d <- data[i, ]
-+      v <- pcorr(d)
-+      c(v[1, ], v[2, ], v[3, ], v[4, ])
++     pcorr <- function(x) { 
++     #  Function to find the correlations and partial correlations between
++     #  the four measurements.
++          v <- cor(x)
++          v.d <- diag(var(x))
++          iv <- solve(v)
++          iv.d <- sqrt(diag(iv))
++          iv <- - diag(1/iv.d) %*% iv %*% diag(1/iv.d)
++          q <- NULL
++          n <- nrow(v)
++          for (i in 1:(n-1)) 
++               q <- rbind( q, c(v[i, 1:i], iv[i,(i+1):n]) )
++          q <- rbind( q, v[n, ] )
++          diag(q) <- round(diag(q))
++          q
++     }
++     d <- data[i, ]
++     v <- pcorr(d)
++     c(v[1,], v[2,], v[3,], v[4,])
 + }
 > frets.boot <- boot(log(as.matrix(frets)),  frets.fun,  R = 999)
 > plot(frets.boot, index = 7, jack = TRUE, stinf = FALSE, useJ = FALSE)
@@ -1893,7 +1891,7 @@ t3* 0.000000 -0.8862944    2.208945
 +      n <- nrow(d)
 +      d.lm <- glm(d$acme~d$market)
 +      beta.b <- coef(d.lm)[2]
-+      d.diag <- glm.diag(d.lm)
++      d.diag <- boot::glm.diag(d.lm)
 +      SSx <- (n-1)*var(d$market)
 +      tmp <- (d$market-mean(d$market))*d.diag$res*d.diag$sd
 +      sr <- sqrt(sum(tmp^2))/SSx
@@ -2019,7 +2017,7 @@ t3* 0.000000 -0.8862944    2.208945
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  45.013 0.051 45.334 0 0 
+Time elapsed:  61.44 0.098 97.92 0 0 
 > grDevices::dev.off()
 null device 
           1 

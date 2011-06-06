@@ -1,8 +1,18 @@
-version 1.2-44 2011-05-22
+version 1.3-2 2011-06-06
+
+    Add 'parallel' argument for tsboot().
+    Allow a 'snow' cluster to be passed in for parallel operations in
+    boot(), censboot() and tsboot().
+    Use a wrapper rather than ... to avoid problems with argument names in
+    parLapply etc.
+    Force promises in several places to allow parallel operation with
+    'snow' (which was passing unevaluated promises to worker processes).
+	
+version 1.3-1 2011-05-23 (formerly 1.22-44)
 
     Much faster verstion of nested.corr.
     c() method for class "boot".
-    'parallel' argument for boot() and censboot() using multicore or snow.
+    'parallel' argument for boot() and censboot() using 'multicore' or 'snow'.
     Code cleanup.
 
 version 1.2-43 2010-09-25

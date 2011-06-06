@@ -126,27 +126,26 @@ plot(grav.boot, t = grav.z, t0 = 0)
 
 # In this example we look at the one of the partial correlations for the
 # head dimensions in the dataset frets.
-pcorr <- function(x) { 
-#  Function to find the correlations and partial correlations between
-#  the four measurements.
-     v <- cor(x)
-     v.d <- diag(var(x))
-     iv <- solve(v)
-     iv.d <- sqrt(diag(iv))
-     iv <- - diag(1/iv.d) \%*\% iv \%*\% diag(1/iv.d)
-     q <- NULL
-     n <- nrow(v)
-     for (i in 1:(n-1)) 
-          q <- rbind( q, c(v[i, 1:i], iv[i, (i+1):n]) )
-     q <- rbind( q, v[n, ] )
-     diag(q) <- round(diag(q))
-     q
-}
-
 frets.fun <- function(data, i) {
-     d <- data[i, ]
-     v <- pcorr(d)
-     c(v[1, ], v[2, ], v[3, ], v[4, ])
+    pcorr <- function(x) { 
+    #  Function to find the correlations and partial correlations between
+    #  the four measurements.
+         v <- cor(x)
+         v.d <- diag(var(x))
+         iv <- solve(v)
+         iv.d <- sqrt(diag(iv))
+         iv <- - diag(1/iv.d) \%*\% iv \%*\% diag(1/iv.d)
+         q <- NULL
+         n <- nrow(v)
+         for (i in 1:(n-1)) 
+              q <- rbind( q, c(v[i, 1:i], iv[i,(i+1):n]) )
+         q <- rbind( q, v[n, ] )
+         diag(q) <- round(diag(q))
+         q
+    }
+    d <- data[i, ]
+    v <- pcorr(d)
+    c(v[1,], v[2,], v[3,], v[4,])
 }
 frets.boot <- boot(log(as.matrix(frets)),  frets.fun,  R = 999)
 plot(frets.boot, index = 7, jack = TRUE, stinf = FALSE, useJ = FALSE)

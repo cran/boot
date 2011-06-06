@@ -195,7 +195,7 @@ acme.fun <- function(data, i, bhat) {
      n <- nrow(d)
      d.lm <- glm(d$acme~d$market)
      beta.b <- coef(d.lm)[2]
-     d.diag <- glm.diag(d.lm)
+     d.diag <- boot::glm.diag(d.lm)
      SSx <- (n-1)*var(d$market)
      tmp <- (d$market-mean(d$market))*d.diag$res*d.diag$sd
      sr <- sqrt(sum(tmp^2))/SSx
@@ -207,4 +207,3 @@ acme.boot1 <- tilt.boot(acme, acme.fun, R = c(499, 250, 250),
                         tilt = TRUE, index = 3, bhat = acme.b[1])
 }
 \keyword{nonparametric}
-% Converted by Sd2Rd version 1.15.
