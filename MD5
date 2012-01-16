@@ -1,5 +1,5 @@
-42d4f124c954ec91db5c29483596cecc *ChangeLog
-4fceb9894bc85e2af5520b19ce001331 *DESCRIPTION
+f44ea51b8a2e8d7ad91633ce6f8e30fd *ChangeLog
+76beef0658f26d2e0a8e7ea4da6b96de *DESCRIPTION
 bad95e062355983595d92e448bf58b1f *INDEX
 4d2fd92d1e05d98b196dc614c6d20d5e *NAMESPACE
 2bf825e1aa2f1320a7189db05e090358 *R/bootfuns.q
@@ -56,8 +56,8 @@ cd952d436872cd26f4ffb35982a1271c *data/salinity.rda
 3aa86400de96496041c5e86a8fbdfead *data/urine.rda
 01ec4840c4426441e8a79f19b23f2d70 *data/wool.rda
 7095e3c9c2a67ec68ba97e1bd1966ae0 *extra-tests/README
-da76aefedef51f3d3b9fb154cd2af74f *extra-tests/parallel.R
-d87cabd713d55a52bde0c4901eff55a0 *inst/CITATION
+34eccbc138e42f9378ab683889ee2fdb *extra-tests/parallel.R
+5dc2147b194c15507379de49828222c1 *inst/CITATION
 fd738d5da4733dfa2950233ae0723dca *inst/po/de/LC_MESSAGES/R-boot.mo
 af01d68ded6a3605e79f106ffc17ced5 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
 978eda9773b7149831ad0a2f53ed8502 *inst/po/fr/LC_MESSAGES/R-boot.mo
