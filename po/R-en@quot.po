@@ -22,15 +22,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.10.0\n"
+"Project-Id-Version: R 2.16.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-10-12 15:43\n"
-"PO-Revision-Date: 2009-10-12 15:43\n"
+"POT-Creation-Date: 2012-06-27 09:22\n"
+"PO-Revision-Date: 2012-06-27 09:22\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid ""
@@ -50,6 +51,9 @@ msgstr "length of m incompatible with strata"
 
 msgid "dimensions of R and weights do not match"
 msgstr "dimensions of R and weights do not match"
+
+msgid "arguments are not all the same type of \"boot\" object"
+msgstr "arguments are not all the same type of “boot” object"
 
 msgid "index array not defined for model-based resampling"
 msgstr "index array not defined for model-based resampling"
@@ -111,8 +115,8 @@ msgstr "only first element of index used in abc.ci"
 msgid "missing values not allowed in data"
 msgstr "missing values not allowed in data"
 
-msgid "unknown value of sim"
-msgstr "unknown value of sim"
+msgid "unknown value of 'sim'"
+msgstr "unknown value of ‘sim’"
 
 msgid "data must be a matrix with at least 2 columns"
 msgstr "data must be a matrix with at least 2 columns"
@@ -126,8 +130,8 @@ msgstr "only first 2 elements of index used"
 msgid "indices are incompatible with ncol(data)"
 msgstr "indices are incompatible with ncol(data)"
 
-msgid "sim=weird cannot be used with coxph object"
-msgstr "sim=weird cannot be used with coxph object"
+msgid "sim = \"weird\" cannot be used with coxph object"
+msgstr "sim = “weird” cannot be used with coxph object"
 
 msgid "only columns"
 msgstr "only columns"
@@ -228,9 +232,6 @@ msgstr "alpha ignored; R[1L]=0"
 msgid "control methods undefined when boot.out has weights"
 msgstr "control methods undefined when boot.out has weights"
 
-msgid "invalid proportions input"
-msgstr "invalid proportions input"
-
 msgid "number of columns of A ("
 msgstr "number of columns of A ("
 
@@ -269,9 +270,6 @@ msgstr "invalid value of l"
 
 msgid "unrecognized value of sim"
 msgstr "unrecognized value of sim"
-
-msgid "irregular time series not allowed"
-msgstr "irregular time series not allowed"
 
 msgid "multivariate time series not allowed"
 msgstr "multivariate time series not allowed"

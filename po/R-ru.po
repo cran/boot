@@ -9,18 +9,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.10.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-09-30 11:54\n"
+"POT-Creation-Date: 2012-06-27 09:22\n"
 "PO-Revision-Date: 2009-10-15 02:26-0500\n"
 "Last-Translator: Alexey Shipunov <dactylorhiza at gmail>\n"
 "Language-Team: Russian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=KOI8-R\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Russian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-msgid "'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0, so ignored"
-msgstr "'simple=TRUE' правильно только для 'sim=\"ordinary\", stype=\"i\", n=0, поэтому пропускается"
+msgid ""
+"'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0, so "
+"ignored"
+msgstr ""
+"'simple=TRUE' правильно только для 'sim=\"ordinary\", stype=\"i\", n=0, "
+"поэтому пропускается"
 
 msgid "no data in call to boot"
 msgstr "нет данных в вызове boot"
@@ -33,6 +39,9 @@ msgstr "длина m несовместима со слоем"
 
 msgid "dimensions of R and weights do not match"
 msgstr "измерения R и веса не соответствуют"
+
+msgid "arguments are not all the same type of \"boot\" object"
+msgstr ""
 
 msgid "index array not defined for model-based resampling"
 msgstr "для основанного на модели ресэмплинга не определена матрица индексов"
@@ -94,7 +103,8 @@ msgstr "лишь первый элемент индекса использован в abc.ci"
 msgid "missing values not allowed in data"
 msgstr "пропущенные значения в данных не разрешены"
 
-msgid "unknown value of sim"
+#, fuzzy
+msgid "unknown value of 'sim'"
 msgstr "неизвестное значение sim"
 
 msgid "data must be a matrix with at least 2 columns"
@@ -109,7 +119,8 @@ msgstr "лишь первые 2 элемента индекса использованы"
 msgid "indices are incompatible with ncol(data)"
 msgstr "индексы несовместимы с ncol(data)"
 
-msgid "sim=weird cannot be used with coxph object"
+#, fuzzy
+msgid "sim = \"weird\" cannot be used with coxph object"
 msgstr "sim=weird не может быть использован для объекта 'coxph'"
 
 msgid "only columns"
@@ -211,9 +222,6 @@ msgstr "alpha пропущен; R[1L]=0"
 msgid "control methods undefined when boot.out has weights"
 msgstr "методы контроля не определены в то время как у 'boot.out' есть веса"
 
-msgid "invalid proportions input"
-msgstr "неправильный ввод пропорций"
-
 msgid "number of columns of A ("
 msgstr "количество колонок A ("
 
@@ -253,9 +261,6 @@ msgstr "неправильное значение l"
 msgid "unrecognized value of sim"
 msgstr "нераспознанное значение sim"
 
-msgid "irregular time series not allowed"
-msgstr "нерегулярные временные ряды не разрешены"
-
 msgid "multivariate time series not allowed"
 msgstr "многомерные временные ряды не разрешены"
 
@@ -268,3 +273,8 @@ msgstr "правдоподобие превышает"
 msgid "at only one point"
 msgstr "только в одной точке"
 
+#~ msgid "invalid proportions input"
+#~ msgstr "неправильный ввод пропорций"
+
+#~ msgid "irregular time series not allowed"
+#~ msgstr "нерегулярные временные ряды не разрешены"

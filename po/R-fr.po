@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: boot 1.2-23\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-09-30 11:54\n"
+"POT-Creation-Date: 2012-06-27 09:22\n"
 "PO-Revision-Date: 2005-12-07 23:55+0100\n"
 "Last-Translator: Philippe Grosjean <phgrosjean@sciviews.org>\n"
 "Language-Team: French <R-core@r-project.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,6 +33,9 @@ msgstr "longueur de 'm' incompatible avec 'strata'"
 
 msgid "dimensions of R and weights do not match"
 msgstr "les dimensions de 'R' et 'weights' ne sont pas conformes"
+
+msgid "arguments are not all the same type of \"boot\" object"
+msgstr ""
 
 msgid "index array not defined for model-based resampling"
 msgstr ""
@@ -99,7 +103,8 @@ msgstr "seul le premier élément de l'indice est utilisé dans abc.in"
 msgid "missing values not allowed in data"
 msgstr "valeurs manquantes non autorisées dans les données"
 
-msgid "unknown value of sim"
+#, fuzzy
+msgid "unknown value of 'sim'"
 msgstr "valeur inconnue de 'sim'"
 
 msgid "data must be a matrix with at least 2 columns"
@@ -115,7 +120,8 @@ msgstr "seuls les deux premiers éléments d'indices sont utilisés"
 msgid "indices are incompatible with ncol(data)"
 msgstr "les indices sont incompatibles avec ncol(data)"
 
-msgid "sim=weird cannot be used with coxph object"
+#, fuzzy
+msgid "sim = \"weird\" cannot be used with coxph object"
 msgstr "sim=weird ne peut être utilisé avec un object 'coxph'"
 
 msgid "only columns"
@@ -219,9 +225,6 @@ msgstr "'alpha' ignoré ; R[1L]=0"
 msgid "control methods undefined when boot.out has weights"
 msgstr "méthodes de contrôle non définies lorsque 'boot.out' est pondéré"
 
-msgid "invalid proportions input"
-msgstr "proportions d'entrée incorrectes"
-
 msgid "number of columns of A ("
 msgstr "le nombre de colonnes de A ("
 
@@ -261,9 +264,6 @@ msgstr "valeur de 'l' incorrecte"
 msgid "unrecognized value of sim"
 msgstr "valeur de 'sim' non reconnue"
 
-msgid "irregular time series not allowed"
-msgstr "séries temporelles irrégulières non admises"
-
 msgid "multivariate time series not allowed"
 msgstr "séries temporelles multivariées non admises"
 
@@ -275,3 +275,9 @@ msgstr "la vraissemblance excède"
 
 msgid "at only one point"
 msgstr "à seulement un point"
+
+#~ msgid "invalid proportions input"
+#~ msgstr "proportions d'entrée incorrectes"
+
+#~ msgid "irregular time series not allowed"
+#~ msgstr "séries temporelles irrégulières non admises"

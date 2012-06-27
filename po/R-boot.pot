@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.10.0\n"
+"Project-Id-Version: R 2.16.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2009-10-12 15:43\n"
+"POT-Creation-Date: 2012-06-27 09:22\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,9 @@ msgid "length of m incompatible with strata"
 msgstr ""
 
 msgid "dimensions of R and weights do not match"
+msgstr ""
+
+msgid "arguments are not all the same type of \"boot\" object"
 msgstr ""
 
 msgid "index array not defined for model-based resampling"
@@ -86,7 +89,7 @@ msgstr ""
 msgid "missing values not allowed in data"
 msgstr ""
 
-msgid "unknown value of sim"
+msgid "unknown value of 'sim'"
 msgstr ""
 
 msgid "data must be a matrix with at least 2 columns"
@@ -101,7 +104,7 @@ msgstr ""
 msgid "indices are incompatible with ncol(data)"
 msgstr ""
 
-msgid "sim=weird cannot be used with coxph object"
+msgid "sim = \"weird\" cannot be used with coxph object"
 msgstr ""
 
 msgid "only columns"
@@ -203,9 +206,6 @@ msgstr ""
 msgid "control methods undefined when boot.out has weights"
 msgstr ""
 
-msgid "invalid proportions input"
-msgstr ""
-
 msgid "number of columns of A ("
 msgstr ""
 
@@ -243,9 +243,6 @@ msgid "invalid value of l"
 msgstr ""
 
 msgid "unrecognized value of sim"
-msgstr ""
-
-msgid "irregular time series not allowed"
 msgstr ""
 
 msgid "multivariate time series not allowed"
