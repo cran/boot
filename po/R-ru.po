@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: R 2.10.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
 "POT-Creation-Date: 2012-10-11 15:21\n"
-"PO-Revision-Date: 2012-09-30 14:28-0600\n"
+"PO-Revision-Date: 2013-03-19 14:42-0600\n"
 "Last-Translator: Alexey Shipunov <dactylorhiza@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: \n"
@@ -18,15 +18,10 @@ msgstr ""
 "Content-Type: text/plain; charset=KOI8-R\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Russian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-msgid ""
-"'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0', so "
-"ignored"
-msgstr ""
-"'simple=TRUE' правильно только для 'sim=\"ordinary\", stype=\"i\", n=0, "
-"поэтому пропускается"
+msgid "'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0', so ignored"
+msgstr "'simple=TRUE' правильно только для 'sim=\"ordinary\", stype=\"i\", n=0, поэтому пропускается"
 
 msgid "no data in call to 'boot'"
 msgstr "нет данных в вызове 'boot'"
@@ -52,11 +47,9 @@ msgstr "'boot.array' для этого объекта не разработан"
 msgid "array cannot be found for parametric bootstrap"
 msgstr "не могу найти матрицу для параметрического бутстрепа"
 
-#, fuzzy
 msgid "%s distribution not supported: using normal instead"
-msgstr "распределение не поддерживается, использую нормальное"
+msgstr "распределение %s не поддерживается, использую нормальное"
 
-#, fuzzy
 msgid "only first element of 'index' used"
 msgstr "использован лишь первый элемент индекса"
 
@@ -78,9 +71,8 @@ msgstr "'t' должен быть длиной %d"
 msgid "bootstrap variances needed for studentized intervals"
 msgstr "бутстреп-вариансы нужны для интервалов Стьюдент-типа"
 
-#, fuzzy
 msgid "BCa intervals not defined for time series bootstraps"
-msgstr "BCa интервалы не определены для бутстрепа временных рядов."
+msgstr "BCa интервалы не определены для бутстрепа временных рядов"
 
 msgid "bootstrap output object or 't0' required"
 msgstr "требуется объект вывода бутстрепа либо 't0'"
@@ -91,9 +83,8 @@ msgstr "не могу посчитать 'var.t0'"
 msgid "extreme order statistics used as endpoints"
 msgstr "'extreme order statistics' использована в конечных точках"
 
-#, fuzzy
 msgid "variance required for studentized intervals"
-msgstr "для CI Стьюдент-типа нужна варианса"
+msgstr "для интервалов Стьюдент-типа нужна варианса"
 
 msgid "estimated adjustment 'w' is infinite"
 msgstr "предполагаемая корректировка 'w' -- infinite"
@@ -101,40 +92,32 @@ msgstr "предполагаемая корректировка 'w' -- infinite"
 msgid "estimated adjustment 'a' is NA"
 msgstr "предполагаемая корректировка 'a' -- это NA"
 
-#, fuzzy
 msgid "only first element of 'index' used in 'abc.ci'"
-msgstr "лишь первый элемент индекса использован в abc.ci"
+msgstr "лишь первый элемент индекса использован в 'abc.ci'"
 
-#, fuzzy
 msgid "missing values not allowed in 'data'"
 msgstr "пропущенные значения в данных не разрешены"
 
 msgid "unknown value of 'sim'"
 msgstr "неизвестное значение 'sim'"
 
-#, fuzzy
 msgid "'data' must be a matrix with at least 2 columns"
 msgstr "данные должны быть матрицей по меньшей мере из 2 колонок"
 
-#, fuzzy
 msgid "'index' must contain 2 elements"
 msgstr "индекс должен содержать 2 элемента"
 
-#, fuzzy
 msgid "only first 2 elements of 'index' used"
 msgstr "лишь первые 2 элемента индекса использованы"
 
-#, fuzzy
 msgid "indices are incompatible with 'ncol(data)'"
-msgstr "индексы несовместимы с ncol(data)"
+msgstr "индексы несовместимы с 'ncol(data)'"
 
-#, fuzzy
 msgid "sim = \"weird\" cannot be used with a \"coxph\" object"
-msgstr "sim=\"weird\" не может быть использован для объекта coxph"
+msgstr "sim=\"weird\" не может быть использован для объекта \"coxph\""
 
-#, fuzzy
 msgid "only columns %s and %s of 'data' used"
-msgstr "использована только первая колонка t"
+msgstr "использованы только колонки %s и %s данных"
 
 msgid "no coefficients in Cox model -- model ignored"
 msgstr "в модели 'Cox' нет коэффициентов -- модель пропущена"
@@ -151,9 +134,8 @@ msgstr "'strata' неправильной длины"
 msgid "influence values cannot be found from a parametric bootstrap"
 msgstr "значения влияния нельзя найти при помощи параметрического бутстрепа"
 
-#, fuzzy
 msgid "neither 'data' nor bootstrap object specified"
-msgstr "нет данных или указан бутстреп-объект"
+msgstr "нет данных или не указан бутстреп-объект"
 
 msgid "neither 'statistic' nor bootstrap object specified"
 msgstr "нет 'statistic' или указан бутстреп-объект"
@@ -182,13 +164,11 @@ msgstr "пропущена матрица бутстреп-вывода"
 msgid "use 'boot.ci' for scalar parameters"
 msgstr "использую 'boot.ci' для скалярных параметров"
 
-#, fuzzy
 msgid "unable to achieve requested overall error rate"
-msgstr "не могу достичь требуемого общего соотношения ошибок."
+msgstr "не могу достичь требуемого общего соотношения ошибок"
 
-#, fuzzy
 msgid "unable to find multiplier for %f"
-msgstr "не могу найти множитель для"
+msgstr "не могу найти множитель для %f"
 
 msgid "'theta' or 'lambda' required"
 msgstr "требуется 'theta' или 'lambda'"
@@ -229,9 +209,8 @@ msgstr "'alpha' пропущен; R[1L]=0"
 msgid "control methods undefined when 'boot.out' has weights"
 msgstr "методы контроля не определены в то время как у 'boot.out' есть веса"
 
-#, fuzzy
 msgid "number of columns of 'A' (%d) not equal to length of 'u' (%d)"
-msgstr ") не равно длине u ("
+msgstr "количество колонок 'A' (%d) не равно длине 'u' (%d)"
 
 msgid "either 'A' and 'u' or 'K.adj' and 'K2' must be supplied"
 msgstr "надо указать либо 'A' и 'u', либо 'K.adj' и 'K2'"
@@ -274,24 +253,18 @@ msgstr "правдоподобие превышает %f только в одной точке"
 
 #~ msgid "only columns"
 #~ msgstr "только колонки"
-
 #~ msgid "and"
 #~ msgstr "и"
-
 #~ msgid "of data used"
 #~ msgstr "данных использованы"
-
 #~ msgid "number of columns of A ("
 #~ msgstr "количество колонок A ("
-
 #~ msgid ")"
 #~ msgstr ")"
-
 #~ msgid "at only one point"
 #~ msgstr "только в одной точке"
-
 #~ msgid "invalid proportions input"
 #~ msgstr "неправильный ввод пропорций"
-
 #~ msgid "irregular time series not allowed"
 #~ msgstr "нерегулярные временные ряды не разрешены"
+
