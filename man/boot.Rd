@@ -174,7 +174,7 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
     The \code{data} as passed to \code{boot}.
   }
   \item{seed}{
-    The value of \code{.Random.seed} when \code{boot} was called.  
+    The value of \code{.Random.seed} when \code{boot} started work.  
   }
   \item{statistic}{
     The function \code{statistic} as passed to \code{boot}.
@@ -284,6 +284,11 @@ boot(data, statistic, R, sim = "ordinary", stype = c("i", "f", "w"),
   results will be reproducible if \code{ncpus} is unchanged, and for
   \code{parallel = "multicore"} if \code{parallel::\link{mc.reset.stream}()} is
   called: see the examples for \code{\link{mclapply}}.
+  
+  Note that loading the \pkg{parallel} namespace may change the random
+  seed, so for maximum reproducibility this should be done before
+  calling this function.
+  
 }
 \references{
   There are many references explaining the bootstrap and its variations.

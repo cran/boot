@@ -1,10 +1,9 @@
-4483383c3f84667877f308f15f97af3d *ChangeLog
-72e2f497b48369b2f57dcea86588b1e1 *DESCRIPTION
+41f0c6ecf3a647b9b41dd2a75d0bf50c *ChangeLog
+4715052e8eeb78665d926f511f2ccb72 *DESCRIPTION
 bad95e062355983595d92e448bf58b1f *INDEX
 4d2fd92d1e05d98b196dc614c6d20d5e *NAMESPACE
-ab960392ddb0cd31d2502f524135417a *R/bootfuns.q
+a7ef1360bf26c1e87a146b0c8ff611e0 *R/bootfuns.q
 5ef64ab9d50d702b966f56bda24c4c3c *R/bootpracs.q
-6e887574f4c46cddf29707098ab3fccf *bd.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
 d23316324a0f746c1ef788c73db30361 *data/aids.rda
 809873f18074ec8ae197846e3b77dafa *data/aircondit.rda
@@ -55,9 +54,8 @@ cd952d436872cd26f4ffb35982a1271c *data/salinity.rda
 52d5a63848cd048b46fa9262836359ff *data/tuna.rda
 3aa86400de96496041c5e86a8fbdfead *data/urine.rda
 01ec4840c4426441e8a79f19b23f2d70 *data/wool.rda
-7095e3c9c2a67ec68ba97e1bd1966ae0 *extra-tests/README
-34eccbc138e42f9378ab683889ee2fdb *extra-tests/parallel.R
 5dc2147b194c15507379de49828222c1 *inst/CITATION
+6e887574f4c46cddf29707098ab3fccf *inst/bd.q
 8613bc016770080bce48b1f81ce156ac *inst/po/de/LC_MESSAGES/R-boot.mo
 1da5f6c4d31b209d8454af740b3cd84d *inst/po/en@quot/LC_MESSAGES/R-boot.mo
 7941e33bf09e4fe083b9da765dcbda82 *inst/po/fr/LC_MESSAGES/R-boot.mo
@@ -75,7 +73,7 @@ c7f814d422e07460878d57c7d96e717d *man/aircondit.Rd
 bf45232257e2058ad342fb9699e64501 *man/beaver.Rd
 6b3007848528061e27f16481c574e296 *man/bigcity.Rd
 5b470a1e949bc2e15530c9683cbb1404 *man/boot-practicals.Rd
-12a6cdb8cb17e235db2f6f525cb3c3dc *man/boot.Rd
+23acf41f7413c77fbb86f34c76da6bc8 *man/boot.Rd
 fe6ad576aaf42cf0941b7d90495c124c *man/boot.array.Rd
 47ebd538861b94efcb11f6f1ff47460e *man/boot.ci.Rd
 5091d84983dfd09d24fb7071e501285f *man/brambles.Rd
@@ -87,7 +85,7 @@ fdfaee6a4ccc168ca3e859f38c651cac *man/catsM.Rd
 a00a318f35d0e660725fc5ee921fd5d9 *man/cav.Rd
 6f0281ecdb3fe26a737c810e0611469a *man/cd4.Rd
 139bfacaa6f5123aecbe19a536c35e17 *man/cd4.nested.Rd
-4e0fc087e4b2d29746fe0cb14288306b *man/censboot.Rd
+2e818da597cc8a2856a42eb31ff9088c *man/censboot.Rd
 f629d3055a979fdef0afd7babf2fa57c *man/channing.Rd
 6a2d8014403301b0cab61c34d06af3d1 *man/claridge.Rd
 356ff75d96126a70ee3351c941d09c56 *man/cloth.Rd

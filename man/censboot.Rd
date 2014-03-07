@@ -123,7 +123,7 @@ censboot(data, statistic, R, F.surv, G.surv, strata = matrix(1,n,2),
     indicators. 
   }
   \item{seed}{
-    The value of \code{.Random.seed} when \code{censboot} was called.
+    The value of \code{.Random.seed} when \code{censboot} started work.
   }
   \item{statistic}{
     The input value of \code{statistic}.

@@ -1,6 +1,6 @@
 # part of R package boot
 # copyright (C) 1997-2001 Angelo J. Canty
-# corrections (C) 1997-2011 B. D. Ripley
+# corrections (C) 1997-2014 B. D. Ripley
 #
 # Unlimited distribution is permitted
 
@@ -106,6 +106,7 @@ boot <- function(data, statistic, R, sim = "ordinary",
         if (parallel == "multicore") have_mc <- .Platform$OS.type != "windows"
         else if (parallel == "snow") have_snow <- TRUE
         if (!have_mc && !have_snow) ncpus <- 1L
+        loadNamespace("parallel") # get this out of the way before recording seed
     }
     if (simple && (sim != "ordinary" || stype != "i" || sum(m))) {
         warning("'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0', so ignored")
@@ -1289,6 +1290,7 @@ censboot <-
         if (parallel == "multicore") have_mc <- .Platform$OS.type != "windows"
         else if (parallel == "snow") have_snow <- TRUE
         if (!have_mc && !have_snow) ncpus <- 1L
+        loadNamespace("parallel") # get this out of the way before recording seed
     }
     if (!exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)) runif(1)
     seed <- get(".Random.seed", envir = .GlobalEnv, inherits = FALSE)
@@ -3378,6 +3380,7 @@ tsboot <- function(tseries, statistic, R, l = NULL, sim = "model",
         if (parallel == "multicore") have_mc <- .Platform$OS.type != "windows"
         else if (parallel == "snow") have_snow <- TRUE
         if (!have_mc && !have_snow) ncpus <- 1L
+        loadNamespace("parallel") # get this out of the way before recording seed
     }
 
     ## This does not necessarily call statistic, so we force a promise.

@@ -1,3 +1,10 @@
+version 1.3-10 2014-03-07
+
+	Record .Random.seed once parallel namespace is loaded, where needed.
+	Move bd.q to inst
+	Use .Rbuildignore to ignore 'extra-tests'
+	Remove 'Author' field from DESCRIPTION.
+
 version 1.3-9 2013-03-20
 
     Add ko translations
@@ -39,7 +46,7 @@ version 1.3-2 2011-06-06
     parLapply etc.
     Force promises in several places to allow parallel operation with
     'snow' (which was passing unevaluated promises to worker processes).
-	
+
 version 1.3-1 2011-05-23 (formerly 1.22-44)
 
     Much faster verstion of nested.corr.
@@ -65,7 +72,7 @@ version 1.2-40 2009-10-07
     Add error message in bca.ci for misuse when all the samples are the same.
     Add German translation.
     Update boot-Ex.Rout.save for help rendering changes
-	
+
 version 1.2-39 2009-09-04
 
     Update boot-Ex.Rout.save for survival change.
@@ -87,7 +94,7 @@ version 1.2-35 2009-01-01
 
     make use of integer constants
     spelling corrections, formats for references, 'the the', Rd markup
-	
+
 version 1.2-34 2008-09-05
 
     antithetic.arrray, ordinary.array: return integer matrix.
@@ -123,7 +130,7 @@ version 1.2-29 2007-08-29
 version 1.2-28 2007-06-12
 
     INDEX, man: change 'library' to 'package' and remove some references to
-        S-PLUS.
+	S-PLUS.
     bootfuns.q: avoid abbreviating arguments, switch to seq.int, add
 	drop=TRUE.
     DESCRIPTION: R >= 2.4.0 because of seq.int.
@@ -344,4 +351,3 @@ boot/test:
     script to test the examples in the help files. Not all will run,
     as far as I know due to things missing in R or nlm not coping
     as well as nlmin.
-
