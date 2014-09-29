@@ -1,8 +1,7 @@
 
-R Under development (unstable) (2013-02-09 r61878) -- "Unsuffered Consequences"
-Copyright (C) 2013 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
-Platform: x86_64-unknown-linux-gnu (64-bit)
+R Under development (unstable) (2014-09-13 r66592) -- "Unsuffered Consequences"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.3.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -92,13 +91,16 @@ Type 'q()' to quit R.
 > 
 > ### ** Examples
 > 
+> ## Don't show: 
+> op <- options(digits = 5)
+> ## End Don't show
 > # 90% and 95% confidence intervals for the correlation 
 > # coefficient between the columns of the bigcity data
 > 
 > abc.ci(bigcity, corr, conf=c(0.90,0.95))
-     conf                    
-[1,] 0.90 0.9581503 0.9917271
-[2,] 0.95 0.9493699 0.9930713
+     conf                
+[1,] 0.90 0.95815 0.99173
+[2,] 0.95 0.94937 0.99307
 > 
 > # A 95% confidence interval for the difference between the means of
 > # the last two samples in gravity
@@ -108,7 +110,10 @@ Type 'q()' to quit R.
 + }
 > grav1 <- gravity[as.numeric(gravity[, 2]) >= 7, ]
 > abc.ci(grav1, mean.diff, strata = grav1$series)
-[1]  0.9500000 -6.7075791 -0.3939377
+[1]  0.95000 -6.70758 -0.39394
+> ## Don't show: 
+> options(op)
+> ## End Don't show
 > 
 > 
 > 
@@ -125,6 +130,9 @@ Type 'q()' to quit R.
 > 
 > ### ** Examples
 > 
+> ## Don't show: 
+> op <- options(digits = 5)
+> ## End Don't show
 > # Usual bootstrap of the ratio of means using the city data
 > ratio <- function(d, w) sum(d$x * w)/sum(d$u * w)
 > boot(city, ratio, R = 999, stype = "w")
@@ -137,8 +145,8 @@ boot(data = city, statistic = ratio, R = 999, stype = "w")
 
 
 Bootstrap Statistics :
-    original     bias    std. error
-t1* 1.520313 0.03959996   0.2167146
+    original  bias    std. error
+t1*   1.5203  0.0396     0.21671
 > 
 > 
 > # Stratified resampling for the difference of means.  In this
@@ -165,9 +173,9 @@ boot(data = grav1, statistic = diff.means, R = 999, stype = "f",
 
 
 Bootstrap Statistics :
-     original       bias    std. error
-t1* -2.846154  0.002541003    1.546664
-t2* 16.846154 -1.457662791    6.759103
+    original    bias    std. error
+t1*  -2.8462  0.002541      1.5467
+t2*  16.8462 -1.457663      6.7591
 > 
 > # In this example we show the use of boot in a prediction from
 > # regression based on the nuclear data.  This example is taken
@@ -200,10 +208,10 @@ t2* 16.846154 -1.457662791    6.759103
 +                   fit.pred = new.fit, x.pred = new.data)
 > # The bootstrap prediction squared error would then be found by
 > mean(nuke.boot$t[, 8]^2)
-[1] 0.08815734
+[1] 0.088157
 > # Basic bootstrap prediction limits would be
 > new.fit - sort(nuke.boot$t[, 8])[c(975, 25)]
-[1] 6.160255 7.298819
+[1] 6.1603 7.2988
 > 
 > 
 > # Finally a parametric bootstrap.  For this example we shall look 
@@ -236,6 +244,9 @@ t2* 16.846154 -1.457662791    6.759103
 > # The bootstrap p-value can then be approximated by
 > sum(abs(air.boot$t[,2]-1) > abs(air.boot$t0[2]-1))/(1+air.boot$R)
 [1] 0.461
+> ## Don't show: 
+> options(op)
+> ## End Don't show
 > 
 > 
 > 
@@ -494,9 +505,9 @@ Calculations and Intervals on Original Scale
 > library(survival)
 Loading required package: splines
 
-Attaching package: 'survival'
+Attaching package: ‘survival’
 
-The following object is masked from 'package:boot':
+The following object is masked from ‘package:boot’:
 
     aml
 
@@ -716,7 +727,7 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
 > 
 > cleanEx()
 
-detaching 'package:survival', 'package:splines'
+detaching ‘package:survival’, ‘package:splines’
 
 > nameEx("control")
 > ### * control
@@ -2016,8 +2027,9 @@ t3* 0.000000 -0.8862944    2.208945
 > 
 > ### * <FOOTER>
 > ###
+> options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  19.343 0.03 19.437 0 0 
+Time elapsed:  24.569 0.162 24.84 0 0 
 > grDevices::dev.off()
 null device 
           1 
