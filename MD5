@@ -1,9 +1,9 @@
-32299abef53608d832ae0c4f3deca0fe *ChangeLog
-677be8ff302e3b57fde9c3e2de07358d *DESCRIPTION
+a8abc9c2184a67465ee637fe0760d8b7 *ChangeLog
+08b547dbe7ec8ba3469dc195517b811c *DESCRIPTION
 bad95e062355983595d92e448bf58b1f *INDEX
 4d2fd92d1e05d98b196dc614c6d20d5e *NAMESPACE
-a7ef1360bf26c1e87a146b0c8ff611e0 *R/bootfuns.q
-5ef64ab9d50d702b966f56bda24c4c3c *R/bootpracs.q
+0e49d286bd615ccac6e24c8ac821380f *R/bootfuns.q
+2b8e2285845954d700ba8f5518e656d6 *R/bootpracs.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
 d23316324a0f746c1ef788c73db30361 *data/aids.rda
 809873f18074ec8ae197846e3b77dafa *data/aircondit.rda
@@ -62,7 +62,7 @@ f5c6e783926961f7f012465d06a1e5d1 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
 ed0e7e780a357cd072596f6f0b0bf1d9 *inst/po/ko/LC_MESSAGES/R-boot.mo
 c577fd9d7f57dae9a99fa6e7a3f78ad0 *inst/po/pl/LC_MESSAGES/R-boot.mo
 629f49dc61cc2f4b7e01e19782d9dc70 *inst/po/ru/LC_MESSAGES/R-boot.mo
-efd2bdbc94bfb6ee5ec1395dce397fc4 *man/EEF.profile.Rd
+11f465056ac27fe90b765b879339fb51 *man/EEF.profile.Rd
 a0d5e8c4e705d42ac0490f121ea867b8 *man/Imp.Estimates.Rd
 10c9b8344a65d4680db3d2faf648ff1f *man/abc.ci.Rd
 7e2dff3ff232fd6cefe3bbabfbed70fd *man/acme.Rd
