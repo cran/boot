@@ -1,8 +1,8 @@
-a8abc9c2184a67465ee637fe0760d8b7 *ChangeLog
-08b547dbe7ec8ba3469dc195517b811c *DESCRIPTION
+4dd6071386015fee31ba3237640dd852 *ChangeLog
+9ee2d967ae698dcc24bd22d19737ed73 *DESCRIPTION
 bad95e062355983595d92e448bf58b1f *INDEX
 4d2fd92d1e05d98b196dc614c6d20d5e *NAMESPACE
-0e49d286bd615ccac6e24c8ac821380f *R/bootfuns.q
+3196b0e5eca9009c8a64219c16da5acd *R/bootfuns.q
 2b8e2285845954d700ba8f5518e656d6 *R/bootpracs.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
 d23316324a0f746c1ef788c73db30361 *data/aids.rda
@@ -57,9 +57,9 @@ cd952d436872cd26f4ffb35982a1271c *data/salinity.rda
 5dc2147b194c15507379de49828222c1 *inst/CITATION
 6e887574f4c46cddf29707098ab3fccf *inst/bd.q
 8613bc016770080bce48b1f81ce156ac *inst/po/de/LC_MESSAGES/R-boot.mo
-f5c6e783926961f7f012465d06a1e5d1 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
+2bfe756b4b378774a01d9431576baa95 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
 7941e33bf09e4fe083b9da765dcbda82 *inst/po/fr/LC_MESSAGES/R-boot.mo
-ed0e7e780a357cd072596f6f0b0bf1d9 *inst/po/ko/LC_MESSAGES/R-boot.mo
+65b4d043e3a7428bcdcd25c84ede1428 *inst/po/ko/LC_MESSAGES/R-boot.mo
 c577fd9d7f57dae9a99fa6e7a3f78ad0 *inst/po/pl/LC_MESSAGES/R-boot.mo
 629f49dc61cc2f4b7e01e19782d9dc70 *inst/po/ru/LC_MESSAGES/R-boot.mo
 11f465056ac27fe90b765b879339fb51 *man/EEF.profile.Rd
@@ -150,10 +150,10 @@ a51320555e514596e7daa274dd19d7ac *man/tsboot.Rd
 3ddb91313b67a735363f72eefa9af04a *man/urine.Rd
 cdb8cde8c7643dac9b25eeb6f8dd55aa *man/var.linear.Rd
 b673cbbf7c86182dc9f823dcb7ff4062 *man/wool.Rd
-954cfca2e8cba9858321eb50ae6e9e9a *po/R-boot.pot
+552a4a927080561bf37a0b81249260f7 *po/R-boot.pot
 31bbfe921790a25c434d964aeb490e1a *po/R-de.po
 110cc06961c0ffdf6c474e12d93d0ed0 *po/R-fr.po
-ef6d47336d9b82e78c90579dde5d5c1e *po/R-ko.po
+3f677e87072ce55de7d558da97de94a2 *po/R-ko.po
 137ba1efb137d67495a4940b80b14a6c *po/R-pl.po
 d32d622bd448133b99f7c8bcaaf77e98 *po/R-ru.po
 fcc43acc2b023f4a8c3f0db6de73e386 *tests/Examples/boot-Ex.Rout.save
