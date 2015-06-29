@@ -1,7 +1,7 @@
-5fcfd75db8f7001376885f1448316508 *ChangeLog
-46760dc67cdbe72cb7bede7606fa7ba3 *DESCRIPTION
-bad95e062355983595d92e448bf58b1f *INDEX
-4d2fd92d1e05d98b196dc614c6d20d5e *NAMESPACE
+4c8bb93d90e06ae6779e22b69d95676a *ChangeLog
+f184a443f49a537949d6e5ea0379bacc *DESCRIPTION
+e6929f73b03924d15f3af4a4c8549a45 *INDEX
+52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
 3196b0e5eca9009c8a64219c16da5acd *R/bootfuns.q
 2b8e2285845954d700ba8f5518e656d6 *R/bootpracs.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
@@ -129,7 +129,7 @@ fdc9a00eb2ea2b3bee0191954426c6ff *man/paulsen.Rd
 ed6b241b59be1b865c9621fa56ffb0e6 *man/plot.boot.Rd
 db78466da842c1b5958a85416cf55e91 *man/poisons.Rd
 46e101fae60869b1db42ebd19eed6b24 *man/polar.Rd
-05e15c4b54cbad68dc7c0fc1229666c4 *man/print.boot.Rd
+83298a87aef3d35345365e5cfec96e03 *man/print.boot.Rd
 3c079b7a93ec75caecc882efdec9318a *man/print.bootci.Rd
 a78eeb46ebeb216615fcbd05b2baaf85 *man/print.saddle.distn.Rd
 15f6cefb066ec23514d889fc6e39d19f *man/print.simplex.Rd
