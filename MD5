@@ -1,5 +1,5 @@
-4c8bb93d90e06ae6779e22b69d95676a *ChangeLog
-527586858b65321e2a172e0e12b3fbb2 *DESCRIPTION
+68cbf5d8beeb3f3c540469e3696b2a1f *ChangeLog
+61c011c36d70bc5d85a807bbeaece589 *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
 3196b0e5eca9009c8a64219c16da5acd *R/bootfuns.q
@@ -156,4 +156,4 @@ b673cbbf7c86182dc9f823dcb7ff4062 *man/wool.Rd
 3f677e87072ce55de7d558da97de94a2 *po/R-ko.po
 137ba1efb137d67495a4940b80b14a6c *po/R-pl.po
 d32d622bd448133b99f7c8bcaaf77e98 *po/R-ru.po
-83a52f63e98a82daadbbb62d9a2a5d94 *tests/Examples/boot-Ex.Rout.save
+9f8e7855bd21523101b57f8175e8e1e4 *tests/Examples/boot-Ex.Rout.save
