@@ -1,8 +1,8 @@
-68cbf5d8beeb3f3c540469e3696b2a1f *ChangeLog
-61c011c36d70bc5d85a807bbeaece589 *DESCRIPTION
+0a6d68ca197d64f8b74e8963b848416c *ChangeLog
+efed95ba4bc1a9348af9048dd5af13ee *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
-3196b0e5eca9009c8a64219c16da5acd *R/bootfuns.q
+319ea125989deab41f19cb6c3071aecb *R/bootfuns.q
 2b8e2285845954d700ba8f5518e656d6 *R/bootpracs.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
 d23316324a0f746c1ef788c73db30361 *data/aids.rda
@@ -64,7 +64,7 @@ c577fd9d7f57dae9a99fa6e7a3f78ad0 *inst/po/pl/LC_MESSAGES/R-boot.mo
 629f49dc61cc2f4b7e01e19782d9dc70 *inst/po/ru/LC_MESSAGES/R-boot.mo
 11f465056ac27fe90b765b879339fb51 *man/EEF.profile.Rd
 a0d5e8c4e705d42ac0490f121ea867b8 *man/Imp.Estimates.Rd
-10c9b8344a65d4680db3d2faf648ff1f *man/abc.ci.Rd
+321fa746ad4232b89044b526ea5c3b96 *man/abc.ci.Rd
 7e2dff3ff232fd6cefe3bbabfbed70fd *man/acme.Rd
 0268f624b210eb8bba4e0c34b94e627c *man/aids.Rd
 c7f814d422e07460878d57c7d96e717d *man/aircondit.Rd
@@ -73,7 +73,7 @@ c7f814d422e07460878d57c7d96e717d *man/aircondit.Rd
 bf45232257e2058ad342fb9699e64501 *man/beaver.Rd
 6b3007848528061e27f16481c574e296 *man/bigcity.Rd
 5b470a1e949bc2e15530c9683cbb1404 *man/boot-practicals.Rd
-56dfd17e0b58f5b89ea876f64889473a *man/boot.Rd
+fc35253ffbea816cafa819e6df02abeb *man/boot.Rd
 fe6ad576aaf42cf0941b7d90495c124c *man/boot.array.Rd
 47ebd538861b94efcb11f6f1ff47460e *man/boot.ci.Rd
 5091d84983dfd09d24fb7071e501285f *man/brambles.Rd
@@ -129,7 +129,7 @@ fdc9a00eb2ea2b3bee0191954426c6ff *man/paulsen.Rd
 ed6b241b59be1b865c9621fa56ffb0e6 *man/plot.boot.Rd
 db78466da842c1b5958a85416cf55e91 *man/poisons.Rd
 46e101fae60869b1db42ebd19eed6b24 *man/polar.Rd
-83298a87aef3d35345365e5cfec96e03 *man/print.boot.Rd
+d09f897d46a677bde614c091f2f30db2 *man/print.boot.Rd
 3c079b7a93ec75caecc882efdec9318a *man/print.bootci.Rd
 a78eeb46ebeb216615fcbd05b2baaf85 *man/print.saddle.distn.Rd
 15f6cefb066ec23514d889fc6e39d19f *man/print.simplex.Rd

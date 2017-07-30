@@ -196,8 +196,11 @@ boot <- function(data, statistic, R, sim = "ordinary",
     for(r in seq_len(RR)) t.star[r, ] <- res[[r]]
 
     if (is.null(weights)) weights <- 1/tabulate(strata)[strata]
-    boot.return(sim, t0, t.star, temp.str, R, data, statistic, stype, call,
-                seed, L, m, pred.i, weights, ran.gen, mle)
+    boot0 <- boot.return(sim, t0, t.star, temp.str, R, data, statistic,
+                         stype, call,
+                         seed, L, m, pred.i, weights, ran.gen, mle)
+    attr(boot0, "boot_type") <- "boot"
+    boot0
 }
 
 normalize <- function(wts, strata)
@@ -267,7 +270,8 @@ boot.array <- function(boot.out, indices=FALSE) {
     n <- NROW(boot.out$data)
     R <- boot.out$R
     sim <- boot.out$sim
-    if (boot.out$call[[1L]] == "tsboot") {
+    type <- find_type(boot.out)
+    if (type == "tsboot") {
 #  Recreate the array for an object created by tsboot, The default for
 #  such objects is to return the index array unless index is specifically
 #  passed as F
@@ -290,7 +294,7 @@ boot.array <- function(boot.out, indices=FALSE) {
             out[r,] <- inds
         }
     }
-    else if (boot.out$call[[1L]] == "censboot") {
+    else if (type == "censboot") {
 #  Recreate the array for an object created by censboot as long
 #  as censboot was called with sim = "ordinary"
         if (sim == "ordinary") {
@@ -304,7 +308,7 @@ boot.array <- function(boot.out, indices=FALSE) {
         if (sim == "parametric")
             stop("array cannot be found for parametric bootstrap")
         strata <- tapply(seq_len(n),as.numeric(boot.out$strata))
-        if (boot.out$call[[1L]] == "tilt.boot")
+        if (find_type(boot.out) == "tilt.boot")
             weights <- boot.out$weights
         else {
             weights <- boot.out$call$weights
@@ -432,18 +436,21 @@ print.boot <- function(x, digits = getOption("digits"),
                                       " std. error", " mean(t*)"))
         }
     }
-    if (cl[[1L]] == "boot") {
+    type <- find_type(boot.out)
+    if (type == "boot") {
         if (sim == "parametric")
             cat("\nPARAMETRIC BOOTSTRAP\n\n")
         else if (sim == "antithetic") {
             if (is.null(cl$strata))
                 cat("\nANTITHETIC BOOTSTRAP\n\n")
-            else	cat("\nSTRATIFIED ANTITHETIC BOOTSTRAP\n\n")
+            else
+                cat("\nSTRATIFIED ANTITHETIC BOOTSTRAP\n\n")
         }
         else if (sim == "permutation") {
             if (is.null(cl$strata))
                 cat("\nDATA PERMUTATION\n\n")
-            else	cat("\nSTRATIFIED DATA PERMUTATION\n\n")
+            else
+                cat("\nSTRATIFIED DATA PERMUTATION\n\n")
         }
         else if (sim == "balanced") {
             if (is.null(cl$strata) && is.null(cl$weights))
@@ -452,7 +459,8 @@ print.boot <- function(x, digits = getOption("digits"),
                 cat("\nBALANCED WEIGHTED BOOTSTRAP\n\n")
             else if (is.null(cl$weights))
                 cat("\nSTRATIFIED BALANCED BOOTSTRAP\n\n")
-            else	cat("\nSTRATIFIED WEIGHTED BALANCED BOOTSTRAP\n\n")
+            else
+                cat("\nSTRATIFIED WEIGHTED BALANCED BOOTSTRAP\n\n")
         }
         else {
             if (is.null(cl$strata) && is.null(cl$weights))
@@ -461,10 +469,11 @@ print.boot <- function(x, digits = getOption("digits"),
                 cat("\nWEIGHTED BOOTSTRAP\n\n")
             else if (is.null(cl$weights))
                 cat("\nSTRATIFIED BOOTSTRAP\n\n")
-            else 	cat("\nSTRATIFIED WEIGHTED BOOTSTRAP\n\n")
+            else
+                cat("\nSTRATIFIED WEIGHTED BOOTSTRAP\n\n")
         }
     }
-    else if (cl[[1L]] == "tilt.boot") {
+    else if (type == "tilt.boot") {
         R <- boot.out$R
         th <- boot.out$theta
         if (sim == "balanced")
@@ -489,7 +498,7 @@ print.boot <- function(x, digits = getOption("digits"),
         }
         op <- op[, 1L:3L]
     }
-    else if (cl[[1L]] == "tsboot") {
+    else if (type == "tsboot") {
         if (!is.null(cl$indices))
             cat("\nTIME SERIES BOOTSTRAP USING SUPPLIED INDICES\n\n")
         else if (sim == "model")
@@ -498,23 +507,27 @@ print.boot <- function(x, digits = getOption("digits"),
             cat("\nPHASE SCRAMBLED BOOTSTRAP FOR TIME SERIES\n\n")
             if (boot.out$norm)
                 cat("Normal margins used.\n")
-            else	cat("Observed margins used.\n")
+            else
+                cat("Observed margins used.\n")
         }
         else if (sim == "geom") {
             if (is.null(cl$ran.gen))
                 cat("\nSTATIONARY BOOTSTRAP FOR TIME SERIES\n\n")
-            else	cat(paste("\nPOST-BLACKENED STATIONARY",
-                                  "BOOTSTRAP FOR TIME SERIES\n\n"))
+            else
+                cat(paste("\nPOST-BLACKENED STATIONARY",
+                          "BOOTSTRAP FOR TIME SERIES\n\n"))
             cat(paste("Average Block Length of",boot.out$l,"\n"))
         }
-        else {	if (is.null(cl$ran.gen))
+        else {
+            if (is.null(cl$ran.gen))
                     cat("\nBLOCK BOOTSTRAP FOR TIME SERIES\n\n")
-        else	cat(paste("\nPOST-BLACKENED BLOCK",
+            else
+                cat(paste("\nPOST-BLACKENED BLOCK",
                           "BOOTSTRAP FOR TIME SERIES\n\n"))
-                    cat(paste("Fixed Block Length of",boot.out$l,"\n"))
-		}
+            cat(paste("Fixed Block Length of",boot.out$l,"\n"))
+        }
     }
-    else {
+    else if (type == "censboot") {
         cat("\n")
         if (sim == "weird") {
             if (!is.null(cl$strata)) cat("STRATIFIED ")
@@ -534,9 +547,10 @@ print.boot <- function(x, digits = getOption("digits"),
             cat("CONDITIONAL BOOTSTRAP ")
             if (is.null(boot.out$cox))
                 cat("FOR CENSORED DATA\n\n")
-            else	cat("FOR COX REGRESSION MODEL\n\n")
+            else
+                cat("FOR COX REGRESSION MODEL\n\n")
         }
-    }
+    } else warning('unknown type of "boot" object')
     cat("\nCall:\n")
     dput(cl, control=NULL)
     cat("\n\nBootstrap Statistics :\n")
@@ -933,7 +947,7 @@ boot.ci <- function(boot.out,conf = 0.95,type = "all",
     if (any(type == "all" | type == "perc"))
         output <- c(output, list(percent=perc.ci(t,conf,hinv=hinv)))
     if (any(type == "all" | type == "bca")) {
-        if (as.character(boot.out$call[1L]) == "tsboot")
+        if (find_type(boot.out) == "tsboot")
             warning("BCa intervals not defined for time series bootstraps")
         else
             output <- c(output, list(bca=bca.ci(boot.out,conf,
@@ -1404,6 +1418,7 @@ cens.return <- function(sim, t0, t, strata, R, data, statistic, call, seed) {
     out <- list(t0 = t0, t = t, R = R, sim = sim, data = data, seed = seed,
                 statistic = statistic, strata = strata, call = call)
     class(out) <- "boot"
+    attr(boot, "boot_type") <- "censboot"
     out
 }
 
@@ -2371,6 +2386,7 @@ tilt.boot <- function(data, statistic, R, sim="ordinary",
     boot0$R <- c(boot0$R, boot1$R)
     boot0$call <- call
     boot0$theta <- theta
+    attr(boot0, "boot_type") <- "tilt.boot"
     boot0
 }
 
@@ -3494,5 +3510,15 @@ ts.return <- function(t0, t, R, tseries, seed, stat, sim, endcorr,
             out <- c(out,list(ran.gen = ran.gen, ran.args = ran.args))
     }
     class(out) <- "boot"
+    attr(out, "boot_type") <- "tsboot"
     out
+}
+
+## unexported helper
+
+find_type <- function(boot.out)
+{
+    if(is.null(type <- attr(boot.out, "boot_type")))
+        type <- sub("^boot::", "", deparse(boot.out$call[[1L]]))
+    type
 }
