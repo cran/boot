@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: boot 1.3-10\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2013-03-20 07:24\n"
+"POT-Creation-Date: 2018-04-07 21:19\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Łukasz Daniel <lukasz.daniel@gmail.com>\n"
 "Language-Team: Łukasz Daniel <lukasz.daniel@gmail.com>\n"
@@ -70,6 +70,12 @@ msgstr "nie można znaleźć tablicy dla parametrycznego bootstrapu"
 # warning(gettextf("%s distribution not supported: using normal instead", sQuote(qdist)), domain = "R-boot")
 msgid "%s distribution not supported: using normal instead"
 msgstr "rozkład %s nie jest wspierany: w zamian używanie rozkładu normalnego"
+
+# boot/R/bootfuns.R: 249
+# stop("arguments are not all the same type of \"boot\" object")
+#, fuzzy
+msgid "unknown type of \"boot\" object"
+msgstr "argumenty nie są wszystkie tego samego typu obiektu 'boot'"
 
 # boot/R/bootfuns.R: 697
 # warning("only first element of 'index' used")

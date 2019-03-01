@@ -1,10 +1,10 @@
 # Korean translation for R boot package
 # Recommended/boot/po/R-ko.po
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
-# 
+#
 # This file is distributed under the same license as the R boot package.
 # Chel Hee Lee <chl948@mail.usask.ca>, 2013-2015.
-# 
+#
 # Reviewing process is completed (26-JAN-2015)
 # The original source code is reviewed (26-JAN-2015)
 # QC: PASS
@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: boot 1.3-6\n"
-"POT-Creation-Date: 2012-10-11 15:21\n"
+"POT-Creation-Date: 2018-04-07 21:19\n"
 "PO-Revision-Date: 2015-02-06 21:56-0600\n"
 "Last-Translator:Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
@@ -27,7 +27,8 @@ msgid ""
 "'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0', so "
 "ignored"
 msgstr ""
-"'simple=TRUE'은 오로지 'sim=\"ordinary\", stype=\"i\", n=0'의 경우에만 유효하게 사용할 수 있으므로 무시됩니다."
+"'simple=TRUE'은 오로지 'sim=\"ordinary\", stype=\"i\", n=0'의 경우에만 유효하"
+"게 사용할 수 있으므로 무시됩니다."
 
 msgid "no data in call to 'boot'"
 msgstr "'boot'에 호출중인 데이터가 없습니다."
@@ -45,7 +46,9 @@ msgid "arguments are not all the same type of \"boot\" object"
 msgstr "입력된 인자들 중 적어도 하나 이상이 \"boot\" 클래스의 객체가 아닙니다."
 
 msgid "index array not defined for model-based resampling"
-msgstr "모델기반의 리샘플링(model-based resampling)을 위하여 정의된 인덱스 배열(index array)가 아닙니다."
+msgstr ""
+"모델기반의 리샘플링(model-based resampling)을 위하여 정의된 인덱스 배열"
+"(index array)가 아닙니다."
 
 msgid "boot.array not implemented for this object"
 msgstr "boot.array 함수는 이 객체를 위하여 구현된 것이 아닙니다."
@@ -55,6 +58,10 @@ msgstr "모수적 붓스트랩(parameteric bootstrap)을 위한 배열을 찾을
 
 msgid "%s distribution not supported: using normal instead"
 msgstr "%s 분포가 지원되지 않기 때문에 정규분포를 대신 사용합니다."
+
+#, fuzzy
+msgid "unknown type of \"boot\" object"
+msgstr "입력된 인자들 중 적어도 하나 이상이 \"boot\" 클래스의 객체가 아닙니다."
 
 msgid "only first element of 'index' used"
 msgstr "'index'의 첫번째 요소만이 사용되었습니다."
@@ -69,16 +76,22 @@ msgid "'t' and 't0' must be supplied together"
 msgstr "'t'와 't0'는 반드시 함께 입력되어야 합니다."
 
 msgid "index out of bounds; minimum index only used."
-msgstr "인덱스의 범위를 벗어났기 때문에 인덱스가 가지는 가장 작은 값(minimum index)을 사용합니다."
+msgstr ""
+"인덱스의 범위를 벗어났기 때문에 인덱스가 가지는 가장 작은 값(minimum index)"
+"을 사용합니다."
 
 msgid "'t' must of length %d"
 msgstr "'t'의 길이는 반드시 %d이어야 합니다."
 
 msgid "bootstrap variances needed for studentized intervals"
-msgstr "스튜던트화된 구간(studentized intervals)에 필요한 붓스트랩 분산(boostrap variances)입니다."
+msgstr ""
+"스튜던트화된 구간(studentized intervals)에 필요한 붓스트랩 분산(boostrap "
+"variances)입니다."
 
 msgid "BCa intervals not defined for time series bootstraps"
-msgstr "시계열 붓스트랩(time series bootstraps)을 위하여 정의된 BCa 구간(intervals)이 아닙니다."
+msgstr ""
+"시계열 붓스트랩(time series bootstraps)을 위하여 정의된 BCa 구간(intervals)"
+"이 아닙니다."
 
 msgid "bootstrap output object or 't0' required"
 msgstr "붓스트랩으로부터 생성된 객체 또는 't0'가 필요합니다."
@@ -87,7 +100,8 @@ msgid "unable to calculate 'var.t0'"
 msgstr "'var.t0'를 계산할 수 없습니다."
 
 msgid "extreme order statistics used as endpoints"
-msgstr "종점(endpoints)으로 사용된 극단적 순서통계량(extreme order statistics)입니다."
+msgstr ""
+"종점(endpoints)으로 사용된 극단적 순서통계량(extreme order statistics)입니다."
 
 msgid "variance required for studentized intervals"
 msgstr "스튜던트화된 구간(studentized intervals)에 요구되는 분산입니다."
@@ -120,7 +134,9 @@ msgid "indices are incompatible with 'ncol(data)'"
 msgstr "인덱스의 길이가 'ncol(data)'와 일치하지 않습니다."
 
 msgid "sim = \"weird\" cannot be used with a \"coxph\" object"
-msgstr "sim 인자는 \"coxph\"라는 객체를 입력받는 경우에 \"weird\"이라는 값을 가질 수 없습니다."
+msgstr ""
+"sim 인자는 \"coxph\"라는 객체를 입력받는 경우에 \"weird\"이라는 값을 가질 수 "
+"없습니다."
 
 msgid "only columns %s and %s of 'data' used"
 msgstr "'data'의 %s와 %s 번째 열만이 사용되었습니다."
@@ -138,7 +154,9 @@ msgid "'strata' of wrong length"
 msgstr "'strata'의 길이가 올바르지 않습니다."
 
 msgid "influence values cannot be found from a parametric bootstrap"
-msgstr "모수적 붓스트랩(parametric bootstrap)으로부터 영향치(influence values)들을 찾을 수 없습니다."
+msgstr ""
+"모수적 붓스트랩(parametric bootstrap)으로부터 영향치(influence values)들을 찾"
+"을 수 없습니다."
 
 msgid "neither 'data' nor bootstrap object specified"
 msgstr "'data'와 붓스트랩 객체 모두 입력되지 않았습니다."
@@ -198,7 +216,9 @@ msgid "'R' and 'theta' have incompatible lengths"
 msgstr "'R'과 'theta'의 길이가 서로 맞지 않습니다."
 
 msgid "R[1L] must be positive for frequency smoothing"
-msgstr "빈도 스무딩(frequency smoothing)을 사용하기 위해서는 반드시 R[1L]의 값은 양수이어야 합니다."
+msgstr ""
+"빈도 스무딩(frequency smoothing)을 사용하기 위해서는 반드시 R[1L]의 값은 양수"
+"이어야 합니다."
 
 msgid "'R' and 'alpha' have incompatible lengths"
 msgstr "'R'과 'alpha'의 길이가 서로 맞지 않습니다."
@@ -213,19 +233,23 @@ msgid "'alpha' ignored; R[1L] = 0"
 msgstr "입력된 'alpha'의 값이 무시되었으며 R[1L] = 0이 적용됩니다."
 
 msgid "control methods undefined when 'boot.out' has weights"
-msgstr "'boot.out'가 가중치(weights)를 가지는 경우에 대한 제어방법(control methods)가 정의되지 않았습니다."
+msgstr ""
+"'boot.out'가 가중치(weights)를 가지는 경우에 대한 제어방법(control methods)"
+"가 정의되지 않았습니다."
 
 msgid "number of columns of 'A' (%d) not equal to length of 'u' (%d)"
 msgstr "'A'의 열의 개수 (%d)가 'u'의 길이 (%d)와 일치하지 않습니다."
 
 msgid "either 'A' and 'u' or 'K.adj' and 'K2' must be supplied"
-msgstr "'A'와 'u' 또는 'K.adj'와 'K2' 둘 중의 한 쌍은 반드시 제공되어야 합니다."
+msgstr ""
+"'A'와 'u' 또는 'K.adj'와 'K2' 둘 중의 한 쌍은 반드시 제공되어야 합니다."
 
 msgid "this type not implemented for Poisson"
 msgstr "본 유형(type)은 포아송(Poisson)의 경우에는 아직 구현되지 않았습니다."
 
 msgid "this type not implemented for Binary"
-msgstr "본 유형(type)은 이진데이터(Binary)의 경우에는 아직 구현되지 않았습니다."
+msgstr ""
+"본 유형(type)은 이진데이터(Binary)의 경우에는 아직 구현되지 않았습니다."
 
 msgid "one of 't' or 't0' required"
 msgstr "'t' 또는 't0' 중 하나가 필요합니다."

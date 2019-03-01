@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.10.0\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
-"POT-Creation-Date: 2012-10-11 15:21\n"
+"POT-Creation-Date: 2018-04-07 21:19\n"
 "PO-Revision-Date: 2013-03-19 14:42-0600\n"
 "Last-Translator: Alexey Shipunov <dactylorhiza@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -18,10 +18,15 @@ msgstr ""
 "Content-Type: text/plain; charset=KOI8-R\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Russian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-msgid "'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0', so ignored"
-msgstr "'simple=TRUE' правильно только для 'sim=\"ordinary\", stype=\"i\", n=0, поэтому пропускается"
+msgid ""
+"'simple=TRUE' is only valid for 'sim=\"ordinary\", stype=\"i\", n=0', so "
+"ignored"
+msgstr ""
+"'simple=TRUE' правильно только для 'sim=\"ordinary\", stype=\"i\", n=0, "
+"поэтому пропускается"
 
 msgid "no data in call to 'boot'"
 msgstr "нет данных в вызове 'boot'"
@@ -49,6 +54,10 @@ msgstr "не могу найти матрицу для параметрического бутстрепа"
 
 msgid "%s distribution not supported: using normal instead"
 msgstr "распределение %s не поддерживается, использую нормальное"
+
+#, fuzzy
+msgid "unknown type of \"boot\" object"
+msgstr "не все аргументы объекта \"boot\" одного типа"
 
 msgid "only first element of 'index' used"
 msgstr "использован лишь первый элемент индекса"
@@ -253,18 +262,24 @@ msgstr "правдоподобие превышает %f только в одной точке"
 
 #~ msgid "only columns"
 #~ msgstr "только колонки"
+
 #~ msgid "and"
 #~ msgstr "и"
+
 #~ msgid "of data used"
 #~ msgstr "данных использованы"
+
 #~ msgid "number of columns of A ("
 #~ msgstr "количество колонок A ("
+
 #~ msgid ")"
 #~ msgstr ")"
+
 #~ msgid "at only one point"
 #~ msgstr "только в одной точке"
+
 #~ msgid "invalid proportions input"
 #~ msgstr "неправильный ввод пропорций"
+
 #~ msgid "irregular time series not allowed"
 #~ msgstr "нерегулярные временные ряды не разрешены"
-
