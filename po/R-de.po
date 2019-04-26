@@ -1,15 +1,12 @@
 # Translation of boot to German
 # Copyright (C) 2005 The R Foundation
-# This file is distributed under the same license as the boot package.
-# Copyright (C) of this file 2009-2012 Chris Leick <c.leick@vollbio.de>.
-# 2012 Detlef Steuer <steuer@hsu-hh.de>
 msgid ""
 msgstr ""
-"Project-Id-Version: R 2.15.2 / boot 1.3-6-\n"
+"Project-Id-Version: R 3.6.0 / boot 1.3-21\n"
 "Report-Msgid-Bugs-To: bugs@r-project.org\n"
 "POT-Creation-Date: 2018-04-07 21:19\n"
-"PO-Revision-Date: 2012-10-11 16:01+0200\n"
-"Last-Translator: Chris Leick <c.leick@vollbio.de>\n"
+"PO-Revision-Date: 2019-04-01 14:14+0200\n"
+"Last-Translator: Detlef Steuer <steuer@hsu-hh.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -55,9 +52,8 @@ msgid "%s distribution not supported: using normal instead"
 msgstr ""
 "%s Verteilung nicht unterstützt, stattdessen wird Normalverteilung benutzt"
 
-#, fuzzy
 msgid "unknown type of \"boot\" object"
-msgstr "Argumente waren nicht all vom selben Typ des 'boot'-Objekts"
+msgstr "unbekanter Typ des \"boot\" Objektes"
 
 msgid "only first element of 'index' used"
 msgstr "nur erstes Element von 'index' benutzt"
