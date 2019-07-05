@@ -1,5 +1,5 @@
-1b5ac46717dca02c841ea6e1325238a6 *ChangeLog
-8798d7ca7be4ee6a3b5e139514ee4c92 *DESCRIPTION
+69ad56735054de20c73f6cfa94a7bf1e *ChangeLog
+b1407dc339d81e7c7a66a946edfe5a2c *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
 319ea125989deab41f19cb6c3071aecb *R/bootfuns.q
@@ -81,7 +81,7 @@ f57945e898eb78bd561996c48d771178 *man/breslow.Rd
 06eba0c4fda717811e05817df1fa937c *man/calcium.Rd
 754e4c70902000d799c3bfbf6ee0e5d9 *man/cane.Rd
 1f572d38ed0f5fff9a0c41ac983724ea *man/capability.Rd
-fdfaee6a4ccc168ca3e859f38c651cac *man/catsM.Rd
+0c522e69df3a6b8b21e5b67c3e5d1752 *man/catsM.Rd
 a00a318f35d0e660725fc5ee921fd5d9 *man/cav.Rd
 6f0281ecdb3fe26a737c810e0611469a *man/cd4.Rd
 139bfacaa6f5123aecbe19a536c35e17 *man/cd4.nested.Rd
