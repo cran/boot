@@ -1,5 +1,5 @@
 69ad56735054de20c73f6cfa94a7bf1e *ChangeLog
-b1407dc339d81e7c7a66a946edfe5a2c *DESCRIPTION
+522af233191a6d871d9d3bee9325ddb6 *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
 319ea125989deab41f19cb6c3071aecb *R/bootfuns.q
@@ -64,7 +64,7 @@ cd952d436872cd26f4ffb35982a1271c *data/salinity.rda
 0e3e5c8faa9dbeb73ce8eab018874189 *inst/po/ru/LC_MESSAGES/R-boot.mo
 11f465056ac27fe90b765b879339fb51 *man/EEF.profile.Rd
 a0d5e8c4e705d42ac0490f121ea867b8 *man/Imp.Estimates.Rd
-321fa746ad4232b89044b526ea5c3b96 *man/abc.ci.Rd
+9cebe801fa9a9f5d1b8e4ac9bbdb30ea *man/abc.ci.Rd
 7e2dff3ff232fd6cefe3bbabfbed70fd *man/acme.Rd
 0268f624b210eb8bba4e0c34b94e627c *man/aids.Rd
 c7f814d422e07460878d57c7d96e717d *man/aircondit.Rd
@@ -156,4 +156,4 @@ de4b59b7a914ee62bc4b050d498dfec1 *po/R-boot.pot
 dd76c6ffad120fe2860934949ff532aa *po/R-ko.po
 5322e035d3eed789457c6e6a2ce9061f *po/R-pl.po
 f39d1a0f9138f50f17c8e2a2c4656fc9 *po/R-ru.po
-0f72f6d40750067954c9d5d1826fcadb *tests/Examples/boot-Ex.Rout.save
+ad8a089ac51b8547b47a897b93a6b799 *tests/Examples/boot-Ex.Rout.save
