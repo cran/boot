@@ -1,5 +1,5 @@
 69ad56735054de20c73f6cfa94a7bf1e *ChangeLog
-b0ce6a1493dc6b230e24759ca7201204 *DESCRIPTION
+361cd5e04621c1552a3e012e6b838640 *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
 319ea125989deab41f19cb6c3071aecb *R/bootfuns.q
@@ -63,7 +63,7 @@ acd5b31b186a4021551eaac6c31d6bc2 *inst/po/it/LC_MESSAGES/R-boot.mo
 0c051fe93a48b43752ee313a800de39e *inst/po/ko/LC_MESSAGES/R-boot.mo
 9c43d47d8f3b6447a537e0ec6b47397f *inst/po/pl/LC_MESSAGES/R-boot.mo
 0e3e5c8faa9dbeb73ce8eab018874189 *inst/po/ru/LC_MESSAGES/R-boot.mo
-11f465056ac27fe90b765b879339fb51 *man/EEF.profile.Rd
+d03e9297a82c998f81a23be1b6c4a3ad *man/EEF.profile.Rd
 a0d5e8c4e705d42ac0490f121ea867b8 *man/Imp.Estimates.Rd
 9cebe801fa9a9f5d1b8e4ac9bbdb30ea *man/abc.ci.Rd
 7e2dff3ff232fd6cefe3bbabfbed70fd *man/acme.Rd
