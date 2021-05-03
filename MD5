@@ -1,5 +1,5 @@
-d6c925da49e5019209816ff7f1ab12fc *ChangeLog
-7183680f72194a1fa22e9f50814061c1 *DESCRIPTION
+66753bf9083a39ee13852e7352edc0e9 *ChangeLog
+a1ef2c9c8a73fbbca78d20d35ef35e7a *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
 d3ddd78a5b1a656844fe917d921165db *R/bootfuns.q
@@ -57,8 +57,8 @@ cd952d436872cd26f4ffb35982a1271c *data/salinity.rda
 5dc2147b194c15507379de49828222c1 *inst/CITATION
 6e887574f4c46cddf29707098ab3fccf *inst/bd.q
 22caf058cde6389aeec0081dfb1d9272 *inst/po/de/LC_MESSAGES/R-boot.mo
-b7d8019b1b62fc251d6e797832eb4e88 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
-110f10f6f893dd5fc5a219a20a355a09 *inst/po/fr/LC_MESSAGES/R-boot.mo
+34eb4110bfb8948c2e4e3537ec4a41b9 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
+1c996b9de470af2c3ed46f122aa372ec *inst/po/fr/LC_MESSAGES/R-boot.mo
 a1072f3502a511afe8caec9c70f5c998 *inst/po/it/LC_MESSAGES/R-boot.mo
 a7431f0d6baac9766369161ed90a9326 *inst/po/ko/LC_MESSAGES/R-boot.mo
 2d57598d21f1c168c4269341883783e4 *inst/po/pl/LC_MESSAGES/R-boot.mo
@@ -151,9 +151,9 @@ a51320555e514596e7daa274dd19d7ac *man/tsboot.Rd
 3ddb91313b67a735363f72eefa9af04a *man/urine.Rd
 cdb8cde8c7643dac9b25eeb6f8dd55aa *man/var.linear.Rd
 b673cbbf7c86182dc9f823dcb7ff4062 *man/wool.Rd
-684a25b919a1df60ad7fa5aed8e7f598 *po/R-boot.pot
+650251e7687201bdf5c6ed1669b26e28 *po/R-boot.pot
 574865bc369e3156993904a0e090c562 *po/R-de.po
-3a484e912d5d0d244f26b61b01b7aa64 *po/R-fr.po
+3aa962f04c52c544c3cff646c754b109 *po/R-fr.po
 b7f20b571d77e13af049d8990a916698 *po/R-it.po
 dd76c6ffad120fe2860934949ff532aa *po/R-ko.po
 5322e035d3eed789457c6e6a2ce9061f *po/R-pl.po
