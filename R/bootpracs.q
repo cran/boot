@@ -6,6 +6,7 @@
 
 # empirical log likelihood ---------------------------------------------------------
 
+
 EL.profile <- function(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t = 25,
                        u = function(y, t) y - t )
 {
@@ -34,8 +35,6 @@ EL.profile <- function(y, tmin = min(y) + 0.1, tmax = max(y) - 0.1, n.t = 25,
 }
 
 
-
-
 EEF.profile <- function(y, tmin = min(y)+0.1, tmax = max(y) - 0.1, n.t = 25,
                         u = function(y,t) y - t)
 {
@@ -52,6 +51,7 @@ EEF.profile <- function(y, tmin = min(y)+0.1, tmax = max(y) - 0.1, n.t = 25,
     EEF.paras[,3] <- EEF.paras[,3] - max(EEF.paras[,3])
     EEF.paras
 }
+
 
 lik.CI <- function(like, lim ) {
 #
@@ -94,6 +94,7 @@ lik.CI <- function(like, lim ) {
 	out
 }
 
+
 nested.corr <- function(data,w,t0,M) {
     ## Statistic for the example nested bootstrap on the cd4 data.
     ## Indexing a bare matrix is much faster
@@ -121,3 +122,236 @@ nested.corr <- function(data,w,t0,M) {
     z.nested <- (nested.boot$t[,1L]-t[1L])/sqrt(nested.boot$t[,2L])
     c(z,sum(z.nested<z)/(M+1))
 }
+
+
+# part of R package boot
+# copyright (C) 1997-2001 Angelo J. Canty
+# corrections (C) 1997-2011 B. D. Ripley
+# corrections (C) 2023 A. R. Brazzale
+#
+# Unlimited distribution is permitted
+
+# importance sampling --------------------------------------------------------------
+
+
+imp.weights <- function(boot.out, def = TRUE, q = NULL)
+{
+  #
+  # Takes boot.out object and calculates importance weights
+  # for each element of boot.out$t, as if sampling from multinomial
+  # distribution with probabilities q.
+  # If q is NULL the weights are calculated as if
+  # sampling from a distribution with equal probabilities.
+  # If def=T calculates weights using defensive mixture
+  # distribution, if F uses weights knowing from which element of
+  # the mixture they come.
+  #
+  R <- boot.out$R
+  if (length(R) == 1L)
+    def <- FALSE
+  f <- boot.array(boot.out)
+  n <- ncol(f)
+  strata <- tapply(boot.out$strata,as.numeric(boot.out$strata))
+  #    ns <- table(strata)
+  if (is.null(q))  q <- rep(1,ncol(f))
+  if (any(q == 0)) stop("0 elements not allowed in 'q'")
+  p <- boot.out$weights
+  if ((length(R) == 1L) && all(abs(p - q)/p < 1e-10))
+    return(rep(1, R))
+  np <- length(R)
+  q <- normalize(q, strata)
+  lw.q <- as.vector(f %*% log(q))
+  if (!isMatrix(p))
+    p <- as.matrix(t(p))
+  p <- t(apply(p, 1L, normalize, strata))
+  lw.p <- matrix(NA, sum(R), np)
+  for(i in 1L:np) {
+    zz <- seq_len(n)[p[i,  ] > 0]
+    lw.p[, i] <- f[, zz] %*% log(p[i, zz])
+  }
+  if (def)
+    w <- 1/(exp(lw.p - lw.q) %*% R/sum(R))
+  else {
+    i <- cbind(seq_len(sum(R)), rep(seq_along(R), R))
+    w <- exp(lw.q - lw.p[i])
+  }
+  as.vector(w)
+}
+
+
+imp.moments <- function(boot.out=NULL, index=1, t=boot.out$t[,index],
+                        w=NULL, def=TRUE, q=NULL )
+{
+  # Calculates raw, ratio, and regression estimates of mean and
+  # variance of t using importance sampling weights in w.
+  if (missing(t) && is.null(boot.out$t))
+    stop("bootstrap replicates must be supplied")
+  if (is.null(w))
+    if (!is.null(boot.out))
+      w <- imp.weights(boot.out, def, q)
+  else	stop("either 'boot.out' or 'w' must be specified.")
+  if ((length(index) > 1L) && missing(t)) {
+    warning("only first element of 'index' used")
+    t <- boot.out$t[,index[1L]]
+  }
+  fins <- seq_along(t)[is.finite(t)]
+  t <- t[fins]
+  w <- w[fins]
+  if (!const(w)) {
+    y <- t*w
+    m.raw <- mean( y )
+    m.rat <- sum( y )/sum( w )
+    t.lm <- lm( y~w )
+    m.reg <- mean( y ) - coefficients(t.lm)[2L]*(mean(w)-1)
+    v.raw <- mean(w*(t-m.raw)^2)
+    v.rat <- sum(w/sum(w)*(t-m.rat)^2)
+    x <- w*(t-m.reg)^2
+    t.lm2 <- lm( x~w )
+    v.reg <- mean( x ) - coefficients(t.lm2)[2L]*(mean(w)-1)
+  }
+  else {	m.raw <- m.rat <- m.reg <- mean(t)
+  v.raw <- v.rat <- v.reg <- var(t)
+  }
+  list( raw=c(m.raw,v.raw), rat = c(m.rat,v.rat),
+        reg = as.vector(c(m.reg,v.reg)))
+}
+
+
+imp.reg <- function(w)
+{
+  #  This function takes a vector of importance sampling weights and
+  #  returns the regression importance sampling weights.  The function
+  #  is called by imp.prob and imp.quantiles to enable those functions
+  #  to find regression estimates of tail probabilities and quantiles.
+  R <- length(w)
+  if (!const(w)) {
+# ARB    R <- length(w)
+    mw <- mean(w)
+    s2w <- (R-1)/R*var(w)
+    b <- (1-mw)/s2w
+# ARB    w <- w*(1+b*(w-mw))/R
+    w <- w*(1+b*(w-mw))
+  }
+# ARB  cumsum(w)/sum(w)
+  #  ARB Returned weights sum to R.
+  w   
+}
+
+
+imp.quantile <- function(boot.out=NULL, alpha=NULL, index=1,
+                         t=boot.out$t[,index], w=NULL, def=TRUE, q=NULL )
+{
+  # Calculates raw, ratio, and regression estimates of alpha quantiles
+  #  of t using importance sampling weights in w.
+  if (missing(t) && is.null(boot.out$t))
+    stop("bootstrap replicates must be supplied")
+  if (is.null(alpha)) alpha <- c(0.01,0.025,0.05,0.95,0.975,0.99)
+  if (is.null(w))
+    if (!is.null(boot.out))
+      w <- imp.weights(boot.out, def, q)
+  else	stop("either 'boot.out' or 'w' must be specified.")
+  if ((length(index) > 1L) && missing(t)){
+    warning("only first element of 'index' used")
+    t <- boot.out$t[,index[1L]]
+  }
+  fins <- seq_along(t)[is.finite(t)]
+  t <- t[fins]
+  w <- w[fins]
+  o <- order(t)
+  t <- t[o]  
+  w <- w[o]
+  cum <- cumsum(w)
+  cum.rat <- cum/mean(w)
+  cum.reg <- cumsum(imp.reg(w))
+  o <- rev(o)
+  w.m <- w[o]
+  t.m <- -rev(t)  
+  cum.m <- cumsum(w.m)
+  R <- length(w)
+  raw <- rat <- reg <- rep(NA,length(alpha))
+  for (i in seq_along(alpha)) {
+    if (alpha[i]<=0.5) 
+      raw[i] <-  max(t[cum<=(R+1)*alpha[i]])
+    else 
+      raw[i] <- -max(t.m[cum.m<=(R+1)*(1-alpha[i])])
+    rat[i] <- max(t[cum.rat <= (R+1)*alpha[i]])
+    reg[i] <- max(t[cum.reg <= (R+1)*alpha[i]])
+  }
+  list(alpha=alpha, raw=raw, rat=rat, reg=reg)
+}
+
+
+imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
+                     t=boot.out$t[,index], w=NULL,  def=TRUE, q=NULL)
+{
+  # Calculates raw, ratio, and regression estimates of tail probability
+  #  pr( t <= t0 ) using importance sampling weights in w.
+  is.missing <- function(x) length(x) == 0L || is.na(x)
+
+  if (missing(t) && is.null(boot.out$t))
+    stop("bootstrap replicates must be supplied")
+  if (is.null(w))
+    if (!is.null(boot.out))
+      w <- imp.weights(boot.out, def, q)
+  else	stop("either 'boot.out' or 'w' must be specified.")
+  if ((length(index) > 1L) && (missing(t) || missing(t0))) {
+    warning("only first element of 'index' used")
+    index <- index[1L]
+    if (is.missing(t)) t <- boot.out$t[,index]
+    if (is.missing(t0)) t0 <- boot.out$t0[index]
+  }
+  fins <- seq_along(t)[is.finite(t)]
+  t <- t[fins]
+  w <- w[fins]
+  o <- order(t)
+  t <- t[o]
+  w <- w[o]
+  raw <- rat <- reg <- rep(NA,length(t0))
+  cum <- cumsum(w)/sum(w)
+# ARB  cum.r <- imp.reg(w)
+  w.reg <- imp.reg(w)
+  cum.r <- cumsum(w.reg)/sum(w.reg)
+  for (i in seq_along(t0)) {
+    raw[i] <- sum(w[t<=t0[i]])/length(w)
+# ARB: CAN BE > 1  ?!  --  SHOULDN'T WE APPLY FORMULA (9.19) AS WELL?
+    if(raw[i] > 1L)  raw[i] = 1
+# ARB    rat[i] <- max(cum[t<=t0[i]])
+# ARB    reg[i] <- max(cum.r[t<=t0[i]])
+    if(any(t<=t0[i]))
+    {
+      rat[i] <- max(cum[t<=t0[i]])
+      reg[i] <- max(cum.r[t<=t0[i]])
+    }
+    else  
+      rat[i] = reg[i] = 0
+  }
+  list(t0=t0, raw=raw, rat=rat, reg=reg )
+}
+
+
+
+
+
+const <- function(w, eps=1e-8) {
+  # Are all of the values of w equal to within the tolerance eps.
+  all(abs(w-mean(w, na.rm=TRUE)) < eps)
+}
+
+
+normalize <- function(wts, strata)
+{
+  #
+  # Normalize a vector of weights to sum to 1 within each strata.
+  #
+  n <- length(strata)
+  out <- wts
+  inds <- as.integer(names(table(strata)))
+  for (is in inds) {
+    gp <- seq_len(n)[strata == is]
+    out[gp] <- wts[gp]/sum(wts[gp]) }
+  out
+}
+
+
+isMatrix <- function(x) length(dim(x)) == 2L
+

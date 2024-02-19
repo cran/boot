@@ -2271,7 +2271,7 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
     cum <- cumsum(w)/sum(w)
     cum.r <- imp.reg(w)
     for (i in seq_along(t0)) {
-        raw[i] <-sum(w[t<=t0[i]])/length(w)
+        raw[i] <- sum(w[t<=t0[i]])/length(w)
         rat[i] <- max(cum[t<=t0[i]])
         reg[i] <- max(cum.r[t<=t0[i]])
     }

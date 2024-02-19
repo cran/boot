@@ -1,9 +1,9 @@
-0a8c2fb4a971e73b4e8c86fb3c757850 *ChangeLog
-1399b39723405c5ba1179172cfb01a4f *DESCRIPTION
+a7190ac64f280337f363a7fffaf1b187 *ChangeLog
+52c679e081741aa73d6fb3f8ca5dcd47 *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
-d3ddd78a5b1a656844fe917d921165db *R/bootfuns.q
-2b8e2285845954d700ba8f5518e656d6 *R/bootpracs.q
+d65ca606a10d34e0b77a1f81fc625b5f *R/bootfuns.q
+230c29d76ff118ac29e071f22241139e *R/bootpracs.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
 d23316324a0f746c1ef788c73db30361 *data/aids.rda
 809873f18074ec8ae197846e3b77dafa *data/aircondit.rda
@@ -54,7 +54,7 @@ cd952d436872cd26f4ffb35982a1271c *data/salinity.rda
 52d5a63848cd048b46fa9262836359ff *data/tuna.rda
 3aa86400de96496041c5e86a8fbdfead *data/urine.rda
 01ec4840c4426441e8a79f19b23f2d70 *data/wool.rda
-5dc2147b194c15507379de49828222c1 *inst/CITATION
+2ccb8dbb8a35e48a62b0266c25a385ea *inst/CITATION
 6e887574f4c46cddf29707098ab3fccf *inst/bd.q
 22caf058cde6389aeec0081dfb1d9272 *inst/po/de/LC_MESSAGES/R-boot.mo
 34eb4110bfb8948c2e4e3537ec4a41b9 *inst/po/en@quot/LC_MESSAGES/R-boot.mo
@@ -158,5 +158,5 @@ b7f20b571d77e13af049d8990a916698 *po/R-it.po
 dd76c6ffad120fe2860934949ff532aa *po/R-ko.po
 5322e035d3eed789457c6e6a2ce9061f *po/R-pl.po
 f39d1a0f9138f50f17c8e2a2c4656fc9 *po/R-ru.po
-ad8a089ac51b8547b47a897b93a6b799 *tests/Examples/boot-Ex.Rout.save
+1167762f920daa614354ef45973eb492 *tests/Examples/boot-Ex.Rout.save
 b4dfe10981d951aa98ea64ecbb96f778 *tests/parallel-censboot.R
