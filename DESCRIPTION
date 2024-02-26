@@ -1,12 +1,13 @@
 Package: boot
 Priority: recommended
-Version: 1.3-29
-Date: 2024-01-24
+Version: 1.3-30
+Date: 2024-02-19
 Authors@R: c(person("Angelo", "Canty", role = "aut",
-	             email = "cantya@mcmaster.ca"),
+	             email = "cantya@mcmaster.ca", 
+                     comment = "author of original code for S"),
              person("Brian", "Ripley", role = c("aut", "trl"),
                     email = "ripley@stats.ox.ac.uk",
-		    comment = "author of parallel support"),
+		    comment = "conversion to R, maintainer 1999--2022, author of parallel support"),
              person("Alessandra R.", "Brazzale", role = c("ctb", "cre"),
                     email = "brazzale@stat.unipd.it",
 		    comment = "minor bug fixes"))
@@ -23,9 +24,10 @@ LazyData: yes
 ByteCompile: yes
 License: Unlimited
 NeedsCompilation: no
-Packaged: 2024-02-05 11:01:37 UTC; brazzale
-Author: Angelo Canty [aut],
-  Brian Ripley [aut, trl] (author of parallel support),
+Packaged: 2024-02-25 16:23:08 UTC; brazzale
+Author: Angelo Canty [aut] (author of original code for S),
+  Brian Ripley [aut, trl] (conversion to R, maintainer 1999--2022, author
+    of parallel support),
   Alessandra R. Brazzale [ctb, cre] (minor bug fixes)
 Repository: CRAN
-Date/Publication: 2024-02-19 10:40:02 UTC
+Date/Publication: 2024-02-26 00:40:11 UTC

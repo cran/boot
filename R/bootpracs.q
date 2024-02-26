@@ -260,7 +260,7 @@ imp.quantile <- function(boot.out=NULL, alpha=NULL, index=1,
   o <- order(t)
   t <- t[o]  
   w <- w[o]
-  cum <- cumsum(w)
+  cum <- cumsum(w) 
   cum.rat <- cum/mean(w)
   cum.reg <- cumsum(imp.reg(w))
   o <- rev(o)
@@ -313,7 +313,6 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
   cum.r <- cumsum(w.reg)/sum(w.reg)
   for (i in seq_along(t0)) {
     raw[i] <- sum(w[t<=t0[i]])/length(w)
-# ARB: CAN BE > 1  ?!  --  SHOULDN'T WE APPLY FORMULA (9.19) AS WELL?
     if(raw[i] > 1L)  raw[i] = 1
 # ARB    rat[i] <- max(cum[t<=t0[i]])
 # ARB    reg[i] <- max(cum.r[t<=t0[i]])
@@ -327,31 +326,3 @@ imp.prob <- function(boot.out=NULL, index=1, t0=boot.out$t0[index],
   }
   list(t0=t0, raw=raw, rat=rat, reg=reg )
 }
-
-
-
-
-
-const <- function(w, eps=1e-8) {
-  # Are all of the values of w equal to within the tolerance eps.
-  all(abs(w-mean(w, na.rm=TRUE)) < eps)
-}
-
-
-normalize <- function(wts, strata)
-{
-  #
-  # Normalize a vector of weights to sum to 1 within each strata.
-  #
-  n <- length(strata)
-  out <- wts
-  inds <- as.integer(names(table(strata)))
-  for (is in inds) {
-    gp <- seq_len(n)[strata == is]
-    out[gp] <- wts[gp]/sum(wts[gp]) }
-  out
-}
-
-
-isMatrix <- function(x) length(dim(x)) == 2L
-
