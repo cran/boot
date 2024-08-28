@@ -1637,11 +1637,19 @@ empinf <- function(boot.out = NULL, data = NULL, statistic = NULL,
     }
     n <- NROW(data)
     if (is.null(type)) {
+#        if (!is.null(t)) type <- "reg"
+#        else if (stype == "w") type <- "inf"
+#        else if (!is.null(boot.out) &&
+#                 (boot.out$sim != "parametric") &&
+#                 (boot.out$sim != "permutation")) type <- "reg"
+#        else type <- "jack"
         if (!is.null(t)) type <- "reg"
         else if (stype == "w") type <- "inf"
         else if (!is.null(boot.out) &&
                  (boot.out$sim != "parametric") &&
-                 (boot.out$sim != "permutation")) type <- "reg"
+                 (boot.out$sim != "permutation")) {
+            if (boot.out$R < n) type <- "jack" else type <- "reg"
+        }
         else type <- "jack"
     }
 

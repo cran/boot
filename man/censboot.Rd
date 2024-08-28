@@ -206,7 +206,7 @@ NSF-241, Dept. of Statistics, Stanford University.
 }
 \seealso{
 \code{\link{boot}}, 
-\code{\link{coxph}}, \code{\link{survfit}}
+\code{\link[survival]{coxph}}, \code{\link[survival]{survfit}}
 }
 \examples{
 library(survival)

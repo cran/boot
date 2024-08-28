@@ -1,8 +1,8 @@
-655e8bf00b98124398c3a48898c8df17 *ChangeLog
-ad7976c10b5833029ca6b4d2c63b333c *DESCRIPTION
+22bb6a88be247c3b1c484a83312b8ff8 *ChangeLog
+9c6ba58df1b113865eef92e7fcbd75a0 *DESCRIPTION
 e6929f73b03924d15f3af4a4c8549a45 *INDEX
 52cc784fd6ef9af32d9586726a53bb89 *NAMESPACE
-61fb845c45330bff6b6f650be77dd63b *R/bootfuns.q
+864262affec47bd39eb7a874ea50650f *R/bootfuns.q
 c72ddf6109ae10de097c4fdc94618509 *R/bootpracs.q
 155f44e7f601a256d85924b33414834f *data/acme.rda
 d23316324a0f746c1ef788c73db30361 *data/aids.rda
@@ -82,11 +82,11 @@ f57945e898eb78bd561996c48d771178 *man/breslow.Rd
 06eba0c4fda717811e05817df1fa937c *man/calcium.Rd
 754e4c70902000d799c3bfbf6ee0e5d9 *man/cane.Rd
 1f572d38ed0f5fff9a0c41ac983724ea *man/capability.Rd
-0c522e69df3a6b8b21e5b67c3e5d1752 *man/catsM.Rd
+54acfbcf1d061bfbc8841b5f87fd17d6 *man/catsM.Rd
 a00a318f35d0e660725fc5ee921fd5d9 *man/cav.Rd
 6f0281ecdb3fe26a737c810e0611469a *man/cd4.Rd
 139bfacaa6f5123aecbe19a536c35e17 *man/cd4.nested.Rd
-2e818da597cc8a2856a42eb31ff9088c *man/censboot.Rd
+2e9da5698c18e2e5644e3c6b311a5699 *man/censboot.Rd
 f629d3055a979fdef0afd7babf2fa57c *man/channing.Rd
 6a2d8014403301b0cab61c34d06af3d1 *man/claridge.Rd
 356ff75d96126a70ee3351c941d09c56 *man/cloth.Rd
@@ -120,7 +120,7 @@ b26e9ac6f0af87f63ad47df97c0bbc9f *man/k3.linear.Rd
 2bc94125f966bbd6438af2a5fda66630 *man/logit.Rd
 0b0ae363d0709b9b7f3f9b19f5300d95 *man/manaus.Rd
 f78b79b893cdf63576461c8b3f99f886 *man/melanoma.Rd
-f2b51e33f1f97b412142b69873518d56 *man/motor.Rd
+db77c0a51ccdd8389ba05870c6393c22 *man/motor.Rd
 a0ec1907f1f451596832e264c25d4958 *man/neuro.Rd
 318320237fd8e7c55623a0ebab67f361 *man/nitrofen.Rd
 088e75442dec4b9cdfd2a290e42b5030 *man/nodal.Rd
